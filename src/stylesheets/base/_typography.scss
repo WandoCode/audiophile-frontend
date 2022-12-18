@@ -54,3 +54,30 @@ body {
     }
   }
 }
+
+.input {
+  letter-spacing: -0.25px;
+  line-height: rem(19);
+  font-weight: var(--fw-bold);
+
+  &::placeholder {
+    color: var(--clr-neutral-400);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-300);
+  }
+
+  &__label {
+    color: var(--clr-neutral-700);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-100);
+
+    &--error {
+      color: var(--clr-primary-600);
+    }
+  }
+
+  &__error-text {
+    font-size: var(--fs-100);
+    color: var(--clr-primary-600);
+  }
+}
