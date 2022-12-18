@@ -1,10 +1,12 @@
-/// Regular font family
-$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
-  'Helvetica', 'Arial', sans-serif !default;
+@use './functions' as *;
 
-/// Code (monospace) font family
-$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
-  'Monaco', monospace !default;
+/// Regular font family
+$text-font-stack: 'Manrope', sans-serif;
 
 /// Container's maximum width
-$max-width: 1180px;
+$max-width: 1440px;
+
+// Main margins
+$margin-lg: rem(165);
+$margin-md: rem(40);
+$margin-sm: rem(24);
