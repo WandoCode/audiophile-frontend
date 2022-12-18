@@ -5,5 +5,44 @@
 @use '../abstracts/' as *;
 
 .btn {
-  background-color: red;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: rem(160);
+  min-height: rem(48);
+
+  padding-inline: rem(20);
+
+  border: none;
+  cursor: pointer;
+
+  &--primary {
+    background-color: var(--clr-primary-400);
+
+    @include on-hover {
+      &:hover {
+        background-color: var(--clr-primary-300);
+      }
+    }
+  }
+
+  &--secondary {
+    background-color: var(--clr-neutral-100);
+    border: 1px solid var(--clr-neutral-700);
+
+    @include on-hover {
+      &:hover {
+        background-color: var(--clr-neutral-700);
+      }
+    }
+  }
+
+  &--tertiary {
+    gap: rem(13);
+    min-height: unset;
+    min-width: unset;
+    padding: 0;
+    background-color: transparent;
+  }
 }
