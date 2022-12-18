@@ -1,0 +1,10 @@
+/// Regular font family
+$text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue',
+  'Helvetica', 'Arial', sans-serif !default;
+
+/// Code (monospace) font family
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+  'Monaco', monospace !default;
+
+/// Container's maximum width
+$max-width: 1180px;

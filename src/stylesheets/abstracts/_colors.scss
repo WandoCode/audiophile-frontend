@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+$colors: (
+  primary: (
+    200: hsl(192, 70%, 51%),
+    300: hsl(136, 65%, 51%),
+    800: hsl(233, 26%, 24%),
+  ),
+  neutral: (
+    100: hsl(0, 0%, 100%),
+    200: hsl(0, 0%, 98%),
+    300: hsl(220, 16%, 96%),
+    400: hsl(233, 8%, 62%),
+  ),
+);
+
+:root {
+  /// Build css custom variables for colors
+  @each $color-type, $shades in $colors {
+    @each $shade, $color in $shades {
+      --clr-#{$color-type}-#{$shade}: #{$color};
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@use './functions' as *;
+
+/// Breakpoints map
+$breakpoints: (
+  'small': rem(320),
+  'medium': rem(768),
+  'large': rem(1024),
+);
