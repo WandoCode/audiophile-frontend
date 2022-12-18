@@ -1,4 +1,7 @@
 import '../src/stylesheets/main.scss'
+import { withRouter } from 'storybook-addon-react-router-v6'
+
+export const decorators = [withRouter]
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -6,6 +9,9 @@ export const parameters = {
     matchers: {
       color: /(background|color)$/i,
       date: /Date$/,
+    },
+    reactRouter: {
+      routePath: '/',
     },
   },
 }

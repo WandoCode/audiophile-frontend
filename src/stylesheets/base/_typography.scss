@@ -38,4 +38,19 @@ body {
       }
     }
   }
+
+  &--quaternary {
+    color: inherit;
+    font-weight: var(--fw-normal);
+    font-size: var(--fs-400);
+
+    text-transform: capitalize;
+    text-decoration: underline;
+
+    @include on-hover {
+      &:hover {
+        color: var(--clr-primary-400);
+      }
+    }
+  }
 }
