@@ -1,0 +1,30 @@
+@use '../abstracts/' as *;
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: rem(16);
+  width: 100%;
+  border: 1px solid var(--clr-neutral-300);
+  padding: rem(19) rem(24);
+  border-radius: rem(8);
+  cursor: pointer;
+
+  @include on-hover {
+    &:hover {
+      border-color: var(--clr-primary-400);
+    }
+  }
+
+  &__check {
+    height: rem(10);
+    width: rem(10);
+    outline: 1px solid var(--clr-neutral-300);
+    outline-offset: rem(5);
+    border-radius: rem(1000);
+  }
+
+  &__input:checked ~ &__check {
+    background-color: var(--clr-primary-400);
+  }
+}
