@@ -87,3 +87,18 @@ body {
   font-size: var(--fs-300);
   color: var(--clr-neutral-700);
 }
+
+.number-input {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-200);
+  &__btn {
+    font-weight: inherit;
+    font-size: inherit;
+    color: var(--clr-neutral-350);
+    @include on-hover {
+      &:hover {
+        color: var(--clr-primary-400);
+      }
+    }
+  }
+}

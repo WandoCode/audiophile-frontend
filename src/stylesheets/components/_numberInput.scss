@@ -1,0 +1,27 @@
+@use '../abstracts/' as *;
+
+.number-input {
+  $spacing: rem(14);
+
+  display: flex;
+  background-color: var(--clr-neutral-250);
+  max-width: rem(120);
+
+  &__input {
+    width: 100%;
+    flex-basis: 25%;
+    border: none;
+    background: transparent;
+    text-align: center;
+    padding-block: $spacing;
+  }
+
+  &__btn {
+    border: none;
+    background: transparent;
+    flex-basis: 33%;
+    flex-grow: 1;
+    padding-block: $spacing;
+    cursor: pointer;
+  }
+}

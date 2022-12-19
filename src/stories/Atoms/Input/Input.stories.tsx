@@ -8,13 +8,13 @@ export default {
 } as ComponentMeta<typeof Input>
 
 const Template: ComponentStory<typeof Input> = (args) => {
-  const [value, setvalue] = useState('')
+  const [value, setValue] = useState('')
 
   return (
     <Input
       {...args}
       currValue={value}
-      onChangeHandler={(e) => setvalue(e.target.value)}
+      onChangeHandler={(e) => setValue(e.target.value)}
     />
   )
 }
