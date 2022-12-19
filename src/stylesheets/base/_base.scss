@@ -22,19 +22,6 @@ html {
   box-sizing: inherit;
 }
 
-/**
- * Basic styles for links
- */
-a {
-  color: var(--clr-primary-400);
-  text-decoration: none;
-
-  @include on-event {
-    color: var(--clr-primary-500);
-    text-decoration: underline;
-  }
-}
-
 /* hide arrows
  Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

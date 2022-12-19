@@ -102,3 +102,35 @@ body {
     }
   }
 }
+
+.nav-link {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-200);
+  color: var(--clr-neutral-100);
+  text-decoration: none;
+  letter-spacing: rem(2);
+
+  &--active {
+    color: var(--clr-primary-400);
+  }
+  @include on-hover {
+    &:hover {
+      color: var(--clr-primary-400);
+    }
+  }
+}
+
+.inner-link {
+  color: inherit;
+  font-weight: var(--fw-normal);
+  font-size: var(--fs-400);
+
+  text-transform: capitalize;
+  text-decoration: none;
+
+  @include on-hover {
+    &:hover {
+      color: var(--clr-primary-400);
+    }
+  }
+}
