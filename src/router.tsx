@@ -6,7 +6,7 @@ import {
 import { Category } from './pages/Category'
 import { Checkout } from './pages/Checkout'
 import { Home } from './pages/Home'
-import { Item } from './pages/item'
+import { Item } from './pages/Item'
 import { Layout } from './pages/Layout/Layout'
 
 const router = createBrowserRouter(
