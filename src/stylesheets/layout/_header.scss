@@ -32,11 +32,19 @@
     }
 
     @include breakpoint(medium) {
+      grid-template-columns: auto repeat(3, 1fr);
+      gap: rem(42);
       min-width: unset;
+
       padding: 0;
+
+      & > .header__logo {
+        justify-self: flex-start;
+      }
     }
 
     @include breakpoint(large) {
+      grid-template-columns: repeat(4, 1fr);
       min-height: rem(96);
 
       & > .header__logo {
