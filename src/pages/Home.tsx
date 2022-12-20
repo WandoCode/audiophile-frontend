@@ -1,6 +1,9 @@
+import { useGetHomepage } from '../hooks/useGetHomepage'
 import { Button } from '../stories/Atoms'
 
 function Home() {
+  const [data, loading, error] = useGetHomepage()
+
   return (
     <div className="home ">
       <div className="hero">
