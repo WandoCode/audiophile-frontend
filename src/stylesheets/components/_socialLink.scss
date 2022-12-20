@@ -1,0 +1,10 @@
+@use '../abstracts/' as *;
+
+.social-link {
+  @include on-hover {
+    &:hover {
+      filter: brightness(0) saturate(100%) invert(71%) sepia(19%)
+        saturate(6801%) hue-rotate(330deg) brightness(93%) contrast(81%);
+    }
+  }
+}
