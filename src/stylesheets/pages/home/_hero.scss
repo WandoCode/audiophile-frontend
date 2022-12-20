@@ -1,0 +1,73 @@
+@use '../../abstracts/' as *;
+
+.hero {
+  position: relative;
+  display: flex;
+
+  min-height: rem(600);
+  padding-top: $header-height-sm;
+
+  &::before {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    content: '';
+    background-image: url('/src/assets/home/image-hero-sm.jpg');
+    background-color: hsl(0, 0, 10%);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+
+    @include breakpoint(medium) {
+      background-image: url('/src/assets/home/image-hero-md.jpg');
+    }
+
+    @include breakpoint(large) {
+      padding-top: $header-height-lg;
+      background-image: url('/src/assets/home/image-hero-lg.jpg');
+    }
+  }
+
+  &::after {
+    mix-blend-mode: difference;
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    content: '';
+    background-color: hsl(0, 0%, 10%, 0.5);
+  }
+
+  & .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include breakpoint(large) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__container {
+    display: grid;
+    gap: rem(25);
+    justify-items: center;
+    text-align: center;
+    max-width: rem(330);
+
+    @include breakpoint(medium) {
+      max-width: rem(350);
+    }
+
+    @include breakpoint(large) {
+      justify-items: flex-start;
+      text-align: left;
+
+      max-width: rem(380);
+    }
+  }
+  &__cta {
+    @include breakpoint(medium) {
+      margin-top: rem(15);
+    }
+  }
+}

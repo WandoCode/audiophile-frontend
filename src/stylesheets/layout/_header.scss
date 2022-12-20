@@ -1,6 +1,7 @@
 @use '../abstracts/' as *;
 
 .header {
+  z-index: 1;
   position: fixed;
   left: 0;
   right: 0;
@@ -16,7 +17,7 @@
     align-items: center;
 
     min-width: 100%;
-    min-height: rem(89);
+    min-height: $header-height-sm;
 
     padding-inline: $margin-sm;
 
@@ -46,7 +47,7 @@
 
     @include breakpoint(large) {
       grid-template-columns: repeat(4, 1fr);
-      min-height: rem(96);
+      min-height: $header-height-lg;
 
       & > .header__logo {
         justify-self: flex-start;
@@ -61,10 +62,4 @@
       }
     }
   }
-}
-
-.main {
-  background-color: black;
-  height: 120vh;
-  padding-top: 10rem;
 }

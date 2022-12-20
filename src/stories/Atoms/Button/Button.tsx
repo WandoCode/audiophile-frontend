@@ -5,11 +5,13 @@ interface Props {
   text: string
   level: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
   onClickHandler: React.MouseEventHandler<HTMLButtonElement>
+  className?: string
 }
 
-function Button({ text, level, onClickHandler }: Props) {
+function Button({ text, level, onClickHandler, className }: Props) {
   const btnClass = useMemo(() => {
-    return `btn btn--${level}`
+    let base = className ? className : ''
+    return `${base} btn btn--${level}`
   }, [level])
 
   return (
