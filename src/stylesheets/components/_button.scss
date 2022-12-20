@@ -54,10 +54,15 @@
   }
 }
 
-.cart-btn {
+.img-btn {
   background: transparent;
   border: none;
   cursor: pointer;
+
+  &--close > img {
+    min-height: rem(25);
+    filter: invert(1);
+  }
 
   @include on-hover {
     &:hover {

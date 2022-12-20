@@ -1,3 +1,97 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the header of the site/application.
-// -----------------------------------------------------------------------------
+@use '../abstracts/' as *;
+
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: transparent;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+
+    min-width: 100%;
+    min-height: rem(89);
+
+    padding-inline: $margin-sm;
+
+    border-bottom: 1px var(--clr-neutral-550) solid;
+
+    & > .header__logo {
+      grid-column: 2 / 4;
+      justify-self: center;
+    }
+
+    & > *:last-child {
+      justify-self: end;
+    }
+
+    @include breakpoint(medium) {
+      min-width: unset;
+      padding: 0;
+    }
+
+    @include breakpoint(large) {
+      min-height: rem(96);
+
+      & > .header__logo {
+        justify-self: flex-start;
+
+        grid-column: unset;
+      }
+
+      & > nav {
+        grid-column: 2 / 4;
+        justify-content: center;
+        gap: rem(34);
+      }
+    }
+  }
+
+  & nav[aria-expanded='true'] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100vh;
+
+    padding-top: rem(90);
+
+    background: linear-gradient(
+      hsla(0, 0%, 0%, 0.97) 60%,
+      hsla(0, 0%, 0%, 0.5)
+    );
+
+    & > *:first-child {
+      margin-bottom: rem(25);
+    }
+
+    @include breakpoint(large) {
+      position: static;
+
+      flex-direction: row;
+
+      height: auto;
+
+      padding-top: 0;
+
+      background: transparent;
+    }
+  }
+}
+
+.main {
+  background-color: black;
+  height: 120vh;
+  padding-top: 10rem;
+}
