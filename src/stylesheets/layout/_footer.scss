@@ -1,3 +1,6 @@
-// -----------------------------------------------------------------------------
-// This file contains all styles related to the footer of the site/application.
-// -----------------------------------------------------------------------------
+.footer {
+  &__links-container {
+    display: grid;
+  }
+}
+// TODO: Temporaire pour eviter des overflow genant. Peut etre à modifier quand je style le footer

@@ -13,7 +13,7 @@
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, auto);
     align-items: center;
 
     min-width: 100%;
@@ -24,7 +24,6 @@
     border-bottom: 1px var(--clr-neutral-550) solid;
 
     & > .header__logo {
-      grid-column: 2 / 4;
       justify-self: center;
     }
 
@@ -41,6 +40,8 @@
       padding: 0;
 
       & > .header__logo {
+        grid-column: span 2;
+
         justify-self: flex-start;
       }
     }
