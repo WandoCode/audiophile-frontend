@@ -1,0 +1,45 @@
+@use '../abstracts/' as *;
+
+.header nav[aria-expanded='true'] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+
+  padding-top: rem(90);
+
+  background: linear-gradient(hsla(0, 0%, 0%, 0.97) 60%, hsla(0, 0%, 0%, 0.5));
+
+  animation: slide-in 0.3s forwards;
+
+  & > *:first-child {
+    margin-bottom: rem(25);
+  }
+
+  @include breakpoint(large) {
+    position: static;
+
+    flex-direction: row;
+
+    height: auto;
+
+    padding-top: 0;
+
+    background: transparent;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: 0 -100%;
+  }
+  to {
+    translate: 0 0%;
+  }
+}
