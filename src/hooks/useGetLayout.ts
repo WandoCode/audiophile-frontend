@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 const baseURL = 'http://localhost:1337'
 
-interface DataLayout {
+export interface DataLayout {
   footer: string
   category1: { name: string; image: string }
   category2: { name: string; image: string }

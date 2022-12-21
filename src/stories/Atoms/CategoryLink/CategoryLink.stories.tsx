@@ -1,8 +1,5 @@
 import { CategoryLink } from './CategoryLink'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
-import { useContext } from 'react'
-import { Context } from '../../../ContextProvider'
-import { DataLayout } from '../../../hooks/useGetLayout'
 
 export default {
   title: 'Atoms/Link',

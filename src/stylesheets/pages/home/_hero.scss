@@ -12,6 +12,7 @@
     position: absolute;
     inset: 0;
     content: '';
+
     background-image: url('/src/assets/home/image-hero-sm.jpg');
     background-color: hsl(0, 0, 10%);
     background-repeat: no-repeat;
@@ -34,7 +35,7 @@
     position: absolute;
     inset: 0;
     content: '';
-    background-color: hsl(0, 0%, 10%, 0.5);
+    background-color: hsla(0, 0%, 10%, 0.5);
   }
 
   & .container {

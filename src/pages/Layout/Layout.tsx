@@ -1,11 +1,15 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
-import { ImgButton } from '../../stories/Atoms/Button/ImgButton'
-import { LinkNav } from '../../stories/Atoms/Link/LinkNav'
-import { useEffect, useState } from 'react'
-import { SocialLink } from '../../stories/Atoms/Link/SocialLink'
+import { useEffect, useState, useContext } from 'react'
+import { Context } from '../../ContextProvider'
+import { DataLayout } from '../../hooks/useGetLayout'
+import { ImgButton, LinkNav, SocialLink } from '../../stories/Atoms'
+
+// TODO: Pertinent de garder le contexte maintenant qu'il ne sert qu'au Layout? Juste utiliser le useGetLayout dans Layout suffit normalement => Penser à enlever si pas nécessaire pour le shopping Cart...
 
 function Layout() {
+  let { layout } = useContext(Context) as { layout: DataLayout | undefined }
+
   let location = useLocation()
   const [currPath, setCurrPath] = useState('')
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -41,9 +45,18 @@ function Layout() {
               isOpen={menuIsOpen}
             />
             <LinkNav text="home" path="/" />
-            <LinkNav text="headphones" path="/category/headphones" />
-            <LinkNav text="speakers" path="/category/speakers" />
-            <LinkNav text="earphones" path="/category/earphones" />
+            <LinkNav
+              text={layout?.category1.name}
+              path={`/category/${layout?.category1.name}`}
+            />
+            <LinkNav
+              text={layout?.category2.name}
+              path={`/category/${layout?.category2.name}`}
+            />
+            <LinkNav
+              text={layout?.category3.name}
+              path={`/category/${layout?.category3.name}`}
+            />
           </nav>
           <ImgButton onClickHandler={() => {}} type="cart" />
           {/* // TODO: Open cart modal on click */}
@@ -64,12 +77,7 @@ function Layout() {
             <LinkNav text="earphones" path="/category/earphones" />
           </div>
         </nav>
-        <div className="footer__text">
-          Audiophile is an all in one stop to fulfill your audio needs. We're a
-          small team of music lovers and sound specialists who are devoted to
-          helping you get the most out of personal audio. Come and visit our
-          demo facility - we’re open 7 days a week.
-        </div>
+        <div className="footer__text">{layout?.footer}</div>
         <div className="footer__copyright">
           Copyright 2021. All Rights Reserved
         </div>

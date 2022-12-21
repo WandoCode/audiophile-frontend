@@ -1,4 +1,6 @@
 import { createContext, useState } from 'react'
+import { DataHomepage } from './hooks/useGetHomepage'
+import { DataLayout } from './hooks/useGetLayout'
 
 interface Props {
   children: React.ReactNode
@@ -7,8 +9,8 @@ interface Props {
 export const Context = createContext({})
 
 function ContextProvider({ children }: Props) {
-  const [layout, setLayout] = useState({})
-  const [homepage, setHomepage] = useState({})
+  const [layout, setLayout] = useState<DataLayout>()
+  const [homepage, setHomepage] = useState<DataHomepage>()
   const [loading, setLoading] = useState(true)
 
   return (

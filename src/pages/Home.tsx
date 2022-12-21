@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useGetHomepage } from '../hooks/useGetHomepage'
 import { Button } from '../stories/Atoms'
 
@@ -9,12 +10,12 @@ function Home() {
       <div className="hero">
         <div className="container">
           <div className="hero__container">
-            <p className="text-100 text-100--gray">New product</p>
-            <h1 className="h1">XX99 Mark II Headphones</h1>
-            <p className="subtitle">
-              Experience natural, lifelike audio and exceptional build quality
-              made for the passionate music enthusiast.
-            </p>
+            {data?.hero.newItem && (
+              <p className="text-100 text-100--gray">New product</p>
+            )}
+
+            <h1 className="h1">{data?.hero.name}</h1>
+            <p className="subtitle">{data?.hero.description}</p>
 
             <Button
               text="see product"
