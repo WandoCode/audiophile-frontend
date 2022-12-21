@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 interface Props {
   path: string
-  text: string
+  text?: string
 }
 
 function LinkNav({ path, text }: Props) {
@@ -13,7 +13,7 @@ function LinkNav({ path, text }: Props) {
         isActive ? 'nav-link nav-link--active' : 'nav-link'
       }
     >
-      {text.toUpperCase()}
+      {text?.toUpperCase()}
     </NavLink>
   )
 }

@@ -7,7 +7,7 @@ interface Props {
   onClickHandler: React.MouseEventHandler<HTMLButtonElement>
   className?: string
 }
-
+// TODO: the 'tertiary' type is semantically a Link => Change the button for a link
 function Button({ text, level, onClickHandler, className }: Props) {
   const btnClass = useMemo(() => {
     let base = className ? className : ''
