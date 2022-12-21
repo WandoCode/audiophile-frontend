@@ -1,13 +1,14 @@
 import { useEffect } from 'react'
 import { useGetHomepage } from '../hooks/useGetHomepage'
 import { Button } from '../stories/Atoms'
+import { CategoriesSection } from '../stories/Molecules'
 
 function Home() {
   const [data, loading, error] = useGetHomepage()
 
   return (
     <div className="home ">
-      <div className="hero">
+      <section className="hero">
         <div className="container">
           <div className="hero__container">
             {data?.hero.newItem && (
@@ -26,7 +27,8 @@ function Home() {
             {/* //TODO: add handler */}
           </div>
         </div>
-      </div>
+      </section>
+      <CategoriesSection />
     </div>
   )
 }

@@ -1,0 +1,17 @@
+@use '../abstracts/' as *;
+
+.categories {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+      gap: rem(10);
+    }
+    @include breakpoint(large) {
+      gap: rem(30);
+    }
+  }
+}

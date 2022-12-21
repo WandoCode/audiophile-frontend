@@ -4,12 +4,12 @@
   display: grid;
   align-items: flex-end;
 
-  max-width: rem(220);
+  width: 100%;
+
   min-height: rem(220);
 
   @include breakpoint(large) {
     min-height: rem(285);
-    max-width: rem(350);
   }
 
   &__container {
@@ -40,13 +40,15 @@
   }
 
   &:hover {
-    .category-link__text {
-      translate: 0 -20px;
-    }
-    .category-link__img {
-      translate: -50% -20px;
-      animation: grow 0.2s forwards;
-      animation-delay: 0.1s;
+    @include on-hover {
+      .category-link__text {
+        translate: 0 -20px;
+      }
+      .category-link__img {
+        translate: -50% -20px;
+        animation: grow 0.2s forwards;
+        animation-delay: 0.1s;
+      }
     }
   }
 

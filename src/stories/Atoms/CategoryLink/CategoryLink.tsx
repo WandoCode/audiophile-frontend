@@ -1,8 +1,8 @@
 import { Button } from '../Button/Button'
 
 interface Props {
-  category: string
-  image: string
+  category?: string
+  image?: string
 }
 
 function CategoryLink({ category, image }: Props) {
