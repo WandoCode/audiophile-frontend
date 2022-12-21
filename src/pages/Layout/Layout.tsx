@@ -1,6 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
-import { useEffect, useState, useContext } from 'react'
+import { useEffect, useState, useContext, useRef } from 'react'
 import { Context } from '../../ContextProvider'
 import { DataLayout } from '../../hooks/useGetLayout'
 import { ImgButton, LinkNav, SocialLink } from '../../stories/Atoms'
@@ -9,13 +9,23 @@ import { ImgButton, LinkNav, SocialLink } from '../../stories/Atoms'
 
 function Layout() {
   let { layout } = useContext(Context) as { layout: DataLayout | undefined }
-
   let location = useLocation()
-  const [currPath, setCurrPath] = useState('')
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [onTop, setOnTop] = useState(window.scrollY === 0)
+  const headerRef = useRef(null)
+
+  const handleScroll = () => {
+    const yPos = window.scrollY
+
+    if (yPos !== 0) setOnTop(false)
+    else if (yPos === 0) setOnTop(true)
+  }
 
   useEffect(() => {
-    setCurrPath(location.pathname)
+    window.addEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
     setMenuIsOpen(false)
   }, [location])
 
@@ -25,7 +35,10 @@ function Layout() {
 
   return (
     <div className="layout">
-      <header className={currPath === '/' ? 'header header--home' : 'header'}>
+      <header
+        ref={headerRef}
+        className={onTop ? 'header' : 'header  header--on-scroll'}
+      >
         <div className="container header__container">
           <ImgButton
             onClickHandler={toggleMenu}

@@ -9,8 +9,6 @@ function App() {
   const [dataLayout] = useGetLayout()
 
   useEffect(() => {
-    console.log(dataLayout)
-
     setLayout(dataLayout)
   }, [dataLayout])
 

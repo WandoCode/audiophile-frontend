@@ -1,7 +1,7 @@
 @use '../abstracts/' as *;
 
 .header {
-  z-index: 1;
+  z-index: 10;
   position: fixed;
   left: 0;
   right: 0;
@@ -10,6 +10,18 @@
   justify-content: center;
 
   background-color: transparent;
+  transition: 0.5s;
+
+  &--on-scroll {
+    background-color: var(--clr-neutral-700);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+
+    & .header__container {
+      border-bottom: 1px hsla(0, 0, 0, 0) solid;
+
+      height: calc($header-height-sm - 35px);
+    }
+  }
 
   &__container {
     display: grid;
@@ -17,11 +29,12 @@
     align-items: center;
 
     min-width: 100%;
-    min-height: $header-height-sm;
+    height: $header-height-sm;
 
     padding-inline: $margin-sm;
 
     border-bottom: 1px var(--clr-neutral-550) solid;
+    transition: 0.5s;
 
     & > .header__logo {
       justify-self: center;
@@ -48,7 +61,7 @@
 
     @include breakpoint(large) {
       grid-template-columns: repeat(4, 1fr);
-      min-height: $header-height-lg;
+      height: $header-height-lg;
 
       & > .header__logo {
         justify-self: flex-start;
