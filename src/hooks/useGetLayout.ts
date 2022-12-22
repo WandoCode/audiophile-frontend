@@ -48,9 +48,15 @@ const useGetLayout = (): [DataLayout | undefined, boolean, boolean] => {
           text: raw?.mainDescriptionText,
           title: raw?.mainDescriptionTitle,
           images: {
-            mobile: raw?.mainDescriptionImages?.mobile?.data?.attributes?.url,
-            tablet: raw?.mainDescriptionImages?.tablet?.data?.attributes?.url,
-            desktop: raw?.mainDescriptionImages?.desktop?.data?.attributes?.url,
+            mobile:
+              baseURL +
+              raw?.mainDescriptionImages?.mobile?.data?.attributes?.url,
+            tablet:
+              baseURL +
+              raw?.mainDescriptionImages?.tablet?.data?.attributes?.url,
+            desktop:
+              baseURL +
+              raw?.mainDescriptionImages?.desktop?.data?.attributes?.url,
           },
         },
         footer: raw?.footer,

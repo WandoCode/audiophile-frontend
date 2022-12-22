@@ -18,17 +18,19 @@ body {
   font-size: var(--fs-800);
 }
 
-.h2 {
+.h2,
+.h2 > * {
   text-transform: uppercase;
   color: var(--clr-neutral-100);
   font-size: var(--fs-850);
   letter-spacing: rem(1.3);
   line-height: 100%;
+}
 
-  &--secondary {
-    color: var(--clr-neutral-700);
-    font-size: var(--fs-700);
-  }
+.h2--secondary,
+.h2--secondary > * {
+  color: var(--clr-neutral-700);
+  font-size: var(--fs-700);
 }
 
 .h3 {
@@ -166,7 +168,7 @@ body {
 
   @include on-hover {
     &:hover {
-      color: var(--clr-primary-500);
+      color: var(--clr-primary-300);
     }
   }
 }
@@ -186,4 +188,13 @@ body {
 .subtitle {
   line-height: rem(25);
   color: var(--clr-neutral-300);
+}
+
+strong {
+  color: var(--clr-primary-400);
+}
+
+.main-description .h2 p {
+  font-size: var(--fs-900);
+  line-height: 110%;
 }

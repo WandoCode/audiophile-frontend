@@ -1,6 +1,6 @@
 import { useGetHomepage } from '../hooks/useGetHomepage'
 import { Button } from '../stories/Atoms'
-import { CategoriesSection } from '../stories/Molecules'
+import { CategoriesSection, MainDescriptionSection } from '../stories/Molecules'
 
 function Home() {
   const [data, loading, error] = useGetHomepage()
@@ -115,6 +115,7 @@ function Home() {
             </div>
           </article>
         </section>
+        <MainDescriptionSection />
       </div>
     </div>
   )
