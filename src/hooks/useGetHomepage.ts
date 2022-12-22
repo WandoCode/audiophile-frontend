@@ -36,9 +36,12 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.heroProduct?.title,
           description: raw?.heroProduct?.subtitle,
           images: {
-            mobile: raw?.heroProduct?.image?.mobile?.data?.attributes?.url,
-            tablet: raw?.heroProduct?.image?.tablet?.data?.attributes?.url,
-            desktop: raw?.heroProduct?.image?.desktop?.data?.attributes?.url,
+            mobile:
+              baseURL + raw?.heroProduct?.image?.mobile?.data?.attributes?.url,
+            tablet:
+              baseURL + raw?.heroProduct?.image?.tablet?.data?.attributes?.url,
+            desktop:
+              baseURL + raw?.heroProduct?.image?.desktop?.data?.attributes?.url,
           },
         },
         product1: {
@@ -47,9 +50,12 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.product1?.title,
           description: raw?.product1?.subtitle,
           images: {
-            mobile: raw?.product1?.image?.mobile?.data?.attributes?.url,
-            tablet: raw?.product1?.image?.tablet?.data?.attributes?.url,
-            desktop: raw?.product1?.image?.desktop?.data?.attributes?.url,
+            mobile:
+              baseURL + raw?.product1?.image?.mobile?.data?.attributes?.url,
+            tablet:
+              baseURL + raw?.product1?.image?.tablet?.data?.attributes?.url,
+            desktop:
+              baseURL + raw?.product1?.image?.desktop?.data?.attributes?.url,
           },
         },
         product2: {
@@ -58,9 +64,12 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.product2?.title,
           description: raw?.product2?.subtitle,
           images: {
-            mobile: raw?.product2?.image?.mobile?.data?.attributes?.url,
-            tablet: raw?.product2?.image?.tablet?.data?.attributes?.url,
-            desktop: raw?.product2?.image?.desktop?.data?.attributes?.url,
+            mobile:
+              baseURL + raw?.product2?.image?.mobile?.data?.attributes?.url,
+            tablet:
+              baseURL + raw?.product2?.image?.tablet?.data?.attributes?.url,
+            desktop:
+              baseURL + raw?.product2?.image?.desktop?.data?.attributes?.url,
           },
         },
         product3: {
@@ -69,9 +78,12 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.product3?.title,
           description: raw?.product3?.subtitle,
           images: {
-            mobile: raw?.product3?.image?.mobile?.data?.attributes?.url,
-            tablet: raw?.product3?.image?.tablet?.data?.attributes?.url,
-            desktop: raw?.product?.image?.desktop?.data?.attributes?.url,
+            mobile:
+              baseURL + raw?.product3?.image?.mobile?.data?.attributes?.url,
+            tablet:
+              baseURL + raw?.product3?.image?.tablet?.data?.attributes?.url,
+            desktop:
+              baseURL + raw?.product3?.image?.desktop?.data?.attributes?.url,
           },
         },
       }

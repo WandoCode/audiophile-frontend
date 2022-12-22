@@ -36,6 +36,15 @@
         background-color: var(--clr-neutral-700);
       }
     }
+    &--dark {
+      background-color: var(--clr-neutral-700);
+      @include on-hover {
+        &:hover {
+          background-color: hsl(0, 0, 30%);
+          border-color: hsl(0, 0, 30%);
+        }
+      }
+    }
   }
 
   &--tertiary {

@@ -4,15 +4,15 @@
 @use '../abstracts/' as *;
 
 .container {
-  width: calc(100% - $margin-sm);
+  width: calc(100% - 2 * $margin-sm);
   margin-inline: auto;
 
   @include breakpoint(medium) {
-    width: calc(100% - $margin-md);
+    width: calc(100% - 2 * $margin-md);
   }
 
   @include breakpoint(large) {
-    width: calc(min(100%, $max-width) - $margin-lg);
+    width: min(calc(100% - $margin-lg), $max-width - 2 * $margin-lg);
   }
 }
 
@@ -45,6 +45,30 @@
 }
 
 .hide-on-desktop {
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+.show-on-mobile {
+  display: flex;
+
+  @include breakpoint(medium) {
+    display: none;
+  }
+
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+.show-on-tablet {
+  display: none;
+
+  @include breakpoint(medium) {
+    display: flex;
+  }
+
   @include breakpoint(large) {
     display: none;
   }

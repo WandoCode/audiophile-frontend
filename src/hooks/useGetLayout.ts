@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+
 const baseURL = 'http://localhost:1337'
 
 export interface DataLayout {
@@ -33,15 +34,15 @@ const useGetLayout = (): [DataLayout | undefined, boolean, boolean] => {
       const structuredDatas: DataLayout = {
         category1: {
           name: raw?.category1,
-          image: raw?.image1?.data?.attributes?.url,
+          image: baseURL + raw?.image1?.data?.attributes?.url,
         },
         category2: {
           name: raw?.category2,
-          image: raw?.image2?.data?.attributes?.url,
+          image: baseURL + raw?.image2?.data?.attributes?.url,
         },
         category3: {
           name: raw?.category3,
-          image: raw?.image3?.data?.attributes?.url,
+          image: baseURL + raw?.image3?.data?.attributes?.url,
         },
         mainDescription: {
           text: raw?.mainDescriptionText,

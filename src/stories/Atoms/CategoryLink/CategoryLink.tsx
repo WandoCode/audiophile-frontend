@@ -27,6 +27,5 @@ function CategoryLink({ category, image }: Props) {
     </article>
   )
 }
-// TODO: Add handler
 //  TODO: revoir l'animation...
 export { CategoryLink }
