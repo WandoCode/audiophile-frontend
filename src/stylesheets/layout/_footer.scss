@@ -1,6 +1,18 @@
+@use '../abstracts/' as *;
+
 .footer {
+  margin-top: $flow-sm-400;
+
+  @include breakpoint(medium) {
+    margin-top: $flow-md-100;
+  }
+
+  @include breakpoint(large) {
+    margin-top: $flow-lg-400;
+  }
+
   &__links-container {
     display: grid;
+    // TODO: Temporaire pour eviter des overflow genant. Peut etre à modifier quand je style le footer
   }
 }
-// TODO: Temporaire pour eviter des overflow genant. Peut etre à modifier quand je style le footer

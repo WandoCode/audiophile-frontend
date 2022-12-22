@@ -78,7 +78,7 @@ function Layout() {
       <main className="main">
         <Outlet />
       </main>
-      <footer>
+      <footer className="footer">
         <nav className="footer__nav">
           <Link to="/">
             <img src={logo} alt="Logo Audiophile" />

@@ -1,6 +1,16 @@
 @use '../abstracts/' as *;
 
 .categories {
+  margin-top: $flow-sm-100;
+
+  @include breakpoint(medium) {
+    margin-top: $flow-md-100;
+  }
+
+  @include breakpoint(large) {
+    margin-top: $flow-lg-100;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;

@@ -28,7 +28,7 @@
   }
 
   &--secondary {
-    background-color: var(--clr-neutral-100);
+    background-color: transparent;
     border: 1px solid var(--clr-neutral-700);
 
     @include on-hover {
