@@ -65,8 +65,9 @@ const useGetLayout = (): [DataLayout | undefined, boolean, boolean] => {
       setData(structuredDatas)
     } catch (error) {
       setError(true)
+    } finally {
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   useEffect(() => {
