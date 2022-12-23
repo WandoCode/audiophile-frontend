@@ -4,14 +4,6 @@
   background-color: var(--clr-neutral-600);
   margin-top: $flow-sm-400;
 
-  &__container {
-    display: grid;
-    justify-items: center;
-    gap: rem(48);
-    text-align: center;
-    padding-bottom: rem(38);
-  }
-
   @include breakpoint(medium) {
     margin-top: $flow-md-100;
   }
@@ -20,21 +12,103 @@
     margin-top: $flow-lg-400;
   }
 
+  &__container {
+    display: grid;
+    gap: rem(48);
+    justify-items: center;
+    text-align: center;
+    padding-bottom: rem(38);
+
+    @include breakpoint(medium) {
+      gap: rem(32);
+      text-align: left;
+      justify-items: start;
+      grid-template-rows: repeat(4, auto);
+      grid-template-columns: auto auto;
+      padding-bottom: rem(48);
+    }
+
+    @include breakpoint(large) {
+      gap: rem(36);
+      grid-template-columns: 1fr 1fr;
+      justify-items: stretch;
+    }
+  }
+
   &__decorative-bar {
     height: rem(4);
     width: rem(100);
     background-color: var(--clr-primary-400);
+
+    @include breakpoint(medium) {
+      grid-column: span 2;
+    }
   }
+
+  &__text {
+    @include breakpoint(medium) {
+      grid-column: span 2;
+    }
+
+    @include breakpoint(large) {
+      grid-column: span 1;
+    }
+  }
+
+  &__nav {
+    display: grid;
+    gap: rem(48);
+
+    @include breakpoint(medium) {
+      gap: rem(32);
+
+      grid-column: span 2;
+      margin-top: rem(24);
+    }
+
+    @include breakpoint(large) {
+      margin-top: rem(35);
+
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
   &__links-container {
     display: flex;
     flex-direction: column;
     gap: rem(16);
     align-items: center;
-    // TODO: Temporaire pour eviter des overflow genant. Peut etre à modifier quand je style le footer
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+      gap: rem(34);
+    }
+
+    @include breakpoint(large) {
+      justify-content: flex-end;
+    }
   }
 
   &__social-links {
     display: flex;
     gap: rem(16);
+
+    @include breakpoint(medium) {
+      justify-self: end;
+    }
+    @include breakpoint(large) {
+      justify-self: end;
+      grid-column: 2 / 3;
+      grid-row: 3 /4;
+      align-self: end;
+    }
+  }
+
+  &__copyright {
+    @include breakpoint(large) {
+      grid-column: 1 / 2;
+      margin-top: rem(15);
+    }
   }
 }
