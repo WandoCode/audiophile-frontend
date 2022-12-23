@@ -1,7 +1,6 @@
 @use '../abstracts/' as *;
 
 .main-description {
-  text-align: center;
   display: grid;
   gap: rem(40);
 
@@ -13,8 +12,6 @@
   }
 
   @include breakpoint(large) {
-    text-align: left;
-
     margin-top: $flow-lg-400;
     gap: rem(125);
     grid-template-columns: 1fr 1fr;

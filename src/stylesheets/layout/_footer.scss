@@ -16,7 +16,6 @@
     display: grid;
     gap: rem(48);
     justify-items: center;
-    text-align: center;
     padding-bottom: rem(38);
 
     @include breakpoint(medium) {

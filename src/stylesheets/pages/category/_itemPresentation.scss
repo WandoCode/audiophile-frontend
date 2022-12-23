@@ -1,0 +1,56 @@
+@use '../../abstracts/' as *;
+
+.item-pres {
+  display: grid;
+  gap: rem(52);
+
+  @include breakpoint(large) {
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  &__img {
+    border-radius: rem(8);
+    max-height: rem(560);
+  }
+
+  &__text {
+    display: grid;
+    gap: rem(24);
+    justify-items: center;
+
+    @include breakpoint(large) {
+      gap: rem(16);
+
+      justify-items: start;
+      align-items: center;
+      align-content: center;
+
+      margin-inline: 20% 0;
+    }
+  }
+
+  &__heading {
+    width: min-content;
+  }
+
+  &__description {
+    @include breakpoint(medium) {
+      margin-top: rem(8);
+    }
+
+    @include breakpoint(large) {
+      margin-top: rem(16);
+      margin-bottom: rem(22);
+    }
+  }
+
+  &.invert {
+    .item-pres__text {
+      @include breakpoint(large) {
+        grid-row: 1 / 2;
+        margin-inline: 0 20%;
+      }
+    }
+  }
+}

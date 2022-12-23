@@ -25,3 +25,15 @@
     }
   }
 }
+
+.category .categories {
+  margin-top: $flow-sm-400;
+
+  @include breakpoint(medium) {
+    margin-top: $flow-md-400;
+  }
+
+  @include breakpoint(large) {
+    margin-top: $flow-lg-200;
+  }
+}

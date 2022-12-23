@@ -52,7 +52,6 @@
     display: grid;
     gap: rem(25);
     justify-items: center;
-    text-align: center;
     max-width: rem(330);
 
     @include breakpoint(medium) {
@@ -61,7 +60,6 @@
 
     @include breakpoint(large) {
       justify-items: flex-start;
-      text-align: left;
 
       max-width: rem(380);
     }

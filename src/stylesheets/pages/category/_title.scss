@@ -1,0 +1,10 @@
+@use '../../abstracts/' as *;
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-neutral-600);
+  padding-top: $header-height-sm;
+  min-height: rem(192);
+}
