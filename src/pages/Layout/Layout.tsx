@@ -79,25 +79,28 @@ function Layout() {
         <Outlet />
       </main>
       <footer className="footer">
-        <nav className="footer__nav">
-          <Link to="/">
-            <img src={logo} alt="Logo Audiophile" />
-          </Link>
-          <div className="footer__links-container">
-            <LinkNav text="home" path="/" />
-            <LinkNav text="headphones" path="/category/headphones" />
-            <LinkNav text="speakers" path="/category/speakers" />
-            <LinkNav text="earphones" path="/category/earphones" />
+        <div className="container footer__container">
+          <div className="footer__decorative-bar"></div>
+          <nav className="footer__nav">
+            <Link to="/">
+              <img src={logo} alt="Logo Audiophile" />
+            </Link>
+            <div className="footer__links-container">
+              <LinkNav text="home" path="/" />
+              <LinkNav text="headphones" path="/category/headphones" />
+              <LinkNav text="speakers" path="/category/speakers" />
+              <LinkNav text="earphones" path="/category/earphones" />
+            </div>
+          </nav>
+          <div className="footer__text">{layout?.footer}</div>
+          <div className="footer__copyright">
+            Copyright 2021. All Rights Reserved
           </div>
-        </nav>
-        <div className="footer__text">{layout?.footer}</div>
-        <div className="footer__copyright">
-          Copyright 2021. All Rights Reserved
-        </div>
-        <div className="footer__social-links">
-          <SocialLink media="facebook" />
-          <SocialLink media="twitter" />
-          <SocialLink media="instagram" />
+          <div className="footer__social-links">
+            <SocialLink media="facebook" />
+            <SocialLink media="twitter" />
+            <SocialLink media="instagram" />
+          </div>
         </div>
       </footer>
     </div>

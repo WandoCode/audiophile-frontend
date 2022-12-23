@@ -13,8 +13,8 @@
   transition: 0.5s;
 
   &--on-scroll {
-    background-color: var(--clr-neutral-700);
-    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+    background-color: var(--clr-neutral-600);
+    box-shadow: 0 0 2px 1px rgba(15, 15, 15, 0.5);
 
     & .header__container {
       border-bottom: 1px hsla(0, 0, 0, 0) solid;

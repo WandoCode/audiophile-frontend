@@ -1,7 +1,16 @@
 @use '../abstracts/' as *;
 
 .footer {
+  background-color: var(--clr-neutral-600);
   margin-top: $flow-sm-400;
+
+  &__container {
+    display: grid;
+    justify-items: center;
+    gap: rem(48);
+    text-align: center;
+    padding-bottom: rem(38);
+  }
 
   @include breakpoint(medium) {
     margin-top: $flow-md-100;
@@ -11,8 +20,21 @@
     margin-top: $flow-lg-400;
   }
 
+  &__decorative-bar {
+    height: rem(4);
+    width: rem(100);
+    background-color: var(--clr-primary-400);
+  }
   &__links-container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+    align-items: center;
     // TODO: Temporaire pour eviter des overflow genant. Peut etre à modifier quand je style le footer
+  }
+
+  &__social-links {
+    display: flex;
+    gap: rem(16);
   }
 }
