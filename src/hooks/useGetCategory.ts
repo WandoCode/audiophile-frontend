@@ -19,7 +19,9 @@ interface Props {
   category?: string
 }
 
-function useGetCategory({ category }: Props) {
+function useGetCategory({
+  category,
+}: Props): [DataItemCategory[] | undefined, boolean, boolean] {
   const [data, setData] = useState<DataItemCategory[]>()
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
