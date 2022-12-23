@@ -1,9 +1,11 @@
 import { useGetHomepage } from '../hooks/useGetHomepage'
 import { Button } from '../stories/Atoms'
 import { CategoriesSection, MainDescriptionSection } from '../stories/Molecules'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
   const [data, loading, error] = useGetHomepage()
+  const navigate = useNavigate()
 
   return (
     <div className="home ">
@@ -20,10 +22,11 @@ function Home() {
             <Button
               text="see product"
               level="primary"
-              onClickHandler={() => {}}
+              onClickHandler={() => {
+                navigate(`/item/${data?.hero.slug}`)
+              }}
               className="hero__cta"
             />
-            {/* //TODO: add handler */}
           </div>
         </div>
       </section>
@@ -57,7 +60,9 @@ function Home() {
                 className="btn--secondary--dark"
                 level="secondary"
                 text="See product"
-                onClickHandler={() => {}}
+                onClickHandler={() => {
+                  navigate(`/item/${data?.product1.slug}`)
+                }}
               />
             </div>
           </article>
@@ -84,7 +89,9 @@ function Home() {
               <Button
                 level="secondary"
                 text="See product"
-                onClickHandler={() => {}}
+                onClickHandler={() => {
+                  navigate(`/item/${data?.product2.slug}`)
+                }}
               />
             </div>
           </article>
@@ -110,7 +117,9 @@ function Home() {
               <Button
                 level="secondary"
                 text="See product"
-                onClickHandler={() => {}}
+                onClickHandler={() => {
+                  navigate(`/item/${data?.product3.slug}`)
+                }}
               />
             </div>
           </article>
