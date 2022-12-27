@@ -1,7 +1,11 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { formatImgUrl } from '../utility/images'
+import urls from './config.json'
 
-const baseURL = 'http://localhost:1337'
+const env = process.env.NODE_ENV || 'development'
+const baseURL = env === 'development' ? urls.dev : urls.production
+const img = formatImgUrl(baseURL, env)
 
 export interface DataItemCategory {
   name: string
@@ -41,15 +45,15 @@ function useGetCategory({
           new: itemRaw.attributes?.new,
           slug: itemRaw.attributes?.slug,
           images: {
-            mobile:
-              baseURL +
-              itemRaw.attributes.categoryImage[0].mobile.data.attributes.url,
-            tablet:
-              baseURL +
-              itemRaw.attributes.categoryImage[0].tablet.data.attributes.url,
-            desktop:
-              baseURL +
-              itemRaw.attributes.categoryImage[0].desktop.data.attributes.url,
+            mobile: img.format(
+              itemRaw.attributes.categoryImage[0].mobile.data.attributes.url
+            ),
+            tablet: img.format(
+              itemRaw.attributes.categoryImage[0].tablet.data.attributes.url
+            ),
+            desktop: img.format(
+              itemRaw.attributes.categoryImage[0].desktop.data.attributes.url
+            ),
           },
         }
         structuredItemsArray.push(structuredItem)

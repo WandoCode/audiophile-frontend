@@ -1,0 +1,4 @@
+{
+  "production": "https://audiophile-backend-production.up.railway.app",
+  "dev": "http://localhost:1337"
+}

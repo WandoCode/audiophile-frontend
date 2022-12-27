@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { formatImgUrl } from '../utility/images'
+import urls from './config.json'
 
 export interface DataHomepage {
   [key: string]: {
@@ -15,7 +17,9 @@ export interface DataHomepage {
   }
 }
 
-const baseURL = 'http://localhost:1337'
+const env = process.env.NODE_ENV || 'development'
+const baseURL = env === 'development' ? urls.dev : urls.production
+const img = formatImgUrl(baseURL, env)
 
 const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
   const [data, setData] = useState<DataHomepage>()
@@ -36,12 +40,15 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.heroProduct?.title,
           description: raw?.heroProduct?.subtitle,
           images: {
-            mobile:
-              baseURL + raw?.heroProduct?.image?.mobile?.data?.attributes?.url,
-            tablet:
-              baseURL + raw?.heroProduct?.image?.tablet?.data?.attributes?.url,
-            desktop:
-              baseURL + raw?.heroProduct?.image?.desktop?.data?.attributes?.url,
+            mobile: img.format(
+              raw?.heroProduct?.image?.mobile?.data?.attributes?.url
+            ),
+            tablet: img.format(
+              raw?.heroProduct?.image?.tablet?.data?.attributes?.url
+            ),
+            desktop: img.format(
+              raw?.heroProduct?.image?.desktop?.data?.attributes?.url
+            ),
           },
         },
         product1: {
@@ -50,12 +57,15 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.product1?.title,
           description: raw?.product1?.subtitle,
           images: {
-            mobile:
-              baseURL + raw?.product1?.image?.mobile?.data?.attributes?.url,
-            tablet:
-              baseURL + raw?.product1?.image?.tablet?.data?.attributes?.url,
-            desktop:
-              baseURL + raw?.product1?.image?.desktop?.data?.attributes?.url,
+            mobile: img.format(
+              raw?.product1?.image?.mobile?.data?.attributes?.url
+            ),
+            tablet: img.format(
+              raw?.product1?.image?.tablet?.data?.attributes?.url
+            ),
+            desktop: img.format(
+              raw?.product1?.image?.desktop?.data?.attributes?.url
+            ),
           },
         },
         product2: {
@@ -64,12 +74,15 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.product2?.title,
           description: raw?.product2?.subtitle,
           images: {
-            mobile:
-              baseURL + raw?.product2?.image?.mobile?.data?.attributes?.url,
-            tablet:
-              baseURL + raw?.product2?.image?.tablet?.data?.attributes?.url,
-            desktop:
-              baseURL + raw?.product2?.image?.desktop?.data?.attributes?.url,
+            mobile: img.format(
+              raw?.product2?.image?.mobile?.data?.attributes?.url
+            ),
+            tablet: img.format(
+              raw?.product2?.image?.tablet?.data?.attributes?.url
+            ),
+            desktop: img.format(
+              raw?.product2?.image?.desktop?.data?.attributes?.url
+            ),
           },
         },
         product3: {
@@ -78,12 +91,15 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
           name: raw?.product3?.title,
           description: raw?.product3?.subtitle,
           images: {
-            mobile:
-              baseURL + raw?.product3?.image?.mobile?.data?.attributes?.url,
-            tablet:
-              baseURL + raw?.product3?.image?.tablet?.data?.attributes?.url,
-            desktop:
-              baseURL + raw?.product3?.image?.desktop?.data?.attributes?.url,
+            mobile: img.format(
+              raw?.product3?.image?.mobile?.data?.attributes?.url
+            ),
+            tablet: img.format(
+              raw?.product3?.image?.tablet?.data?.attributes?.url
+            ),
+            desktop: img.format(
+              raw?.product3?.image?.desktop?.data?.attributes?.url
+            ),
           },
         },
       }

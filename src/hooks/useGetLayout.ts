@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
-
-const baseURL = 'http://localhost:1337'
+import { formatImgUrl } from '../utility/images'
+import urls from './config.json'
 
 export interface DataLayout {
   footer: string
@@ -19,6 +19,10 @@ export interface DataLayout {
   }
 }
 
+const env = process.env.NODE_ENV || 'development'
+const baseURL = env === 'development' ? urls.dev : urls.production
+const img = formatImgUrl(baseURL, env)
+
 const useGetLayout = (): [DataLayout | undefined, boolean, boolean] => {
   const [data, setData] = useState<DataLayout>()
   const [error, setError] = useState(false)
@@ -34,29 +38,29 @@ const useGetLayout = (): [DataLayout | undefined, boolean, boolean] => {
       const structuredDatas: DataLayout = {
         category1: {
           name: raw?.category1,
-          image: baseURL + raw?.image1?.data?.attributes?.url,
+          image: img.format(raw?.image1?.data?.attributes?.url),
         },
         category2: {
           name: raw?.category2,
-          image: baseURL + raw?.image2?.data?.attributes?.url,
+          image: img.format(raw?.image2?.data?.attributes?.url),
         },
         category3: {
           name: raw?.category3,
-          image: baseURL + raw?.image3?.data?.attributes?.url,
+          image: img.format(raw?.image3?.data?.attributes?.url),
         },
         mainDescription: {
           text: raw?.mainDescriptionText,
           title: raw?.mainDescriptionTitle,
           images: {
-            mobile:
-              baseURL +
-              raw?.mainDescriptionImages?.mobile?.data?.attributes?.url,
-            tablet:
-              baseURL +
-              raw?.mainDescriptionImages?.tablet?.data?.attributes?.url,
-            desktop:
-              baseURL +
-              raw?.mainDescriptionImages?.desktop?.data?.attributes?.url,
+            mobile: img.format(
+              raw?.mainDescriptionImages?.mobile?.data?.attributes?.url
+            ),
+            tablet: img.format(
+              raw?.mainDescriptionImages?.tablet?.data?.attributes?.url
+            ),
+            desktop: img.format(
+              raw?.mainDescriptionImages?.desktop?.data?.attributes?.url
+            ),
           },
         },
         footer: raw?.footer,
