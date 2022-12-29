@@ -10,7 +10,7 @@
   justify-content: center;
 
   background-color: transparent;
-  transition: 0.5s;
+  transition: height 0.5s;
 
   &--on-scroll {
     background-color: var(--clr-neutral-600);

@@ -7,4 +7,12 @@
   background-color: var(--clr-neutral-600);
   padding-top: $header-height-sm;
   min-height: rem(192);
+
+  & > .h1 {
+    margin-block: rem(32);
+
+    @include breakpoint(medium) {
+      margin-block: rem(96);
+    }
+  }
 }
