@@ -47,6 +47,10 @@ body {
   line-height: 1.3;
 }
 
+.h2--small {
+  font-size: var(--fs-600);
+}
+
 .h3 {
   text-transform: uppercase;
   color: var(--clr-neutral-700);
@@ -191,12 +195,19 @@ body {
   letter-spacing: rem(10);
   text-transform: uppercase;
   font-weight: var(--fw-light);
-  color: var(--clr-neutral-400);
   font-size: var(--fs-300);
+}
 
-  &--primary {
-    color: var(--clr-primary-300);
-  }
+.text-primary {
+  color: var(--clr-primary-300);
+}
+
+.text-gray {
+  color: var(--clr-neutral-400);
+}
+
+.text-black {
+  color: var(--clr-neutral-600);
 }
 
 .white {
@@ -215,4 +226,24 @@ strong {
 .main-description .h2 p {
   font-size: var(--fs-900);
   line-height: 110%;
+}
+
+.inner-link {
+  @include on-hover {
+    &:hover {
+      color: var(--clr-primary-400);
+    }
+  }
+}
+
+.item-details {
+  text-align: left;
+}
+
+em {
+  font-style: normal;
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-600);
+  font-size: var(--fs-550);
+  letter-spacing: rem(1.3);
 }

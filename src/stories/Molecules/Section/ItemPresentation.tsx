@@ -31,7 +31,7 @@ function ItemPresentation({ className, data }: Props) {
       </div>
       <div className="item-pres__text">
         {data.new && (
-          <div className="item-pres__new text-100 text-100--primary">
+          <div className="item-pres__new text-100 text-primary">
             new product
           </div>
         )}

@@ -2,8 +2,8 @@ interface Props {
   name: string
   id: string
   currValue: number
-  onAdd: () => void
-  onRemove: () => void
+  onAdd: React.MouseEventHandler<HTMLButtonElement>
+  onRemove: React.MouseEventHandler<HTMLButtonElement>
 }
 
 function NumberInput({ name, id, currValue, onRemove, onAdd }: Props) {
@@ -18,6 +18,7 @@ function NumberInput({ name, id, currValue, onRemove, onAdd }: Props) {
         id={id}
         value={currValue}
         className="number-input__input"
+        readOnly={true}
       />
       <button className="number-input__btn" onClick={onAdd}>
         +

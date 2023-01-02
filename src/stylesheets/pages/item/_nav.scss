@@ -1,0 +1,16 @@
+@use '../../abstracts/' as *;
+
+.item {
+  & .nav {
+    display: flex;
+    margin-block: rem(16) rem(24);
+
+    @include breakpoint(medium) {
+      margin-block: rem(33) rem(24);
+    }
+
+    @include breakpoint(large) {
+      margin-block: rem(79) rem(56);
+    }
+  }
+}

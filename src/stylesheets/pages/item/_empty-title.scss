@@ -1,0 +1,9 @@
+@use '../../abstracts/' as *;
+
+.empty-title {
+  min-height: $header-height-sm;
+
+  @include breakpoint(large) {
+    min-height: $header-height-lg;
+  }
+}

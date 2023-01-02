@@ -7,11 +7,10 @@ export default {
 } as ComponentMeta<typeof InnerLink>
 
 const Template: ComponentStory<typeof InnerLink> = (args) => (
-  <InnerLink {...args} />
+  <InnerLink {...args} clickHandler={() => {}} />
 )
 
 export const Link = Template.bind({})
 Link.args = {
-  path: '/home',
   text: 'Go Back',
 }

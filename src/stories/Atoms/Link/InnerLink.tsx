@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 interface Props {
-  path: string
+  clickHandler: () => void
   text: string
 }
 
-function InnerLink({ path, text }: Props) {
+function InnerLink({ clickHandler, text }: Props) {
   return (
-    <Link className="inner-link" to={path}>
+    <button className="inner-link" onClick={clickHandler}>
       {text}
-    </Link>
+    </button>
   )
 }
 

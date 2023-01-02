@@ -1,0 +1,101 @@
+@use '../../abstracts/' as *;
+
+.item-details {
+  display: grid;
+  gap: rem(88);
+  align-items: start;
+
+  @include breakpoint(medium) {
+    gap: $flow-md-400;
+  }
+
+  @include breakpoint(large) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: $flow-lg-200;
+  }
+
+  &__short {
+    align-items: center;
+
+    @include breakpoint(medium) {
+      display: grid;
+      grid-template-columns: 4fr 5fr;
+      gap: 10%;
+    }
+
+    @include breakpoint(large) {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: 5fr 5fr;
+    }
+  }
+
+  &__content {
+    display: grid;
+    gap: rem(24);
+
+    @include breakpoint(medium) {
+      gap: rem(32);
+      align-items: center;
+      align-content: center;
+    }
+  }
+
+  &__img {
+    border-radius: rem(8);
+    overflow: hidden;
+    margin-bottom: 1rem;
+
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__new {
+    margin-top: 1rem;
+
+    @include breakpoint(medium) {
+      margin-top: 0;
+      margin-bottom: -1rem;
+    }
+  }
+
+  &__add-to-cart {
+    display: flex;
+    gap: rem(16);
+  }
+
+  &__features {
+    display: grid;
+    gap: rem(24);
+
+    @include breakpoint(medium) {
+      gap: rem(32);
+    }
+  }
+
+  &__included {
+    display: grid;
+    gap: rem(24);
+
+    @include breakpoint(medium) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include breakpoint(large) {
+      gap: rem(32);
+
+      grid-template-columns: 1fr;
+    }
+
+    & > ul {
+      display: grid;
+      gap: rem(8);
+      & > li {
+        display: grid;
+        grid-template-columns: 1.5em auto;
+        gap: rem(24);
+      }
+    }
+  }
+}

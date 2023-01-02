@@ -13,7 +13,7 @@ function Home() {
         <div className="container">
           <div className="hero__container">
             {data?.hero.newItem && (
-              <p className="text-100 text-100--gray">New product</p>
+              <p className="text-100 text-gray">New product</p>
             )}
 
             <h1 className="h1">{data?.hero.name}</h1>
