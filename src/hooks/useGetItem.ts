@@ -173,7 +173,6 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
           },
           cartImage: img.format(raw?.cartImage.data.attributes.url),
         }
-        console.log(structuredDatas)
 
         setData(structuredDatas)
       } catch (error) {
