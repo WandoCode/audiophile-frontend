@@ -13,16 +13,14 @@ import ReactMarkdown from 'react-markdown'
 import { AddItem, Context, RemoveItem } from '../ContextProvider'
 
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
-type RemoveItemFct = ({ slug, removeAll }: RemoveItem) => void
 
 function Item() {
   const navigate = useNavigate()
   const { slug } = useParams()
   const [dataItem] = useGetItem({ slug })
   const [itemQuantity, setItemQuantity] = useState(1)
-  const { addItem, removeItem } = useContext(Context) as {
+  const { addItem } = useContext(Context) as {
     addItem: AddItemFct
-    removeItem: RemoveItemFct
   }
 
   const handleAddItem = (
@@ -48,7 +46,7 @@ function Item() {
         slug,
         price: dataItem.price,
         url: dataItem.cartImage,
-        name: dataItem.name,
+        name: dataItem.shortName,
         addedQty: itemQuantity,
       })
 

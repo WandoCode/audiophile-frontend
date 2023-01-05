@@ -1,17 +1,25 @@
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { useEffect, useState, useContext, useRef, useMemo } from 'react'
-import { Context } from '../../ContextProvider'
+import { CartItem, Context } from '../../ContextProvider'
 import { DataLayout } from '../../hooks/useGetLayout'
 import { ImgButton, LinkNav, SocialLink } from '../../stories/Atoms'
 import { ScrollRestoration } from 'react-router-dom'
+import { CartModal } from '../../components'
 
 // TODO: Pertinent de garder le contexte maintenant qu'il ne sert qu'au Layout? Juste utiliser le useGetLayout dans Layout suffit normalement => Penser à enlever si pas nécessaire pour le shopping Cart...
 
 function Layout() {
-  let { layout } = useContext(Context) as { layout: DataLayout | undefined }
+  let { layout, cart, cleanCart } = useContext(Context) as {
+    layout: DataLayout | undefined
+    cart: CartItem[]
+    cleanCart: () => void
+  }
+
   let location = useLocation()
+  const navigate = useNavigate()
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   const [customHeaderClass, setCustomHeaderClass] = useState(false)
   const [onTop, setOnTop] = useState(window.scrollY === 0)
   const headerRef = useRef(null)
@@ -23,6 +31,11 @@ function Layout() {
     else if (yPos === 0) setOnTop(true)
   }
 
+  const handleModal = () => {
+    cleanCart()
+    setModalIsOpen(!modalIsOpen)
+  }
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
   }, [])
@@ -31,6 +44,11 @@ function Layout() {
     setCustomHeaderClass(location.pathname === '/')
     setMenuIsOpen(false)
   }, [location])
+
+  useEffect(() => {
+    if (menuIsOpen || modalIsOpen) document.body.style.overflowY = 'hidden'
+    else document.body.style.overflowY = 'auto'
+  }, [menuIsOpen, modalIsOpen])
 
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen)
@@ -43,6 +61,16 @@ function Layout() {
 
     return rep
   }, [customHeaderClass, onTop])
+
+  const handleCheckout = (e: React.MouseEvent) => {
+    e.preventDefault()
+
+    if (cart.length > 0 && cart.every((item) => item.quantity > 0)) {
+      setModalIsOpen(false)
+      navigate('checkout')
+    }
+  }
+
   return (
     <div className="layout">
       <ScrollRestoration />
@@ -79,11 +107,12 @@ function Layout() {
               path={`/category/${layout?.category3.name}`}
             />
           </nav>
-          <ImgButton onClickHandler={() => {}} type="cart" />
-          {/* // TODO: Open cart modal on click */}
+          <ImgButton onClickHandler={handleModal} type="cart" />
         </div>
       </header>
       <main className="main">
+        {modalIsOpen && <CartModal handleCheckout={handleCheckout} />}
+
         <Outlet />
       </main>
       <footer className="footer">
