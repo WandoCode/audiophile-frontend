@@ -1,0 +1,36 @@
+@use '../../abstracts/' as *;
+
+.you-may-like {
+  display: grid;
+  gap: rem(40);
+  margin-top: $flow-sm-400;
+  align-content: center;
+
+  @include breakpoint(medium) {
+    gap: rem(56);
+  }
+  @include breakpoint(large) {
+    gap: rem(64);
+  }
+
+  & .h2 {
+    margin-inline: auto;
+  }
+
+  &__items {
+    display: grid;
+    gap: rem(56);
+
+    @include breakpoint(medium) {
+      align-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+      column-gap: rem(11);
+    }
+
+    @include breakpoint(large) {
+      align-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+      column-gap: rem(30);
+    }
+  }
+}

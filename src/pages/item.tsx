@@ -2,9 +2,14 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import useGetItem from '../hooks/useGetItem'
 import { useEffect, useState } from 'react'
 import { formatPrice } from '../utility/string'
-import { Button, InnerLink, NumberInput } from '../stories/Atoms'
+import { Button, ImageSet, InnerLink, NumberInput } from '../stories/Atoms'
 import { Category } from '../stories/Atoms/CategoryLink/CategoryLink.stories'
-import { CategoriesSection, MainDescriptionSection } from '../stories/Molecules'
+import {
+  CategoriesSection,
+  ItemShortCard,
+  MainDescriptionSection,
+} from '../stories/Molecules'
+import ReactMarkdown from 'react-markdown'
 
 function Item() {
   const navigate = useNavigate()
@@ -49,6 +54,24 @@ function Item() {
     navigate(-1)
   }
 
+  const galleryImagesDOM = () => {
+    if (!dataItem) return []
+    const imagesDataArray = Object.values(dataItem?.galleryImages)
+
+    return imagesDataArray.map((imgData, i) => {
+      return <ImageSet className="gallery" data={imgData} key={i} />
+    })
+  }
+
+  const shortCardsDOM = () => {
+    if (!dataItem) return []
+
+    const linkedItemsDataArray = Object.values(dataItem?.linkedItems)
+    return linkedItemsDataArray.map((linkedItem, i) => {
+      return <ItemShortCard data={linkedItem} key={i} />
+    })
+  }
+
   // /* TODO: Changer en <picture> et imgset? */
   return (
     <div className="item container">
@@ -58,23 +81,12 @@ function Item() {
       </section>
       <section className="item-details">
         <article className="item-details__short">
-          <div className="item-details__img-container">
-            <img
-              className="item-details__img show-on-desktop"
-              src={dataItem?.mainImages.desktop}
-              alt={dataItem?.name}
-            />
-            <img
-              className="item-details__img show-on-tablet"
-              src={dataItem?.mainImages.tablet}
-              alt={dataItem?.name}
-            />
-            <img
-              className="item-details__img show-on-mobile"
-              src={dataItem?.mainImages.mobile}
-              alt={dataItem?.name}
-            />
-          </div>
+          <ImageSet
+            data={dataItem?.mainImages}
+            className="item-details"
+            altTxt={dataItem?.name}
+          />
+
           <div className="item-details__content">
             {dataItem?.newItem && (
               <p className="item-details__new text-100 text-primary">
@@ -82,7 +94,9 @@ function Item() {
               </p>
             )}
             <h1 className="h1 h1--small text-black">{dataItem?.name}</h1>
-            <p className="item-details__description">{dataItem?.description}</p>
+            <div className="item-details__description">
+              <ReactMarkdown>{dataItem?.description ?? ''}</ReactMarkdown>
+            </div>
             <div className="item-details__price">
               <em>$ {formatPrice(dataItem?.price)}</em>
             </div>
@@ -104,7 +118,9 @@ function Item() {
         </article>
         <article className="item-details__features">
           <h2 className="h2 h2--small text-black">Features</h2>
-          <p className="items-details__text-feature">{dataItem?.features}</p>
+          <div className="items-details__text-feature">
+            <ReactMarkdown>{dataItem?.features ?? ''}</ReactMarkdown>
+          </div>
         </article>
         <article className="item-details__included">
           <h2 className="h2 h2--small text-black">In the box</h2>
@@ -112,6 +128,14 @@ function Item() {
         </article>
       </section>
 
+      <section className="gallery">
+        <div className="gallery__images">{galleryImagesDOM()}</div>
+      </section>
+
+      <section className="you-may-like">
+        <h2 className="h2 h2--small text-black">You may also like</h2>
+        <div className="you-may-like__items">{shortCardsDOM()}</div>
+      </section>
       <CategoriesSection />
       <MainDescriptionSection />
     </div>

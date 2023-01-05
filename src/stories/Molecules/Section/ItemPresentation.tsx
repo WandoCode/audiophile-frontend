@@ -1,5 +1,5 @@
 import { DataItemCategory } from '../../../hooks/useGetCategory'
-import { Button } from '../../Atoms'
+import { Button, ImageSet } from '../../Atoms'
 import { useNavigate } from 'react-router-dom'
 
 interface Props {
@@ -12,23 +12,8 @@ function ItemPresentation({ className, data }: Props) {
 
   return (
     <article className={`item-pres ${className}`}>
-      <div className="item-pres__images">
-        <img
-          className="item-pres__img show-on-desktop"
-          src={data?.images.desktop}
-          alt={data?.name}
-        />
-        <img
-          className="item-pres__img show-on-tablet"
-          src={data?.images.tablet}
-          alt={data?.name}
-        />
-        <img
-          className="item-pres__img show-on-mobile"
-          src={data?.images.mobile}
-          alt={data?.name}
-        />
-      </div>
+      <ImageSet className="item-pres" data={data?.images} altTxt={data?.name} />
+
       <div className="item-pres__text">
         {data.new && (
           <div className="item-pres__new text-100 text-primary">

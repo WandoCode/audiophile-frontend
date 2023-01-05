@@ -34,3 +34,7 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
   -moz-appearance: textfield !important;
 }
+
+p:not(:last-child) {
+  margin-bottom: 1em;
+}

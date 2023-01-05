@@ -1,14 +1,25 @@
 @use '../abstracts/' as *;
 
 .categories {
-  margin-top: $flow-sm-100;
+  margin-top: $flow-sm-400;
 
   @include breakpoint(medium) {
-    margin-top: $flow-md-100;
+    margin-top: $flow-md-400;
   }
 
   @include breakpoint(large) {
-    margin-top: $flow-lg-100;
+    margin-top: $flow-lg-200;
+  }
+
+  &:first-child {
+    margin-top: $flow-sm-100;
+    @include breakpoint(medium) {
+      margin-top: $flow-md-100;
+    }
+
+    @include breakpoint(large) {
+      margin-top: $flow-lg-100;
+    }
   }
 
   &__container {

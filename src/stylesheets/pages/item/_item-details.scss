@@ -20,14 +20,16 @@
 
     @include breakpoint(medium) {
       display: grid;
-      grid-template-columns: 4fr 5fr;
-      gap: 10%;
+      grid-template-columns: repeat(auto-fit, minmax(rem(250), 1fr));
+      grid-column-gap: 10%;
+      grid-row-gap: 5%;
     }
 
     @include breakpoint(large) {
       grid-column: span 2;
       display: grid;
       grid-template-columns: 5fr 5fr;
+      gap: 10%;
     }
   }
 
@@ -43,7 +45,6 @@
   }
 
   &__img {
-    border-radius: rem(8);
     overflow: hidden;
     margin-bottom: 1rem;
 

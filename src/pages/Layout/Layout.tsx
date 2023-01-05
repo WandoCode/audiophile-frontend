@@ -4,6 +4,7 @@ import { useEffect, useState, useContext, useRef, useMemo } from 'react'
 import { Context } from '../../ContextProvider'
 import { DataLayout } from '../../hooks/useGetLayout'
 import { ImgButton, LinkNav, SocialLink } from '../../stories/Atoms'
+import { ScrollRestoration } from 'react-router-dom'
 
 // TODO: Pertinent de garder le contexte maintenant qu'il ne sert qu'au Layout? Juste utiliser le useGetLayout dans Layout suffit normalement => Penser à enlever si pas nécessaire pour le shopping Cart...
 
@@ -44,6 +45,7 @@ function Layout() {
   }, [customHeaderClass, onTop])
   return (
     <div className="layout">
+      <ScrollRestoration />
       <header ref={headerRef} className={headerClassName}>
         <div className="container header__container">
           <ImgButton
