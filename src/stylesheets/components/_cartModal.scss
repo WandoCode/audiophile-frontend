@@ -1,0 +1,43 @@
+@use '../abstracts/' as *;
+
+.cart-modal {
+  z-index: 2;
+  position: fixed;
+  inset: $header-height-sm 0 0 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.4);
+  overflow: auto;
+
+  &__container {
+    display: grid;
+    gap: rem(32);
+    border-radius: 8px;
+    background-color: #fff;
+    margin-top: $margin-sm;
+    padding: rem(32) rem(28) rem(32) rem(28);
+    max-width: rem(380);
+
+    @include breakpoint(medium) {
+      margin-inline: auto 0;
+    }
+
+    @include breakpoint(large) {
+      margin-top: rem(32);
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__body {
+    display: grid;
+    gap: rem(24);
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+  }
+}

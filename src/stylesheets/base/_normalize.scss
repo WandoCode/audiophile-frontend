@@ -30,12 +30,16 @@ ol {
 
 /* Set core root defaults */
 html:focus-within {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
+  height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
 }
