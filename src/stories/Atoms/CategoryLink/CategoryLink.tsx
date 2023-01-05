@@ -27,3 +27,5 @@ function CategoryLink({ category, image }: Props) {
 }
 //  TODO: revoir l'animation...
 export { CategoryLink }
+
+// TODO: faire les loading page pour toutes les pages
