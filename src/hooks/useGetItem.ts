@@ -22,6 +22,7 @@ export interface LinkedItem {
 
 interface DataItem {
   name: string
+  shortName: string
   slug: string
   price: number
   newItem: boolean
@@ -74,6 +75,7 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
 
         const structuredDatas: DataItem = {
           name: raw?.name,
+          shortName: raw?.shortName,
           slug: raw?.slug,
           newItem: raw?.new,
           price: raw?.price,
