@@ -1,5 +1,5 @@
 import { useGetHomepage } from '../hooks/useGetHomepage'
-import { Button } from '../stories/Atoms'
+import { Button, ImageSet } from '../stories/Atoms'
 import { CategoriesSection, MainDescriptionSection } from '../stories/Molecules'
 import { useNavigate } from 'react-router-dom'
 
@@ -34,23 +34,11 @@ function Home() {
         <CategoriesSection />
         <section className="products">
           <article className="product1 ">
-            <div className="product1__img-container">
-              <img
-                className="product1__img show-on-desktop"
-                src={data?.product1.images.desktop}
-                alt={data?.product1.name}
-              />
-              <img
-                className="product1__img show-on-tablet"
-                src={data?.product1.images.tablet}
-                alt={data?.product1.name}
-              />
-              <img
-                className="product1__img show-on-mobile"
-                src={data?.product1.images.mobile}
-                alt={data?.product1.name}
-              />
-            </div>
+            <ImageSet
+              className="product1"
+              altTxt={data?.product1.name}
+              data={data?.product1.images}
+            />
             <div className="product1__text">
               <h2 className="h2">{data?.product1.name}</h2>
               <p className="product1__description white">
@@ -67,22 +55,12 @@ function Home() {
             </div>
           </article>
           <article className="product2">
-            <img
-              className="product2__img show-on-desktop"
-              src={data?.product2.images.desktop}
-              alt={data?.product2.name}
+            <ImageSet
+              className="product2"
+              altTxt={data?.product2.name}
+              data={data?.product2.images}
             />
-            <img
-              id=""
-              className="product2__img show-on-tablet"
-              src={data?.product2.images.tablet}
-              alt={data?.product2.name}
-            />
-            <img
-              className="product2__img show-on-mobile"
-              src={data?.product2.images.mobile}
-              alt={data?.product2.name}
-            />
+
             <div className="product2__text">
               <h2 className="h2 h2--secondary">{data?.product2.name}</h2>
 
@@ -96,21 +74,12 @@ function Home() {
             </div>
           </article>
           <article className="product3">
-            <img
-              className="product3__img show-on-desktop"
-              src={data?.product3.images.desktop}
-              alt={data?.product3.name}
+            <ImageSet
+              className="product3"
+              altTxt={data?.product3.name}
+              data={data?.product3.images}
             />
-            <img
-              className="product3__img show-on-tablet"
-              src={data?.product3.images.tablet}
-              alt={data?.product3.name}
-            />
-            <img
-              className="product3__img show-on-mobile"
-              src={data?.product3.images.mobile}
-              alt={data?.product3.name}
-            />
+
             <div className="product3__text">
               <h2 className="h2 h2--secondary">{data?.product3.name}</h2>
 

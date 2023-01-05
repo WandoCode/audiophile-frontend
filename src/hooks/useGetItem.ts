@@ -14,7 +14,7 @@ interface ImagesSet {
   desktop: string
 }
 
-interface LinkedItem {
+export interface LinkedItem {
   name: string
   slug: string
   images: ImagesSet

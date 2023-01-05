@@ -1,0 +1,7 @@
+@use '../abstracts/' as *;
+
+.image-set {
+  & > img {
+    border-radius: rem(8);
+  }
+}
