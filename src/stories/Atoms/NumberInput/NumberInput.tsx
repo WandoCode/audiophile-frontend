@@ -1,14 +1,30 @@
+import { useMemo } from 'react'
 interface Props {
   name: string
   id: string
   currValue: number
+  small?: boolean
   onAdd: React.MouseEventHandler<HTMLButtonElement>
   onRemove: React.MouseEventHandler<HTMLButtonElement>
 }
 
-function NumberInput({ name, id, currValue, onRemove, onAdd }: Props) {
+function NumberInput({
+  name,
+  id,
+  currValue,
+  small = false,
+  onRemove,
+  onAdd,
+}: Props) {
+  const mainClass = useMemo(() => {
+    let base = 'number-input '
+    if (small) base += 'number-input--small'
+
+    return base
+  }, [small])
+
   return (
-    <div className="number-input">
+    <div className={mainClass}>
       <button className="number-input__btn" onClick={onRemove}>
         -
       </button>
