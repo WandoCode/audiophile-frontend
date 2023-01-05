@@ -36,14 +36,21 @@ function Item() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault()
-    if (slug) removeItem({ slug })
-    // const newQuantity = itemQuantity - 1 >= 1 ? itemQuantity - 1 : 1
-    // setItemQuantity(newQuantity)
+    const newQuantity = itemQuantity - 1 >= 1 ? itemQuantity - 1 : 1
+    setItemQuantity(newQuantity)
   }
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    if (slug) addItem({ slug, price: 220, url: '', name: 'test', addedQty: 2 })
+
+    if (slug && dataItem)
+      addItem({
+        slug,
+        price: dataItem.price,
+        url: dataItem.cartImage,
+        name: dataItem.name,
+        addedQty: itemQuantity,
+      })
 
     // TODO: add item quantity to cart
     // TODO add a visual confirmation
