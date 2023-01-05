@@ -13,16 +13,14 @@ function CategoryLink({ category, image }: Props) {
     <article className="category-link">
       <div className="category-link__container">
         <img src={image} alt={category} className="category-link__img" />
-        <div className="category-link__text">
-          <h3 className="h3">{category}</h3>
-          <Button
-            level="tertiary"
-            text="Shop"
-            onClickHandler={() => {
-              navigate(`/category/${category}`)
-            }}
-          />
-        </div>
+        <h3 className="h3">{category}</h3>
+        <Button
+          level="tertiary"
+          text="Shop"
+          onClickHandler={() => {
+            navigate(`/category/${category}`)
+          }}
+        />
       </div>
     </article>
   )

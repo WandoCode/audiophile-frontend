@@ -18,6 +18,8 @@
     display: grid;
     justify-content: center;
     align-content: flex-end;
+    gap: rem(17);
+
     height: 75%;
 
     padding-bottom: rem(22);
@@ -30,7 +32,7 @@
     }
   }
 
-  &__text {
+  & h3 {
     display: grid;
     justify-content: center;
     align-content: flex-start;
@@ -41,7 +43,7 @@
 
   &:hover {
     @include on-hover {
-      .category-link__text {
+      & h3 {
         translate: 0 -20px;
       }
       .category-link__img {
