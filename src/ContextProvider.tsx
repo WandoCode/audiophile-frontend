@@ -14,7 +14,7 @@ export interface AddItem {
   addedQty: number
 }
 
-interface CartItem {
+export interface CartItem {
   slug: string
   name: string
   url: string
@@ -24,7 +24,6 @@ interface CartItem {
 
 export interface RemoveItem {
   slug: string
-  removeAll?: boolean
 }
 
 export const Context = createContext({})
@@ -47,27 +46,34 @@ function ContextProvider({ children }: Props) {
     setCart(currItems)
   }
 
-  const removeItem = ({ slug, removeAll = false }: RemoveItem) => {
+  const removeItem = ({ slug }: RemoveItem) => {
     const currItems = [...cart]
-    let rep
 
-    if (removeAll) {
-      rep = currItems.filter((item) => item.slug !== slug)
-      setCart(rep)
-    }
+    const rep = currItems.map((item) => {
+      if (item.slug === slug && item.quantity > 0) item.quantity -= 1
 
-    if (!removeAll) {
-      currItems.map((item) => {
-        if (item.slug === slug && item.quantity > 0) item.quantity -= 1
+      return item
+    })
 
-        return item
-      })
+    setCart(rep)
+  }
 
-      rep = currItems.filter(
-        (item) => item.slug === slug && item.quantity !== 0
-      )
-      setCart(rep)
-    }
+  const cleanCart = () => {
+    const currItems = [...cart]
+
+    const cleanedCart = currItems.filter((item) => item.quantity !== 0)
+
+    setCart(cleanedCart)
+  }
+
+  const emptyCart = () => {
+    setCart([])
+  }
+
+  const getCartTotal = () => {
+    return cart.reduce((currValue, item) => {
+      return currValue + item.quantity * item.price
+    }, 0)
   }
 
   return (
@@ -79,8 +85,12 @@ function ContextProvider({ children }: Props) {
         setHomepage,
         loading,
         setLoading,
+        cart,
         addItem,
         removeItem,
+        emptyCart,
+        getCartTotal,
+        cleanCart,
       }}
     >
       {children}
