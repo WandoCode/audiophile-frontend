@@ -16,7 +16,7 @@ function ItemShortCard({ data }: Props) {
         altTxt={data.name}
       />
       <div className="item-short-card__content">
-        <h3 className="h3 h3--big">{data.name}</h3>
+        <h3 className="h3 h3--big">{data.shortName}</h3>
         <Button
           level="primary"
           text="see product"

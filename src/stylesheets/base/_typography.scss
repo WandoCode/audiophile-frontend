@@ -271,6 +271,12 @@ em {
   }
 }
 
+.item-short-card {
+  @include breakpoint(medium) {
+    text-align: center;
+  }
+}
+
 .item-modal {
   font-weight: var(--fw-bold);
   & h2 {

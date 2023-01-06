@@ -129,7 +129,7 @@ function Layout() {
               <LinkNav text="earphones" path="/category/earphones" />
             </div>
           </nav>
-          <div className="footer__text">{layout?.footer}</div>
+          <p className="footer__text">{layout?.footer}</p>
           <div className="footer__copyright">
             Copyright 2021. All Rights Reserved
           </div>
@@ -145,3 +145,4 @@ function Layout() {
 }
 
 export { Layout }
+//TODO: Faire en sorte que le btn 'go back' renvoi vers la dernière page visitée

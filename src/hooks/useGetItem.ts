@@ -15,6 +15,7 @@ interface ImagesSet {
 }
 
 export interface LinkedItem {
+  shortName: string
   name: string
   slug: string
   images: ImagesSet
@@ -124,6 +125,7 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
           },
           linkedItems: {
             first: {
+              shortName: rawOthers[0]?.attributes?.shortName,
               name: rawOthers[0]?.attributes?.name,
               slug: rawOthers[0]?.attributes?.slug,
               images: {
@@ -140,6 +142,7 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
               },
             },
             second: {
+              shortName: rawOthers[1]?.attributes?.shortName,
               name: rawOthers[1]?.attributes?.name,
               slug: rawOthers[1]?.attributes?.slug,
 
@@ -157,6 +160,7 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
               },
             },
             third: {
+              shortName: rawOthers[2]?.attributes?.shortName,
               name: rawOthers[2]?.attributes?.name,
               slug: rawOthers[2]?.attributes?.slug,
               images: {

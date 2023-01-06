@@ -38,3 +38,7 @@ input[type='number'] {
 p:not(:last-child) {
   margin-bottom: 1em;
 }
+
+p {
+  line-height: rem(25);
+}

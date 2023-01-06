@@ -23,7 +23,7 @@ function ItemPresentation({ className, data }: Props) {
         <h2 className="item-pres__heading h2 h2--secondary h2--large">
           {data?.name}
         </h2>
-        <div className="item-pres__description">{data?.description}</div>
+        <p className="item-pres__description">{data?.description}</p>
         <Button
           level="primary"
           onClickHandler={() => {
