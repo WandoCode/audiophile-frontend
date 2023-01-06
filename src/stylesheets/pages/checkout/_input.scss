@@ -20,7 +20,8 @@
   }
 
   &--error {
-    border: var(--clr-primary-600) 2px solid;
+    border: var(--clr-primary-600) 1px solid;
+    outline: var(--clr-primary-600) 1px solid;
 
     &:focus {
       border-color: var(--clr-primary-600);

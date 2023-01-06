@@ -27,4 +27,19 @@
   &__input:checked ~ &__check {
     background-color: var(--clr-primary-400);
   }
+
+  &--error {
+    border: var(--clr-primary-600) 1px solid;
+    outline: var(--clr-primary-600) 1px solid;
+
+    &:focus {
+      border-color: var(--clr-primary-600);
+    }
+
+    &:hover {
+      @include on-event {
+        border-color: var(--clr-primary-600);
+      }
+    }
+  }
 }
