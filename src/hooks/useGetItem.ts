@@ -21,7 +21,7 @@ export interface LinkedItem {
   images: ImagesSet
 }
 
-interface DataItem {
+export interface DataItem {
   name: string
   shortName: string
   slug: string

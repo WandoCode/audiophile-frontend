@@ -1,6 +1,11 @@
-import { CartItem, Context, RemoveItem, AddItem } from '../../ContextProvider'
-import { NumberInput } from '../../stories/Atoms'
-import { formatPrice } from '../../utility/string'
+import {
+  CartItem,
+  Context,
+  RemoveItem,
+  AddItem,
+} from '../../../ContextProvider'
+import { NumberInput } from '..'
+import { formatPrice } from '../../../utility/string'
 import { useContext } from 'react'
 
 type RemoveItemFct = ({ slug }: RemoveItem) => void

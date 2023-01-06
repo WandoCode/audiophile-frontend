@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
-import { useGetCategory, DataItemCategory } from '../hooks/useGetCategory'
+import { useGetCategory, DataItemCategory } from '../../hooks/useGetCategory'
 import { useEffect } from 'react'
 import {
   CategoriesSection,
   ItemPresentation,
   MainDescriptionSection,
-} from '../stories/Molecules'
+} from '../../stories/Molecules'
 
 function Category() {
   const { category } = useParams()

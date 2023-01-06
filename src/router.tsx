@@ -3,11 +3,11 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
-import { Category } from './pages/Category'
-import { Checkout } from './pages/Checkout'
-import Error from './pages/Error'
-import { Home } from './pages/Home'
-import { Item } from './pages/Item'
+import { Category } from './pages/Category/Category'
+import { Checkout } from './pages/Checkout/Checkout'
+import Error from './pages/Error/Error'
+import { Home } from './pages/Home/Home'
+import { Item } from './pages/Item/Item'
 import { Layout } from './pages/Layout/Layout'
 
 const router = createBrowserRouter(

@@ -1,8 +1,7 @@
-import { Button } from '../../stories/Atoms'
-import { CartItem, Context } from '../../ContextProvider'
+import { Button, ItemModal } from '../../Atoms'
+import { CartItem, Context } from '../../../ContextProvider'
 import { useContext, useMemo } from 'react'
-import { ItemModal } from './ItemModal'
-import { formatPrice } from '../../utility/string'
+import { formatPrice } from '../../../utility/string'
 
 interface Props {
   handleCheckout: (e: React.MouseEvent) => void
@@ -40,7 +39,6 @@ function CartModal({ handleCheckout }: Props) {
 
   // TODO: faire en sorte de fermer la modal en cliquant dehors
   // TODO: rendre la modal accessible au clavier
-  // TODO: Si pas d'item dans le cart: afficher un message correspondant, retirer le btn de chechout
 
   // TODO: Corriger le shift du header à l'ouverture de la modal (en desktop)=> voir scrollbar-gutter dans 'base' ou 'normalize'
   return (

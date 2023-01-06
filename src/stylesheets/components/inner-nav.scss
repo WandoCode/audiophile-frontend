@@ -1,7 +1,13 @@
-@use '../../abstracts/' as *;
+@use '../abstracts/' as *;
 
-.item {
-  & .nav {
+.inner-nav {
+  padding-top: $header-height-sm;
+
+  @include breakpoint(large) {
+    padding-top: $header-height-lg;
+  }
+
+  &__link {
     display: flex;
     margin-block: rem(16) rem(24);
 

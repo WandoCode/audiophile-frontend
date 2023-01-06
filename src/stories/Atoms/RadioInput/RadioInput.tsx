@@ -1,14 +1,27 @@
+import { useMemo } from 'react'
 interface Props {
   label: string
   name: string
   value: string
   currValue: string
   onChangeHandler: React.ChangeEventHandler<HTMLInputElement>
+  error: boolean
 }
 
-function RadioInput({ label, name, value, currValue, onChangeHandler }: Props) {
+function RadioInput({
+  label,
+  name,
+  value,
+  currValue,
+  onChangeHandler,
+  error = false,
+}: Props) {
+  const mainClass = useMemo(() => {
+    return error ? `radio radio--error` : `radio`
+  }, [error])
+
   return (
-    <label htmlFor={value} className="radio">
+    <label htmlFor={value} className={mainClass}>
       <input
         type="radio"
         name={name}
