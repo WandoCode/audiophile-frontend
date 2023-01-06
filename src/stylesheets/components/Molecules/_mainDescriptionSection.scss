@@ -1,4 +1,4 @@
-@use '../abstracts/' as *;
+@use '../../abstracts/' as *;
 
 .main-description {
   display: grid;
@@ -7,15 +7,17 @@
   margin-top: $flow-sm-400;
 
   @include breakpoint(medium) {
-    margin-top: $flow-md-100;
     gap: rem(63);
+
+    margin-top: $flow-md-100;
   }
 
   @include breakpoint(large) {
-    margin-top: $flow-lg-400;
     gap: rem(125);
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+
+    margin-top: $flow-lg-400;
   }
 
   &__text {

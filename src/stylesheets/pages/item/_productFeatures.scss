@@ -1,0 +1,10 @@
+@use '../../abstracts/' as *;
+
+.product-features {
+  display: grid;
+  gap: rem(24);
+
+  @include breakpoint(medium) {
+    gap: rem(32);
+  }
+}

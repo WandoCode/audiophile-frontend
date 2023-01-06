@@ -1,0 +1,22 @@
+@use '../../abstracts/' as *;
+
+.home {
+  &__products {
+    display: grid;
+    gap: rem(24);
+
+    margin-top: $flow-sm-400;
+
+    @include breakpoint(medium) {
+      gap: rem(32);
+
+      margin-top: $flow-md-100;
+    }
+
+    @include breakpoint(large) {
+      gap: rem(48);
+
+      margin-top: $flow-lg-300;
+    }
+  }
+}

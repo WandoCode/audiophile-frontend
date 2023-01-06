@@ -1,0 +1,53 @@
+@use '../../abstracts/' as *;
+
+.product-presentation {
+  @include breakpoint(medium) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(rem(250), 1fr));
+    grid-column-gap: 10%;
+    grid-row-gap: 5%;
+  }
+
+  @include breakpoint(large) {
+    grid-column: span 2;
+
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    gap: 10%;
+  }
+
+  &__content {
+    display: grid;
+    gap: rem(24);
+
+    @include breakpoint(medium) {
+      gap: rem(32);
+      align-items: center;
+      align-content: center;
+    }
+  }
+
+  &__img {
+    margin-bottom: 1rem;
+
+    overflow: hidden;
+
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__new {
+    margin-top: 1rem;
+
+    @include breakpoint(medium) {
+      margin-top: 0;
+      margin-bottom: -1rem;
+    }
+  }
+
+  &__add-to-cart {
+    display: flex;
+    gap: rem(16);
+  }
+}

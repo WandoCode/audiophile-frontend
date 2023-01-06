@@ -7,23 +7,27 @@ interface Props {
   data: DataItemCategory
 }
 
-function ItemPresentation({ className, data }: Props) {
+function ItemCategory({ className, data }: Props) {
   const navigate = useNavigate()
 
   return (
-    <article className={`item-pres ${className}`}>
-      <ImageSet className="item-pres" data={data?.images} altTxt={data?.name} />
+    <article className={`item-category ${className}`}>
+      <ImageSet
+        className="item-category"
+        data={data?.images}
+        altTxt={data?.name}
+      />
 
-      <div className="item-pres__text">
+      <div className="item-category__text">
         {data.new && (
-          <div className="item-pres__new text-100 text-primary">
+          <div className="item-category__new text-100 text-primary">
             new product
           </div>
         )}
-        <h2 className="item-pres__heading h2 h2--secondary h2--large">
+        <h2 className="item-category__heading h2 h2--secondary h2--large">
           {data?.name}
         </h2>
-        <p className="item-pres__description">{data?.description}</p>
+        <p className="item-category__description">{data?.description}</p>
         <Button
           level="primary"
           onClickHandler={() => {
@@ -36,4 +40,4 @@ function ItemPresentation({ className, data }: Props) {
   )
 }
 
-export { ItemPresentation }
+export { ItemCategory }

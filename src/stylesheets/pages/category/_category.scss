@@ -1,0 +1,40 @@
+@use '../../abstracts/' as *;
+
+.category {
+  &__items {
+    display: grid;
+    gap: rem(120);
+
+    margin-top: $flow-sm-200;
+
+    @include breakpoint(medium) {
+      margin-top: $flow-md-400;
+    }
+
+    @include breakpoint(large) {
+      gap: rem(160);
+
+      margin-top: $flow-lg-200;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: rem(192);
+
+    padding-top: $header-height-sm;
+
+    background-color: var(--clr-neutral-600);
+
+    & > .h1 {
+      margin-block: rem(32);
+
+      @include breakpoint(medium) {
+        margin-block: rem(96);
+      }
+    }
+  }
+}

@@ -4,15 +4,15 @@ interface Props {
   features: string
 }
 
-function ProductDescription({ features }: Props) {
+function ProductFeatures({ features }: Props) {
   return (
-    <article className="item-details__features">
+    <article className="product-features">
       <h2 className="h2 h2--small text-black">Features</h2>
-      <div className="items-details__text-feature">
+      <div className="product-features__text">
         <ReactMarkdown>{features}</ReactMarkdown>
       </div>
     </article>
   )
 }
 
-export { ProductDescription }
+export { ProductFeatures }

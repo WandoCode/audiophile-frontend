@@ -1,6 +1,6 @@
-@use '../abstracts/' as *;
+@use '../../abstracts/' as *;
 
-.header nav[aria-expanded='true'] {
+.main-nav[aria-expanded='true'] {
   position: fixed;
   top: 0;
   left: 0;

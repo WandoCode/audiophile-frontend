@@ -17,7 +17,7 @@ function ProductIncludes({ dataItem }: Props) {
   }
 
   return (
-    <article className="item-details__included">
+    <article className="product-includes">
       <h2 className="h2 h2--small text-black">In the box</h2>
       <ul>{includedDOM()}</ul>
     </article>

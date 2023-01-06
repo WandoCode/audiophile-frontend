@@ -1,4 +1,4 @@
-@use '../abstracts/' as *;
+@use '../../abstracts/' as *;
 
 .categories {
   margin-top: $flow-sm-400;
@@ -13,6 +13,7 @@
 
   &:first-child {
     margin-top: $flow-sm-100;
+
     @include breakpoint(medium) {
       margin-top: $flow-md-100;
     }

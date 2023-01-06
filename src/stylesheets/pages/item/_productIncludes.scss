@@ -1,0 +1,25 @@
+@use '../../abstracts/' as *;
+
+.product-includes {
+  display: grid;
+  gap: rem(24);
+
+  @include breakpoint(medium) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @include breakpoint(large) {
+    gap: rem(32);
+
+    grid-template-columns: 1fr;
+  }
+
+  & > ul {
+    display: grid;
+    gap: rem(8);
+    & > li {
+      display: grid;
+      grid-template-columns: 1.5em auto;
+      gap: rem(24);
+    }
+  }
+}

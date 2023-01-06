@@ -1,0 +1,17 @@
+@use '../../abstracts/' as *;
+
+.item-details {
+  display: grid;
+  gap: rem(88);
+  align-items: start;
+
+  @include breakpoint(medium) {
+    gap: $flow-md-400;
+  }
+
+  @include breakpoint(large) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    gap: $flow-lg-200;
+  }
+}

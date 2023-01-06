@@ -73,22 +73,6 @@
     }
   }
 
-  &__links-container {
-    display: flex;
-    flex-direction: column;
-    gap: rem(16);
-    align-items: center;
-
-    @include breakpoint(medium) {
-      flex-direction: row;
-      gap: rem(34);
-    }
-
-    @include breakpoint(large) {
-      justify-content: flex-end;
-    }
-  }
-
   &__social-links {
     display: flex;
     gap: rem(16);

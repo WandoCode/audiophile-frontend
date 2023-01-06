@@ -54,25 +54,27 @@ function ProductPresentation({ dataItem, slug }: Props) {
   }
 
   return (
-    <article className="item-details__short">
+    <article className="product-presentation">
       <ImageSet
         data={dataItem?.mainImages}
         className="item-details"
         altTxt={dataItem?.name}
       />
 
-      <div className="item-details__content">
+      <div className="product-presentation__content">
         {dataItem?.newItem && (
-          <p className="item-details__new text-100 text-primary">New Product</p>
+          <p className="product-presentation__new text-100 text-primary">
+            New Product
+          </p>
         )}
         <h1 className="h1 h1--small text-black">{dataItem?.name}</h1>
-        <div className="item-details__description">
+        <div className="product-presentation__description">
           <ReactMarkdown>{dataItem?.description ?? ''}</ReactMarkdown>
         </div>
         <div className="item-details__price">
           <em>$ {formatPrice(dataItem?.price)}</em>
         </div>
-        <form className="item-details__add-to-cart">
+        <form className="product-presentation__add-to-cart">
           <NumberInput
             name="quantity"
             id="quantity"

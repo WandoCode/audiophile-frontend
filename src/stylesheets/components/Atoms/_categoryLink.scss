@@ -1,11 +1,10 @@
-@use '../abstracts/' as *;
+@use '../../abstracts/' as *;
 
 .category-link {
   display: grid;
   align-items: flex-end;
 
   width: 100%;
-
   min-height: rem(220);
 
   @include breakpoint(large) {
@@ -38,6 +37,7 @@
     align-content: flex-start;
 
     gap: rem(17);
+
     transition: translate 0.2s;
   }
 
@@ -56,11 +56,14 @@
 
   &__img {
     position: absolute;
-    z-index: 1;
     left: 50%;
     top: -32.5%;
     translate: -50% 0;
+
     height: rem(137);
+
+    z-index: 1;
+
     transition: translate 0.2s;
     animation: degrow 0.2s forwards;
 

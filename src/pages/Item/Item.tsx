@@ -1,21 +1,15 @@
-import { useParams, useLocation, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import useGetItem from '../../hooks/useGetItem'
-import { useEffect, useState, useContext } from 'react'
-import { formatPrice } from '../../utility/string'
-import { Button, ImageSet, InnerLink, NumberInput } from '../../stories/Atoms'
-
+import { ImageSet } from '../../stories/Atoms'
+import { ProductPresentation } from './ProductPresentation'
+import { ProductFeatures } from './ProductFeatures'
+import { ProductIncludes } from './ProductIncludes'
 import {
   CategoriesSection,
   InnerNav,
   ItemShortCard,
   MainDescriptionSection,
 } from '../../stories/Molecules'
-
-import ReactMarkdown from 'react-markdown'
-import { AddItem, Context } from '../../ContextProvider'
-import { ProductPresentation } from './ProductPresentation'
-import { ProductDescription } from './ProductFeatures'
-import { ProductIncludes } from './ProductIncludes'
 
 function Item() {
   const { slug } = useParams()
@@ -46,7 +40,7 @@ function Item() {
 
       <section className="item-details">
         <ProductPresentation dataItem={dataItem} slug={slug} />
-        <ProductDescription features={dataItem?.features ?? ''} />
+        <ProductFeatures features={dataItem?.features ?? ''} />
         <ProductIncludes dataItem={dataItem} />
       </section>
       <section className="gallery">

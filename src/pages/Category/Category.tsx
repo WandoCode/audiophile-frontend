@@ -1,9 +1,9 @@
 import { useParams } from 'react-router-dom'
-import { useGetCategory, DataItemCategory } from '../../hooks/useGetCategory'
-import { useEffect } from 'react'
+import { useGetCategory } from '../../hooks/useGetCategory'
+
 import {
   CategoriesSection,
-  ItemPresentation,
+  ItemCategory,
   MainDescriptionSection,
 } from '../../stories/Molecules'
 
@@ -14,7 +14,7 @@ function Category() {
 
   const itemsDOM = data?.map((itemData, i) => {
     return (
-      <ItemPresentation
+      <ItemCategory
         className={`${i % 2 === 0 ? '' : 'invert'}`}
         data={itemData}
         key={i}
@@ -23,11 +23,11 @@ function Category() {
   })
   return (
     <div className="category">
-      <section className="title">
+      <section className="category__title">
         <h1 className="h1 h1--small">{category}</h1>
       </section>
       <div className="container">
-        <section className="items">{itemsDOM}</section>
+        <section className="category__items">{itemsDOM}</section>
         <CategoriesSection />
         <MainDescriptionSection />
       </div>

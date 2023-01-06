@@ -5,13 +5,15 @@
   display: flex;
 
   min-height: rem(600);
+
   padding-top: $header-height-sm;
 
   &::before {
-    z-index: -1;
     position: absolute;
-    inset: 0;
     content: '';
+    inset: 0;
+
+    z-index: -1;
 
     background-image: url('/src/assets/home/image-hero-sm.jpg');
     background-color: hsl(0, 0, 10%);
@@ -25,16 +27,19 @@
 
     @include breakpoint(large) {
       padding-top: $header-height-lg;
+
       background-image: url('/src/assets/home/image-hero-lg.jpg');
     }
   }
 
   &::after {
-    mix-blend-mode: difference;
-    z-index: -1;
     position: absolute;
     inset: 0;
     content: '';
+
+    z-index: -1;
+
+    mix-blend-mode: difference;
     background-color: hsla(0, 0%, 10%, 0.5);
   }
 
@@ -52,6 +57,7 @@
     display: grid;
     gap: rem(25);
     justify-items: center;
+
     max-width: rem(330);
 
     @include breakpoint(medium) {
