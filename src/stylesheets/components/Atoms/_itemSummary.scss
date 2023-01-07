@@ -1,0 +1,32 @@
+@use '../../abstracts/' as *;
+
+.item-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-height: rem(64);
+  gap: 1rem;
+
+  &__image-container {
+    height: rem(64);
+    width: rem(64);
+  }
+
+  &__img {
+    object-fit: contain;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__text {
+    flex-grow: 1;
+    align-self: center;
+
+    display: grid;
+    gap: rem(7);
+
+    & p {
+      margin-bottom: 0;
+    }
+  }
+}

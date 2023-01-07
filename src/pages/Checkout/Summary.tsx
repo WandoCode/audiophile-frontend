@@ -29,20 +29,20 @@ function Summary() {
   }
   return (
     <div className="summary">
-      <ul>{summaryItemsDOM()}</ul>
-      <div className="summary__total">
+      <ul className="summary__items">{summaryItemsDOM()}</ul>
+      <div className="summary__price-text">
         <h2 className="h2">TOTAL</h2>
         <div className="summary__price">$ {formatPrice(total)}</div>
       </div>
-      <div className="summary__shipping">
+      <div className="summary__price-text">
         <h2 className="h2">SHIPPING</h2>
         <div className="summary__price">$ 50</div>
       </div>
-      <div className="summary__vat">
+      <div className="summary__price-text">
         <h2 className="h2">VAT (INCLUDED)</h2>
         <div className="summary__price">$ {formatPrice(getVAT(total))}</div>
       </div>
-      <div className="summary__grand-total">
+      <div className="summary__price-text summary__price-text--primary">
         <h2 className="h2">TOTAL</h2>
         <div className="summary__price summary__price--primary">
           $ {formatPrice(total + 50)}

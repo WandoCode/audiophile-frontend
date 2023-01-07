@@ -24,7 +24,7 @@ function Category() {
   return (
     <div className="category">
       <section className="category__title">
-        <h1 className="h1 h1--small">{category}</h1>
+        <h1 className="h1 h1--medium">{category}</h1>
       </section>
       <div className="container">
         <section className="category__items">{itemsDOM}</section>

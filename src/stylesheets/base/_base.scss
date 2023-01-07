@@ -22,6 +22,10 @@ html {
   box-sizing: inherit;
 }
 
+body {
+  background-color: var(--clr-neutral-200);
+}
+
 /* hide arrows
  Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -41,4 +45,8 @@ p:not(:last-child) {
 
 p {
   line-height: rem(25);
+}
+
+fieldset {
+  border: none;
 }

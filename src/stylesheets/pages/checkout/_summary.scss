@@ -1,0 +1,23 @@
+@use '../../abstracts/' as *;
+
+.summary {
+  display: grid;
+  gap: rem(8);
+
+  margin-bottom: rem(32);
+
+  &__items {
+    display: grid;
+    gap: rem(24);
+    margin-bottom: rem(32);
+  }
+
+  &__price-text {
+    display: flex;
+    justify-content: space-between;
+
+    &--primary {
+      margin-top: rem(24);
+    }
+  }
+}

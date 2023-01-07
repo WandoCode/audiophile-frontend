@@ -14,7 +14,7 @@ function ItemSummary({ name, price, url, quantity }: Props) {
         <img src={url} alt="" className="item-summary__img" />
       </div>
       <div className="item-summary__text">
-        <h2 className="h3 text-black">{name}</h2>
+        <p className="text-black">{name}</p>
         <div className="item-summary__price">$ {formatPrice(price)}</div>
       </div>
       <div className="item-summary__quantity">

@@ -67,7 +67,7 @@ function ProductPresentation({ dataItem, slug }: Props) {
             New Product
           </p>
         )}
-        <h1 className="h1 h1--small text-black">{dataItem?.name}</h1>
+        <h1 className="h1 h1--medium text-black">{dataItem?.name}</h1>
         <div className="product-presentation__description">
           <ReactMarkdown>{dataItem?.description ?? ''}</ReactMarkdown>
         </div>
