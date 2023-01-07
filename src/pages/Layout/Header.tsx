@@ -1,7 +1,7 @@
 import { useContext, useState, useMemo, useRef, useEffect } from 'react'
 import { CartItem, Context } from '../../ContextProvider'
 import { ImgButton } from '../../stories/Atoms'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { CartModal, MainNav } from '../../stories/Molecules'
 import logo from '../../assets/logo.svg'
 
@@ -11,8 +11,9 @@ function Header() {
     cleanCart: () => void
   }
 
-  const headerRef = useRef(null)
   const navigate = useNavigate()
+  const location = useLocation()
+  const headerRef = useRef(null)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [customHeaderClass, setCustomHeaderClass] = useState(false)

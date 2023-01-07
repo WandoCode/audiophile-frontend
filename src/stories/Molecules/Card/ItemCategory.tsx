@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom'
 interface Props {
   className: string
   data: DataItemCategory
+  lazyLoad: boolean
 }
 
-function ItemCategory({ className, data }: Props) {
+function ItemCategory({ className, data, lazyLoad }: Props) {
   const navigate = useNavigate()
 
   return (
@@ -16,6 +17,7 @@ function ItemCategory({ className, data }: Props) {
         className="item-category"
         data={data?.images}
         altTxt={data?.name}
+        lazy={lazyLoad}
       />
 
       <div className="item-category__text">

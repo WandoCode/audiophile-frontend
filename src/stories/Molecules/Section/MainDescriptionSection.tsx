@@ -13,6 +13,7 @@ function MainDescriptionSection() {
         data={layout?.mainDescription.images}
         className="mainDescription"
         altTxt=""
+        lazy={true}
       />
 
       <div className="main-description__text">

@@ -20,7 +20,7 @@ function Item() {
     const imagesDataArray = Object.values(dataItem?.galleryImages)
 
     return imagesDataArray.map((imgData, i) => {
-      return <ImageSet className="gallery" data={imgData} key={i} />
+      return <ImageSet className="gallery" data={imgData} key={i} lazy={true} />
     })
   }
 

@@ -15,6 +15,7 @@ function Product2({ data }: Props) {
         className="product2"
         altTxt={data?.product2.name}
         data={data?.product2.images}
+        lazy={true}
       />
 
       <div className="product2__text">

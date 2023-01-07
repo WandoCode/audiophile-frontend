@@ -14,6 +14,7 @@ function ItemShortCard({ data }: Props) {
         data={data.images}
         className="item-short-card"
         altTxt={data.name}
+        lazy={true}
       />
       <div className="item-short-card__content">
         <h3 className="h3 h3--big">{data.shortName}</h3>
