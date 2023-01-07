@@ -4,10 +4,12 @@ import CashImg from '../../assets/icon-cash-on-delivery.svg'
 import { InnerNav } from '../../stories/Molecules'
 import {
   validateEmail,
+  validateNumber,
   validateTel,
   validateText,
-  validateZip,
 } from '../../utility/formValidation/payment'
+import Summary from './Summary'
+import { formatPrice } from '../../utility/string'
 
 interface FormDatas {
   [key: string]: string
@@ -19,6 +21,8 @@ interface FormDatas {
   city: string
   country: string
   payment: string
+  eMoneyId: string
+  eMoneyPin: string
 }
 
 interface FormErrors {
@@ -31,6 +35,8 @@ interface FormErrors {
   city: string[]
   country: string[]
   payment: string[]
+  eMoneyId: string[]
+  eMoneyPin: string[]
 }
 
 function Checkout() {
@@ -43,6 +49,8 @@ function Checkout() {
     city: '',
     country: '',
     payment: '',
+    eMoneyId: '',
+    eMoneyPin: '',
   })
 
   const [formErrors, setFormErrors] = useState<FormErrors>({
@@ -54,6 +62,8 @@ function Checkout() {
     country: [],
     city: [],
     payment: [],
+    eMoneyId: [],
+    eMoneyPin: [],
   })
 
   const inputHandler = (fieldName: string, value: string) => {
@@ -61,7 +71,6 @@ function Checkout() {
     newDatas[fieldName] = value
 
     setFormDatas(newDatas)
-
     let validationErrors = validateField(fieldName, value)
 
     if (validationErrors.length === 0 && formErrors[fieldName].length !== 0) {
@@ -88,12 +97,26 @@ function Checkout() {
         })
       }
     }
+
+    // TODO: send datas somewhere?
   }
 
   const validateField = (fieldName: string, value: string) => {
     let validationErrors: string[] = []
 
-    if (fieldName === 'zip') validationErrors = validateZip(value)
+    // Don't validate 'eMoneyPin' and 'eMoneyId' if the choosen payment is not 'e-money'
+    if (
+      formDatas.payment !== 'e-money' &&
+      (fieldName === 'eMoneyPin' || fieldName === 'eMoneyId')
+    )
+      return []
+
+    if (
+      fieldName === 'zip' ||
+      fieldName === 'eMoneyPin' ||
+      fieldName === 'eMoneyId'
+    )
+      validationErrors = validateNumber(value)
     else if (fieldName === 'tel') validationErrors = validateTel(value)
     else if (fieldName === 'email') validationErrors = validateEmail(value)
     else if (fieldName === 'payment')
@@ -118,7 +141,7 @@ function Checkout() {
             id="name"
             currValue={formDatas.name}
             placeholder="Alexei"
-            errorText={formErrors.name.join(' ')}
+            errorText={formErrors.name[0]}
             error={formErrors.name.length !== 0}
             onChangeHandler={(e) => inputHandler('name', e.target.value)}
           />
@@ -129,7 +152,7 @@ function Checkout() {
             id="email"
             currValue={formDatas.email}
             placeholder="alexei@gmail.com"
-            errorText={formErrors.email.join(' ')}
+            errorText={formErrors.email[0]}
             error={formErrors.email.length !== 0}
             onChangeHandler={(e) => inputHandler('email', e.target.value)}
           />
@@ -140,7 +163,7 @@ function Checkout() {
             id="tel"
             currValue={formDatas.tel}
             placeholder="+1 (202) 555-0136"
-            errorText={formErrors.tel.join(' ')}
+            errorText={formErrors.tel[0]}
             error={formErrors.tel.length !== 0}
             onChangeHandler={(e) => inputHandler('tel', e.target.value)}
           />
@@ -155,7 +178,7 @@ function Checkout() {
             id="address"
             currValue={formDatas.address}
             placeholder="1137 Williams Avenue"
-            errorText={formErrors.address.join(' ')}
+            errorText={formErrors.address[0]}
             error={formErrors.address.length !== 0}
             onChangeHandler={(e) => inputHandler('address', e.target.value)}
           />
@@ -166,7 +189,7 @@ function Checkout() {
             id="zip"
             currValue={formDatas.zip}
             placeholder="101010"
-            errorText={formErrors.zip.join(' ')}
+            errorText={formErrors.zip[0]}
             error={formErrors.zip.length !== 0}
             onChangeHandler={(e) => inputHandler('zip', e.target.value)}
           />
@@ -177,7 +200,7 @@ function Checkout() {
             id="city"
             currValue={formDatas.city}
             placeholder="New York"
-            errorText={formErrors.city.join(' ')}
+            errorText={formErrors.city[0]}
             error={formErrors.city.length !== 0}
             onChangeHandler={(e) => inputHandler('city', e.target.value)}
           />
@@ -188,7 +211,7 @@ function Checkout() {
             id="country"
             currValue={formDatas.country}
             placeholder="United States"
-            errorText={formErrors.country.join(' ')}
+            errorText={formErrors.country[0]}
             error={formErrors.country.length !== 0}
             onChangeHandler={(e) => inputHandler('country', e.target.value)}
           />
@@ -213,20 +236,59 @@ function Checkout() {
             error={formErrors.payment.length !== 0}
             onChangeHandler={(e) => inputHandler('payment', e.target.value)}
           />
-          <div className="form-checkout__payment-details">
-            <img src={CashImg} alt="" />
-            <p className="form-checkout__text">
-              The ‘Cash on Delivery’ option enables you to pay in cash when our
-              delivery courier arrives at your residence. Just make sure your
-              address is correct so that your order will not be cancelled.
-            </p>
-          </div>
+
+          {formDatas.payment === 'cash' && (
+            <div className="form-checkout__payment-details">
+              <img src={CashImg} alt="" />
+              <p className="form-checkout__text">
+                The ‘Cash on Delivery’ option enables you to pay in cash when
+                our delivery courier arrives at your residence. Just make sure
+                your address is correct so that your order will not be
+                cancelled.
+              </p>
+            </div>
+          )}
+
+          {formDatas.payment === 'e-money' && (
+            <>
+              <Input
+                label="e-Money Number"
+                name="eMoneyId"
+                type="number"
+                id="eMoneyId"
+                currValue={formDatas.eMoneyId}
+                placeholder="123456789"
+                errorText={formErrors.eMoneyId[0]}
+                error={formErrors.eMoneyId.length !== 0}
+                onChangeHandler={(e) =>
+                  inputHandler('eMoneyId', e.target.value)
+                }
+              />
+
+              <Input
+                label="e-Money PIN"
+                name="eMoneyPin"
+                type="number"
+                id="eMoneyPin"
+                currValue={formDatas.eMoneyPin}
+                placeholder="1234"
+                errorText={formErrors.eMoneyPin[0]}
+                error={formErrors.eMoneyPin.length !== 0}
+                onChangeHandler={(e) =>
+                  inputHandler('eMoneyPin', e.target.value)
+                }
+              />
+            </>
+          )}
         </fieldset>
 
         <fieldset className="checkout__summary">
           <legend className="form-checkout__summary-subtitle">Summary</legend>
+          <Summary />
           <Button
-            text="Checkout"
+            text={
+              formDatas.payment === 'e-money' ? 'Continue & Pay' : 'Continue'
+            }
             level="primary"
             onClickHandler={handleSubmit}
           />
