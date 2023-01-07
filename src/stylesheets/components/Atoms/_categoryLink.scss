@@ -26,6 +26,8 @@
     border-radius: rem(8);
     background-color: var(--clr-neutral-250);
 
+    cursor: pointer;
+
     @include breakpoint(large) {
       height: 71.5%;
     }

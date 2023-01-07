@@ -11,17 +11,18 @@ function CategoryLink({ category, image }: Props) {
 
   return (
     <article className="category-link">
-      <div className="category-link__container">
+      <label htmlFor={category} className="category-link__container">
         <img src={image} alt={category} className="category-link__img" />
         <h3 className="h3">{category}</h3>
         <Button
+          id={category}
           level="tertiary"
           text="Shop"
           onClickHandler={() => {
             navigate(`/category/${category}`)
           }}
         />
-      </div>
+      </label>
     </article>
   )
 }
