@@ -15,6 +15,7 @@ $margin-sm: rem(24);
 
 $header-height-sm: rem(89);
 $header-height-lg: rem(96);
+$header-height-on-scroll-sm: calc($header-height-sm - 35px);
 
 $flow-sm-100: rem(40);
 $flow-sm-200: rem(64);

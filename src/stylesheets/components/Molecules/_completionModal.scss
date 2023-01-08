@@ -1,0 +1,87 @@
+@use '../../abstracts/' as *;
+
+.completion-modal {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  align-items: center;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  text-align: left;
+  padding-block: $margin-sm;
+
+  &__container {
+    display: grid;
+    gap: rem(24);
+
+    border-radius: 8px;
+    padding: rem(32);
+    margin-top: $header-height-sm;
+    background-color: var(--clr-neutral-100);
+
+    @include breakpoint(medium) {
+      max-width: rem(540);
+      gap: rem(33);
+      padding: rem(48);
+    }
+  }
+
+  &__container h1 {
+    margin-bottom: rem(-8);
+  }
+
+  &__container p {
+    margin-bottom: 0;
+  }
+
+  &__container > img {
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--clr-neutral-250);
+    border-radius: 8px;
+    overflow: hidden;
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: rem(13);
+    }
+  }
+
+  &__items {
+    padding: rem(24);
+
+    @include breakpoint(medium) {
+      flex-grow: 1;
+      flex-basis: 55%;
+      min-width: 240px;
+    }
+  }
+
+  &__other-items {
+    padding-top: rem(12);
+    margin-top: rem(12);
+    border-top: 1px solid var(--clr-neutral-300);
+    display: grid;
+  }
+
+  &__other-items-button {
+    border: none;
+  }
+
+  &__total {
+    display: grid;
+    gap: rem(15);
+    background-color: var(--clr-neutral-700);
+    padding: rem(24);
+
+    @include breakpoint(medium) {
+      flex-grow: 1;
+      flex-basis: 45%;
+    }
+  }
+}

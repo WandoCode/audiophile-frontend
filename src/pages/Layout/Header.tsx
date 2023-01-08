@@ -62,9 +62,9 @@ function Header() {
   }, [location])
 
   useEffect(() => {
-    if (menuIsOpen || modalIsOpen) document.body.style.overflowY = 'hidden'
+    if (menuIsOpen) document.body.style.overflowY = 'hidden'
     else document.body.style.overflowY = 'auto'
-  }, [menuIsOpen, modalIsOpen])
+  }, [menuIsOpen])
 
   return (
     <header ref={headerRef} className={headerClassName}>

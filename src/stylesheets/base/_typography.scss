@@ -29,6 +29,11 @@ body {
   &--medium {
     font-size: var(--fs-900);
   }
+
+  &--medium-responsive {
+    font-size: var(--fs-650);
+    line-height: 100%;
+  }
 }
 
 .h2,
@@ -348,5 +353,21 @@ em {
 
   &__price {
     font-size: var(--fs-300);
+  }
+}
+.completion-modal {
+  &__other-items-button {
+    color: inherit;
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-100);
+  }
+
+  &__heading {
+    text-transform: uppercase;
+  }
+
+  &__price {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-550);
   }
 }

@@ -1,6 +1,6 @@
 import { Button, ItemModal } from '../../Atoms'
 import { CartItem, Context } from '../../../ContextProvider'
-import { useContext, useMemo } from 'react'
+import { useContext, useMemo, useEffect } from 'react'
 import { formatPrice } from '../../../utility/string'
 
 interface Props {
@@ -13,6 +13,14 @@ function CartModal({ handleCheckout }: Props) {
     getCartTotal: () => number
     emptyCart: () => void
   }
+
+  useEffect(() => {
+    document.body.style.overflowY = 'hidden'
+    return () => {
+      document.body.style.overflowY = 'auto'
+    }
+  }, [])
+
   // TODO: fermer la modale si on click en-dehors ou change de page.
   const itemListDOM = useMemo(
     () =>

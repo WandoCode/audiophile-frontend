@@ -23,7 +23,7 @@
     & .header__container {
       border-bottom: 1px hsla(0, 0, 0, 0) solid;
 
-      height: calc($header-height-sm - 35px);
+      height: $header-height-on-scroll-sm;
     }
   }
 

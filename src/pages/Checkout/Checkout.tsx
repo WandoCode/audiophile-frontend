@@ -5,6 +5,7 @@ import { InnerNav } from '../../stories/Molecules'
 
 import Summary from './Summary'
 import { CheckoutInput } from '../../utility/formValidation/CheckoutInput'
+import { CompletionModal } from '../../stories/Molecules/Card/CompletionModal'
 
 interface FormDatas {
   [key: string]: CheckoutInput
@@ -15,6 +16,7 @@ interface FormErrors {
 }
 
 function Checkout() {
+  const [showModal, setShowModal] = useState(false)
   const [formDatas, setFormDatas] = useState<FormDatas>({
     name: new CheckoutInput('text'),
     email: new CheckoutInput('email'),
@@ -54,8 +56,25 @@ function Checkout() {
     e.preventDefault()
 
     const formIsValid = validateForm()
-    // TODO: show modal if valid
-    // TODO: send datas somewhere?
+
+    // Send datas somewhere if it's valid
+
+    setShowModal(formIsValid)
+  }
+
+  const validateField = (fieldName: string, input: CheckoutInput) => {
+    let validationErrors: string[] = []
+
+    // Don't validate 'eMoneyPin' and 'eMoneyId' if the choosen payment is not 'e-money'
+    if (
+      formDatas.payment.value !== 'e-money' &&
+      (fieldName === 'eMoneyPin' || fieldName === 'eMoneyId')
+    )
+      return []
+
+    validationErrors = input.getValidationErrors()
+
+    return validationErrors
   }
 
   const removeErrorOnValidInput = (
@@ -75,21 +94,6 @@ function Checkout() {
     newDatas[fieldName].value = value
 
     setFormDatas(newDatas)
-  }
-
-  const validateField = (fieldName: string, input: CheckoutInput) => {
-    let validationErrors: string[] = []
-
-    // Don't validate 'eMoneyPin' and 'eMoneyId' if the choosen payment is not 'e-money'
-    if (
-      formDatas.payment.value !== 'e-money' &&
-      (fieldName === 'eMoneyPin' || fieldName === 'eMoneyId')
-    )
-      return []
-
-    validationErrors = input.getValidationErrors()
-
-    return validationErrors
   }
 
   const validateForm = () => {
@@ -117,7 +121,7 @@ function Checkout() {
   return (
     <div className="checkout container">
       <InnerNav />
-
+      {showModal && <CompletionModal />}
       <form className="form-checkout">
         <div className="form-checkout__container">
           <h1 className="h1 h1--small text-black">Checkout</h1>

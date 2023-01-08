@@ -4,9 +4,13 @@
   z-index: 2;
   position: fixed;
   inset: $header-height-sm 0 0 0;
+
   background-color: rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.4);
   overflow: auto;
+
+  .header--on-scroll & {
+    inset: $header-height-on-scroll-sm 0 0 0;
+  }
 
   &__container {
     display: grid;
