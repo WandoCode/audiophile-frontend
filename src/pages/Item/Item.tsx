@@ -10,10 +10,11 @@ import {
   ItemShortCard,
   MainDescriptionSection,
 } from '../../stories/Molecules'
+import LoadStateWrapper from '../../components/LoadStateWrapper'
 
 function Item() {
   const { slug } = useParams()
-  const [dataItem] = useGetItem({ slug })
+  const [dataItem, loading] = useGetItem({ slug })
 
   const galleryImagesDOM = () => {
     if (!dataItem) return []
@@ -36,21 +37,22 @@ function Item() {
   // /* TODO: Changer en <picture> et imgset? */
   return (
     <div className="item container">
-      <InnerNav />
+      <LoadStateWrapper loading={loading}>
+        <InnerNav />
+        <section className="item-details">
+          <ProductPresentation dataItem={dataItem} slug={slug} />
+          <ProductFeatures features={dataItem?.features ?? ''} />
+          <ProductIncludes dataItem={dataItem} />
+        </section>
+        <section className="gallery">
+          <div className="gallery__images">{galleryImagesDOM()}</div>
+        </section>
 
-      <section className="item-details">
-        <ProductPresentation dataItem={dataItem} slug={slug} />
-        <ProductFeatures features={dataItem?.features ?? ''} />
-        <ProductIncludes dataItem={dataItem} />
-      </section>
-      <section className="gallery">
-        <div className="gallery__images">{galleryImagesDOM()}</div>
-      </section>
-
-      <section className="you-may-like">
-        <h2 className="h2 h2--small text-black">You may also like</h2>
-        <div className="you-may-like__items">{shortCardsDOM()}</div>
-      </section>
+        <section className="you-may-like">
+          <h2 className="h2 h2--small text-black">You may also like</h2>
+          <div className="you-may-like__items">{shortCardsDOM()}</div>
+        </section>
+      </LoadStateWrapper>
       <CategoriesSection />
       <MainDescriptionSection />
     </div>

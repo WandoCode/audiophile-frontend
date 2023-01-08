@@ -1,0 +1,22 @@
+.load-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & img {
+    height: 100px;
+    width: 100px;
+    animation: rotation 3s linear infinite;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    rotate: 0deg;
+  }
+
+  100% {
+    rotate: 360deg;
+  }
+}

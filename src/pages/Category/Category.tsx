@@ -24,18 +24,18 @@ function Category() {
     )
   })
   return (
-    <LoadStateWrapper loading={loading}>
-      <div className="category">
-        <section className="category__title">
-          <h1 className="h1 h1--medium">{category}</h1>
-        </section>
+    <div className="category">
+      <section className="category__title">
+        <h1 className="h1 h1--medium">{category}</h1>
+      </section>
+      <LoadStateWrapper loading={loading}>
         <div className="container">
           <section className="category__items">{itemsDOM}</section>
           <CategoriesSection />
           <MainDescriptionSection />
         </div>
-      </div>
-    </LoadStateWrapper>
+      </LoadStateWrapper>
+    </div>
   )
 }
 // TODO: le wrapper va servir à afficher un loading screen le temps d'avoir les réponse des fetchs. A ajouter aux autres components qui utilisent des fetch
