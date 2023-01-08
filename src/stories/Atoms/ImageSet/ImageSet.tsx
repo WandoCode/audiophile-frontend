@@ -23,5 +23,4 @@ function ImageSet({ data, className, altTxt, lazy = false }: Props) {
     </div>
   )
 }
-// TODO: passer par le tag 'picture' ??
 export { ImageSet }

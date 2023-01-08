@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 import { DataHomepage } from './hooks/useGetHomepage'
 import { DataLayout } from './hooks/useGetLayout'
 
