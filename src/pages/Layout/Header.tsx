@@ -13,7 +13,6 @@ function Header() {
 
   const navigate = useNavigate()
   const location = useLocation()
-  const headerRef = useRef(null)
   const [menuIsOpen, setMenuIsOpen] = useState(false)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [customHeaderClass, setCustomHeaderClass] = useState(false)
@@ -29,7 +28,7 @@ function Header() {
   }
 
   const headerClassName = useMemo(() => {
-    let rep = 'header '
+    let rep = 'unshift header '
     if (customHeaderClass) rep += 'header--transparent '
     if (!onTop) rep += 'header--on-scroll '
 
@@ -61,13 +60,8 @@ function Header() {
     setMenuIsOpen(false)
   }, [location])
 
-  useEffect(() => {
-    if (menuIsOpen) document.body.style.overflowY = 'hidden'
-    else document.body.style.overflowY = 'auto'
-  }, [menuIsOpen])
-
   return (
-    <header ref={headerRef} className={headerClassName}>
+    <header className={headerClassName}>
       <div className="container header__container">
         <ImgButton
           onClickHandler={toggleMenu}
@@ -86,7 +80,11 @@ function Header() {
             <div className="header__nbr-items">{cart.length}</div>
           )}
 
-          <ImgButton onClickHandler={handleModal} type="cart" />
+          <ImgButton
+            onClickHandler={handleModal}
+            type="cart"
+            className="cart"
+          />
         </div>
       </div>
       {modalIsOpen && <CartModal handleCheckout={handleCheckout} />}
@@ -95,5 +93,3 @@ function Header() {
 }
 
 export { Header }
-
-// TODO: correct the (not) centered cart modal on mobile

@@ -34,7 +34,6 @@ function Item() {
     })
   }
 
-  // /* TODO: Changer en <picture> et imgset? */
   return (
     <div className="item container">
       <LoadStateWrapper loading={loading}>
@@ -58,6 +57,5 @@ function Item() {
     </div>
   )
 }
-// TODO: revoir les border radius pour les image (elles n'apparissent plus depuis que j'ai utilisé picture dans ImageSet)
 
 export { Item }

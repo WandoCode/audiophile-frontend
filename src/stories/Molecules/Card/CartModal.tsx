@@ -1,6 +1,6 @@
 import { Button, ItemModal } from '../../Atoms'
 import { CartItem, Context } from '../../../ContextProvider'
-import { useContext, useMemo, useEffect } from 'react'
+import { useContext, useMemo, useEffect, useRef } from 'react'
 import { formatPrice } from '../../../utility/string'
 
 interface Props {
@@ -21,7 +21,7 @@ function CartModal({ handleCheckout }: Props) {
     }
   }, [])
 
-  // TODO: fermer la modale si on click en-dehors ou change de page.
+  // TODO: fermer la modale si on click en-dehors ou change de page. Compliqué...(?)
   const itemListDOM = useMemo(
     () =>
       cart.map((item, i) => {
@@ -45,7 +45,6 @@ function CartModal({ handleCheckout }: Props) {
     emptyCart()
   }
 
-  // TODO: faire en sorte de fermer la modal en cliquant dehors
   // TODO: rendre la modal accessible au clavier
 
   // TODO: Corriger le shift du header à l'ouverture de la modal (en desktop)=> voir scrollbar-gutter dans 'base' ou 'normalize'
@@ -81,6 +80,4 @@ function CartModal({ handleCheckout }: Props) {
     </form>
   )
 }
-// TODO: btn handler
-// TODO: # items in cart
 export { CartModal }

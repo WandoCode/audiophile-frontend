@@ -49,7 +49,6 @@ function ProductPresentation({ dataItem, slug }: Props) {
         addedQty: itemQuantity,
       })
 
-    // TODO: add item quantity to cart
     // TODO add a visual confirmation
   }
 

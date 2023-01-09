@@ -38,6 +38,5 @@ function Category() {
     </div>
   )
 }
-// TODO: le wrapper va servir à afficher un loading screen le temps d'avoir les réponse des fetchs. A ajouter aux autres components qui utilisent des fetch
 
 export { Category }

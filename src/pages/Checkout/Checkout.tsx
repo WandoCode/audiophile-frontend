@@ -14,9 +14,9 @@ interface FormDatas {
 interface FormErrors {
   [key: string]: string[]
 }
-// TODO: ajouter le nombre d'objet dans le cart usr l'icone du cart, dans un petit rond blanc (i.e.)
+
 function Checkout() {
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [formDatas, setFormDatas] = useState<FormDatas>({
     name: new CheckoutInput('text'),
     email: new CheckoutInput('email'),

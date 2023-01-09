@@ -43,7 +43,6 @@ function CompletionModal() {
     })
   }, [cart])
 
-  // TODO: ajouter les autres items quand on clique sur le boutton
   return (
     <div className="completion-modal">
       <div className="completion-modal__container container">
