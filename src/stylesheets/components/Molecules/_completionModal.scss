@@ -4,13 +4,22 @@
   position: fixed;
   inset: 0;
   display: grid;
-  align-items: center;
+  align-items: flex-start;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
   text-align: left;
-  padding-block: $margin-sm;
+  padding-top: $header-height-sm;
+  padding-bottom: $margin-sm;
 
+  @include breakpoint(medium) {
+    padding-top: $header-height-lg;
+    padding-bottom: $margin-md;
+  }
+  @include breakpoint(medium) {
+    padding-top: $header-height-lg;
+    padding-bottom: $margin-lg;
+  }
   &__container {
     display: grid;
     gap: rem(24);
@@ -33,9 +42,6 @@
 
   &__container p {
     margin-bottom: 0;
-  }
-
-  &__container > img {
   }
 
   &__body {

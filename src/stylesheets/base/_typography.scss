@@ -360,6 +360,12 @@ em {
     color: inherit;
     font-weight: var(--fw-bold);
     font-size: var(--fs-100);
+
+    @include on-hover {
+      &:hover {
+        color: var(--clr-primary-400);
+      }
+    }
   }
 
   &__heading {

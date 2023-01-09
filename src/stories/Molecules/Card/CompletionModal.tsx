@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState, useMemo } from 'react'
 import confirmationIcon from '../../../assets/icon-order-confirmation.svg'
 import { Button } from '../../Atoms'
 import { Context, CartItem } from '../../../ContextProvider'
@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 function CompletionModal() {
   const navigate = useNavigate()
-
+  const [showAllItems, setShowAllItems] = useState(false)
   const { cart, getCartTotal } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
@@ -24,6 +24,25 @@ function CompletionModal() {
       document.body.style.overflowY = 'auto'
     }
   }, [])
+
+  const toggleShowItem = () => {
+    setShowAllItems(!showAllItems)
+  }
+
+  const allItemsDOM = useMemo(() => {
+    return cart.map((item, i) => {
+      return (
+        <ItemSummary
+          name={item.name}
+          price={item.price}
+          url={item.url}
+          quantity={item.quantity}
+          key={i}
+        />
+      )
+    })
+  }, [cart])
+
   // TODO: ajouter les autres items quand on clique sur le boutton
   return (
     <div className="completion-modal">
@@ -36,23 +55,26 @@ function CompletionModal() {
         <p>You will receive an email confirmation shortly.</p>
         <div className="completion-modal__body">
           <div className="completion-modal__items">
-            {cart.length !== 0 && (
-              <ItemSummary
-                name={cart[0].name}
-                price={cart[0].price}
-                url={cart[0].url}
-                quantity={cart[0].quantity}
-              />
+            {cart.length !== 0 && allItemsDOM.at(0)}
+
+            {showAllItems === true && (
+              <ul className="completion-modal__list">{allItemsDOM.slice(1)}</ul>
             )}
 
             {cart.length > 1 && (
               <div className="completion-modal__other-items">
-                <button className="completion-modal__other-items-button">
-                  and {cart.length - 1} other item(s)
+                <button
+                  className="completion-modal__other-items-button"
+                  onClick={toggleShowItem}
+                >
+                  {showAllItems
+                    ? 'view less'
+                    : `and ${cart.length - 1} other item(s)`}
                 </button>
               </div>
             )}
           </div>
+
           <div className="completion-modal__total">
             <p className="completion-modal__heading">Grand Total</p>
             <p className="completion-modal__price white">
@@ -60,6 +82,7 @@ function CompletionModal() {
             </p>
           </div>
         </div>
+
         <Button
           level="primary"
           text="Back To Home"
