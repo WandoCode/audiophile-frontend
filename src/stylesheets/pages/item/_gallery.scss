@@ -17,7 +17,7 @@
 
     @include breakpoint(medium) {
       gap: rem(18);
-      grid-template-columns: repeat(7, 1fr);
+      grid-template-columns: repeat(3, auto) repeat(4, 1fr);
       grid-template-rows: 1fr 1fr;
 
       & > .gallery__img-container > img {
