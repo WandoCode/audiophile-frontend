@@ -1,13 +1,14 @@
 import { Button, ItemModal } from '../../Atoms'
 import { CartItem, Context } from '../../../ContextProvider'
-import { useContext, useMemo, useEffect, useRef } from 'react'
+import { useContext, useMemo, useEffect } from 'react'
 import { formatPrice } from '../../../utility/string'
 
 interface Props {
   handleCheckout: (e: React.MouseEvent) => void
+  closeModal: () => void
 }
 
-function CartModal({ handleCheckout }: Props) {
+function CartModal({ handleCheckout, closeModal }: Props) {
   const { cart, getCartTotal, emptyCart } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
@@ -16,12 +17,20 @@ function CartModal({ handleCheckout }: Props) {
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden'
+    document.body.addEventListener('keydown', keyHandler)
+    document.querySelector('main')?.setAttribute('aria-hidden', 'true')
+
     return () => {
       document.body.style.overflowY = 'auto'
+      document.body.removeEventListener('keydown', keyHandler)
+      document.querySelector('main')?.removeAttribute('aria-hidden')
     }
   }, [])
 
-  // TODO: fermer la modale si on click en-dehors ou change de page. Compliqué...(?)
+  const keyHandler = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') closeModal()
+  }
+
   const itemListDOM = useMemo(
     () =>
       cart.map((item, i) => {
@@ -45,13 +54,12 @@ function CartModal({ handleCheckout }: Props) {
     emptyCart()
   }
 
-  // TODO: rendre la modal accessible au clavier
   return (
-    <form className="cart-modal">
+    <form className="cart-modal" role="dialog" aria-labelledby="cart-title">
       <div className="container">
         <div className="cart-modal__container">
           <div className="cart-modal__header">
-            <h2 className="h2 h2--extra-small text-black">
+            <h2 className="h2 h2--extra-small text-black" id="cart-title">
               Cart ({cart.length})
             </h2>
             <Button

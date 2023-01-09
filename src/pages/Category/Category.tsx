@@ -25,12 +25,15 @@ function Category() {
   })
   return (
     <div className="category">
-      <section className="category__title">
+      <div className="category__title">
         <h1 className="h1 h1--medium">{category}</h1>
-      </section>
+      </div>
       <LoadStateWrapper loading={loading}>
         <div className="container">
-          <section className="category__items">{itemsDOM}</section>
+          <article className="category__items">
+            <h2 className="visually-hidden"></h2>
+            {itemsDOM}
+          </article>
           <CategoriesSection />
           <MainDescriptionSection />
         </div>

@@ -15,7 +15,7 @@ function ImageSet({ data, className, altTxt, lazy = false }: Props) {
           <img
             className={`${className}__img`}
             src={data.mobile}
-            alt={altTxt}
+            alt={altTxt ? altTxt : ' '}
             loading={lazy ? 'lazy' : 'eager'}
           />
         </picture>

@@ -3,7 +3,6 @@ import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
 import ReactMarkdown from 'react-markdown'
 import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { AddItem, Context } from '../../ContextProvider'
 
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
@@ -14,9 +13,9 @@ interface Props {
 }
 
 function ProductPresentation({ dataItem, slug }: Props) {
-  const navigate = useNavigate()
-
   const [itemQuantity, setItemQuantity] = useState(1)
+  const [showConfirmation, setShowConfirmation] = useState(false)
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>()
 
   const { addItem } = useContext(Context) as {
     addItem: AddItemFct
@@ -40,16 +39,29 @@ function ProductPresentation({ dataItem, slug }: Props) {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
 
-    if (slug && dataItem)
-      addItem({
-        slug,
-        price: dataItem.price,
-        url: dataItem.cartImage,
-        name: dataItem.shortName,
-        addedQty: itemQuantity,
-      })
+    if (!slug || !dataItem) return
 
-    // TODO add a visual confirmation
+    addItem({
+      slug,
+      price: dataItem.price,
+      url: dataItem.cartImage,
+      name: dataItem.shortName,
+      addedQty: itemQuantity,
+    })
+
+    triggerVisualConfirmation()
+  }
+
+  const triggerVisualConfirmation = () => {
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+      setTimeoutId(undefined)
+    }
+
+    setShowConfirmation(true)
+
+    const timeoutRef = setTimeout(() => setShowConfirmation(false), 2000)
+    setTimeoutId(timeoutRef)
   }
 
   return (
@@ -86,6 +98,11 @@ function ProductPresentation({ dataItem, slug }: Props) {
             level="primary"
             onClickHandler={handleClick}
           />
+          {showConfirmation && (
+            <div className="product-presentation__confirmation">
+              Successfully added!
+            </div>
+          )}
         </form>
       </div>
     </article>

@@ -20,8 +20,11 @@ function CompletionModal() {
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden'
+    document.querySelector('main')?.setAttribute('aria-hidden', 'true')
+
     return () => {
       document.body.style.overflowY = 'auto'
+      document.querySelector('main')?.removeAttribute('aria-hidden')
     }
   }, [])
 
@@ -44,10 +47,17 @@ function CompletionModal() {
   }, [cart])
 
   return (
-    <div className="completion-modal">
+    <div
+      className="completion-modal"
+      role="dialog"
+      aria-labelledby="title-completion"
+    >
       <div className="completion-modal__container container">
         <img src={confirmationIcon} alt="Icon of confirmation" />
-        <h1 className="h1 h1--medium-responsive text-black">
+        <h1
+          className="h1 h1--medium-responsive text-black"
+          id="title-completion"
+        >
           Thank you <br />
           for your order
         </h1>

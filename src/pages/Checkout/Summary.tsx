@@ -5,14 +5,19 @@ import { getVAT } from '../../utility/number'
 import { formatPrice } from '../../utility/string'
 
 function Summary() {
-  const { cart, getCartTotal } = useContext(Context) as {
+  const { cart, getCartTotal, getCartGrandTotal } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
+    getCartGrandTotal: () => number
   }
 
   const total = useMemo(() => {
     return getCartTotal()
   }, [getCartTotal, cart])
+
+  const grandTotal = useMemo(() => {
+    return getCartGrandTotal()
+  }, [getCartGrandTotal, cart])
 
   const summaryItemsDOM = () => {
     return cart.map((item, i) => {
@@ -36,7 +41,7 @@ function Summary() {
       </div>
       <div className="summary__price-text">
         <h2 className="h2">SHIPPING</h2>
-        <div className="summary__price">$ 50</div>
+        <div className="summary__price">$ {cart.length !== 0 ? 50 : 0}</div>
       </div>
       <div className="summary__price-text">
         <h2 className="h2">VAT (INCLUDED)</h2>
@@ -45,7 +50,7 @@ function Summary() {
       <div className="summary__price-text summary__price-text--primary">
         <h2 className="h2">TOTAL</h2>
         <div className="summary__price summary__price--primary">
-          $ {formatPrice(total + 50)}
+          $ {formatPrice(grandTotal)}
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ export interface DataItemCategory {
 interface Props {
   category?: string
 }
-
+// TODO: gérer les fail de fetch ... Ou les satus autres que 200
 function useGetCategory({
   category,
 }: Props): [DataItemCategory[] | undefined, boolean, boolean] {

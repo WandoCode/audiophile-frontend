@@ -28,6 +28,9 @@ function NumberInput({
       <button className="number-input__btn" onClick={onRemove}>
         -
       </button>
+      <label htmlFor={id} className="visually-hidden">
+        Quantity
+      </label>
       <input
         type="number"
         name={name}

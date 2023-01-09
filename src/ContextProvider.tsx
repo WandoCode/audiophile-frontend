@@ -76,6 +76,9 @@ function ContextProvider({ children }: Props) {
     }, 0)
   }
 
+  const getCartGrandTotal = () => {
+    return cart.length !== 0 ? getCartTotal() + 50 : 0
+  }
   return (
     <Context.Provider
       value={{
@@ -91,6 +94,7 @@ function ContextProvider({ children }: Props) {
         emptyCart,
         getCartTotal,
         cleanCart,
+        getCartGrandTotal,
       }}
     >
       {children}

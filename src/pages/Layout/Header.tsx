@@ -44,6 +44,10 @@ function Header() {
     }
   }
 
+  const onCloseModal = () => {
+    setModalIsOpen(false)
+  }
+
   const handleScroll = () => {
     const yPos = window.scrollY
 
@@ -62,7 +66,7 @@ function Header() {
 
   return (
     <header className={headerClassName}>
-      <div className="container header__container">
+      <div className="container container--unshift  header__container">
         <ImgButton
           onClickHandler={toggleMenu}
           type="burger"
@@ -77,17 +81,25 @@ function Header() {
         <MainNav onToogleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
         <div className="header__cart">
           {cart.length > 0 && (
-            <div className="header__nbr-items">{cart.length}</div>
+            <div
+              className="header__nbr-items"
+              aria-label="Number of items in cart"
+            >
+              {cart.length}
+            </div>
           )}
 
           <ImgButton
             onClickHandler={handleModal}
             type="cart"
             className="cart"
+            aria-haspopup="true"
           />
         </div>
       </div>
-      {modalIsOpen && <CartModal handleCheckout={handleCheckout} />}
+      {modalIsOpen && (
+        <CartModal handleCheckout={handleCheckout} closeModal={onCloseModal} />
+      )}
     </header>
   )
 }

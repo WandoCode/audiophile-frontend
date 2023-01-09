@@ -44,6 +44,7 @@ function Item() {
           <ProductIncludes dataItem={dataItem} />
         </section>
         <section className="gallery">
+          <h2 className="visually-hidden">Gallery</h2>
           <div className="gallery__images">{galleryImagesDOM()}</div>
         </section>
 

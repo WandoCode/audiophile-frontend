@@ -14,7 +14,7 @@ function MainNav({ menuIsOpen, onToogleMenu }: Props) {
   }
 
   return (
-    <nav className="main-nav show-on-desktop" aria-expanded={menuIsOpen}>
+    <nav className="main-nav show-on-desktop">
       <ImgButton
         onClickHandler={onToogleMenu}
         type="close"
