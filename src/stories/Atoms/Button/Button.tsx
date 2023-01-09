@@ -9,7 +9,7 @@ interface Props {
   id?: string
 }
 // TODO: the 'tertiary' type is semantically a Link => Change the button for a link
-function Button({ text, level, onClickHandler, className, id }: Props) {
+function Button({ id, className, text, level, onClickHandler }: Props) {
   const btnClass = useMemo(() => {
     let base = className ? className : ''
     return `${base} btn btn--${level}`
