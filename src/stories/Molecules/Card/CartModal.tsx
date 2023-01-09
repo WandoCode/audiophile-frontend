@@ -46,8 +46,6 @@ function CartModal({ handleCheckout }: Props) {
   }
 
   // TODO: rendre la modal accessible au clavier
-
-  // TODO: Corriger le shift du header à l'ouverture de la modal (en desktop)=> voir scrollbar-gutter dans 'base' ou 'normalize'
   return (
     <form className="cart-modal">
       <div className="container">
