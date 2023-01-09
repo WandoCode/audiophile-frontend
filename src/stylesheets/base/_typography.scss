@@ -239,6 +239,13 @@ strong {
   color: var(--clr-primary-400);
 }
 
+.header {
+  &__nbr-items {
+    color: var(--clr-neutral-100);
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-200);
+  }
+}
 .main-description .h2 p {
   font-size: var(--fs-900);
   line-height: 110%;

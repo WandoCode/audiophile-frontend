@@ -81,7 +81,13 @@ function Header() {
         </Link>
 
         <MainNav onToogleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
-        <ImgButton onClickHandler={handleModal} type="cart" />
+        <div className="header__cart">
+          {cart.length > 0 && (
+            <div className="header__nbr-items">{cart.length}</div>
+          )}
+
+          <ImgButton onClickHandler={handleModal} type="cart" />
+        </div>
       </div>
       {modalIsOpen && <CartModal handleCheckout={handleCheckout} />}
     </header>

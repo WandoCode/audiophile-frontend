@@ -46,6 +46,9 @@
 
     & > *:last-child {
       justify-self: end;
+
+      display: flex;
+      align-items: center;
     }
 
     @include breakpoint(medium) {
@@ -79,5 +82,23 @@
         gap: rem(34);
       }
     }
+  }
+
+  &__cart {
+    position: relative;
+  }
+
+  &__nbr-items {
+    position: absolute;
+    top: 0;
+    right: 0;
+    translate: 50% -50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--clr-primary-400);
+    border-radius: 20rem;
+    height: 18px;
+    width: 18px;
   }
 }
