@@ -11,13 +11,16 @@ import { Item } from './pages/Item/Item'
 import { Layout } from './pages/Layout/Layout'
 
 const options =
-  process.env.NODE_ENV !== 'development'
+  process.env.NODE_ENV === 'production'
     ? { basename: '/audiophile-frontend' }
     : {}
 
+console.log(options)
+console.log(process.env.NODE_ENV)
+
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="category/:category" element={<Category />} />
       <Route path="item/:slug" element={<Item />} />
