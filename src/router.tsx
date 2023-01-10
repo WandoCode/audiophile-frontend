@@ -10,6 +10,11 @@ import { Home } from './pages/Home/Home'
 import { Item } from './pages/Item/Item'
 import { Layout } from './pages/Layout/Layout'
 
+const options =
+  process.env.NODE_ENV !== 'development'
+    ? { basename: '/audiophile-frontend' }
+    : {}
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -20,7 +25,7 @@ const router = createBrowserRouter(
       <Route path="error" element={<Error />} />
     </Route>
   ),
-  { basename: '/audiophile-frontend' }
+  options
 )
 
 export default router
