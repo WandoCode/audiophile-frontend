@@ -19,7 +19,8 @@ const router = createBrowserRouter(
       <Route path="checkout" element={<Checkout />} />
       <Route path="error" element={<Error />} />
     </Route>
-  )
+  ),
+  { basename: '/audiophile-frontend' }
 )
 
 export default router
