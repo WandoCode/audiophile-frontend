@@ -1,9 +1,9 @@
 {
-  "name": "@max/front",
-  "private": true,
-  "version": "0.0.0",
+  "name": "audiophile-front",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
-  "homepage": "https://WandoCode.github.io/audiophile-frontend/",
+  "homepage": "https://wandocode.github.io/audiophile-frontend/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
