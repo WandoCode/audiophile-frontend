@@ -1,6 +1,6 @@
 @use '../../abstracts/' as *;
 
-.main-nav[aria-expanded='true'] {
+.main-nav--mobile {
   position: fixed;
   top: 0;
   left: 0;
