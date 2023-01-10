@@ -20,15 +20,15 @@ console.log(process.env.NODE_ENV)
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route element={<Layout />}>
+    <Route path="/audiophile-frontend" element={<Layout />}>
       <Route index element={<Home />} />
       <Route path="category/:category" element={<Category />} />
       <Route path="item/:slug" element={<Item />} />
       <Route path="checkout" element={<Checkout />} />
       <Route path="error" element={<Error />} />
     </Route>
-  ),
-  options
+  )
+  // options
 )
 
 export default router
