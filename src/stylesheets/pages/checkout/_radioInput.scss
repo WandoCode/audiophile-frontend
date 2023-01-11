@@ -24,7 +24,11 @@
     border-radius: rem(1000);
   }
 
-  &__input:checked ~ &__check {
+  &--checked {
+    border-color: var(--clr-primary-400);
+  }
+
+  &--checked &__check {
     background-color: var(--clr-primary-400);
   }
 
@@ -43,5 +47,3 @@
     }
   }
 }
-
-// TODO: rendre la border orange si checké==> Passer par une classe controllée par react, pas possible autrement ==> Simplifier le CSS sera possible avec la classe

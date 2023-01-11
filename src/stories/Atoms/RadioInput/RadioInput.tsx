@@ -17,8 +17,12 @@ function RadioInput({
   error = false,
 }: Props) {
   const mainClass = useMemo(() => {
-    return error ? `radio radio--error` : `radio`
-  }, [error])
+    let base = 'radio '
+    if (error) base += 'radio--error'
+    if (value === currValue) base += 'radio--checked'
+
+    return base
+  }, [error, currValue])
 
   return (
     <label htmlFor={value} className={mainClass}>

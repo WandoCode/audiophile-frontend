@@ -57,7 +57,7 @@ function Checkout() {
 
     const formIsValid = validateForm()
 
-    // Send datas somewhere if it's valid
+    // TODO: Send datas somewhere if it's valid
 
     setShowModal(formIsValid)
   }
@@ -126,6 +126,7 @@ function Checkout() {
         <div className="form-checkout__container">
           <h1 className="h1 h1--small text-black">Checkout</h1>
           <fieldset className="form-checkout__subsection">
+            <h2 className="visually-hidden">Checkout form</h2>
             <legend className="form-checkout__subtitle">
               BILLINGS DETAILS
             </legend>
@@ -291,6 +292,7 @@ function Checkout() {
         <div className="form-checkout__container form-checkout__container--summary">
           <fieldset className="form-checkout__summary">
             <legend className="form-checkout__summary-subtitle">SUMMARY</legend>
+            <h2 className="visually-hidden">Summary</h2>
             <Summary />
             <Button
               text={

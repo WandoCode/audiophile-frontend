@@ -17,9 +17,12 @@ function MainDescriptionSection() {
       />
 
       <div className="main-description__text">
-        <h2 className="h2 h2--secondary">
-          <ReactMarkdown>{layout?.mainDescription.title ?? ''}</ReactMarkdown>
-        </h2>
+        <ReactMarkdown
+          components={{ p: 'h2' }}
+          className="main-description__secondary"
+        >
+          {layout?.mainDescription.title ?? ''}
+        </ReactMarkdown>
         <p className="main-description__description">
           {layout?.mainDescription.text}
         </p>

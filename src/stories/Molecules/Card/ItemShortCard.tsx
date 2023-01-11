@@ -1,6 +1,6 @@
-import { LinkedItem } from '../../../hooks/useGetItem'
 import { Button, ImageSet } from '../../Atoms'
 import { useNavigate } from 'react-router-dom'
+import { LinkedItem } from '../../../hooks/helpers/dataItem'
 interface Props {
   data: LinkedItem
 }

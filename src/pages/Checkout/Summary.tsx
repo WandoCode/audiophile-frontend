@@ -36,19 +36,19 @@ function Summary() {
     <div className="summary">
       <ul className="summary__items">{summaryItemsDOM()}</ul>
       <div className="summary__price-text">
-        <h2 className="h2">TOTAL</h2>
+        <h3 className="h3 h3--summary">TOTAL</h3>
         <div className="summary__price">$ {formatPrice(total)}</div>
       </div>
       <div className="summary__price-text">
-        <h2 className="h2">SHIPPING</h2>
+        <h3 className="h3 h3--summary">SHIPPING</h3>
         <div className="summary__price">$ {cart.length !== 0 ? 50 : 0}</div>
       </div>
       <div className="summary__price-text">
-        <h2 className="h2">VAT (INCLUDED)</h2>
+        <h3 className="h3 h3--summary">VAT (INCLUDED)</h3>
         <div className="summary__price">$ {formatPrice(getVAT(total))}</div>
       </div>
       <div className="summary__price-text summary__price-text--primary">
-        <h2 className="h2">TOTAL</h2>
+        <h3 className="h3 h3--summary">TOTAL</h3>
         <div className="summary__price summary__price--primary">
           $ {formatPrice(grandTotal)}
         </div>

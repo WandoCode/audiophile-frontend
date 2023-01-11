@@ -30,10 +30,7 @@ function Category() {
       </div>
       <LoadStateWrapper loading={loading}>
         <div className="container">
-          <article className="category__items">
-            <h2 className="visually-hidden"></h2>
-            {itemsDOM}
-          </article>
+          <section className="category__items">{itemsDOM}</section>
           <CategoriesSection />
           <MainDescriptionSection />
         </div>

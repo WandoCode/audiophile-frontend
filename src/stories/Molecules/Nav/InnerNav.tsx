@@ -10,7 +10,6 @@ function InnerNav() {
 
   return (
     <section className="inner-nav">
-      <h2 className="visually-hidden">Naviagation</h2>
       <div className="inner-nav__link">
         <InnerLink text="go back" clickHandler={handleGoBack} />
       </div>

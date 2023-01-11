@@ -59,6 +59,7 @@ body {
 .h2--small {
   font-size: var(--fs-650);
 }
+
 .h2--extra-small {
   font-size: var(--fs-550);
 }
@@ -71,6 +72,12 @@ body {
 
   @include breakpoint(medium) {
     letter-spacing: rem(1.05);
+  }
+
+  &--summary {
+    font-size: var(--fs-400);
+    color: var(--clr-neutral-500);
+    font-weight: var(--fw-normal);
   }
 
   &--big {
@@ -246,9 +253,13 @@ strong {
     font-size: var(--fs-200);
   }
 }
-.main-description .h2 p {
+
+.main-description__secondary h2 {
   font-size: var(--fs-900);
   line-height: 110%;
+  text-transform: uppercase;
+  color: var(--clr-neutral-700);
+  letter-spacing: rem(1.3);
 }
 
 .inner-link {
@@ -334,12 +345,6 @@ em {
 }
 
 .summary {
-  & h2 {
-    font-size: var(--fs-400);
-    color: var(--clr-neutral-500);
-    font-weight: var(--fw-normal);
-  }
-
   &__price {
     color: var(--clr-neutral-700);
     font-size: var(--fs-550);

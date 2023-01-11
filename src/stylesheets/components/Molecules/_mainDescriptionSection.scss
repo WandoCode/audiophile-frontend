@@ -23,7 +23,6 @@
   &__text {
     display: grid;
     gap: rem(32);
-
     @include breakpoint(large) {
       align-content: center;
       grid-column: 1 / 2;
