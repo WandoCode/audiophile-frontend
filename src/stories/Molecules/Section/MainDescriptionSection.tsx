@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { Context } from '../../../ContextProvider'
+import { Context } from '../../../components/ContextProvider'
 import { ImageSet } from '../../Atoms'
 import { DataLayout } from '../../../hooks/helpers/dataLayout'
 

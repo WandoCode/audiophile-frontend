@@ -1,4 +1,4 @@
-import { CartItem } from '../ContextProvider'
+import { CartItem } from '../components/ContextProvider'
 
 function cartStore() {
   const save = (cart: CartItem[]) => {

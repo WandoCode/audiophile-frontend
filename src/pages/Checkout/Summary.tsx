@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { Context, CartItem } from '../../ContextProvider'
+import { Context, CartItem } from '../../components/ContextProvider'
 import { ItemSummary } from '../../stories/Atoms/CardElement/ItemSummary'
 import { getVAT } from '../../utility/number'
 import { formatPrice } from '../../utility/string'

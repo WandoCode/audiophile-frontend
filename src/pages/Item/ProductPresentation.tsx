@@ -3,7 +3,7 @@ import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
 import ReactMarkdown from 'react-markdown'
 import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'
-import { AddItem, Context } from '../../ContextProvider'
+import { AddItem, Context } from '../../components/ContextProvider'
 
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 

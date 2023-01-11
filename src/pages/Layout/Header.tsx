@@ -1,5 +1,5 @@
 import { useContext, useState, useMemo, useRef, useEffect } from 'react'
-import { CartItem, Context } from '../../ContextProvider'
+import { CartItem, Context } from '../../components/ContextProvider'
 import { ImgButton } from '../../stories/Atoms'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { CartModal, MainNav } from '../../stories/Molecules'

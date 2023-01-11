@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
-import { DataHomepage } from './hooks/helpers/dataHomepage'
-import { DataLayout } from './hooks/helpers/dataLayout'
-import cartStore from './store/cartStore'
+import { DataHomepage } from '../hooks/helpers/dataHomepage'
+import { DataLayout } from '../hooks/helpers/dataLayout'
+import cartStore from '../store/cartStore'
 
 interface Props {
   children: React.ReactNode

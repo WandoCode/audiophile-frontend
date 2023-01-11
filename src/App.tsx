@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
 import LoadStateWrapper from './components/LoadStateWrapper'
-import { Context } from './ContextProvider'
+import { Context } from './components/ContextProvider'
 import { useGetLayout } from './hooks/useGetLayout'
-import router from './router'
+import router from './components/router'
 
 function App() {
   const { setLayout } = useContext(Context) as any

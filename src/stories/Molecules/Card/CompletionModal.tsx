@@ -1,7 +1,7 @@
 import { useEffect, useContext, useState, useMemo } from 'react'
 import confirmationIcon from '../../../assets/icon-order-confirmation.svg'
 import { Button } from '../../Atoms'
-import { Context, CartItem } from '../../../ContextProvider'
+import { Context, CartItem } from '../../../components/ContextProvider'
 import { ItemSummary } from '../../Atoms/CardElement/ItemSummary'
 import { formatPrice } from '../../../utility/string'
 import { useNavigate } from 'react-router-dom'

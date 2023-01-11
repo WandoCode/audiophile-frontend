@@ -3,7 +3,7 @@ import {
   Context,
   RemoveItem,
   AddItem,
-} from '../../../ContextProvider'
+} from '../../../components/ContextProvider'
 import { NumberInput } from '..'
 import { formatPrice } from '../../../utility/string'
 import { useContext } from 'react'

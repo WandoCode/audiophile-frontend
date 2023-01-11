@@ -1,5 +1,5 @@
 import { Button, ItemModal } from '../../Atoms'
-import { CartItem, Context } from '../../../ContextProvider'
+import { CartItem, Context } from '../../../components/ContextProvider'
 import { useContext, useMemo, useEffect } from 'react'
 import { formatPrice } from '../../../utility/string'
 

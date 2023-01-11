@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { Context } from '../../../ContextProvider'
+import { Context } from '../../../components/ContextProvider'
 import { ImgButton, LinkNav } from '../../Atoms'
 import { DataLayout } from '../../../hooks/helpers/dataLayout'
 

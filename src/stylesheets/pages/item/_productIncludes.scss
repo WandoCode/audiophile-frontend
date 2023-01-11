@@ -16,6 +16,7 @@
   & > ul {
     display: grid;
     gap: rem(8);
+
     & > li {
       display: grid;
       grid-template-columns: 1.5em auto;
