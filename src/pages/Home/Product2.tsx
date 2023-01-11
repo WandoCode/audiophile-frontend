@@ -1,6 +1,6 @@
 import { Button, ImageSet } from '../../stories/Atoms'
 import { useNavigate } from 'react-router-dom'
-import { DataHomepage } from '../../hooks/useGetHomepage'
+import { DataHomepage } from '../../hooks/helpers/dataHomepage'
 
 interface Props {
   data: DataHomepage | undefined

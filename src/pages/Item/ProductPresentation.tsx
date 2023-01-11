@@ -1,9 +1,9 @@
-import { DataItem } from '../../hooks/useGetItem'
 import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
 import ReactMarkdown from 'react-markdown'
 import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'
 import { AddItem, Context } from '../../components/ContextProvider'
+import { DataItem } from '../../hooks/helpers/dataItem'
 
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 
