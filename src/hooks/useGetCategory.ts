@@ -10,7 +10,7 @@ const baseURL = env === 'development' ? urls.dev : urls.production
 interface Props {
   category?: string
 }
-// TODO: gérer les fail de fetch ... Ou les satus autres que 200
+
 function useGetCategory({
   category,
 }: Props): [DataItemCategory[] | undefined, boolean, boolean] {
@@ -23,6 +23,10 @@ function useGetCategory({
 
     try {
       const rep = await axios.get(baseURL + `/api/category/${category}`)
+
+      if (rep.status !== 200)
+        throw new Error(`Server responded with status ${rep.status}`)
+
       const raw = rep.data.data as any[]
 
       const structuredItemsArray = dataCategory(
@@ -33,7 +37,8 @@ function useGetCategory({
 
       setData(structuredItemsArray)
     } catch (error) {
-      setError(true)
+      setError(true) // TODO:Afficher une page d'erreur
+      throw error
     } finally {
       setLoading(false)
     }

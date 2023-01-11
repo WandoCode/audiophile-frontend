@@ -1,0 +1,12 @@
+@use '../../abstracts/' as *;
+
+.not-found {
+  padding-top: $margin-sm;
+
+  @include breakpoint(medium) {
+    padding-top: $margin-md;
+  }
+  @include breakpoint(large) {
+    padding-top: $margin-lg;
+  }
+}

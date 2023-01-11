@@ -27,13 +27,17 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
       try {
         const rep = await axios.get(baseURL + `/api/products/${slug}`)
 
+        if (rep.status !== 200)
+          throw new Error(`Server responded with status ${rep.status}`)
+
         const raw = rep.data.data.attributes
 
         const structuredDatas = dataItem(raw, baseURL, env).getCleanDatas()
 
         setData(structuredDatas)
       } catch (error) {
-        setError(true)
+        setError(true) // TODO:Afficher une page d'erreur
+        throw error
       } finally {
         setLoading(false)
       }

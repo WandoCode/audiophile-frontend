@@ -9,7 +9,7 @@ import {
 } from '../../stories/Molecules'
 
 function Home() {
-  const [data, loading, error] = useGetHomepage()
+  const [data, loading] = useGetHomepage()
 
   return (
     <div className="home ">

@@ -17,13 +17,17 @@ const useGetLayout = (): [DataLayout | undefined, boolean, boolean] => {
     try {
       const rep = await axios.get(baseURL + '/api/layout-data?populate=*')
 
+      if (rep.status !== 200)
+        throw new Error(`Server responded with status ${rep.status}`)
+
       const raw = rep.data.data.attributes
 
       const cleanDatas = dataLayout(raw, baseURL, env).getCleanDatas()
 
       setData(cleanDatas)
     } catch (error) {
-      setError(true)
+      setError(true) // TODO:Afficher une page d'erreur
+      throw error
     } finally {
       setLoading(false)
     }
