@@ -2,10 +2,13 @@
 
 .input {
   min-width: 0;
+
+  padding: rem(19) rem(24);
+
   border-radius: rem(8);
   border: 1px solid var(--clr-neutral-300);
-  padding: rem(19) rem(24);
   outline: none;
+
   caret-color: var(--clr-primary-400);
   cursor: pointer;
 
@@ -40,11 +43,13 @@
 
   &__error-text {
     position: absolute;
+
     justify-self: flex-end;
   }
 
   &__container {
     position: relative;
+
     display: grid;
     gap: rem(9);
   }

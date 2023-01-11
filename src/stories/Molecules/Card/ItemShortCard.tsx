@@ -31,4 +31,3 @@ function ItemShortCard({ data }: Props) {
 }
 
 export { ItemShortCard }
-// TODO: mettre des titres sr-only pour les sections qui n'ont pas de titres (toutes les pages)

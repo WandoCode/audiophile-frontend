@@ -4,27 +4,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: rem(64);
   gap: 0.5rem;
+
+  max-height: rem(64);
 
   &__image-container {
     height: rem(64);
     width: rem(64);
+
     margin-right: 0.5rem;
   }
 
   &__img {
-    object-fit: contain;
-    border-radius: 8px;
-    overflow: hidden;
     min-width: 64px;
+
+    border-radius: 8px;
   }
 
   &__text {
+    flex-grow: 1;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    flex-grow: 1;
+
     white-space: nowrap;
   }
 }

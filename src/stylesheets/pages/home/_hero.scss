@@ -70,6 +70,7 @@
       max-width: rem(380);
     }
   }
+
   &__cta {
     @include breakpoint(medium) {
       margin-top: rem(15);

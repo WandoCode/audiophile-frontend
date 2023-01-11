@@ -1,8 +1,9 @@
 @use '../abstracts/' as *;
 
 .footer {
-  background-color: var(--clr-neutral-600);
   margin-top: $flow-sm-400;
+
+  background-color: var(--clr-neutral-600);
 
   @include breakpoint(medium) {
     margin-top: $flow-md-100;
@@ -14,17 +15,20 @@
 
   &__container {
     display: grid;
-    gap: rem(48);
     justify-items: center;
+    gap: rem(48);
+
     padding-bottom: rem(38);
 
     @include breakpoint(medium) {
       gap: rem(32);
-      text-align: left;
       justify-items: start;
       grid-template-rows: repeat(4, auto);
       grid-template-columns: auto auto;
+
       padding-bottom: rem(48);
+
+      text-align: left;
     }
 
     @include breakpoint(large) {
@@ -37,6 +41,7 @@
   &__decorative-bar {
     height: rem(4);
     width: rem(100);
+
     background-color: var(--clr-primary-400);
 
     @include breakpoint(medium) {

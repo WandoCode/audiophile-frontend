@@ -1,12 +1,14 @@
 .load-screen {
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 
+  height: 100vh;
+
   & img {
     height: 100px;
     width: 100px;
+
     animation: rotation 3s linear infinite;
   }
 }

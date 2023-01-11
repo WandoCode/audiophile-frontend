@@ -13,20 +13,24 @@
   }
 
   &__input {
-    width: 100%;
-    flex-basis: 25%;
+    width: 25%;
+
+    padding-block: var(--spacing);
+
     border: none;
     background: transparent;
+
     text-align: center;
-    padding-block: var(--spacing);
   }
 
   &__btn {
-    border: none;
-    background: transparent;
     flex-basis: 33%;
     flex-grow: 1;
+
     padding-block: var(--spacing);
+
+    border: none;
+    background: transparent;
     cursor: pointer;
   }
 }

@@ -24,6 +24,6 @@ const router = createHashRouter(
   { basename: '/audiophile-frontend' }
 )
 
-// FIXME: Pour acceder normalement aux pages de l'app (dev ou buildé) avec vite dev/preview ou 'serve' => http://localhost:3000/audiophile-frontend/#/audiophile-frontend/
+// FIXME: Pour acceder normalement aux pages de l'app (dev ou "buildé") => http://localhost:3000/audiophile-frontend/#/audiophile-frontend/
 
 export default router

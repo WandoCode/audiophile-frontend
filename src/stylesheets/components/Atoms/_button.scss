@@ -28,16 +28,19 @@
   }
 
   &--secondary {
-    background-color: transparent;
     border: 1px solid var(--clr-neutral-700);
+
+    background-color: transparent;
 
     @include on-hover {
       &:hover {
         background-color: var(--clr-neutral-700);
       }
     }
+
     &--dark {
       background-color: var(--clr-neutral-700);
+
       @include on-hover {
         &:hover {
           background-color: hsl(0, 0, 30%);
@@ -49,16 +52,21 @@
 
   &--tertiary {
     gap: rem(13);
+
     min-height: unset;
     min-width: unset;
+
     padding: 0;
+
     background-color: transparent;
   }
 
   &--quaternary {
     min-height: unset;
     min-width: unset;
+
     padding: 0;
+
     background-color: transparent;
   }
 }

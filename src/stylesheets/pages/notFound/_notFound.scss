@@ -6,6 +6,7 @@
   @include breakpoint(medium) {
     padding-top: $margin-md;
   }
+
   @include breakpoint(large) {
     padding-top: $margin-lg;
   }

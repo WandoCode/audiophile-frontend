@@ -3,12 +3,14 @@
 .you-may-like {
   display: grid;
   gap: rem(40);
-  margin-top: $flow-sm-400;
   align-content: center;
+
+  margin-top: $flow-sm-400;
 
   @include breakpoint(medium) {
     gap: rem(56);
   }
+
   @include breakpoint(large) {
     gap: rem(64);
   }

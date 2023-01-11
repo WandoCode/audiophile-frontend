@@ -4,8 +4,9 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  max-height: rem(64);
   gap: 1rem;
+
+  max-height: rem(64);
 
   &__image-container {
     height: rem(64);

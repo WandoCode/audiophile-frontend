@@ -3,12 +3,12 @@
 .item-short-card {
   display: grid;
   justify-items: center;
-  gap: rem(32);
   align-content: space-between;
+  gap: rem(32);
 
   &__content {
     display: grid;
-    gap: rem(32);
     justify-items: center;
+    gap: rem(32);
   }
 }

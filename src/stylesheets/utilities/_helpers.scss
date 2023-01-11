@@ -88,6 +88,7 @@
   }
 }
 
+// Add the width of the main scrollbar on the left when it's on the screen
 .unshift {
   padding-left: calc(100vw - 100%);
 }

@@ -9,6 +9,7 @@
 
   &__link {
     display: flex;
+
     margin-block: rem(16) rem(24);
 
     @include breakpoint(medium) {

@@ -3,8 +3,8 @@
 .footer-nav {
   display: flex;
   flex-direction: column;
-  gap: rem(16);
   align-items: center;
+  gap: rem(16);
 
   @include breakpoint(medium) {
     flex-direction: row;
