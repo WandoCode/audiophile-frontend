@@ -41,7 +41,8 @@ class CheckoutInput {
   validateTel() {
     const errors: string[] = []
 
-    const telRegEx = /^\+?\d\s?\-?\(?[0-9]{3}\)?\s?\-?[0-9]{3}\s?\-?[0-9]{4}$/g
+    const telRegEx =
+      /^\+?\d\s?\-?\(?[0-9]{2,3}\)?\s?\-?[0-9]{2,3}\s?\-?[0-9]{2,6}$/g
 
     if (this.value.length === 0) errors.push('Field required')
     else if (!telRegEx.test(this.value)) errors.push('Wrong format')

@@ -33,6 +33,8 @@ function hookStore() {
   }
 
   const handleErrorStatus = (status: number) => {
+    if (status === 404) console.log('catch the 404 error') // TODO: if catch=> fetch again after 0.5s after error
+    if (status === 401) console.log('catch the 40 error')
     if (status !== 200)
       throw new Error(`Server responded with status ${status}`)
   }
