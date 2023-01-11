@@ -1,6 +1,7 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { DataHomepage } from './hooks/helpers/dataHomepage'
 import { DataLayout } from './hooks/helpers/dataLayout'
+import cartStore from './store/cartStore'
 
 interface Props {
   children: React.ReactNode
@@ -29,10 +30,20 @@ export interface RemoveItem {
 export const Context = createContext({})
 
 function ContextProvider({ children }: Props) {
+  const cartStoreManager = cartStore()
   const [layout, setLayout] = useState<DataLayout>()
   const [homepage, setHomepage] = useState<DataHomepage>()
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState<CartItem[]>([])
+
+  useEffect(() => {
+    const stringCart = cartStoreManager.load()
+    if (stringCart) setCart(JSON.parse(stringCart))
+  }, [])
+
+  useEffect(() => {
+    if (cart.length > 0) cartStoreManager.save(cart)
+  }, [cart])
 
   const addItem = ({ slug, name, url, price, addedQty }: AddItem) => {
     const currItems = [...cart]
@@ -43,6 +54,7 @@ function ContextProvider({ children }: Props) {
     else {
       currItems[itemPosInCart].quantity += addedQty
     }
+
     setCart(currItems)
   }
 
@@ -64,10 +76,13 @@ function ContextProvider({ children }: Props) {
     const cleanedCart = currItems.filter((item) => item.quantity !== 0)
 
     setCart(cleanedCart)
+
+    if (cleanCart.length === 0) cartStoreManager.empty()
   }
 
   const emptyCart = () => {
     setCart([])
+    cartStoreManager.empty()
   }
 
   const getCartTotal = () => {
@@ -79,6 +94,7 @@ function ContextProvider({ children }: Props) {
   const getCartGrandTotal = () => {
     return cart.length !== 0 ? getCartTotal() + 50 : 0
   }
+
   return (
     <Context.Provider
       value={{

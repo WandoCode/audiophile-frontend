@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import urls from './config.json'
-import axios from 'axios'
 import dataItem, { DataItem } from './helpers/dataItem'
+import hookStore from '../store/hookStore'
 
 interface Props {
   slug?: string
@@ -10,9 +10,8 @@ interface Props {
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production
 
-function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
+function useGetItem({ slug }: Props): [DataItem | undefined, boolean] {
   const [data, setData] = useState<DataItem>()
-  const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -20,15 +19,11 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
       setLoading(true)
 
       if (!slug) {
-        setError(true)
         return
       }
 
       try {
-        const rep = await axios.get(baseURL + `/api/products/${slug}`)
-
-        if (rep.status !== 200)
-          throw new Error(`Server responded with status ${rep.status}`)
+        const rep = await hookStore().fetchItem(baseURL, slug)
 
         const raw = rep.data.data.attributes
 
@@ -36,8 +31,7 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
 
         setData(structuredDatas)
       } catch (error) {
-        setError(true) // TODO:Afficher une page d'erreur
-        throw error
+        throw error // TODO:Afficher une page d'erreur
       } finally {
         setLoading(false)
       }
@@ -45,7 +39,7 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
 
     getItem()
   }, [slug])
-  return [data, loading, error]
+  return [data, loading]
 }
 
 export default useGetItem

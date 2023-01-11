@@ -1,23 +1,19 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import urls from './config.json'
 import dataHomepage, { DataHomepage } from './helpers/dataHomepage'
+import hookStore from '../store/hookStore'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production
 
-const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
+const useGetHomepage = (): [DataHomepage | undefined, boolean] => {
   const [data, setData] = useState<DataHomepage>()
-  const [error, setError] = useState(false)
   const [loading, setLoading] = useState(true)
 
   const getLayoutDatas = async () => {
     setLoading(true)
     try {
-      const rep = await axios.get(baseURL + '/api/home')
-
-      if (rep.status !== 200)
-        throw new Error(`Server responded with status ${rep.status}`)
+      const rep = await hookStore().fetchHomepage(baseURL)
 
       const raw = rep.data.data.attributes
 
@@ -25,8 +21,7 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
 
       setData(structuredDatas)
     } catch (error) {
-      setError(true) // TODO:Afficher une page d'erreur
-      throw error
+      throw error // TODO:Afficher une page d'erreur
     }
     setLoading(false)
   }
@@ -35,7 +30,7 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean, boolean] => {
     getLayoutDatas()
   }, [])
 
-  return [data, loading, error]
+  return [data, loading]
 }
 
 export { useGetHomepage }

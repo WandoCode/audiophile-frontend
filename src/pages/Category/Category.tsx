@@ -11,7 +11,7 @@ import LoadStateWrapper from '../../components/LoadStateWrapper'
 function Category() {
   const { category } = useParams()
 
-  const [data, loading, error] = useGetCategory({ category })
+  const [data, loading] = useGetCategory({ category })
 
   const itemsDOM = data?.map((itemData, i) => {
     return (

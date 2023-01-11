@@ -3,6 +3,7 @@ import { Hero } from './Hero'
 import { Product1 } from './Product1'
 import { Product2 } from './Product2'
 import { Product3 } from './Product3'
+import LoadStateWrapper from '../../components/LoadStateWrapper'
 import {
   CategoriesSection,
   MainDescriptionSection,
@@ -13,16 +14,18 @@ function Home() {
 
   return (
     <div className="home ">
-      <Hero data={data} />
-      <div className="container">
-        <CategoriesSection />
-        <section className="home__products">
-          <Product1 data={data} />
-          <Product2 data={data} />
-          <Product3 data={data} />
-        </section>
-        <MainDescriptionSection />
-      </div>
+      <LoadStateWrapper loading={false}>
+        <Hero data={data} />
+        <div className="container">
+          <CategoriesSection />
+          <section className="home__products">
+            <Product1 data={data} />
+            <Product2 data={data} />
+            <Product3 data={data} />
+          </section>
+          <MainDescriptionSection />
+        </div>
+      </LoadStateWrapper>
     </div>
   )
 }
