@@ -1,50 +1,7 @@
 import { useState, useEffect } from 'react'
 import urls from './config.json'
-import { formatImgUrl } from '../utility/images'
 import axios from 'axios'
-
-interface IncludeItem {
-  quantity: number
-  item: string
-}
-
-interface ImagesSet {
-  mobile: string
-  tablet: string
-  desktop: string
-}
-
-export interface LinkedItem {
-  shortName: string
-  name: string
-  slug: string
-  images: ImagesSet
-}
-
-export interface DataItem {
-  name: string
-  shortName: string
-  slug: string
-  price: number
-  newItem: boolean
-  description: string
-  features: string
-  includes: IncludeItem[]
-  mainImages: ImagesSet
-  galleryImages: {
-    first: ImagesSet
-    second: ImagesSet
-    third: ImagesSet
-  }
-
-  linkedItems: {
-    first: LinkedItem
-    second: LinkedItem
-    third: LinkedItem
-  }
-
-  cartImage: string
-}
+import dataItem, { DataItem } from './helpers/dataItem'
 
 interface Props {
   slug?: string
@@ -52,7 +9,6 @@ interface Props {
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production
-const img = formatImgUrl(baseURL, env)
 
 function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
   const [data, setData] = useState<DataItem>()
@@ -72,113 +28,8 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean, boolean] {
         const rep = await axios.get(baseURL + `/api/products/${slug}`)
 
         const raw = rep.data.data.attributes
-        const rawOthers = rep.data.data.attributes.others.data
 
-        const structuredDatas: DataItem = {
-          name: raw?.name,
-          shortName: raw?.shortName,
-          slug: raw?.slug,
-          newItem: raw?.new,
-          price: raw?.price,
-          features: raw?.features,
-          description: raw?.description,
-          includes: raw?.includes,
-          mainImages: {
-            mobile: img.format(raw?.image[0]?.mobile?.data?.attributes?.url),
-            tablet: img.format(raw?.image[0]?.tablet?.data?.attributes?.url),
-            desktop: img.format(raw?.image[0]?.desktop?.data?.attributes?.url),
-          },
-          galleryImages: {
-            first: {
-              mobile: img.format(
-                raw?.gallery[0].first[0].mobile?.data?.attributes?.url
-              ),
-              tablet: img.format(
-                raw?.gallery[0].first[0].tablet?.data?.attributes?.url
-              ),
-              desktop: img.format(
-                raw?.gallery[0].first[0].desktop?.data?.attributes?.url
-              ),
-            },
-            second: {
-              mobile: img.format(
-                raw?.gallery[0].second[0].mobile?.data?.attributes?.url
-              ),
-              tablet: img.format(
-                raw?.gallery[0].second[0].tablet?.data?.attributes?.url
-              ),
-              desktop: img.format(
-                raw?.gallery[0].second[0].desktop?.data?.attributes?.url
-              ),
-            },
-            third: {
-              mobile: img.format(
-                raw?.gallery[0].third[0].mobile?.data?.attributes?.url
-              ),
-              tablet: img.format(
-                raw?.gallery[0].third[0].tablet?.data?.attributes?.url
-              ),
-              desktop: img.format(
-                raw?.gallery[0].third[0].desktop?.data?.attributes?.url
-              ),
-            },
-          },
-          linkedItems: {
-            first: {
-              shortName: rawOthers[0]?.attributes?.shortName,
-              name: rawOthers[0]?.attributes?.name,
-              slug: rawOthers[0]?.attributes?.slug,
-              images: {
-                mobile: img.format(
-                  rawOthers[0].attributes?.shared?.mobile?.data?.attributes?.url
-                ),
-                tablet: img.format(
-                  rawOthers[0].attributes?.shared?.tablet?.data?.attributes?.url
-                ),
-                desktop: img.format(
-                  rawOthers[0].attributes?.shared?.desktop?.data?.attributes
-                    ?.url
-                ),
-              },
-            },
-            second: {
-              shortName: rawOthers[1]?.attributes?.shortName,
-              name: rawOthers[1]?.attributes?.name,
-              slug: rawOthers[1]?.attributes?.slug,
-
-              images: {
-                mobile: img.format(
-                  rawOthers[1].attributes?.shared?.mobile?.data?.attributes?.url
-                ),
-                tablet: img.format(
-                  rawOthers[1].attributes?.shared?.tablet?.data?.attributes?.url
-                ),
-                desktop: img.format(
-                  rawOthers[1].attributes?.shared?.desktop?.data?.attributes
-                    ?.url
-                ),
-              },
-            },
-            third: {
-              shortName: rawOthers[2]?.attributes?.shortName,
-              name: rawOthers[2]?.attributes?.name,
-              slug: rawOthers[2]?.attributes?.slug,
-              images: {
-                mobile: img.format(
-                  rawOthers[2].attributes?.shared?.mobile?.data?.attributes?.url
-                ),
-                tablet: img.format(
-                  rawOthers[2].attributes?.shared?.tablet?.data?.attributes?.url
-                ),
-                desktop: img.format(
-                  rawOthers[2].attributes?.shared?.desktop?.data?.attributes
-                    ?.url
-                ),
-              },
-            },
-          },
-          cartImage: img.format(raw?.cartImage.data.attributes.url),
-        }
+        const structuredDatas = dataItem(raw, baseURL, env).getCleanDatas()
 
         setData(structuredDatas)
       } catch (error) {
