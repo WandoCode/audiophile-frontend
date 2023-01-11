@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react'
-import { DataHomepage } from './hooks/useGetHomepage'
-import { DataLayout } from './hooks/useGetLayout'
+import { DataHomepage } from './hooks/helpers/dataHomepage'
+import { DataLayout } from './hooks/helpers/dataLayout'
 
 interface Props {
   children: React.ReactNode

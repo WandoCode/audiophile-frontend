@@ -1,6 +1,6 @@
-import { DataItemCategory } from '../../../hooks/useGetCategory'
 import { Button, ImageSet } from '../../Atoms'
 import { useNavigate } from 'react-router-dom'
+import { DataItemCategory } from '../../../hooks/helpers/dataCategory'
 
 interface Props {
   className: string

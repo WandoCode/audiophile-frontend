@@ -2,9 +2,9 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { Context } from '../../ContextProvider'
-import { DataLayout } from '../../hooks/useGetLayout'
 import { SocialLink } from '../../stories/Atoms'
 import { FooterNav } from '../../stories/Molecules'
+import { DataLayout } from '../../hooks/helpers/dataLayout'
 
 function Footer() {
   let { layout } = useContext(Context) as {
