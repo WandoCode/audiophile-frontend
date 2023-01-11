@@ -19,8 +19,8 @@ body {
   text-transform: uppercase;
   color: var(--clr-neutral-100);
   letter-spacing: rem(1.3);
-  line-height: rem(40);
-  font-size: var(--fs-800);
+  line-height: 115%;
+  font-size: var(--fs-850);
 
   &--small {
     font-size: var(--fs-700);
