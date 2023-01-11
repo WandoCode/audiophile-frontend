@@ -23,6 +23,7 @@ const router = createHashRouter(
   ),
   { basename: '/audiophile-frontend' }
 )
-// FIXME: Test du build => Pour acceder normalement aux pages de l'app buildé avec 'serve', il faut retirer la base dans vite.config.ts => http://localhost:3000/audiophile-frontend/#/audiophile-frontend/
+
+// FIXME: Pour acceder normalement aux pages de l'app (dev ou buildé) avec vite dev/preview ou 'serve' => http://localhost:3000/audiophile-frontend/#/audiophile-frontend/
 
 export default router
