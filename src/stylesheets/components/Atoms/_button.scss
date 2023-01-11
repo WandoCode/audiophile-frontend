@@ -13,6 +13,10 @@
   border: none;
   cursor: pointer;
 
+  &:disabled {
+    background-color: var(--clr-primary-300);
+  }
+
   &--primary {
     background-color: var(--clr-primary-400);
 

@@ -7,6 +7,7 @@ interface Props {
   onClickHandler: React.MouseEventHandler<HTMLButtonElement>
   className?: string
   id?: string
+  disabled?: boolean
 }
 
 function Button({
@@ -15,6 +16,7 @@ function Button({
   text,
   level,
   onClickHandler,
+  disabled = false,
   ...props
 }: Props) {
   const btnClass = useMemo(() => {
@@ -23,7 +25,13 @@ function Button({
   }, [level])
 
   return (
-    <button className={btnClass} onClick={onClickHandler} id={id} {...props}>
+    <button
+      className={btnClass}
+      onClick={onClickHandler}
+      id={id}
+      disabled={disabled}
+      {...props}
+    >
       {text} {level === 'tertiary' && <img src={arrow} alt="" />}
     </button>
   )

@@ -80,6 +80,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
             level="primary"
             className="cart-modal__checkout"
             onClickHandler={handleCheckout}
+            disabled={cart.length === 0}
           />
         </div>
       </div>
