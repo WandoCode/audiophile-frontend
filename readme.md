@@ -41,9 +41,9 @@ The idea and design of this project comes from [Frontend Mentor](https://www.fro
 
 NB: don't forget [the backend](https://github.com/WandoCode/audiophile-backend)
 
-- run `npm install`
-- change the backend url in ./src/hooks/config.json
-- launch the development environement with `npm run dev`
+- Run `npm install`
+- Change the backend url in ./src/hooks/config.json
+- Launch the development environement with `npm run dev`
 
 # Dependencies
 
@@ -81,4 +81,4 @@ Deploy the app on github page with the help of gh-page
 
 This website has been build for demonstration purpose only.
 
-All the content is published under the MIT licence (see ['/licence.txt'](https://github.com/WandoCode/todolist/blob/main/licence.txt))
+All the content is published under the MIT licence (see ['/licence.txt'](https://github.com/WandoCode/audiophile-frontend/blob/main/licence.txt))
