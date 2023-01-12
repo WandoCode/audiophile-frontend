@@ -1,4 +1,4 @@
-import { Button, ItemModal } from '../../Atoms'
+import { Button, ItemCart } from '../../Atoms'
 import { CartItem, Context } from '../../../components/ContextProvider'
 import { useContext, useMemo, useEffect } from 'react'
 import { formatPrice } from '../../../utility/string'
@@ -35,7 +35,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
     () =>
       cart.map((item, i) => {
         return (
-          <ItemModal
+          <ItemCart
             key={i}
             slug={item.slug}
             name={item.name}

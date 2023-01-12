@@ -11,7 +11,7 @@ import { useContext } from 'react'
 type RemoveItemFct = ({ slug }: RemoveItem) => void
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 
-function ItemModal({ name, quantity, slug, price, url }: CartItem) {
+function ItemCart({ name, quantity, slug, price, url }: CartItem) {
   const { removeItem, addItem } = useContext(Context) as {
     removeItem: RemoveItemFct
     addItem: AddItemFct
@@ -28,13 +28,13 @@ function ItemModal({ name, quantity, slug, price, url }: CartItem) {
   }
 
   return (
-    <li className="item-modal">
-      <div className="item-modal__image-container">
-        <img src={url} alt="" className="item-modal__img" />
+    <li className="item-cart">
+      <div className="item-cart__image-container">
+        <img src={url} alt="" className="item-cart__img" />
       </div>
-      <div className="item-modal__text">
+      <div className="item-cart__text">
         <h2 className="h3 text-black">{name}</h2>
-        <div className="item-modal__price">$ {formatPrice(price)}</div>
+        <div className="item-cart__price">$ {formatPrice(price)}</div>
       </div>
       <NumberInput
         name={`${slug}-quantity`}
@@ -48,4 +48,4 @@ function ItemModal({ name, quantity, slug, price, url }: CartItem) {
   )
 }
 
-export { ItemModal }
+export { ItemCart }
