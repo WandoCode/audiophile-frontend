@@ -30,15 +30,15 @@ function MainNav({ menuIsOpen, onToogleMenu }: Props) {
       />
       <LinkNav text="home" path="/" />
       <LinkNav
-        text={layout?.category1.name}
+        text={layout ? layout.category1.name : 'Headphones'}
         path={`/category/${layout?.category1.name}`}
       />
       <LinkNav
-        text={layout?.category2.name}
+        text={layout ? layout?.category2.name : 'Speakers'}
         path={`/category/${layout?.category2.name}`}
       />
       <LinkNav
-        text={layout?.category3.name}
+        text={layout ? layout?.category3.name : 'Earphones'}
         path={`/category/${layout?.category3.name}`}
       />
     </nav>

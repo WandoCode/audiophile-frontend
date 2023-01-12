@@ -15,16 +15,22 @@ function CategoriesSection({ className }: Props) {
       <div className="categories__container">
         <h2 className="visually-hidden">Links to category pages</h2>
         <CategoryLink
-          category={layout?.category1.name}
-          image={layout?.category1.image}
+          category={layout ? layout.category1.name : 'Headphones'}
+          image={
+            layout ? layout.category1.image : 'https://via.placeholder.com/200'
+          }
         />
         <CategoryLink
-          category={layout?.category2.name}
-          image={layout?.category2.image}
+          category={layout ? layout.category2.name : 'Speakers'}
+          image={
+            layout ? layout.category2.image : 'https://via.placeholder.com/200'
+          }
         />
         <CategoryLink
-          category={layout?.category3.name}
-          image={layout?.category3.image}
+          category={layout ? layout.category3.name : 'Earphones'}
+          image={
+            layout ? layout.category3.image : 'https://via.placeholder.com/200'
+          }
         />
       </div>
     </section>
