@@ -1,12 +1,84 @@
-# Main features
+# Audiophile
 
-- Developped with a headless CMS for backend (Strapi): manage text and images
-- Used Cloudinary to store images
-- Used a DB to make Starpi datas persistent
-- The cart is persistent via local storage
+This repo contains the code for the frontend of the [audiophile website](https://wandocode.github.io/audiophile-frontend/#/audiophile-frontend/).
+The goal of this website is mainly to show off some of my web development skills.
 
-NB: I used a personal design (different than the given one) for tablet/mobile menu.
+## Backend
 
-# TODO
+The backend for this project can be found on this repo: [audiophile-backend](https://github.com/WandoCode/audiophile-backend).
 
-This Readme will be completed later...
+It's based on CMS Strapi that I set up: [see readme](https://github.com/WandoCode/audiophile-backend).
+
+## Hightlighted skills in this project
+
+- Typescript
+- React with React context
+- Storybook for the main reused components (not hosted)
+- SCSS (BEM)
+- Custom Form validation with RegEx
+
+## Main features
+
+### Responsive
+
+The website works on desktop, tablet and mobile (last version of Chromimum or Firefox).
+
+### Datas persistence
+
+The user can save items into a cart. I used localStorage as an easy way to keep track of the cart content.
+
+### Design
+
+The idea and design of this project comes from [Frontend Mentor](https://www.frontendmentor.io/profile/Wandole).
+
+# How to install
+
+## Prerequisites
+
+- nodeJS v16.14.2 or better
+
+## Setup
+
+NB: don't forget [the backend](https://github.com/WandoCode/audiophile-backend)
+
+- run `npm install`
+- change the backend url in ./src/hooks/config.json
+- launch the development environement with `npm run dev`
+
+# Dependencies
+
+The main dependencies are _React_ and _Storybook_.
+
+_ReactMarkdown_ has been used aswell, _React-router-DOM_, and _axios_.
+
+# Scripts
+
+## `dev`
+
+Launch the app in the environement for development with Vite.
+
+## `build`
+
+Build the app with Vite
+
+## `preview`
+
+Host the built version of the app with Vite.
+
+## `storybook`
+
+Laucnch the the storybook in adevelopment environement.
+
+## `build-storybook`
+
+Build the storybook.
+
+## `deploy`
+
+Deploy the app on github page with the help of gh-page
+
+# Licence
+
+This website has been build for demonstration purpose only.
+
+All the content is published under the MIT licence (see ['/licence.txt'](https://github.com/WandoCode/todolist/blob/main/licence.txt))
