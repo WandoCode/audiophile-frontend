@@ -3,12 +3,13 @@ import confirmationIcon from '../../../assets/icon-order-confirmation.svg'
 import { Button } from '../../Atoms'
 import { Context, CartItem } from '../../../components/ContextProvider'
 import { ItemSummary } from '../../Atoms/CardElement/ItemSummary'
-import { formatPrice } from '../../../utility/string'
+import { formatPrice } from '../../../utility'
 import { useNavigate } from 'react-router-dom'
 
 function CompletionModal() {
   const navigate = useNavigate()
   const [showAllItems, setShowAllItems] = useState(false)
+
   const { cart, getCartTotal } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
