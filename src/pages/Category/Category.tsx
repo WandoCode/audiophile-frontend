@@ -23,11 +23,13 @@ function Category() {
       />
     )
   })
+
   return (
     <div className="category">
       <div className="category__title">
         <h1 className="h1 h1--medium">{category}</h1>
       </div>
+
       <LoadStateWrapper loading={loading}>
         <div className="container">
           <section className="category__items">{itemsDOM}</section>

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import arrow from '../../../assets/icon-arrow-right.svg'
 
 interface Props {
@@ -19,14 +19,14 @@ function Button({
   disabled = false,
   ...props
 }: Props) {
-  const btnClass = useMemo(() => {
+  const btnClass = () => {
     let base = className ? className : ''
     return `${base} btn btn--${level}`
-  }, [level])
+  }
 
   return (
     <button
-      className={btnClass}
+      className={btnClass()}
       onClick={onClickHandler}
       id={id}
       disabled={disabled}

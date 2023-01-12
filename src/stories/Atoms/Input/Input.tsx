@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 
 interface Props {
   label: string
@@ -23,17 +23,17 @@ function Input({
   errorText,
   error = false,
 }: Props) {
-  const inputClass = useMemo(() => {
+  const inputClass = () => {
     return error ? `input input--${type} input--error` : `input input--${type}`
-  }, [type, error])
+  }
 
-  const labelClass = useMemo(() => {
+  const labelClass = () => {
     return error ? `input__label  input__label--error` : `input__label`
-  }, [error])
+  }
 
   return (
     <div className="input__container">
-      <label htmlFor={id} className={labelClass}>
+      <label htmlFor={id} className={labelClass()}>
         {label}
       </label>
 
@@ -46,7 +46,7 @@ function Input({
         placeholder={placeholder}
         value={currValue}
         onChange={onChangeHandler}
-        className={inputClass}
+        className={inputClass()}
       />
     </div>
   )

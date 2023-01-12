@@ -14,7 +14,7 @@ function Home() {
 
   return (
     <div className="home ">
-      <LoadStateWrapper loading={false}>
+      <LoadStateWrapper loading={loading}>
         <Hero data={data} />
         <div className="container">
           <CategoriesSection />

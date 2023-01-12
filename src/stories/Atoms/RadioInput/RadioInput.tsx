@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 interface Props {
   label: string
   name: string
@@ -16,16 +15,16 @@ function RadioInput({
   onChangeHandler,
   error = false,
 }: Props) {
-  const mainClass = useMemo(() => {
+  const mainClass = () => {
     let base = 'radio '
     if (error) base += 'radio--error'
     if (value === currValue) base += 'radio--checked'
 
     return base
-  }, [error, currValue])
+  }
 
   return (
-    <label htmlFor={value} className={mainClass}>
+    <label htmlFor={value} className={mainClass()}>
       <input
         type="radio"
         name={name}

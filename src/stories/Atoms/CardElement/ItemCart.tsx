@@ -5,8 +5,8 @@ import {
   AddItem,
 } from '../../../components/ContextProvider'
 import { NumberInput } from '..'
-import { formatPrice } from '../../../utility/string'
 import { useContext } from 'react'
+import { formatPrice } from '../../../utility'
 
 type RemoveItemFct = ({ slug }: RemoveItem) => void
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void

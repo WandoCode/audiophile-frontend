@@ -3,9 +3,9 @@ import { useState } from 'react'
 import CashImg from '../../assets/icon-cash-on-delivery.svg'
 import { InnerNav } from '../../stories/Molecules'
 
-import Summary from './Summary'
-import { CheckoutInput } from '../../utility/formValidation/CheckoutInput'
+import { Summary } from './Summary'
 import { CompletionModal } from '../../stories/Molecules/Card/CompletionModal'
+import { CheckoutInput } from '../../utility'
 
 interface FormDatas {
   [key: string]: CheckoutInput

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../Button/Button'
-import { useState, useMemo } from 'react'
+import { useState } from 'react'
 
 interface Props {
   category?: string
@@ -15,17 +15,17 @@ function CategoryLink({ category, image }: Props) {
     setLinkHasBeenHovered(true)
   }
 
-  const labelClass = useMemo(() => {
+  const labelClass = () => {
     return linkHasBeenHovered
       ? 'category-link__container animate-on-hover'
       : 'category-link__container'
-  }, [linkHasBeenHovered])
+  }
 
   return (
     <article className="category-link">
       <label
         htmlFor={category}
-        className={labelClass}
+        className={labelClass()}
         onMouseOver={handleHover}
       >
         <img src={image} alt={category} className="category-link__img" />

@@ -1,4 +1,4 @@
-import { formatImgUrl } from '../../utility/images'
+import { formatImgUrl } from '../../utility'
 
 export interface DataItemCategory {
   name: string
@@ -36,6 +36,7 @@ function dataCategory(raw: any[], baseURL: string, env: string) {
           ),
         },
       }
+
       structuredItemsArray.push(structuredItem)
     })
 

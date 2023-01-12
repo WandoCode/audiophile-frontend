@@ -30,6 +30,7 @@ export interface RemoveItem {
 export const Context = createContext({})
 
 function ContextProvider({ children }: Props) {
+  const SHIPPING = 50
   const cartStoreManager = cartStore()
   const [layout, setLayout] = useState<DataLayout>()
   const [homepage, setHomepage] = useState<DataHomepage>()
@@ -51,9 +52,7 @@ function ContextProvider({ children }: Props) {
 
     if (itemPosInCart === -1)
       currItems.push({ slug, name, url, price, quantity: addedQty })
-    else {
-      currItems[itemPosInCart].quantity += addedQty
-    }
+    else currItems[itemPosInCart].quantity += addedQty
 
     setCart(currItems)
   }
@@ -92,12 +91,13 @@ function ContextProvider({ children }: Props) {
   }
 
   const getCartGrandTotal = () => {
-    return cart.length !== 0 ? getCartTotal() + 50 : 0
+    return cart.length !== 0 ? getCartTotal() + SHIPPING : 0
   }
 
   return (
     <Context.Provider
       value={{
+        SHIPPING,
         layout,
         setLayout,
         homepage,

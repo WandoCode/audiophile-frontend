@@ -1,4 +1,3 @@
-import { useMemo } from 'react'
 interface Props {
   name: string
   id: string
@@ -16,15 +15,15 @@ function NumberInput({
   onRemove,
   onAdd,
 }: Props) {
-  const mainClass = useMemo(() => {
+  const mainClass = () => {
     let base = 'number-input '
     if (small) base += 'number-input--small'
 
     return base
-  }, [small])
+  }
 
   return (
-    <div className={mainClass}>
+    <div className={mainClass()}>
       <button className="number-input__btn" onClick={onRemove}>
         -
       </button>

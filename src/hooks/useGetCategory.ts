@@ -16,13 +16,11 @@ function useGetCategory({
   const [data, setData] = useState<DataItemCategory[]>()
   const [loading, setLoading] = useState(true)
 
-  const getCategoryDatas = async () => {
+  const getCategoryDatas = async (categoryString: string) => {
     setLoading(true)
 
     try {
-      if (!category) return
-
-      const rep = await hookStore().fetchCategory(baseURL, category)
+      const rep = await hookStore().fetchCategory(baseURL, categoryString)
 
       const raw = rep.data.data as any[]
 
@@ -41,7 +39,7 @@ function useGetCategory({
   }
 
   useEffect(() => {
-    if (category) getCategoryDatas()
+    if (category) getCategoryDatas(category)
   }, [category])
 
   return [data, loading]

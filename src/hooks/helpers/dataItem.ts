@@ -1,4 +1,4 @@
-import { formatImgUrl } from '../../utility/images'
+import { formatImgUrl } from '../../utility'
 
 interface IncludeItem {
   quantity: number

@@ -14,30 +14,26 @@ function useGetItem({ slug }: Props): [DataItem | undefined, boolean] {
   const [data, setData] = useState<DataItem>()
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const getItem = async () => {
-      setLoading(true)
+  const getItem = async (slugString: string) => {
+    setLoading(true)
 
-      if (!slug) {
-        return
-      }
+    try {
+      const rep = await hookStore().fetchItem(baseURL, slugString)
 
-      try {
-        const rep = await hookStore().fetchItem(baseURL, slug)
+      const raw = rep.data.data.attributes
 
-        const raw = rep.data.data.attributes
+      const structuredDatas = dataItem(raw, baseURL, env).getCleanDatas()
 
-        const structuredDatas = dataItem(raw, baseURL, env).getCleanDatas()
-
-        setData(structuredDatas)
-      } catch (error) {
-        throw error // TODO:Afficher une page d'erreur
-      } finally {
-        setLoading(false)
-      }
+      setData(structuredDatas)
+    } catch (error) {
+      throw error // TODO:Afficher une page d'erreur
+    } finally {
+      setLoading(false)
     }
+  }
 
-    getItem()
+  useEffect(() => {
+    if (slug) getItem(slug)
   }, [slug])
   return [data, loading]
 }

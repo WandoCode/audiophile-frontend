@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import cart from '../../../assets/icon-cart.svg'
 import close from '../../../assets/icon-close.svg'
 import burger from '../../../assets/icon-hamburger.svg'
@@ -17,15 +17,15 @@ function ImgButton({
   isOpen = false,
   ...props
 }: Props) {
-  const btnClass = useMemo(() => {
+  const btnClass = () => {
     let base = `img-btn img-btn--${type}`
     return className ? `${base} ${className}` : base
-  }, [className])
+  }
 
   return (
     <button
       onClick={onClickHandler}
-      className={btnClass}
+      className={btnClass()}
       data-open={isOpen}
       {...props}
     >

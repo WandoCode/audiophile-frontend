@@ -1,7 +1,7 @@
 import { Button, ItemCart } from '../../Atoms'
 import { CartItem, Context } from '../../../components/ContextProvider'
 import { useContext, useMemo, useEffect } from 'react'
-import { formatPrice } from '../../../utility/string'
+import { formatPrice } from '../../../utility'
 
 interface Props {
   handleCheckout: (e: React.MouseEvent) => void

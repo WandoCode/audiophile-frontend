@@ -9,7 +9,7 @@ function LoadStateWrapper({ children, loading }: Props) {
     return (
       <div className="load-screen">
         <div className="loader-icon">
-          <img src={loaderIcon} alt="" />
+          <img src={loaderIcon} alt="Loading icon" />
         </div>
       </div>
     )

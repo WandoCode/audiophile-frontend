@@ -1,4 +1,4 @@
-import { useContext, useState, useMemo, useRef, useEffect } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { CartItem, Context } from '../../components/ContextProvider'
 import { ImgButton } from '../../stories/Atoms'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
@@ -27,13 +27,13 @@ function Header() {
     setModalIsOpen(!modalIsOpen)
   }
 
-  const headerClassName = useMemo(() => {
+  const headerClassName = () => {
     let rep = 'unshift header '
     if (customHeaderClass) rep += 'header--transparent '
     if (!onTop) rep += 'header--on-scroll '
 
     return rep
-  }, [customHeaderClass, onTop])
+  }
 
   const handleCheckout = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -65,7 +65,7 @@ function Header() {
   }, [location])
 
   return (
-    <header className={headerClassName}>
+    <header className={headerClassName()}>
       <div className="container container--unshift  header__container">
         <ImgButton
           onClickHandler={toggleMenu}

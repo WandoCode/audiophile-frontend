@@ -1,23 +1,21 @@
-import { useContext, useMemo } from 'react'
+import { useContext } from 'react'
 import { Context, CartItem } from '../../components/ContextProvider'
 import { ItemSummary } from '../../stories/Atoms/CardElement/ItemSummary'
-import { getVAT } from '../../utility/number'
-import { formatPrice } from '../../utility/string'
+import { formatPrice, getVAT } from '../../utility'
 
 function Summary() {
-  const { cart, getCartTotal, getCartGrandTotal } = useContext(Context) as {
+  const { cart, getCartTotal, getCartGrandTotal, SHIPPING } = useContext(
+    Context
+  ) as {
+    SHIPPING: number
     cart: CartItem[]
     getCartTotal: () => number
     getCartGrandTotal: () => number
   }
 
-  const total = useMemo(() => {
-    return getCartTotal()
-  }, [getCartTotal, cart])
+  const total = getCartTotal()
 
-  const grandTotal = useMemo(() => {
-    return getCartGrandTotal()
-  }, [getCartGrandTotal, cart])
+  const grandTotal = getCartGrandTotal()
 
   const summaryItemsDOM = () => {
     return cart.map((item, i) => {
@@ -32,6 +30,7 @@ function Summary() {
       )
     })
   }
+
   return (
     <div className="summary">
       <ul className="summary__items">{summaryItemsDOM()}</ul>
@@ -41,7 +40,9 @@ function Summary() {
       </div>
       <div className="summary__price-text">
         <h3 className="h3 h3--summary">SHIPPING</h3>
-        <div className="summary__price">$ {cart.length !== 0 ? 50 : 0}</div>
+        <div className="summary__price">
+          $ {cart.length !== 0 ? SHIPPING : 0}
+        </div>
       </div>
       <div className="summary__price-text">
         <h3 className="h3 h3--summary">VAT (INCLUDED)</h3>
@@ -57,4 +58,4 @@ function Summary() {
   )
 }
 
-export default Summary
+export { Summary }

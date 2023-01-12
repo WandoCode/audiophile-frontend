@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react'
+import { useContext } from 'react'
 import { Context } from '../../../components/ContextProvider'
 import { ImgButton, LinkNav } from '../../Atoms'
 import { DataLayout } from '../../../hooks/helpers/dataLayout'
@@ -13,15 +13,15 @@ function MainNav({ menuIsOpen, onToogleMenu }: Props) {
     layout: DataLayout | undefined
   }
 
-  const navClass = useMemo(() => {
+  const navClass = () => {
     let base = 'main-nav '
     if (menuIsOpen) base += 'main-nav--mobile'
     else base += 'show-on-desktop'
     return base
-  }, [menuIsOpen])
+  }
 
   return (
-    <nav className={`${navClass}`}>
+    <nav className={`${navClass()}`}>
       <ImgButton
         onClickHandler={onToogleMenu}
         type="close"

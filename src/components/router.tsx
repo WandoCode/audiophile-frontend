@@ -1,12 +1,11 @@
 import {
-  createBrowserRouter,
   createHashRouter,
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
 import { Category } from '../pages/Category/Category'
 import { Checkout } from '../pages/Checkout/Checkout'
-import NotFound from '../pages/NotFound/NotFound'
+import { NotFound } from '../pages/NotFound/NotFound'
 import { Home } from '../pages/Home/Home'
 import { Item } from '../pages/Item/Item'
 import { Layout } from '../pages/Layout/Layout'
@@ -24,6 +23,6 @@ const router = createHashRouter(
   { basename: '/audiophile-frontend' }
 )
 
-// FIXME: Pour acceder normalement aux pages de l'app (dev ou "buildé") => http://localhost:3000/audiophile-frontend/#/audiophile-frontend/
+// FIXME: Pour acceder normalement aux pages de l'app (dev ou "buildé") => <DOMAIN>/audiophile-frontend/#/audiophile-frontend/
 
 export default router

@@ -1,9 +1,8 @@
 import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
-import ReactMarkdown from 'react-markdown'
-import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'
 import { AddItem, Context } from '../../components/ContextProvider'
 import { DataItem } from '../../hooks/helpers/dataItem'
+import { formatPrice } from '../../utility/string'
 
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 
@@ -80,7 +79,7 @@ function ProductPresentation({ dataItem, slug }: Props) {
         )}
         <h1 className="h1 h1--medium text-black">{dataItem?.name}</h1>
         <div className="product-presentation__description">
-          <ReactMarkdown>{dataItem?.description ?? ''}</ReactMarkdown>
+          {dataItem?.description ?? ''}
         </div>
         <div className="item-details__price">
           <em>$ {formatPrice(dataItem?.price)}</em>
