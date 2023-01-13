@@ -12,7 +12,7 @@ function MainDescriptionSection() {
       <ImageSet
         data={layout?.mainDescription.images}
         className="mainDescription"
-        altTxt=""
+        altTxt=" "
         lazy={true}
       />
 

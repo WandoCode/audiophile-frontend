@@ -2,14 +2,27 @@ import axios from 'axios'
 
 function hookStore() {
   const fetchLayout = async (baseURL: string) => {
-    const rep = await axios.get(baseURL + '/api/layout-data?populate=*')
+    const url = baseURL + '/api/layout-data?populate=*'
+
+    let rep = await axios.get(url)
+
+    // Refetch once if failed to wake up server standby after inactivity
+    if (rep.status === 404 || rep.status === 401) {
+      rep = await handleFirstFetchError(url)
+    }
 
     handleErrorStatus(rep.status)
     return rep
   }
 
   const fetchItem = async (baseURL: string, slug: string) => {
-    const rep = await axios.get(baseURL + `/api/products/${slug}`)
+    const url = baseURL + `/api/products/${slug}`
+    let rep = await axios.get(url)
+
+    // Refetch once if failed to wake up server standby after inactivity
+    if (rep.status === 404 || rep.status === 401) {
+      rep = await handleFirstFetchError(url)
+    }
 
     handleErrorStatus(rep.status)
 
@@ -17,7 +30,13 @@ function hookStore() {
   }
 
   const fetchHomepage = async (baseURL: string) => {
-    const rep = await axios.get(baseURL + '/api/home')
+    const url = baseURL + '/api/home'
+    let rep = await axios.get(url)
+
+    // Refetch once if failed to wake up server standby after inactivity
+    if (rep.status === 404 || rep.status === 401) {
+      rep = await handleFirstFetchError(url)
+    }
 
     handleErrorStatus(rep.status)
 
@@ -25,9 +44,25 @@ function hookStore() {
   }
 
   const fetchCategory = async (baseURL: string, category: string) => {
-    const rep = await axios.get(baseURL + `/api/category/${category}`)
+    const url = baseURL + `/api/category/${category}`
+    let rep = await axios.get(url)
+
+    // Refetch once if failed to wake up server standby after inactivity
+    if (rep.status === 404 || rep.status === 401) {
+      rep = await handleFirstFetchError(url)
+    }
 
     handleErrorStatus(rep.status)
+
+    return rep
+  }
+
+  const handleFirstFetchError = async (url: string) => {
+    let rep: any
+    setTimeout(async () => {
+      rep = await axios.get(url)
+      console.warn('refetch after error. Status after refetch: ', rep.status)
+    }, 1000)
 
     return rep
   }
