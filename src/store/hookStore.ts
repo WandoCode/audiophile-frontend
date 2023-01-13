@@ -8,6 +8,8 @@ function hookStore() {
 
     // Refetch once if failed to wake up server standby after inactivity
     if (rep.status === 404 || rep.status === 401) {
+      console.log('Layout failed')
+
       rep = await handleFirstFetchError(url)
     }
 
@@ -21,6 +23,8 @@ function hookStore() {
 
     // Refetch once if failed to wake up server standby after inactivity
     if (rep.status === 404 || rep.status === 401) {
+      console.log('Item failed')
+
       rep = await handleFirstFetchError(url)
     }
 
@@ -35,6 +39,8 @@ function hookStore() {
 
     // Refetch once if failed to wake up server standby after inactivity
     if (rep.status === 404 || rep.status === 401) {
+      console.log('Homepage failed')
+
       rep = await handleFirstFetchError(url)
     }
 
@@ -49,6 +55,8 @@ function hookStore() {
 
     // Refetch once if failed to wake up server standby after inactivity
     if (rep.status === 404 || rep.status === 401) {
+      console.log('Category failed')
+
       rep = await handleFirstFetchError(url)
     }
 
