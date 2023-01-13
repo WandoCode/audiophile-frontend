@@ -62,7 +62,7 @@ function hookStore() {
     setTimeout(async () => {
       rep = await axios.get(url)
       console.warn('refetch after error. Status after refetch: ', rep.status)
-    }, 1000)
+    }, 1500)
 
     return rep
   }
