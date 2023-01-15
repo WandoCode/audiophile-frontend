@@ -6,27 +6,13 @@ function hookStore() {
 
     let rep = await axios.get(url)
 
-    // Refetch once if failed to wake up server standby after inactivity
-    if (rep.status === 404 || rep.status === 401) {
-      console.log('Layout failed')
-
-      rep = await handleFirstFetchError(url)
-    }
-
     handleErrorStatus(rep.status)
     return rep
   }
 
   const fetchItem = async (baseURL: string, slug: string) => {
-    const url = baseURL + `/api/products/${slug}`
+    const url = baseURL + `/api/products/product/${slug}`
     let rep = await axios.get(url)
-
-    // Refetch once if failed to wake up server standby after inactivity
-    if (rep.status === 404 || rep.status === 401) {
-      console.log('Item failed')
-
-      rep = await handleFirstFetchError(url)
-    }
 
     handleErrorStatus(rep.status)
 
@@ -37,13 +23,6 @@ function hookStore() {
     const url = baseURL + '/api/home'
     let rep = await axios.get(url)
 
-    // Refetch once if failed to wake up server standby after inactivity
-    if (rep.status === 404 || rep.status === 401) {
-      console.log('Homepage failed')
-
-      rep = await handleFirstFetchError(url)
-    }
-
     handleErrorStatus(rep.status)
 
     return rep
@@ -53,24 +32,7 @@ function hookStore() {
     const url = baseURL + `/api/category/${category}`
     let rep = await axios.get(url)
 
-    // Refetch once if failed to wake up server standby after inactivity
-    if (rep.status === 404 || rep.status === 401) {
-      console.log('Category failed')
-
-      rep = await handleFirstFetchError(url)
-    }
-
     handleErrorStatus(rep.status)
-
-    return rep
-  }
-
-  const handleFirstFetchError = async (url: string) => {
-    let rep: any
-    setTimeout(async () => {
-      rep = await axios.get(url)
-      console.warn('refetch after error. Status after refetch: ', rep.status)
-    }, 1500)
 
     return rep
   }
