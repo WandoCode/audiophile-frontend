@@ -1,0 +1,102 @@
+@use '../../abstracts/' as *;
+
+.category-link {
+  display: grid;
+  align-items: flex-end;
+
+  width: 100%;
+  min-height: rem(220);
+
+  @include breakpoint(large) {
+    min-height: rem(285);
+  }
+
+  &__container {
+    position: relative;
+
+    display: grid;
+    justify-content: center;
+    align-content: flex-end;
+    gap: rem(17);
+
+    height: 75%;
+
+    padding-bottom: rem(22);
+
+    object-fit: cover;
+    border-radius: rem(8);
+    background-color: var(--clr-neutral-250);
+
+    cursor: pointer;
+
+    @include breakpoint(large) {
+      height: 71.5%;
+    }
+
+    & h3 {
+      display: grid;
+      justify-content: center;
+      align-content: flex-start;
+
+      gap: rem(17);
+
+      transition: translate 0.2s;
+    }
+  }
+
+  .animate-on-hover {
+    .category-link__img {
+      transition: translate 0.2s;
+      animation: degrow 0.2s forwards;
+    }
+
+    &:hover {
+      @include on-hover {
+        & h3 {
+          translate: 0 -20px;
+        }
+
+        .category-link__img {
+          translate: 0 -20px;
+          animation: grow 0.2s forwards;
+          animation-delay: 0.05s;
+        }
+      }
+    }
+  }
+
+  &__img-container {
+    position: absolute;
+    top: -32.5%;
+
+    height: rem(137);
+    width: 100%;
+    z-index: 1;
+
+    @include breakpoint(large) {
+      height: 100%;
+    }
+
+    & img {
+      object-fit: contain;
+    }
+  }
+}
+
+@keyframes grow {
+  from {
+    scale: 100%;
+  }
+  to {
+    scale: 108%;
+  }
+}
+
+@keyframes degrow {
+  from {
+    scale: 108%;
+  }
+  to {
+    scale: 100%;
+  }
+}
