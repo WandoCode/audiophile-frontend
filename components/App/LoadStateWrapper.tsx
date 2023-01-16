@@ -17,4 +17,4 @@ function LoadStateWrapper({ children, loading }: Props) {
   else return <>{children}</>
 }
 
-export default LoadStateWrapper
+export { LoadStateWrapper }

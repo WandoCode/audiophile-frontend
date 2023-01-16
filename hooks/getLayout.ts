@@ -1,6 +1,6 @@
-import hookStore from '../store/hookStore'
+import { hookStore } from '../store'
 import urls from './config.json'
-import dataLayout, { DataLayout } from './helpers/dataLayout'
+import { DataLayout, dataLayout } from './helpers/dataLayout'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production

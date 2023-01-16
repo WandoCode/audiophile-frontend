@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
+import { hookStore } from '../store'
 import urls from './config.json'
-import dataCategory, { DataItemCategory } from './helpers/dataCategory'
-import hookStore from '../store/hookStore'
+import { dataCategory, DataItemCategory } from './helpers/dataCategory'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production
@@ -16,7 +15,7 @@ async function getCategory({ category }: Props): Promise<{
   try {
     const rep = await hookStore().fetchCategory(baseURL, category)
 
-    const raw = rep.data.data as any[]
+    const raw = rep.data.data
 
     const structuredItemsArray = dataCategory(raw, baseURL, env).getCleanDatas()
 

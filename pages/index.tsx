@@ -1,35 +1,44 @@
-import { getHomepage } from '../hooks/getHomepage'
-import { Hero } from '../components/Home/Hero'
-import { CategoriesSection, MainDescriptionSection } from '../stories/Molecules'
-import { Product1 } from '../components/Home/Product1'
-import { Product2 } from '../components/Home/Product2'
-import { Product3 } from '../components/Home/Product3'
-import { Layout } from './Layout'
-import { DataLayout } from '../hooks/helpers/dataLayout'
+import { getHomepage } from '../hooks'
 import { DataHomepage } from '../hooks/helpers/dataHomepage'
+
+import {
+  CategoriesSection,
+  MainDescriptionSection,
+} from '../components/Molecules'
+import { Product1, Product2, Product3, Hero } from '../components/Pages'
+import { Layout } from '../components/Layout'
+import Head from 'next/head'
 
 function Home({ datasHomepage }: { datasHomepage: DataHomepage }) {
   return (
-    <Layout>
-      <div className="home ">
-        <Hero data={datasHomepage} />
-        <div className="container">
-          <CategoriesSection />
-          <section className="home__products">
-            <Product1 data={datasHomepage} />
-            <Product2 data={datasHomepage} />
-            <Product3 data={datasHomepage} />
-          </section>
-          <MainDescriptionSection />
+    <>
+      <Head>
+        <title>Audiophile</title>
+        <meta
+          name="description"
+          content="Discover all of our hight quality products for music enthousiast"
+        />
+      </Head>
+      <Layout>
+        <div className="home ">
+          <Hero data={datasHomepage} />
+          <div className="container">
+            <CategoriesSection />
+            <section className="home__products">
+              <Product1 data={datasHomepage} />
+              <Product2 data={datasHomepage} />
+              <Product3 data={datasHomepage} />
+            </section>
+            <MainDescriptionSection />
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   )
 }
 
 export const getStaticProps = async () => {
   const { datasHomepage } = await getHomepage()
-
   return { props: { datasHomepage } }
 }
 

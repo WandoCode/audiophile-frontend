@@ -1,0 +1,37 @@
+import { Button, ImageSet } from '../../Atoms'
+import { DataHomepage } from '../../../hooks/helpers/dataHomepage'
+import { useRouter } from 'next/router'
+
+interface Props {
+  data: DataHomepage | undefined
+}
+
+function Product1({ data }: Props) {
+  const router = useRouter()
+
+  return (
+    <article className="product1 ">
+      <ImageSet
+        className="product1"
+        altTxt={data?.product1.name}
+        data={data?.product1.images}
+      />
+      <div className="product1__text">
+        <h2 className="h2">{data?.product1.name}</h2>
+        <p className="product1__description white">
+          {data?.product1.description}
+        </p>
+        <Button
+          className="btn--secondary--dark"
+          level="secondary"
+          text="See product"
+          onClickHandler={() => {
+            router.push(`/item/${data?.product1.slug}`)
+          }}
+        />
+      </div>
+    </article>
+  )
+}
+
+export { Product1 }

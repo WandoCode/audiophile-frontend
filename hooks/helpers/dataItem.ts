@@ -155,4 +155,4 @@ function dataItem(raw: any, baseURL: string, env: string) {
   return { getCleanDatas }
 }
 
-export default dataItem
+export { dataItem }

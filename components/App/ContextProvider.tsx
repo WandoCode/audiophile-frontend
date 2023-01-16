@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 import { DataHomepage } from '../../hooks/helpers/dataHomepage'
 import { DataLayout } from '../../hooks/helpers/dataLayout'
-import cartStore from '../../store/cartStore'
+import { cartStore } from '../../store'
 
 interface Props {
   children: React.ReactNode
@@ -118,4 +118,4 @@ function ContextProvider({ children }: Props) {
   )
 }
 
-export default ContextProvider
+export { ContextProvider }

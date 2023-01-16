@@ -1,6 +1,7 @@
 import { DataLayout } from '../../hooks/helpers/dataLayout'
 import { useContext, useEffect } from 'react'
 import { Context } from './ContextProvider'
+
 function LayoutContextSetter({
   datasLayout,
 }: {
@@ -18,4 +19,4 @@ function LayoutContextSetter({
   return <></>
 }
 
-export default LayoutContextSetter
+export { LayoutContextSetter }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
+import { hookStore } from '../store'
 import urls from './config.json'
-import dataItem, { DataItem } from './helpers/dataItem'
-import hookStore from '../store/hookStore'
+import { dataItem, DataItem } from './helpers/dataItem'
 
 interface Props {
   slug: string
@@ -26,4 +26,4 @@ async function getItem({ slug }: Props): Promise<{
   }
 }
 
-export default getItem
+export { getItem }

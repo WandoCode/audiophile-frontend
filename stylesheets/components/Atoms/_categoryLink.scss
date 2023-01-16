@@ -23,7 +23,6 @@
 
     padding-bottom: rem(22);
 
-    object-fit: cover;
     border-radius: rem(8);
     background-color: var(--clr-neutral-250);
 
@@ -57,7 +56,7 @@
         }
 
         .category-link__img {
-          translate: 0 -20px;
+          translate: -50% -20px;
           animation: grow 0.2s forwards;
           animation-delay: 0.05s;
         }
@@ -65,20 +64,18 @@
     }
   }
 
-  &__img-container {
+  &__img {
     position: absolute;
+    left: 50%;
     top: -32.5%;
+    translate: -50% 0;
 
     height: rem(137);
-    width: 100%;
+
     z-index: 1;
 
     @include breakpoint(large) {
       height: 100%;
-    }
-
-    & img {
-      object-fit: contain;
     }
   }
 }

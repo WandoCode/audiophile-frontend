@@ -1,18 +1,16 @@
 import { useContext, useState, useEffect } from 'react'
 import { CartItem, Context } from '../App/ContextProvider'
-import { ImgButton } from '../../stories/Atoms'
-import { CartModal, MainNav } from '../../stories/Molecules'
+import { ImgButton } from '../../components/Atoms'
+import { CartModal, MainNav } from '../../components/Molecules'
 import logo from '../../assets/logo.svg'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { DataLayout } from '../../hooks/helpers/dataLayout'
 
 function Header() {
-  let { cart, cleanCart, layout } = useContext(Context) as {
+  let { cart, cleanCart } = useContext(Context) as {
     cart: CartItem[]
     cleanCart: () => void
-    layout: DataLayout | undefined
   }
 
   const router = useRouter()
@@ -43,7 +41,7 @@ function Header() {
 
     if (cart.length > 0 && cart.every((item) => item.quantity > 0)) {
       setModalIsOpen(false)
-      router.push('checkout')
+      router.push('/Checkout')
     }
   }
 
@@ -82,11 +80,7 @@ function Header() {
           <Image src={logo} alt="Logo Audiophile" />
         </Link>
 
-        <MainNav
-          onToogleMenu={toggleMenu}
-          menuIsOpen={menuIsOpen}
-          datasLayout={layout}
-        />
+        <MainNav onToogleMenu={toggleMenu} menuIsOpen={menuIsOpen} />
         <div className="header__cart">
           {cart.length > 0 && (
             <div

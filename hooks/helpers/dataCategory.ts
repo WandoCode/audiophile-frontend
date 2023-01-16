@@ -46,4 +46,4 @@ function dataCategory(raw: any[], baseURL: string, env: string) {
   return { getCleanDatas }
 }
 
-export default dataCategory
+export { dataCategory }

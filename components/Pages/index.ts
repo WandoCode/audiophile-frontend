@@ -1,0 +1,8 @@
+export { Summary } from './Checkout/Summary'
+export { Hero } from './Home/Hero'
+export { Product1 } from './Home/Product1'
+export { Product2 } from './Home/Product2'
+export { Product3 } from './Home/Product3'
+export { ProductFeatures } from './Item/ProductFeatures'
+export { ProductIncludes } from './Item/ProductIncludes'
+export { ProductPresentation } from './Item/ProductPresentation'

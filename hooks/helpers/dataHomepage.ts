@@ -93,4 +93,4 @@ function dataHomepage(raw: any, baseURL: string, env: string) {
   return { getCleanDatas }
 }
 
-export default dataHomepage
+export { dataHomepage }

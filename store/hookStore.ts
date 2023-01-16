@@ -19,6 +19,15 @@ function hookStore() {
     return rep
   }
 
+  const fetchSlugs = async (baseURL: string) => {
+    const url = baseURL + `/api/products/slugs`
+    let rep = await axios.get(url)
+
+    handleErrorStatus(rep.status)
+
+    return rep
+  }
+
   const fetchHomepage = async (baseURL: string) => {
     const url = baseURL + '/api/home'
     let rep = await axios.get(url)
@@ -42,7 +51,7 @@ function hookStore() {
       throw new Error(`Server responded with status ${status}`)
   }
 
-  return { fetchLayout, fetchItem, fetchHomepage, fetchCategory }
+  return { fetchLayout, fetchItem, fetchHomepage, fetchCategory, fetchSlugs }
 }
 
-export default hookStore
+export { hookStore }

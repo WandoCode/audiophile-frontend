@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import logo from '../../assets/logo.svg'
-import { SocialLink } from '../../stories/Atoms'
-import { FooterNav } from '../../stories/Molecules'
+import { SocialLink } from '../../components/Atoms'
+import { FooterNav } from '../../components/Molecules'
 import { DataLayout } from '../../hooks/helpers/dataLayout'
-import { Context } from '../App/ContextProvider'
+import { Context } from '../App'
 import Link from 'next/link'
 import Image from 'next/image'
 

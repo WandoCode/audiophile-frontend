@@ -20,4 +20,4 @@ function cartStore() {
   }
 }
 
-export default cartStore
+export { cartStore }

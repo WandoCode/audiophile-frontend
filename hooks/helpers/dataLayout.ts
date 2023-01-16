@@ -55,4 +55,4 @@ function dataLayout(raw: any, baseURL: string, env: string) {
   return { getCleanDatas }
 }
 
-export default dataLayout
+export { dataLayout }
