@@ -16,7 +16,11 @@ import { Layout } from '../../components/Layout'
 import { getItem, getSlugs } from '../../hooks'
 import Head from 'next/head'
 
-function Item({ dataItem }: { dataItem: DataItem | undefined }) {
+interface Props {
+  dataItem: DataItem | undefined
+}
+
+function Item({ dataItem }: Props) {
   const galleryImagesDOM = () => {
     if (!dataItem) return []
     const imagesDataArray = Object.values(dataItem?.galleryImages)
@@ -86,14 +90,15 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   if (typeof params?.slug === 'string') {
     const { datasItem } = await getItem({ slug: params.slug })
 
-    return { props: { dataItem: datasItem, key: datasItem?.slug } }
-  } else {
-    return { notFound: true }
+    if (datasItem)
+      return { props: { dataItem: datasItem, key: datasItem?.slug } }
   }
+
+  return { notFound: true }
 }
 
 export default Item

@@ -10,13 +10,12 @@ import { Layout } from '../../components/Layout'
 import Head from 'next/head'
 import { capitalize } from '../../utility'
 
-function Category({
-  datasCategory,
-  category,
-}: {
-  datasCategory: DataItemCategory[]
+interface Props {
+  datasCategory: DataItemCategory[] | undefined
   category: string
-}) {
+}
+
+function Category({ datasCategory, category }: Props) {
   const itemsDOM = datasCategory?.map((itemData, i) => {
     return (
       <ItemCategory
@@ -69,14 +68,15 @@ export async function getStaticPaths() {
   // TODO: faire une fct to fetch les category depuis la db, et générer l'array 'path' (depuis datasLayout???)
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  if (typeof params?.category === 'string' && params?.category) {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  if (typeof params?.category === 'string') {
     const { datasCategory } = await getCategory({ category: params.category })
 
-    return { props: { datasCategory, category: params?.category } }
-  } else {
-    return { notFound: true }
+    if (datasCategory)
+      return { props: { datasCategory, category: params?.category } }
   }
+
+  return { notFound: true }
 }
 
 export default Category
