@@ -1,4 +1,4 @@
-import { getCategory } from '../../hooks'
+import { getCategories, getCategory } from '../../hooks'
 import { DataItemCategory } from '../../hooks/helpers/dataCategory'
 import {
   CategoriesSection,
@@ -55,17 +55,15 @@ function Category({ datasCategory, category }: Props) {
 }
 
 export async function getStaticPaths() {
-  const a = () => [
-    { params: { category: 'headphones' } },
-    { params: { category: 'earphones' } },
-    { params: { category: 'speakers' } },
-  ]
-  const paths = a()
+  const { categoriesArray } = await getCategories()
+
+  const paths = categoriesArray.map((category) => {
+    return { params: { category } }
+  })
   return {
     paths,
     fallback: false,
   }
-  // TODO: faire une fct to fetch les category depuis la db, et générer l'array 'path' (depuis datasLayout???)
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
