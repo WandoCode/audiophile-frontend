@@ -15,6 +15,10 @@
     gap: rem(30);
   }
 
+  &__img-container img {
+    width: 100%;
+  }
+
   &__text {
     display: grid;
     gap: rem(35);

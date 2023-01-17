@@ -70,6 +70,8 @@ function ProductPresentation({ dataItem, slug }: Props) {
         data={dataItem?.mainImages}
         className="item-details"
         altTxt={dataItem?.name}
+        width={{ desktop: 540, mobile: 327, tablet: 281 }}
+        height={{ desktop: 560, mobile: 327, tablet: 480 }}
       />
 
       <div className="product-presentation__content">

@@ -32,6 +32,16 @@ function Item({ dataItem }: Props) {
           data={imgData}
           key={i}
           altTxt={`illustration image ${i + 1}`}
+          width={
+            i < 3
+              ? { desktop: 445, mobile: 327, tablet: 277 }
+              : { desktop: 635, mobile: 327, tablet: 395 }
+          }
+          height={
+            i < 3
+              ? { desktop: 240, mobile: 174, tablet: 174 }
+              : { desktop: 592, mobile: 368, tablet: 368 }
+          }
         />
       )
     })

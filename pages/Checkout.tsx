@@ -1,5 +1,5 @@
 import { Button, Input, RadioInput } from '../components/Atoms'
-import { useState } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import CashImg from '../assets/icon-cash-on-delivery.svg'
 import { InnerNav, CompletionModal } from '../components/Molecules'
 import { Summary } from '../components/Pages'
@@ -58,7 +58,6 @@ function Checkout() {
     const formIsValid = validateForm()
 
     // TODO: If valid, process paiement
-
     setShowModal(formIsValid)
   }
 
@@ -338,3 +337,5 @@ function Checkout() {
 }
 
 export default Checkout
+// TODO: version react: vider le cart quand on revient on clique pour revenir sur la page principale
+// TODO:react: Changer btn en link quand nécessaire.

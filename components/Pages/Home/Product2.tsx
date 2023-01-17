@@ -12,6 +12,8 @@ function Product2({ data }: Props) {
         className="product2"
         altTxt={data?.product2.name}
         data={data?.product2.images}
+        width={{ desktop: 1110, mobile: 327, tablet: 690 }}
+        height={{ desktop: 320, mobile: 320, tablet: 320 }}
       />
 
       <div className="product2__text">

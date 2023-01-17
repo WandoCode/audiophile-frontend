@@ -1,8 +1,10 @@
 @use '../../abstracts/' as *;
 
 .product-presentation {
+  display: grid;
+  gap: rem(32);
+
   @include breakpoint(medium) {
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(250), 1fr));
     grid-column-gap: 10%;
     grid-row-gap: 5%;
@@ -11,7 +13,6 @@
   @include breakpoint(large) {
     grid-column: span 2;
 
-    display: grid;
     grid-template-columns: 5fr 5fr;
     gap: 10%;
   }

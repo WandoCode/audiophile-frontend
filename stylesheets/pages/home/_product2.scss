@@ -17,20 +17,15 @@
     aspect-ratio: unset;
   }
 
-  &__img {
-    @include breakpoint(medium) {
-      min-height: 100%;
-      min-width: 100%;
-
-      object-fit: cover;
-    }
-  }
-
   &__img-container {
     position: absolute;
     inset: 0;
 
     z-index: -1;
+    & img {
+      height: 100%;
+      width: 100%;
+    }
   }
 
   &__text {

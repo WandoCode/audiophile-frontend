@@ -3,5 +3,6 @@
 .image-set {
   & img {
     border-radius: rem(8);
+    object-fit: cover;
   }
 }

@@ -13,6 +13,8 @@ function ItemCategory({ className, data }: Props) {
         className="item-category"
         data={data?.images}
         altTxt={data?.name}
+        width={{ desktop: 540, mobile: 327, tablet: 690 }}
+        height={{ desktop: 560, mobile: 352, tablet: 352 }}
       />
 
       <div className="item-category__text">

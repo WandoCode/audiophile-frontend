@@ -13,6 +13,8 @@ function MainDescriptionSection() {
         data={layout?.mainDescription.images}
         className="mainDescription"
         altTxt="Man listening music with headphones"
+        width={{ desktop: 540, mobile: 689, tablet: 327 }}
+        height={{ desktop: 588, mobile: 300, tablet: 33 }}
       />
 
       <div className="main-description__text">
