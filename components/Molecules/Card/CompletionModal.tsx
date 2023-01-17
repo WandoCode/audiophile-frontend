@@ -12,12 +12,14 @@ function CompletionModal() {
   const router = useRouter()
   const [showAllItems, setShowAllItems] = useState(false)
 
-  const { cart, getCartTotal } = useContext(Context) as {
+  const { cart, getCartTotal, emptyCart } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
+    emptyCart: () => void
   }
 
   const handleBackHome = () => {
+    emptyCart()
     router.push('/')
   }
 
