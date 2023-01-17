@@ -57,7 +57,7 @@ function Checkout() {
 
     const formIsValid = validateForm()
 
-    // TODO: Send datas somewhere if it's valid
+    // TODO: If valid, process paiement
 
     setShowModal(formIsValid)
   }

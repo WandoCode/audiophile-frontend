@@ -96,6 +96,7 @@ body {
   }
 
   &--secondary {
+    color: var(--clr-neutral-700);
     @include on-hover {
       &:hover {
         color: var(--clr-neutral-100);
@@ -108,8 +109,8 @@ body {
   }
 
   &--tertiary {
-    color: inherit;
     font-size: var(--fs-400);
+    color: var(--clr-neutral-500);
 
     @include on-hover {
       &:hover {

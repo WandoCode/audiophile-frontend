@@ -42,6 +42,5 @@ export const getStaticProps = async () => {
   return { props: { datasHomepage } }
 }
 
-// TODO: Add loadwrapper?
 // TODO getStatic est la bonne maniere? Client side? server side?
 export default Home

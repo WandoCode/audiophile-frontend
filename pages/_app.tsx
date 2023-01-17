@@ -24,5 +24,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </ContextProvider>
   )
 }
-
-// TODO: ajout le <LoadStateWrapper loading={loading}>???

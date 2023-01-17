@@ -1,6 +1,5 @@
-import { Button, ImageSet } from '../../Atoms'
+import { BtnLink, ImageSet } from '../../Atoms'
 import { DataItemCategory } from '../../../hooks/helpers/dataCategory'
-import { useRouter } from 'next/router'
 
 interface Props {
   className: string
@@ -8,8 +7,6 @@ interface Props {
 }
 
 function ItemCategory({ className, data }: Props) {
-  const router = useRouter()
-
   return (
     <article className={`item-category ${className}`}>
       <ImageSet
@@ -28,16 +25,13 @@ function ItemCategory({ className, data }: Props) {
           {data?.name}
         </h2>
         <p className="item-category__description">{data?.description}</p>
-        <Button
+        <BtnLink
           level="primary"
-          onClickHandler={() => {
-            router.push(`/item/${data?.slug}`)
-          }}
+          href={`/item/${data?.slug}`}
           text="See product"
         />
       </div>
     </article>
   )
 }
-// TODO: link...
 export { ItemCategory }

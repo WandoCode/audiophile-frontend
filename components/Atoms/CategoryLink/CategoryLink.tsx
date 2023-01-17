@@ -1,6 +1,8 @@
-import { Button } from '../Button/Button'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import arrow from '../../../assets/icon-arrow-right.svg'
+import Link from 'next/link'
 
 interface Props {
   category?: string
@@ -23,8 +25,8 @@ function CategoryLink({ category, image }: Props) {
 
   return (
     <article className="category-link">
-      <label
-        htmlFor={category}
+      <Link
+        href={`/category/${category}`}
         className={labelClass()}
         onMouseOver={handleHover}
       >
@@ -37,15 +39,10 @@ function CategoryLink({ category, image }: Props) {
           />
         )}
         <h3 className="h3">{category}</h3>
-        <Button
-          id={category}
-          level="tertiary"
-          text="Shop"
-          onClickHandler={() => {
-            router.push(`/category/${category}`)
-          }}
-        />
-      </label>
+        <div className="btn btn--tertiary">
+          Shop <Image src={arrow} alt="" />
+        </div>
+      </Link>
     </article>
   )
 }

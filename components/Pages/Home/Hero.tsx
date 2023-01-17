@@ -1,13 +1,10 @@
 import { DataHomepage } from '../../../hooks/helpers/dataHomepage'
-import { Button } from '../../Atoms'
-import { useRouter } from 'next/router'
+import { BtnLink } from '../../Atoms'
 
 interface Props {
   data: DataHomepage | undefined
 }
 function Hero({ data }: Props) {
-  const router = useRouter()
-
   return (
     <section className="hero">
       <div className="container">
@@ -18,13 +15,10 @@ function Hero({ data }: Props) {
 
           <h1 className="h1">{data?.hero.name}</h1>
           <p className="subtitle">{data?.hero.description}</p>
-
-          <Button
+          <BtnLink
             text="see product"
             level="primary"
-            onClickHandler={() => {
-              router.push(`/item/${data?.hero.slug}`)
-            }}
+            href={`/item/${data?.hero.slug}`}
             className="hero__cta"
           />
         </div>

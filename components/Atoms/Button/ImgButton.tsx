@@ -29,9 +29,15 @@ function ImgButton({
       data-open={isOpen}
       {...props}
     >
-      {type === 'cart' && <Image src={cart} alt="Cart" />}
-      {type === 'burger' && <Image src={burger} alt="Burger Menu" />}
-      {type === 'close' && <Image src={close} alt="Close Menu Icon" />}
+      {type === 'cart' && (
+        <Image height={20} width={23} src={cart} alt="Cart" />
+      )}
+      {type === 'burger' && (
+        <Image height={15} width={16} src={burger} alt="Burger Menu" />
+      )}
+      {type === 'close' && (
+        <Image height={15} width={16} src={close} alt="Close Menu Icon" />
+      )}
     </button>
   )
 }
