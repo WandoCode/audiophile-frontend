@@ -9,10 +9,12 @@ import { useNavigate } from 'react-router-dom'
 function CompletionModal() {
   const navigate = useNavigate()
   const [showAllItems, setShowAllItems] = useState(false)
-
-  const { cart, getCartTotal } = useContext(Context) as {
+  const [cartCopy, setCartCopy] = useState<CartItem[]>()
+  const [totalPriceCopy, setTotalPriceCopy] = useState<number>(0)
+  const { cart, getCartTotal, emptyCart } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
+    emptyCart: () => void
   }
 
   const handleBackHome = () => {
@@ -20,6 +22,9 @@ function CompletionModal() {
   }
 
   useEffect(() => {
+    setCartCopy([...cart])
+    emptyCart()
+    setTotalPriceCopy(getCartTotal())
     document.body.style.overflowY = 'hidden'
     document.querySelector('main')?.setAttribute('aria-hidden', 'true')
 
@@ -34,17 +39,18 @@ function CompletionModal() {
   }
 
   const allItemsDOM = useMemo(() => {
-    return cart.map((item, i) => {
-      return (
-        <ItemSummary
-          name={item.name}
-          price={item.price}
-          url={item.url}
-          quantity={item.quantity}
-          key={i}
-        />
-      )
-    })
+    if (cartCopy)
+      return cartCopy.map((item, i) => {
+        return (
+          <ItemSummary
+            name={item.name}
+            price={item.price}
+            url={item.url}
+            quantity={item.quantity}
+            key={i}
+          />
+        )
+      })
   }, [cart])
 
   return (
@@ -65,13 +71,15 @@ function CompletionModal() {
         <p>You will receive an email confirmation shortly.</p>
         <div className="completion-modal__body">
           <div className="completion-modal__items">
-            {cart.length !== 0 && allItemsDOM.at(0)}
+            {cartCopy?.length !== 0 && allItemsDOM?.at(0)}
 
             {showAllItems === true && (
-              <ul className="completion-modal__list">{allItemsDOM.slice(1)}</ul>
+              <ul className="completion-modal__list">
+                {allItemsDOM?.slice(1)}
+              </ul>
             )}
 
-            {cart.length > 1 && (
+            {cartCopy && cartCopy.length > 1 && (
               <div className="completion-modal__other-items">
                 <button
                   className="completion-modal__other-items-button"
@@ -79,7 +87,7 @@ function CompletionModal() {
                 >
                   {showAllItems
                     ? 'view less'
-                    : `and ${cart.length - 1} other item(s)`}
+                    : `and ${cartCopy.length - 1} other item(s)`}
                 </button>
               </div>
             )}
@@ -88,7 +96,7 @@ function CompletionModal() {
           <div className="completion-modal__total">
             <p className="completion-modal__heading">Grand Total</p>
             <p className="completion-modal__price white">
-              $ {formatPrice(getCartTotal() + 50)}
+              $ {formatPrice(totalPriceCopy + 50)}
             </p>
           </div>
         </div>
