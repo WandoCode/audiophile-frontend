@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import urls from './config.json'
-import dataCategory, { DataItemCategory } from './helpers/dataCategory'
+import dataCategory from './helpers/dataCategory'
 import hookStore from '../store/hookStore'
+import { DataItemCategory } from '../types'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production

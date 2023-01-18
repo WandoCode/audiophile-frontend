@@ -1,12 +1,8 @@
-import {
-  CartItem,
-  Context,
-  RemoveItem,
-  AddItem,
-} from '../../../components/ContextProvider'
+import { Context } from '../../../components/ContextProvider'
 import { NumberInput } from '..'
 import { useContext } from 'react'
 import { formatPrice } from '../../../utility'
+import { AddItem, CartItem, RemoveItem } from '../../../types'
 
 type RemoveItemFct = ({ slug }: RemoveItem) => void
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void

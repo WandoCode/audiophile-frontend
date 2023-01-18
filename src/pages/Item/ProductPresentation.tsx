@@ -1,8 +1,8 @@
 import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
 import { useState, useContext } from 'react'
-import { AddItem, Context } from '../../components/ContextProvider'
-import { DataItem } from '../../hooks/helpers/dataItem'
+import { Context } from '../../components/ContextProvider'
 import { formatPrice } from '../../utility/string'
+import { AddItem, DataItem } from '../../types'
 
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 

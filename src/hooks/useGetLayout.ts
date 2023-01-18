@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import hookStore from '../store/hookStore'
 import urls from './config.json'
-import dataLayout, { DataLayout } from './helpers/dataLayout'
+import dataLayout from './helpers/dataLayout'
+import { DataLayout } from '../types/index'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production

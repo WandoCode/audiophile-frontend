@@ -1,4 +1,4 @@
-import { DataItem } from '../../hooks/helpers/dataItem'
+import { DataItem } from '../../types'
 
 interface Props {
   dataItem: DataItem | undefined

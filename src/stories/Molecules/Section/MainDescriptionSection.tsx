@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Context } from '../../../components/ContextProvider'
+import { DataLayout } from '../../../types'
 import { ImageSet } from '../../Atoms'
-import { DataLayout } from '../../../hooks/helpers/dataLayout'
 
 function MainDescriptionSection() {
   const { layout } = useContext(Context) as { layout: DataLayout | undefined }

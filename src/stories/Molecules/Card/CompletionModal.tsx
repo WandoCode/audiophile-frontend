@@ -1,10 +1,11 @@
 import { useEffect, useContext, useState, useMemo } from 'react'
 import confirmationIcon from '../../../assets/icon-order-confirmation.svg'
 import { Button } from '../../Atoms'
-import { Context, CartItem } from '../../../components/ContextProvider'
+import { Context } from '../../../components/ContextProvider'
 import { ItemSummary } from '../../Atoms/CardElement/ItemSummary'
 import { formatPrice } from '../../../utility'
 import { useNavigate } from 'react-router-dom'
+import { CartItem } from '../../../types'
 
 function CompletionModal() {
   const navigate = useNavigate()

@@ -1,7 +1,7 @@
 import { CategoryLink } from '../../Atoms'
 import { useContext } from 'react'
 import { Context } from '../../../components/ContextProvider'
-import { DataLayout } from '../../../hooks/helpers/dataLayout'
+import { DataLayout } from '../../../types'
 
 interface Props {
   className?: string

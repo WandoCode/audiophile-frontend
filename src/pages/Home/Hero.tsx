@@ -1,10 +1,11 @@
 import { useNavigate } from 'react-router-dom'
-import { DataHomepage } from '../../hooks/helpers/dataHomepage'
 import { Button } from '../../stories/Atoms'
+import { DataHomepage } from '../../types'
 
 interface Props {
   data: DataHomepage | undefined
 }
+
 function Hero({ data }: Props) {
   const navigate = useNavigate()
 

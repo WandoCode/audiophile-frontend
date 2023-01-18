@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Context } from '../../../components/ContextProvider'
+import { DataLayout } from '../../../types'
 import { ImgButton, LinkNav } from '../../Atoms'
-import { DataLayout } from '../../../hooks/helpers/dataLayout'
 
 interface Props {
   menuIsOpen: boolean

@@ -4,7 +4,7 @@ import logo from '../../assets/logo.svg'
 import { Context } from '../../components/ContextProvider'
 import { SocialLink } from '../../stories/Atoms'
 import { FooterNav } from '../../stories/Molecules'
-import { DataLayout } from '../../hooks/helpers/dataLayout'
+import { DataLayout } from '../../types'
 
 function Footer() {
   let { layout } = useContext(Context) as {

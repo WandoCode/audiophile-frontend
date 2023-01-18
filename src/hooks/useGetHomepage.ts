@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import urls from './config.json'
-import dataHomepage, { DataHomepage } from './helpers/dataHomepage'
+import dataHomepage from './helpers/dataHomepage'
 import hookStore from '../store/hookStore'
+import { DataHomepage } from '../types'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production

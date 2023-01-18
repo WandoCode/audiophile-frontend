@@ -1,4 +1,5 @@
 import loaderIcon from '../assets/loadingIcon.svg'
+
 interface Props {
   children: React.ReactNode
   loading: boolean

@@ -1,6 +1,7 @@
 import { useContext } from 'react'
-import { Context, CartItem } from '../../components/ContextProvider'
+import { Context } from '../../components/ContextProvider'
 import { ItemSummary } from '../../stories/Atoms/CardElement/ItemSummary'
+import { CartItem } from '../../types'
 import { formatPrice, getVAT } from '../../utility'
 
 function Summary() {

@@ -1,47 +1,5 @@
+import { DataItem } from '../../types'
 import { formatImgUrl } from '../../utility'
-
-interface IncludeItem {
-  quantity: number
-  item: string
-}
-
-interface ImagesSet {
-  mobile: string
-  tablet: string
-  desktop: string
-}
-
-export interface LinkedItem {
-  shortName: string
-  name: string
-  slug: string
-  images: ImagesSet
-}
-
-export interface DataItem {
-  name: string
-  shortName: string
-  slug: string
-  price: number
-  newItem: boolean
-  description: string
-  features: string
-  includes: IncludeItem[]
-  mainImages: ImagesSet
-  galleryImages: {
-    first: ImagesSet
-    second: ImagesSet
-    third: ImagesSet
-  }
-
-  linkedItems: {
-    first: LinkedItem
-    second: LinkedItem
-    third: LinkedItem
-  }
-
-  cartImage: string
-}
 
 function dataItem(raw: any, baseURL: string, env: string) {
   const getCleanDatas = (): DataItem => {

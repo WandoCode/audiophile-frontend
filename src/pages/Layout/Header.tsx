@@ -1,9 +1,10 @@
 import { useContext, useState, useEffect } from 'react'
-import { CartItem, Context } from '../../components/ContextProvider'
+import { Context } from '../../components/ContextProvider'
 import { ImgButton } from '../../stories/Atoms'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { CartModal, MainNav } from '../../stories/Molecules'
 import logo from '../../assets/logo.svg'
+import { CartItem } from '../../types'
 
 function Header() {
   let { cart, cleanCart } = useContext(Context) as {

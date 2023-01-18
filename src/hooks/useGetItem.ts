@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import urls from './config.json'
-import dataItem, { DataItem } from './helpers/dataItem'
+import dataItem from './helpers/dataItem'
 import hookStore from '../store/hookStore'
+import { DataItem } from '../types/index'
 
 interface Props {
   slug?: string

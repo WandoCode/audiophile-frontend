@@ -1,20 +1,5 @@
+import { DataLayout } from '../../types'
 import { formatImgUrl } from '../../utility'
-
-export interface DataLayout {
-  footer: string
-  category1: { name: string; image: string }
-  category2: { name: string; image: string }
-  category3: { name: string; image: string }
-  mainDescription: {
-    text: string
-    title: string
-    images: {
-      mobile: string
-      tablet: string
-      desktop: string
-    }
-  }
-}
 
 function dataLayout(raw: any, baseURL: string, env: string) {
   const img = formatImgUrl(baseURL, env)

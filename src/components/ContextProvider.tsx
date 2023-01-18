@@ -1,30 +1,16 @@
 import { createContext, useState, useEffect } from 'react'
-import { DataHomepage } from '../hooks/helpers/dataHomepage'
-import { DataLayout } from '../hooks/helpers/dataLayout'
+
 import cartStore from '../store/cartStore'
+import {
+  AddItem,
+  CartItem,
+  DataHomepage,
+  DataLayout,
+  RemoveItem,
+} from '../types'
 
 interface Props {
   children: React.ReactNode
-}
-
-export interface AddItem {
-  slug: string
-  name: string
-  url: string
-  price: number
-  addedQty: number
-}
-
-export interface CartItem {
-  slug: string
-  name: string
-  url: string
-  price: number
-  quantity: number
-}
-
-export interface RemoveItem {
-  slug: string
 }
 
 export const Context = createContext({})
