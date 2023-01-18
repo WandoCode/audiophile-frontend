@@ -72,6 +72,7 @@ function ProductPresentation({ dataItem, slug }: Props) {
         altTxt={dataItem?.name}
         width={{ desktop: 540, mobile: 327, tablet: 281 }}
         height={{ desktop: 560, mobile: 327, tablet: 480 }}
+        priority={true}
       />
 
       <div className="product-presentation__content">

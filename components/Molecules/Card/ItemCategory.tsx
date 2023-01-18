@@ -15,6 +15,7 @@ function ItemCategory({ className, data }: Props) {
         altTxt={data?.name}
         width={{ desktop: 540, mobile: 327, tablet: 690 }}
         height={{ desktop: 560, mobile: 352, tablet: 352 }}
+        priority={true}
       />
 
       <div className="item-category__text">

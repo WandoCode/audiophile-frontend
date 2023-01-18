@@ -14,4 +14,8 @@
     grid-template-rows: auto auto;
     gap: $flow-lg-200;
   }
+
+  &__img-container img {
+    width: 100%;
+  }
 }

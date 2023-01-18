@@ -34,7 +34,6 @@ function CategoryLink({ category, image }: Props) {
           <img
             src={image}
             alt={category ?? ''}
-            // fill={true}
             className="category-link__img"
           />
         )}

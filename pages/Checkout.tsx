@@ -339,3 +339,4 @@ function Checkout() {
 export default Checkout
 // TODO: version react: vider le cart quand on revient on clique pour revenir sur la page principale
 // TODO:react: Changer btn en link quand nécessaire.
+// TODO: react: adapter la tailler des titre h2--large en ajoutant un breakpoint-down(small = 500px) pour dminuer la taille de la font

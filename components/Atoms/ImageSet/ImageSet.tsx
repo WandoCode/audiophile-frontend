@@ -5,6 +5,7 @@ interface Props {
   data: { tablet: any; desktop: any; mobile: any } | undefined
   className: string
   altTxt?: string
+  priority?: boolean
   width: {
     desktop: number
     tablet: number
@@ -19,7 +20,14 @@ interface Props {
 
 type ResponsiveType = 'desktop' | 'mobile' | 'tablet'
 
-function ImageSet({ data, className, altTxt, width, height }: Props) {
+function ImageSet({
+  data,
+  className,
+  altTxt,
+  width,
+  height,
+  priority = false,
+}: Props) {
   const [responsiveType, setResponsiveType] = useState<ResponsiveType>()
 
   const handleScreenSize = () => {
@@ -52,6 +60,7 @@ function ImageSet({ data, className, altTxt, width, height }: Props) {
           className={`${className}__img`}
           src={data[responsiveType]}
           alt={altTxt ? altTxt : ' '}
+          priority={priority}
         />
       )}
     </div>
