@@ -6,6 +6,7 @@ import { Summary } from '../components/Pages'
 import { CheckoutInput } from '../utility'
 import { Layout } from '../components/Layout'
 import Head from 'next/head'
+import { loadStripe } from '@stripe/stripe-js'
 
 interface FormDatas {
   [key: string]: CheckoutInput
@@ -52,13 +53,14 @@ function Checkout() {
     removeErrorOnValidInput(validationErrors, fieldName)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     const formIsValid = validateForm()
 
-    // TODO: If valid, process paiement
     setShowModal(formIsValid)
+
+    if (!formIsValid) return // TODO: Do something...
   }
 
   const validateField = (fieldName: string, input: CheckoutInput) => {
