@@ -6,7 +6,6 @@ import { Summary } from '../components/Pages'
 import { CheckoutInput } from '../utility'
 import { Layout } from '../components/Layout'
 import Head from 'next/head'
-import { loadStripe } from '@stripe/stripe-js'
 
 interface FormDatas {
   [key: string]: CheckoutInput
