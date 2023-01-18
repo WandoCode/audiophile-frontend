@@ -1,5 +1,5 @@
-import { DataHomepage } from '../../../hooks/helpers/dataHomepage'
 import { BtnLink } from '../../Atoms'
+import { DataHomepage } from '../../../types/index'
 
 interface Props {
   data: DataHomepage | undefined

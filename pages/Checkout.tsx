@@ -1,5 +1,5 @@
 import { Button, Input, RadioInput } from '../components/Atoms'
-import { useState, useContext, useEffect } from 'react'
+import { useState } from 'react'
 import CashImg from '../assets/icon-cash-on-delivery.svg'
 import { InnerNav, CompletionModal } from '../components/Molecules'
 import { Summary } from '../components/Pages'

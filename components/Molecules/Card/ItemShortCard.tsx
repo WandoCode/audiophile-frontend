@@ -1,5 +1,6 @@
 import { BtnLink, ImageSet } from '../../Atoms'
-import { LinkedItem } from '../../../hooks/helpers/dataItem'
+import { LinkedItem } from '../../../types/index'
+
 interface Props {
   data: LinkedItem
 }

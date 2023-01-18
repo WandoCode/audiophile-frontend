@@ -1,7 +1,7 @@
 import { ImgButton, LinkNav } from '../../Atoms'
-import { DataLayout } from '../../../hooks/helpers/dataLayout'
 import { useContext } from 'react'
 import { Context } from '../../../components/App'
+import { DataLayout } from '../../../types/index'
 
 interface Props {
   menuIsOpen: boolean

@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { Context } from '../../App'
-import { CartItem } from '../../App/ContextProvider'
 import { ItemSummary } from '../../Atoms'
 import { formatPrice, getVAT } from '../../../utility'
+import { CartItem } from '../../../types/index'
 
 function Summary() {
   const { cart, getCartTotal, getCartGrandTotal, SHIPPING } = useContext(

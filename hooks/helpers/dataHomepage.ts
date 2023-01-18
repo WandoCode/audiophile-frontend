@@ -1,18 +1,5 @@
 import { formatImgUrl } from '../../utility'
-
-export interface DataHomepage {
-  [key: string]: {
-    slug: string
-    name: string
-    description: string
-    newItem: boolean
-    images: {
-      mobile: string
-      tablet: string
-      desktop: string
-    }
-  }
-}
+import { DataHomepage } from '../../types/index'
 
 function dataHomepage(raw: any, baseURL: string, env: string) {
   const img = formatImgUrl(baseURL, env)

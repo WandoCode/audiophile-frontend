@@ -1,6 +1,7 @@
 import { hookStore } from '../store'
 import urls from './config.json'
-import { dataCategory, DataItemCategory } from './helpers/dataCategory'
+import { dataCategory } from './helpers/dataCategory'
+import { DataItemCategory } from '../types/index'
 
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env === 'development' ? urls.dev : urls.production

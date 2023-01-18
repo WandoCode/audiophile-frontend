@@ -11,10 +11,10 @@ import {
   ItemShortCard,
   MainDescriptionSection,
 } from '../../components/Molecules'
-import { DataItem } from '../../hooks/helpers/dataItem'
 import { Layout } from '../../components/Layout'
 import { getItem, getSlugs } from '../../hooks'
 import Head from 'next/head'
+import { DataItem } from '../../types/index'
 
 interface Props {
   dataItem: DataItem | undefined

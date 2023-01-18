@@ -1,5 +1,5 @@
 import { BtnLink, ImageSet } from '../../Atoms'
-import { DataItemCategory } from '../../../hooks/helpers/dataCategory'
+import { DataItemCategory } from '../../../types/index'
 
 interface Props {
   className: string

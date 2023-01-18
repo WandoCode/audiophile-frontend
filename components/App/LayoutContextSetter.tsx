@@ -1,12 +1,12 @@
-import { DataLayout } from '../../hooks/helpers/dataLayout'
 import { useContext, useEffect } from 'react'
 import { Context } from './ContextProvider'
+import { DataLayout } from '../../types/index'
 
-function LayoutContextSetter({
-  datasLayout,
-}: {
+interface Props {
   datasLayout: DataLayout | undefined
-}) {
+}
+
+function LayoutContextSetter({ datasLayout }: Props) {
   const { setLayout } = useContext(Context) as {
     setLayout: React.Dispatch<React.SetStateAction<DataLayout | undefined>>
   }

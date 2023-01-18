@@ -6,7 +6,7 @@ import { ItemSummary } from '../../Atoms/CardElement/ItemSummary'
 import { formatPrice } from '../../../utility'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { CartItem } from '../../App/ContextProvider'
+import { CartItem } from '../../../types/index'
 
 function CompletionModal() {
   const router = useRouter()

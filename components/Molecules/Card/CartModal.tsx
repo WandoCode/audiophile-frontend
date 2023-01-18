@@ -2,7 +2,7 @@ import { Button, ItemCart } from '../../Atoms'
 import { Context } from '../../../components/App'
 import { useContext, useMemo, useEffect } from 'react'
 import { formatPrice } from '../../../utility'
-import { CartItem } from '../../App/ContextProvider'
+import { CartItem } from '../../../types/index'
 
 interface Props {
   handleCheckout: (e: React.MouseEvent) => void

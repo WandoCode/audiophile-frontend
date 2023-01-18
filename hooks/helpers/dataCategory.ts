@@ -1,16 +1,5 @@
 import { formatImgUrl } from '../../utility'
-
-export interface DataItemCategory {
-  name: string
-  new: boolean
-  description: string
-  slug: string
-  images: {
-    mobile: string
-    tablet: string
-    desktop: string
-  }
-}
+import { DataItemCategory } from '../../types/index'
 
 function dataCategory(raw: any[], baseURL: string, env: string) {
   const img = formatImgUrl(baseURL, env)

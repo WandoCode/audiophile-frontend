@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
 import Image from 'next/image'
 import arrow from '../../../assets/icon-arrow-right.svg'
 import Link from 'next/link'
@@ -10,7 +9,6 @@ interface Props {
 }
 
 function CategoryLink({ category, image }: Props) {
-  const router = useRouter()
   const [linkHasBeenHovered, setLinkHasBeenHovered] = useState(false)
 
   const handleHover = () => {
