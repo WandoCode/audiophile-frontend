@@ -12,6 +12,7 @@ function CompletionModal() {
   const router = useRouter()
   const [showAllItems, setShowAllItems] = useState(false)
   const [cartCopy, setCartCopy] = useState<CartItem[]>()
+  const [totalPriceCopy, setTotalPriceCopy] = useState(0)
   const { cart, getCartTotal, emptyCart } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
@@ -24,7 +25,9 @@ function CompletionModal() {
 
   useEffect(() => {
     setCartCopy([...cart])
+    setTotalPriceCopy(getCartTotal())
     emptyCart()
+
     document.body.style.overflowY = 'hidden'
     document.querySelector('main')?.setAttribute('aria-hidden', 'true')
 
@@ -96,7 +99,7 @@ function CompletionModal() {
           <div className="completion-modal__total">
             <p className="completion-modal__heading">Grand Total</p>
             <p className="completion-modal__price white">
-              $ {formatPrice(getCartTotal() + 50)}
+              $ {formatPrice(totalPriceCopy + 50)}
             </p>
           </div>
         </div>
