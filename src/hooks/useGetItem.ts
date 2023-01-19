@@ -9,7 +9,7 @@ interface Props {
 }
 
 const env = process.env.NODE_ENV || 'development'
-const baseURL = env === 'development' ? urls.dev : urls.production
+const baseURL = env !== 'development' ? urls.production : urls.dev
 
 function useGetItem({ slug }: Props): [DataItem | undefined, boolean] {
   const [data, setData] = useState<DataItem>()

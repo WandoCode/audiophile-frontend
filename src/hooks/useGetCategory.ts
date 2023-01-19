@@ -5,7 +5,7 @@ import hookStore from '../store/hookStore'
 import { DataItemCategory } from '../types'
 
 const env = process.env.NODE_ENV || 'development'
-const baseURL = env === 'development' ? urls.dev : urls.production
+const baseURL = env !== 'development' ? urls.production : urls.dev
 
 interface Props {
   category?: string

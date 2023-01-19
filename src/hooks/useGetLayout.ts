@@ -5,7 +5,7 @@ import dataLayout from './helpers/dataLayout'
 import { DataLayout } from '../types/index'
 
 const env = process.env.NODE_ENV || 'development'
-const baseURL = env === 'development' ? urls.dev : urls.production
+const baseURL = env !== 'development' ? urls.production : urls.dev
 
 const useGetLayout = (): [DataLayout | undefined, boolean] => {
   const [data, setData] = useState<DataLayout>()

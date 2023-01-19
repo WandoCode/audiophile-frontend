@@ -5,7 +5,7 @@ import hookStore from '../store/hookStore'
 import { DataHomepage } from '../types'
 
 const env = process.env.NODE_ENV || 'development'
-const baseURL = env === 'development' ? urls.dev : urls.production
+const baseURL = env !== 'development' ? urls.production : urls.dev
 
 const useGetHomepage = (): [DataHomepage | undefined, boolean] => {
   const [data, setData] = useState<DataHomepage>()
