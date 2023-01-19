@@ -1,11 +1,5 @@
-import { beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
-import {
-  render,
-  screen,
-  waitFor,
-  within,
-  fireEvent,
-} from '@testing-library/react'
+import { beforeEach, describe, expect, test } from 'vitest'
+import { render, screen } from '@testing-library/react'
 import { ItemCart } from '../../stories/Atoms'
 
 describe('Given I use the ItemCart component', () => {
