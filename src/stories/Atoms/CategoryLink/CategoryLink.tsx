@@ -27,6 +27,7 @@ function CategoryLink({ category, image }: Props) {
         htmlFor={category}
         className={labelClass()}
         onMouseOver={handleHover}
+        data-testid="category-link-test-id"
       >
         <img src={image} alt={category} className="category-link__img" />
         <h3 className="h3">{category}</h3>
