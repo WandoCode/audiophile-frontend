@@ -4,7 +4,7 @@ interface Props {
   value: string
   currValue: string
   onChangeHandler: React.ChangeEventHandler<HTMLInputElement>
-  error: boolean
+  error?: boolean
 }
 
 function RadioInput({
