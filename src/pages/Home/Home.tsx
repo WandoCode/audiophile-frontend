@@ -10,7 +10,9 @@ import {
 } from '../../stories/Molecules'
 
 function Home() {
-  const [data, loading] = useGetHomepage()
+  const queryHomepage = useGetHomepage()
+  const loading = queryHomepage.isLoading
+  const data = queryHomepage.data
 
   return (
     <div className="home ">

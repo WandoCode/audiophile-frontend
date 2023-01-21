@@ -14,7 +14,9 @@ import LoadStateWrapper from '../../components/LoadStateWrapper'
 
 function Item() {
   const { slug } = useParams()
-  const [dataItem, loading] = useGetItem({ slug })
+  const queryItem = useGetItem({ slug })
+  const dataItem = queryItem.data
+  const loading = queryItem.isLoading
 
   const galleryImagesDOM = () => {
     if (!dataItem) return []

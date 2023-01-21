@@ -1,14 +1,9 @@
-import { useState, useEffect } from 'react'
 import dataHomepage from './helpers/dataHomepage'
 import hookStore from '../store/hookStore'
-import { DataHomepage } from '../types'
+import { useQuery } from 'react-query'
 
-const useGetHomepage = (): [DataHomepage | undefined, boolean] => {
-  const [data, setData] = useState<DataHomepage>()
-  const [loading, setLoading] = useState(true)
-
+const useGetHomepage = () => {
   const getLayoutDatas = async () => {
-    setLoading(true)
     try {
       const rep = await hookStore().fetchHomepage()
 
@@ -16,18 +11,13 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean] => {
 
       const structuredDatas = dataHomepage(raw).getCleanDatas()
 
-      setData(structuredDatas)
+      return structuredDatas
     } catch (error) {
       throw error // TODO:Afficher une page d'erreur
     }
-    setLoading(false)
   }
 
-  useEffect(() => {
-    getLayoutDatas()
-  }, [])
-
-  return [data, loading]
+  return useQuery('Homepage', getLayoutDatas)
 }
 
 export { useGetHomepage }

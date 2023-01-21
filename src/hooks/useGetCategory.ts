@@ -1,41 +1,27 @@
-import { useState, useEffect } from 'react'
 import dataCategory from './helpers/dataCategory'
 import hookStore from '../store/hookStore'
-import { DataItemCategory } from '../types'
+import { useQuery } from 'react-query'
 
 interface Props {
   category?: string
 }
 
-function useGetCategory({
-  category,
-}: Props): [DataItemCategory[] | undefined, boolean] {
-  const [data, setData] = useState<DataItemCategory[]>()
-  const [loading, setLoading] = useState(true)
-
-  const getCategoryDatas = async (categoryString: string) => {
-    setLoading(true)
-
+function useGetCategory({ category }: Props) {
+  const getCategoryDatas = async () => {
     try {
-      const rep = await hookStore().fetchCategory(categoryString)
+      const rep = await hookStore().fetchCategory(category || '')
 
       const raw = rep.data.data as any[]
 
       const structuredItemsArray = dataCategory(raw).getCleanDatas()
 
-      setData(structuredItemsArray)
+      return structuredItemsArray
     } catch (error) {
       throw error // TODO:Afficher une page d'erreur
-    } finally {
-      setLoading(false)
     }
   }
 
-  useEffect(() => {
-    if (category) getCategoryDatas(category)
-  }, [category])
-
-  return [data, loading]
+  return useQuery(['category', category], getCategoryDatas)
 }
 
 export { useGetCategory }
