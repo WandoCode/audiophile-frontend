@@ -1,23 +1,17 @@
-import { useContext, useEffect } from 'react'
 import { RouterProvider } from 'react-router-dom'
-import LoadStateWrapper from './components/LoadStateWrapper'
-import { Context } from './components/ContextProvider'
-import { useGetLayout } from './hooks/useGetLayout'
 import router from './components/router'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
 function App() {
-  const { setLayout } = useContext(Context) as any
-  const [dataLayout, loading] = useGetLayout()
-
-  useEffect(() => {
-    setLayout(dataLayout)
-  }, [dataLayout])
+  const queryClient = new QueryClient()
 
   return (
     <div className="App">
-      <LoadStateWrapper loading={loading}>
+      <QueryClientProvider client={queryClient}>
+        {/* <LoadStateWrapper loading={loading}> */}
         <RouterProvider router={router} />
-      </LoadStateWrapper>
+        {/* </LoadStateWrapper> */}
+      </QueryClientProvider>
     </div>
   )
 }

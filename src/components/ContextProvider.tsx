@@ -18,7 +18,6 @@ export const Context = createContext({})
 function ContextProvider({ children }: Props) {
   const SHIPPING = 50
   const cartStoreManager = cartStore()
-  const [layout, setLayout] = useState<DataLayout>()
   const [homepage, setHomepage] = useState<DataHomepage>()
   const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState<CartItem[]>([])
@@ -84,8 +83,6 @@ function ContextProvider({ children }: Props) {
     <Context.Provider
       value={{
         SHIPPING,
-        layout,
-        setLayout,
         homepage,
         setHomepage,
         loading,

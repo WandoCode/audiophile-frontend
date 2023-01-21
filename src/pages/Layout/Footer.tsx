@@ -2,14 +2,14 @@ import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { Context } from '../../components/ContextProvider'
+import { useGetLayout } from '../../hooks/useGetLayout'
 import { SocialLink } from '../../stories/Atoms'
 import { FooterNav } from '../../stories/Molecules'
 import { DataLayout } from '../../types'
 
 function Footer() {
-  let { layout } = useContext(Context) as {
-    layout: DataLayout | undefined
-  }
+  const layoutQuery = useGetLayout()
+  const layoutData = layoutQuery.data
 
   return (
     <footer className="footer">
@@ -21,7 +21,7 @@ function Footer() {
           </Link>
           <FooterNav />
         </nav>
-        <p className="footer__text">{layout?.footer}</p>
+        <p className="footer__text">{layoutData?.footer}</p>
         <div className="footer__copyright">
           Copyright 2021. All Rights Reserved
         </div>

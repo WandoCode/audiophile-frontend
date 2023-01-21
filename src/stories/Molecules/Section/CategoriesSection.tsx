@@ -1,35 +1,40 @@
 import { CategoryLink } from '../../Atoms'
-import { useContext } from 'react'
-import { Context } from '../../../components/ContextProvider'
-import { DataLayout } from '../../../types'
+import { useGetLayout } from '../../../hooks/useGetLayout'
 
 interface Props {
   className?: string
 }
 
 function CategoriesSection({ className }: Props) {
-  const { layout } = useContext(Context) as { layout: DataLayout | undefined }
+  const layoutQuery = useGetLayout()
+  const layoutData = layoutQuery.data
 
   return (
     <section className={`categories ${className}`}>
       <div className="categories__container">
         <h2 className="visually-hidden">Links to category pages</h2>
         <CategoryLink
-          category={layout ? layout.category1.name : 'Headphones'}
+          category={layoutData ? layoutData.category1.name : 'Headphones'}
           image={
-            layout ? layout.category1.image : 'https://via.placeholder.com/200'
+            layoutData
+              ? layoutData.category1.image
+              : 'https://via.placeholder.com/200'
           }
         />
         <CategoryLink
-          category={layout ? layout.category2.name : 'Speakers'}
+          category={layoutData ? layoutData.category2.name : 'Speakers'}
           image={
-            layout ? layout.category2.image : 'https://via.placeholder.com/200'
+            layoutData
+              ? layoutData.category2.image
+              : 'https://via.placeholder.com/200'
           }
         />
         <CategoryLink
-          category={layout ? layout.category3.name : 'Earphones'}
+          category={layoutData ? layoutData.category3.name : 'Earphones'}
           image={
-            layout ? layout.category3.image : 'https://via.placeholder.com/200'
+            layoutData
+              ? layoutData.category3.image
+              : 'https://via.placeholder.com/200'
           }
         />
       </div>
