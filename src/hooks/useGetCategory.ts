@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
-import urls from './config.json'
 import dataCategory from './helpers/dataCategory'
 import hookStore from '../store/hookStore'
 import { DataItemCategory } from '../types'
-
-const env = process.env.NODE_ENV || 'development'
-const baseURL = env !== 'development' ? urls.production : urls.dev
 
 interface Props {
   category?: string
@@ -21,15 +17,11 @@ function useGetCategory({
     setLoading(true)
 
     try {
-      const rep = await hookStore().fetchCategory(baseURL, categoryString)
+      const rep = await hookStore().fetchCategory(categoryString)
 
       const raw = rep.data.data as any[]
 
-      const structuredItemsArray = dataCategory(
-        raw,
-        baseURL,
-        env
-      ).getCleanDatas()
+      const structuredItemsArray = dataCategory(raw).getCleanDatas()
 
       setData(structuredItemsArray)
     } catch (error) {

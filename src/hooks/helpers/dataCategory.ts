@@ -1,8 +1,8 @@
 import { DataItemCategory } from '../../types'
 import { formatImgUrl } from '../../utility'
 
-function dataCategory(raw: any[], baseURL: string, env: string) {
-  const img = formatImgUrl(baseURL, env)
+function dataCategory(raw: any[]) {
+  const img = formatImgUrl()
 
   const getCleanDatas = (): DataItemCategory[] => {
     const structuredItemsArray = [] as DataItemCategory[]

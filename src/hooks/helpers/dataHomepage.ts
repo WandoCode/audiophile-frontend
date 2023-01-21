@@ -1,8 +1,8 @@
 import { formatImgUrl } from '../../utility'
 import { DataHomepage } from '../../types'
 
-function dataHomepage(raw: any, baseURL: string, env: string) {
-  const img = formatImgUrl(baseURL, env)
+function dataHomepage(raw: any) {
+  const img = formatImgUrl()
 
   const getCleanDatas = (): DataHomepage => {
     return {

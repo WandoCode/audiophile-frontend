@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
-import urls from './config.json'
 import dataHomepage from './helpers/dataHomepage'
 import hookStore from '../store/hookStore'
 import { DataHomepage } from '../types'
-
-const env = process.env.NODE_ENV || 'development'
-const baseURL = env !== 'development' ? urls.production : urls.dev
 
 const useGetHomepage = (): [DataHomepage | undefined, boolean] => {
   const [data, setData] = useState<DataHomepage>()
@@ -14,11 +10,11 @@ const useGetHomepage = (): [DataHomepage | undefined, boolean] => {
   const getLayoutDatas = async () => {
     setLoading(true)
     try {
-      const rep = await hookStore().fetchHomepage(baseURL)
+      const rep = await hookStore().fetchHomepage()
 
       const raw = rep.data.data.attributes
 
-      const structuredDatas = dataHomepage(raw, baseURL, env).getCleanDatas()
+      const structuredDatas = dataHomepage(raw).getCleanDatas()
 
       setData(structuredDatas)
     } catch (error) {

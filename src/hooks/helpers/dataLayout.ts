@@ -1,8 +1,8 @@
 import { DataLayout } from '../../types'
 import { formatImgUrl } from '../../utility'
 
-function dataLayout(raw: any, baseURL: string, env: string) {
-  const img = formatImgUrl(baseURL, env)
+function dataLayout(raw: any) {
+  const img = formatImgUrl()
 
   const getCleanDatas = (): DataLayout => {
     return {

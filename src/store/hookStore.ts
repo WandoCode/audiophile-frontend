@@ -1,7 +1,11 @@
 import axios from 'axios'
+import urls from './config.json'
+
+const env = process.env.NODE_ENV || 'development'
+const baseURL = env !== 'development' ? urls.production : urls.dev
 
 function hookStore() {
-  const fetchLayout = async (baseURL: string) => {
+  const fetchLayout = async () => {
     const url = baseURL + '/api/layout-data?populate=*'
 
     let rep = await axios.get(url)
@@ -10,7 +14,7 @@ function hookStore() {
     return rep
   }
 
-  const fetchItem = async (baseURL: string, slug: string) => {
+  const fetchItem = async (slug: string) => {
     const url = baseURL + `/api/products/product/${slug}`
     let rep = await axios.get(url)
 
@@ -19,7 +23,7 @@ function hookStore() {
     return rep
   }
 
-  const fetchHomepage = async (baseURL: string) => {
+  const fetchHomepage = async () => {
     const url = baseURL + '/api/home'
     let rep = await axios.get(url)
 
@@ -28,7 +32,7 @@ function hookStore() {
     return rep
   }
 
-  const fetchCategory = async (baseURL: string, category: string) => {
+  const fetchCategory = async (category: string) => {
     const url = baseURL + `/api/category/${category}`
     let rep = await axios.get(url)
 

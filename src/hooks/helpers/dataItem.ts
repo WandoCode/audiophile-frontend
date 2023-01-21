@@ -1,9 +1,9 @@
 import { DataItem } from '../../types'
 import { formatImgUrl } from '../../utility'
 
-function dataItem(raw: any, baseURL: string, env: string) {
+function dataItem(raw: any) {
   const getCleanDatas = (): DataItem => {
-    const img = formatImgUrl(baseURL, env)
+    const img = formatImgUrl()
     const rawOthers = raw.others.data
 
     return {

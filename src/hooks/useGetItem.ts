@@ -3,6 +3,7 @@ import urls from './config.json'
 import dataItem from './helpers/dataItem'
 import hookStore from '../store/hookStore'
 import { DataItem } from '../types/index'
+import { useQuery } from 'react-query'
 
 interface Props {
   slug?: string
@@ -11,32 +12,22 @@ interface Props {
 const env = process.env.NODE_ENV || 'development'
 const baseURL = env !== 'development' ? urls.production : urls.dev
 
-function useGetItem({ slug }: Props): [DataItem | undefined, boolean] {
-  const [data, setData] = useState<DataItem>()
-  const [loading, setLoading] = useState(true)
-
-  const getItem = async (slugString: string) => {
-    setLoading(true)
-
+function useGetItem({ slug }: Props) {
+  const getItem = async () => {
     try {
-      const rep = await hookStore().fetchItem(baseURL, slugString)
+      const rep = await hookStore().fetchItem(baseURL, slug || '')
 
       const raw = rep.data.data.attributes
 
       const structuredDatas = dataItem(raw, baseURL, env).getCleanDatas()
 
-      setData(structuredDatas)
+      return structuredDatas
     } catch (error) {
       throw error // TODO:Afficher une page d'erreur
-    } finally {
-      setLoading(false)
     }
   }
 
-  useEffect(() => {
-    if (slug) getItem(slug)
-  }, [slug])
-  return [data, loading]
+  return useQuery('Items', getItem)
 }
 
 export default useGetItem
