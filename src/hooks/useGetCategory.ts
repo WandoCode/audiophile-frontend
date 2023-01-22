@@ -8,17 +8,13 @@ interface Props {
 
 function useGetCategory({ category }: Props) {
   const getCategoryDatas = async () => {
-    try {
-      const rep = await hookStore().fetchCategory(category || '')
+    const rep = await hookStore().fetchCategory(category || '')
 
-      const raw = rep.data.data as any[]
+    const raw = rep.data.data as any[]
 
-      const structuredItemsArray = dataCategory(raw).getCleanDatas()
+    const structuredItemsArray = dataCategory(raw).getCleanDatas()
 
-      return structuredItemsArray
-    } catch (error) {
-      throw error // TODO:Afficher une page d'erreur
-    }
+    return structuredItemsArray
   }
 
   return useQuery(['category', category], getCategoryDatas)

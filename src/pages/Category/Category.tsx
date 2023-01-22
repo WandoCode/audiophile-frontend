@@ -11,9 +11,7 @@ import LoadStateWrapper from '../../components/LoadStateWrapper'
 function Category() {
   const { category } = useParams()
 
-  const queryCategory = useGetCategory({ category })
-  const data = queryCategory.data
-  const loading = queryCategory.isLoading
+  const { data, isLoading } = useGetCategory({ category })
 
   const itemsDOM = data?.map((itemData, i) => {
     return (
@@ -31,12 +29,13 @@ function Category() {
       <div className="category__title">
         <h1 className="h1 h1--medium">{category}</h1>
       </div>
-
-      <div className="container">
-        <section className="category__items">{itemsDOM}</section>
-        <CategoriesSection />
-        <MainDescriptionSection />
-      </div>
+      <LoadStateWrapper loading={isLoading}>
+        <div className="container">
+          <section className="category__items">{itemsDOM}</section>
+          <CategoriesSection />
+          <MainDescriptionSection />
+        </div>
+      </LoadStateWrapper>
     </div>
   )
 }

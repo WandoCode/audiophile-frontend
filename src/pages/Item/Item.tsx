@@ -14,13 +14,11 @@ import LoadStateWrapper from '../../components/LoadStateWrapper'
 
 function Item() {
   const { slug } = useParams()
-  const queryItem = useGetItem({ slug })
-  const dataItem = queryItem.data
-  const loading = queryItem.isLoading
+  const { data, isLoading } = useGetItem({ slug })
 
   const galleryImagesDOM = () => {
-    if (!dataItem) return []
-    const imagesDataArray = Object.values(dataItem?.galleryImages)
+    if (!data) return []
+    const imagesDataArray = Object.values(data?.galleryImages)
 
     return imagesDataArray.map((imgData, i) => {
       return <ImageSet className="gallery" data={imgData} key={i} lazy={true} />
@@ -28,9 +26,9 @@ function Item() {
   }
 
   const shortCardsDOM = () => {
-    if (!dataItem) return []
+    if (!data) return []
 
-    const linkedItemsDataArray = Object.values(dataItem?.linkedItems)
+    const linkedItemsDataArray = Object.values(data?.linkedItems)
     return linkedItemsDataArray.map((linkedItem, i) => {
       return <ItemShortCard data={linkedItem} key={i} />
     })
@@ -38,25 +36,25 @@ function Item() {
 
   return (
     <div className="item container">
-      {/* <LoadStateWrapper loading={loading}> */}
-      <InnerNav />
-      <section className="item-details">
-        <ProductPresentation dataItem={dataItem} slug={slug} />
-        <ProductFeatures features={dataItem?.features ?? ''} />
-        <ProductIncludes dataItem={dataItem} />
-      </section>
-      <section className="gallery">
-        <h2 className="visually-hidden">Gallery</h2>
-        <div className="gallery__images">{galleryImagesDOM()}</div>
-      </section>
+      <LoadStateWrapper loading={isLoading}>
+        <InnerNav />
+        <section className="item-details">
+          <ProductPresentation dataItem={data} slug={slug} />
+          <ProductFeatures features={data?.features ?? ''} />
+          <ProductIncludes dataItem={data} />
+        </section>
+        <section className="gallery">
+          <h2 className="visually-hidden">Gallery</h2>
+          <div className="gallery__images">{galleryImagesDOM()}</div>
+        </section>
 
-      <section className="you-may-like">
-        <h2 className="h2 h2--small text-black">You may also like</h2>
-        <div className="you-may-like__items">{shortCardsDOM()}</div>
-      </section>
-      {/* </LoadStateWrapper> */}
-      <CategoriesSection />
-      <MainDescriptionSection />
+        <section className="you-may-like">
+          <h2 className="h2 h2--small text-black">You may also like</h2>
+          <div className="you-may-like__items">{shortCardsDOM()}</div>
+        </section>
+        <CategoriesSection />
+        <MainDescriptionSection />
+      </LoadStateWrapper>
     </div>
   )
 }
