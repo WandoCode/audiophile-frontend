@@ -1,31 +1,31 @@
-import { createContext } from 'react'
+import { createContext, useState } from 'react'
+import { Context } from '../components/ContextProvider'
+import { CartItem } from '../types'
+import { cartItemA, cartItemB } from './data/CartItem'
 
 interface Props {
   children: React.ReactNode
+  mockedCart?: CartItem[]
+  mockedCartTotal?: number
 }
-export const MockedContext = createContext({})
 
-function MockContextProvider({ children }: Props) {
+const initialCart: CartItem[] = [cartItemA, cartItemB]
+
+function MockContextProvider({ children, mockedCart, mockedCartTotal }: Props) {
+  const [cart, setCart] = useState<CartItem[]>(mockedCart || initialCart)
+
   const SHIPPING = 50
-  const cart = [
-    {
-      slug: 'one',
-      name: 'Name One',
-      url: 'url.One',
-      price: 1023,
-      quantity: 1,
-    },
-    {
-      slug: 'two',
-      name: 'Name Two',
-      url: 'url.Two',
-      price: 999,
-      quantity: 5,
-    },
-  ]
+
+  const getCartTotal = () => {
+    return mockedCartTotal || 12599
+  }
+
+  const emptyCart = () => {
+    setCart([])
+  }
 
   return (
-    <MockedContext.Provider
+    <Context.Provider
       value={{
         SHIPPING,
         // layout,
@@ -37,16 +37,15 @@ function MockContextProvider({ children }: Props) {
         cart,
         // addItem,
         // removeItem,
-        // emptyCart,
-        // getCartTotal,
+        emptyCart,
+        getCartTotal,
         // cleanCart,
         // getCartGrandTotal,
       }}
     >
       {children}
-    </MockedContext.Provider>
+    </Context.Provider>
   )
 }
 
 export default MockContextProvider
-// TODO: trouver comment l'implémenter pour les test
