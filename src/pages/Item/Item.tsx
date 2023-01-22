@@ -11,10 +11,12 @@ import {
   MainDescriptionSection,
 } from '../../stories/Molecules'
 import LoadStateWrapper from '../../components/LoadStateWrapper'
+import axios from 'axios'
+import { Error } from '../Error/Error'
 
 function Item() {
   const { slug } = useParams()
-  const { data, isLoading } = useGetItem({ slug })
+  const { data, isLoading, error, isError } = useGetItem({ slug })
 
   const galleryImagesDOM = () => {
     if (!data) return []
@@ -34,29 +36,36 @@ function Item() {
     })
   }
 
-  return (
-    <div className="item container">
-      <LoadStateWrapper loading={isLoading}>
-        <InnerNav />
-        <section className="item-details">
-          <ProductPresentation dataItem={data} slug={slug} />
-          <ProductFeatures features={data?.features ?? ''} />
-          <ProductIncludes dataItem={data} />
-        </section>
-        <section className="gallery">
-          <h2 className="visually-hidden">Gallery</h2>
-          <div className="gallery__images">{galleryImagesDOM()}</div>
-        </section>
+  if (isError) {
+    const message = axios.isAxiosError(error) ? error.message : 'Uknown error'
+    return <Error message={message} />
+  }
 
-        <section className="you-may-like">
-          <h2 className="h2 h2--small text-black">You may also like</h2>
-          <div className="you-may-like__items">{shortCardsDOM()}</div>
-        </section>
-        <CategoriesSection />
-        <MainDescriptionSection />
-      </LoadStateWrapper>
-    </div>
-  )
+  if (!isError) {
+    return (
+      <div className="item container">
+        <LoadStateWrapper loading={isLoading}>
+          <InnerNav />
+          <section className="item-details">
+            <ProductPresentation dataItem={data} slug={slug} />
+            <ProductFeatures features={data?.features ?? ''} />
+            <ProductIncludes dataItem={data} />
+          </section>
+          <section className="gallery">
+            <h2 className="visually-hidden">Gallery</h2>
+            <div className="gallery__images">{galleryImagesDOM()}</div>
+          </section>
+
+          <section className="you-may-like">
+            <h2 className="h2 h2--small text-black">You may also like</h2>
+            <div className="you-may-like__items">{shortCardsDOM()}</div>
+          </section>
+          <CategoriesSection />
+          <MainDescriptionSection />
+        </LoadStateWrapper>
+      </div>
+    )
+  }
 }
 
 export { Item }

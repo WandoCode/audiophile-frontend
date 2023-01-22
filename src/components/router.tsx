@@ -9,6 +9,7 @@ import { NotFound } from '../pages/NotFound/NotFound'
 import { Home } from '../pages/Home/Home'
 import { Item } from '../pages/Item/Item'
 import { Layout } from '../pages/Layout/Layout'
+import { Error } from '../pages/Error/Error'
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createHashRouter(
       <Route path="category/:category" element={<Category />} />
       <Route path="item/:slug" element={<Item />} />
       <Route path="checkout" element={<Checkout />} />
+      <Route path="error" element={<Error />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   ),
