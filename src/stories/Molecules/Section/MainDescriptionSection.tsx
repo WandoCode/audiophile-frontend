@@ -1,6 +1,6 @@
 import ReactMarkdown from 'react-markdown'
 import { ImageSet } from '../../Atoms'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Context } from '../../../components/ContextProvider'
 import { DataLayout } from '../../../types/index'
 
@@ -12,7 +12,7 @@ function MainDescriptionSection() {
       <ImageSet
         data={layout?.mainDescription.images}
         className="mainDescription"
-        altTxt=" "
+        altTxt="Chill guy listening music with headphones. Black and white colors."
         lazy={true}
       />
 

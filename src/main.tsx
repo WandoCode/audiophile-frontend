@@ -11,4 +11,3 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </ContextProvider>
   </React.StrictMode>
 )
-// TODO:react: Changer btn en link quand nécessaire.

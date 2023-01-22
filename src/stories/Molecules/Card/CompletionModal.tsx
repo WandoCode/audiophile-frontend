@@ -12,10 +12,12 @@ function CompletionModal() {
   const [showAllItems, setShowAllItems] = useState(false)
   const [cartCopy, setCartCopy] = useState<CartItem[]>()
   const [totalPriceCopy, setTotalPriceCopy] = useState<number>(0)
-  const { cart, getCartTotal, emptyCart } = useContext(Context) as {
+
+  const { cart, getCartTotal, emptyCart, SHIPPING } = useContext(Context) as {
     cart: CartItem[]
     getCartTotal: () => number
     emptyCart: () => void
+    SHIPPING: number
   }
 
   const handleBackHome = () => {
@@ -71,14 +73,10 @@ function CompletionModal() {
         </h1>
         <p>You will receive an email confirmation shortly.</p>
         <div className="completion-modal__body">
-          <div className="completion-modal__items">
+          <ul className="completion-modal__items">
             {cartCopy?.length !== 0 && allItemsDOM?.at(0)}
 
-            {showAllItems === true && (
-              <ul className="completion-modal__list">
-                {allItemsDOM?.slice(1)}
-              </ul>
-            )}
+            {showAllItems === true && <>{allItemsDOM?.slice(1)}</>}
 
             {cartCopy && cartCopy.length > 1 && (
               <div className="completion-modal__other-items">
@@ -92,12 +90,12 @@ function CompletionModal() {
                 </button>
               </div>
             )}
-          </div>
+          </ul>
 
           <div className="completion-modal__total">
             <p className="completion-modal__heading">Grand Total</p>
             <p className="completion-modal__price white">
-              $ {formatPrice(totalPriceCopy + 50)}
+              $ {formatPrice(totalPriceCopy + SHIPPING)}
             </p>
           </div>
         </div>
