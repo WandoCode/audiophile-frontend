@@ -78,7 +78,6 @@ describe('Buttons', () => {
 
     const btn = screen.getByText(text)
     const disabledAttribute = btn.getAttribute('disabled')
-    console.log(disabledAttribute)
 
     expect(disabledAttribute).toBeNull()
   })

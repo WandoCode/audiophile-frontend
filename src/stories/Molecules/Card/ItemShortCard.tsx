@@ -1,6 +1,7 @@
 import { Button, ImageSet } from '../../Atoms'
 import { useNavigate } from 'react-router-dom'
 import { LinkedItem } from '../../../types'
+
 interface Props {
   data: LinkedItem
 }
@@ -20,7 +21,7 @@ function ItemShortCard({ data }: Props) {
         <h3 className="h3 h3--big">{data.shortName}</h3>
         <Button
           level="primary"
-          text="see product"
+          text="See product"
           onClickHandler={() => {
             navigate(`/item/${data?.slug}`)
           }}

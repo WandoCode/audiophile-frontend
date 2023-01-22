@@ -1,5 +1,5 @@
 import { ImgButton, LinkNav } from '../../Atoms'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Context } from '../../../components/ContextProvider'
 import { DataLayout } from '../../../types'
 

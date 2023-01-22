@@ -88,7 +88,6 @@ describe('Given I use the "CompletionModal" component', () => {
         const backHomeBtn = screen.getByRole('button', { name: 'Back To Home' })
 
         fireEvent.click(backHomeBtn)
-        console.log(mockedUsedNavigate.mock.calls)
 
         expect(mockedUsedNavigate).toHaveBeenCalledOnce()
         expect(mockedUsedNavigate.mock.calls[0][0]).toBe('/')

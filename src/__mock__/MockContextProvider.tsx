@@ -2,6 +2,7 @@ import { createContext, useState } from 'react'
 import { Context } from '../components/ContextProvider'
 import { CartItem } from '../types'
 import { cartItemA, cartItemB } from './data/CartItem'
+import { layoutDatas } from './data/Layout'
 
 interface Props {
   children: React.ReactNode
@@ -15,7 +16,7 @@ function MockContextProvider({ children, mockedCart, mockedCartTotal }: Props) {
   const [cart, setCart] = useState<CartItem[]>(mockedCart || initialCart)
 
   const SHIPPING = 50
-
+  const layout = layoutDatas
   const getCartTotal = () => {
     return mockedCartTotal || 12599
   }
@@ -28,7 +29,7 @@ function MockContextProvider({ children, mockedCart, mockedCartTotal }: Props) {
     <Context.Provider
       value={{
         SHIPPING,
-        // layout,
+        layout,
         // setLayout,
         // homepage,
         // setHomepage,
