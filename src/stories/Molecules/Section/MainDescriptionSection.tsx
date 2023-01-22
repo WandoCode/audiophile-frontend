@@ -1,15 +1,16 @@
 import ReactMarkdown from 'react-markdown'
-import { useGetLayout } from '../../../hooks/useGetLayout'
 import { ImageSet } from '../../Atoms'
+import { useContext, useEffect } from 'react'
+import { Context } from '../../../components/ContextProvider'
+import { DataLayout } from '../../../types/index'
 
 function MainDescriptionSection() {
-  const layoutQuery = useGetLayout()
-  const layoutData = layoutQuery.data
+  const { layout } = useContext(Context) as { layout: DataLayout | undefined }
 
   return (
     <section className="main-description">
       <ImageSet
-        data={layoutData?.mainDescription.images}
+        data={layout?.mainDescription.images}
         className="mainDescription"
         altTxt=" "
         lazy={true}
@@ -20,10 +21,10 @@ function MainDescriptionSection() {
           components={{ p: 'h2' }}
           className="main-description__secondary"
         >
-          {layoutData?.mainDescription.title ?? ''}
+          {layout?.mainDescription.title ?? ''}
         </ReactMarkdown>
         <p className="main-description__description">
-          {layoutData?.mainDescription.text}
+          {layout?.mainDescription.text}
         </p>
       </div>
     </section>

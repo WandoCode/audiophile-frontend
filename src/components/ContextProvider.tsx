@@ -1,13 +1,8 @@
 import { createContext, useState, useEffect } from 'react'
 
 import cartStore from '../store/cartStore'
-import {
-  AddItem,
-  CartItem,
-  DataHomepage,
-  DataLayout,
-  RemoveItem,
-} from '../types'
+import { AddItem, CartItem, DataHomepage, RemoveItem } from '../types'
+import { DataLayout } from '../types/index'
 
 interface Props {
   children: React.ReactNode
@@ -18,8 +13,8 @@ export const Context = createContext({})
 function ContextProvider({ children }: Props) {
   const SHIPPING = 50
   const cartStoreManager = cartStore()
+  const [layout, setLayout] = useState<DataLayout>()
   const [homepage, setHomepage] = useState<DataHomepage>()
-  const [loading, setLoading] = useState(true)
   const [cart, setCart] = useState<CartItem[]>([])
 
   useEffect(() => {
@@ -85,8 +80,8 @@ function ContextProvider({ children }: Props) {
         SHIPPING,
         homepage,
         setHomepage,
-        loading,
-        setLoading,
+        layout,
+        setLayout,
         cart,
         addItem,
         removeItem,

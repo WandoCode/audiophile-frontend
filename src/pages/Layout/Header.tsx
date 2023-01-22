@@ -6,10 +6,15 @@ import { CartModal, MainNav } from '../../stories/Molecules'
 import logo from '../../assets/logo.svg'
 import { CartItem } from '../../types'
 
-function Header() {
+interface Props {
+  loading: boolean
+}
+
+function Header({ loading }: Props) {
   let { cart, cleanCart } = useContext(Context) as {
     cart: CartItem[]
     cleanCart: () => void
+    loading: boolean
   }
 
   const navigate = useNavigate()
@@ -30,6 +35,7 @@ function Header() {
 
   const headerClassName = () => {
     let rep = 'unshift header '
+    if (loading) return rep
     if (customHeaderClass) rep += 'header--transparent '
     if (!onTop) rep += 'header--on-scroll '
 

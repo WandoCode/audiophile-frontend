@@ -38,23 +38,23 @@ function Item() {
 
   return (
     <div className="item container">
-      <LoadStateWrapper loading={loading}>
-        <InnerNav />
-        <section className="item-details">
-          <ProductPresentation dataItem={dataItem} slug={slug} />
-          <ProductFeatures features={dataItem?.features ?? ''} />
-          <ProductIncludes dataItem={dataItem} />
-        </section>
-        <section className="gallery">
-          <h2 className="visually-hidden">Gallery</h2>
-          <div className="gallery__images">{galleryImagesDOM()}</div>
-        </section>
+      {/* <LoadStateWrapper loading={loading}> */}
+      <InnerNav />
+      <section className="item-details">
+        <ProductPresentation dataItem={dataItem} slug={slug} />
+        <ProductFeatures features={dataItem?.features ?? ''} />
+        <ProductIncludes dataItem={dataItem} />
+      </section>
+      <section className="gallery">
+        <h2 className="visually-hidden">Gallery</h2>
+        <div className="gallery__images">{galleryImagesDOM()}</div>
+      </section>
 
-        <section className="you-may-like">
-          <h2 className="h2 h2--small text-black">You may also like</h2>
-          <div className="you-may-like__items">{shortCardsDOM()}</div>
-        </section>
-      </LoadStateWrapper>
+      <section className="you-may-like">
+        <h2 className="h2 h2--small text-black">You may also like</h2>
+        <div className="you-may-like__items">{shortCardsDOM()}</div>
+      </section>
+      {/* </LoadStateWrapper> */}
       <CategoriesSection />
       <MainDescriptionSection />
     </div>

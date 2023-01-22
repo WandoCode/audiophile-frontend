@@ -6,15 +6,22 @@ interface Props {
 }
 
 function LoadStateWrapper({ children, loading }: Props) {
-  if (loading)
-    return (
-      <div className="load-screen">
+  const loaderClass = () => {
+    let base = 'load-screen '
+    if (!loading) base += 'load-screen--inactive'
+    return base
+  }
+
+  return (
+    <>
+      <div className={loaderClass()}>
         <div className="loader-icon">
           <img src={loaderIcon} alt="Loading icon" />
         </div>
       </div>
-    )
-  else return <>{children}</>
+      {children}
+    </>
+  )
 }
 
 export default LoadStateWrapper

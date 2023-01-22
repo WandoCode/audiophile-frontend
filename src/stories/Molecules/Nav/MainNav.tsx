@@ -1,5 +1,7 @@
-import { useGetLayout } from '../../../hooks/useGetLayout'
 import { ImgButton, LinkNav } from '../../Atoms'
+import { useContext, useEffect } from 'react'
+import { Context } from '../../../components/ContextProvider'
+import { DataLayout } from '../../../types'
 
 interface Props {
   menuIsOpen: boolean
@@ -7,8 +9,7 @@ interface Props {
 }
 
 function MainNav({ menuIsOpen, onToogleMenu }: Props) {
-  const layoutQuery = useGetLayout()
-  const layoutData = layoutQuery.data
+  const { layout } = useContext(Context) as { layout: DataLayout | undefined }
 
   const navClass = () => {
     let base = 'main-nav '
@@ -27,16 +28,16 @@ function MainNav({ menuIsOpen, onToogleMenu }: Props) {
       />
       <LinkNav text="home" path="/" />
       <LinkNav
-        text={layoutData ? layoutData.category1.name : 'Headphones'}
-        path={`/category/${layoutData?.category1.name}`}
+        text={layout ? layout.category1.name : 'Headphones'}
+        path={`/category/${layout?.category1.name}`}
       />
       <LinkNav
-        text={layoutData ? layoutData?.category2.name : 'Speakers'}
-        path={`/category/${layoutData?.category2.name}`}
+        text={layout ? layout?.category2.name : 'Speakers'}
+        path={`/category/${layout?.category2.name}`}
       />
       <LinkNav
-        text={layoutData ? layoutData?.category3.name : 'Earphones'}
-        path={`/category/${layoutData?.category3.name}`}
+        text={layout ? layout?.category3.name : 'Earphones'}
+        path={`/category/${layout?.category3.name}`}
       />
     </nav>
   )

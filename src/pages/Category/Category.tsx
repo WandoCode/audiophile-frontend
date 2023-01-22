@@ -32,13 +32,11 @@ function Category() {
         <h1 className="h1 h1--medium">{category}</h1>
       </div>
 
-      <LoadStateWrapper loading={loading}>
-        <div className="container">
-          <section className="category__items">{itemsDOM}</section>
-          <CategoriesSection />
-          <MainDescriptionSection />
-        </div>
-      </LoadStateWrapper>
+      <div className="container">
+        <section className="category__items">{itemsDOM}</section>
+        <CategoriesSection />
+        <MainDescriptionSection />
+      </div>
     </div>
   )
 }

@@ -16,18 +16,18 @@ function Home() {
 
   return (
     <div className="home ">
-      <LoadStateWrapper loading={loading}>
-        <Hero data={data} />
-        <div className="container">
-          <CategoriesSection />
-          <section className="home__products">
-            <Product1 data={data} />
-            <Product2 data={data} />
-            <Product3 data={data} />
-          </section>
-          <MainDescriptionSection />
-        </div>
-      </LoadStateWrapper>
+      {/* <LoadStateWrapper loading={loading}> */}
+      <Hero data={data} />
+      <div className="container">
+        <CategoriesSection />
+        <section className="home__products">
+          <Product1 data={data} />
+          <Product2 data={data} />
+          <Product3 data={data} />
+        </section>
+        <MainDescriptionSection />
+      </div>
+      {/* </LoadStateWrapper> */}
     </div>
   )
 }
