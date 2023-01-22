@@ -17,9 +17,7 @@ function Home() {
   if (isError) {
     const message = axios.isAxiosError(error) ? error.message : 'Uknown error'
     return <Error message={message} />
-  }
-
-  if (!isError) {
+  } else {
     return (
       <div className="home ">
         <LoadStateWrapper loading={isLoading}>

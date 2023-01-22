@@ -18,7 +18,6 @@ const router = createHashRouter(
       <Route path="category/:category" element={<Category />} />
       <Route path="item/:slug" element={<Item />} />
       <Route path="checkout" element={<Checkout />} />
-      <Route path="error" element={<Error />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   ),
