@@ -14,7 +14,7 @@ describe('Buttons', () => {
     const text = 'test text'
 
     render(<Button text={text} level="primary" onClickHandler={(e) => {}} />)
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     expect(Array.from(btn.classList)).toContain('btn--primary')
   })
 
@@ -22,7 +22,7 @@ describe('Buttons', () => {
     const text = 'test text'
 
     render(<Button text={text} level="secondary" onClickHandler={(e) => {}} />)
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     expect(Array.from(btn.classList)).toContain('btn--secondary')
   })
 
@@ -30,7 +30,7 @@ describe('Buttons', () => {
     const text = 'test text'
 
     render(<Button text={text} level="tertiary" onClickHandler={(e) => {}} />)
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     expect(Array.from(btn.classList)).toContain('btn--tertiary')
   })
 
@@ -38,7 +38,7 @@ describe('Buttons', () => {
     const text = 'test text'
 
     render(<Button text={text} level="quaternary" onClickHandler={(e) => {}} />)
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     expect(Array.from(btn.classList)).toContain('btn--quaternary')
   })
 
@@ -47,7 +47,7 @@ describe('Buttons', () => {
 
     render(<Button text={text} level="tertiary" onClickHandler={(e) => {}} />)
 
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     const btnImg = within(btn).getByRole('img')
 
     expect(btnImg).not.toBeNull()
@@ -65,7 +65,7 @@ describe('Buttons', () => {
       />
     )
 
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     const disabledAttribute = btn.getAttribute('disabled')
 
     expect(disabledAttribute).not.toBeNull()
@@ -76,7 +76,7 @@ describe('Buttons', () => {
 
     render(<Button text={text} level="primary" onClickHandler={(e) => {}} />)
 
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
     const disabledAttribute = btn.getAttribute('disabled')
 
     expect(disabledAttribute).toBeNull()
@@ -113,7 +113,7 @@ describe('Buttons', () => {
       />
     )
 
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
 
     expect(Array.from(btn.classList)).toContain(classTest)
   })
@@ -133,7 +133,7 @@ describe('Buttons', () => {
       />
     )
 
-    const btn = screen.getByText(text)
+    const btn = screen.getByRole('button', { name: text })
 
     expect(btn.id).toBe(id)
   })
