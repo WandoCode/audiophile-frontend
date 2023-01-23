@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import MockContextProvider from '../../__mock__/MockContextProvider'
 import { MainNav } from '../../stories/Molecules'
-import { layoutDatas } from '../../__mock__/data/Layout'
 
 const mockedUsedNavigate = vi.fn()
 const mockedUseLocation = vi.fn()

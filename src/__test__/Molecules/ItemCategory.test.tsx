@@ -1,9 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
-import MockContextProvider from '../../__mock__/MockContextProvider'
-import { CompletionModal, ItemCategory } from '../../stories/Molecules'
+import { render, screen, fireEvent } from '@testing-library/react'
+import { ItemCategory } from '../../stories/Molecules'
 import { itemA, itemB } from '../../__mock__/data/Item'
-import { lazy } from 'react'
 
 const mockedUsedNavigate = vi.fn()
 

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { ItemShortCard } from '../../stories/Molecules'
 import { linkedItemA } from '../../__mock__/data/LinkedItem'
 

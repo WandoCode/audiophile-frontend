@@ -1,5 +1,5 @@
-import { beforeAll, beforeEach, describe, expect, test, vi } from 'vitest'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { Input } from '../../stories/Atoms'
 
 let label = 'label-test'
