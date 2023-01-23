@@ -10,5 +10,5 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
   },
-  base: '/audiophile-frontend',
+  // base: '/audiophile-frontend',
 })
