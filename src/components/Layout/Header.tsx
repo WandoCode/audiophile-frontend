@@ -4,7 +4,8 @@ import { ImgButton } from '../../stories/Atoms'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { CartModal, MainNav } from '../../stories/Molecules'
 import logo from '../../assets/logo.svg'
-import { CartItem } from '../../types'
+import { CartItem, Condition } from '../../types'
+import { getConditionalClassName } from '../../utility/string'
 
 interface Props {
   loading: boolean
@@ -24,6 +25,11 @@ function Header({ loading }: Props) {
   const [customHeaderClass, setCustomHeaderClass] = useState(false)
   const [onTop, setOnTop] = useState(window.scrollY === 0)
 
+  const headerClassConditions: Condition[] = [
+    { isFilled: !onTop, addedClass: 'header--on-scroll' },
+    { isFilled: customHeaderClass, addedClass: 'header--transparent' },
+  ]
+
   const toggleMenu = () => {
     setMenuIsOpen(!menuIsOpen)
   }
@@ -33,13 +39,10 @@ function Header({ loading }: Props) {
     setModalIsOpen(!modalIsOpen)
   }
 
-  const headerClassName = () => {
-    let rep = 'unshift header '
-    if (loading) return rep
-    if (customHeaderClass) rep += 'header--transparent '
-    if (!onTop) rep += 'header--on-scroll '
-
-    return rep
+  const headerClass = () => {
+    let baseClass = 'unshift header'
+    if (loading) return baseClass
+    else return getConditionalClassName(baseClass, headerClassConditions)
   }
 
   const handleCheckout = (e: React.MouseEvent) => {
@@ -72,7 +75,7 @@ function Header({ loading }: Props) {
   }, [location])
 
   return (
-    <header className={headerClassName()}>
+    <header className={headerClass()}>
       <div className="container container--unshift  header__container">
         <ImgButton
           onClickHandler={toggleMenu}

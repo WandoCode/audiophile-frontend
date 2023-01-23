@@ -102,3 +102,8 @@ export interface CartItem {
 export interface RemoveItem {
   slug: string
 }
+
+export interface Condition {
+  isFilled: boolean
+  addedClass: string
+}

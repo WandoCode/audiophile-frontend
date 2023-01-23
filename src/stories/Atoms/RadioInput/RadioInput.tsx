@@ -1,3 +1,5 @@
+import { Condition } from '../../../types'
+import { getConditionalClassName } from '../../../utility/string'
 interface Props {
   label: string
   name: string
@@ -15,16 +17,15 @@ function RadioInput({
   onChangeHandler,
   error = false,
 }: Props) {
-  const mainClass = () => {
-    let base = 'radio '
-    if (error) base += 'radio--error'
-    if (value === currValue) base += 'radio--checked'
+  const mainClassConditions: Condition[] = [
+    { isFilled: error, addedClass: 'radio--error' },
+    { isFilled: value === currValue, addedClass: 'radio--checked' },
+  ]
 
-    return base
-  }
+  const mainClass = getConditionalClassName('radio', mainClassConditions)
 
   return (
-    <label htmlFor={value} className={mainClass()}>
+    <label htmlFor={value} className={mainClass}>
       <input
         type="radio"
         name={name}
