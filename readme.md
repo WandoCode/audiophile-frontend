@@ -13,9 +13,11 @@ It's based on CMS Strapi that I set up: [see readme](https://github.com/WandoCod
 
 - Typescript
 - React with React context
-- Storybook for the main reused components (not hosted)
+- Storybook for the main reused components (not deployed)
 - SCSS (BEM)
 - Custom Form validation with RegEx
+
+NB: The 'nextjs' branch contains the functional NextJS version of the website that I used to discover the NextJS framework in details. It's not deployed.
 
 ## Main features
 

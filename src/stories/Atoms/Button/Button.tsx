@@ -32,7 +32,9 @@ function Button({
       disabled={disabled}
       {...props}
     >
-      {text} {level === 'tertiary' && <img src={arrow} alt="" />}
+      <div className="btn__content">
+        {text} {level === 'tertiary' && <img src={arrow} alt="" />}
+      </div>
     </button>
   )
 }

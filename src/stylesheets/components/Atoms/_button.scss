@@ -1,6 +1,10 @@
 @use '../../abstracts/' as *;
 
 .btn {
+  $transition-time: 0.35s;
+
+  position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -20,9 +24,27 @@
   &--primary {
     background-color: var(--clr-primary-400);
 
+    &:before {
+      position: absolute;
+      content: '';
+
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      translate: -50% 0;
+
+      width: 0;
+
+      background-color: var(--clr-primary-300);
+      opacity: 0;
+
+      transition: $transition-time;
+    }
+
     @include on-hover {
-      &:hover {
-        background-color: var(--clr-primary-300);
+      &:hover:before {
+        opacity: 1;
+        width: 100%;
       }
     }
   }
@@ -32,32 +54,77 @@
 
     background-color: transparent;
 
+    transition: $transition-time;
+
+    &:before {
+      position: absolute;
+      content: '';
+
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      translate: -50% 0;
+
+      width: 0;
+
+      background-color: var(--clr-neutral-700);
+      opacity: 0;
+
+      transition: $transition-time;
+    }
+
     @include on-hover {
-      &:hover {
-        background-color: var(--clr-neutral-700);
+      &:hover:before {
+        opacity: 1;
+        width: 100%;
       }
     }
 
     &--dark {
       background-color: var(--clr-neutral-700);
 
+      &:before {
+        position: absolute;
+        content: '';
+
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        translate: -50% 0;
+
+        width: 0;
+
+        background-color: hsl(0, 0, 30%);
+        opacity: 0;
+
+        transition: $transition-time;
+      }
+
       @include on-hover {
         &:hover {
-          background-color: hsl(0, 0, 30%);
           border-color: hsl(0, 0, 30%);
+        }
+
+        &:hover:before {
+          opacity: 1;
+          width: 100%;
         }
       }
     }
   }
 
   &--tertiary {
-    gap: rem(13);
-
     min-height: unset;
     min-width: unset;
-
     padding: 0;
+  }
 
+  &__content {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(13);
+
+    z-index: 1;
     background-color: transparent;
   }
 
