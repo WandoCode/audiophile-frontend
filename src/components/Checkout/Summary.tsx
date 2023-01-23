@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { Context } from '../../components/ContextProvider'
+import { Context } from '../ContextProvider'
 import { ItemSummary } from '../../stories/Atoms/CardElement/ItemSummary'
 import { CartItem } from '../../types'
 import { formatPrice, getVAT } from '../../utility'

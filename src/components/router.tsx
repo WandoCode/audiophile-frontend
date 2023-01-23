@@ -3,13 +3,13 @@ import {
   createRoutesFromElements,
   Route,
 } from 'react-router-dom'
-import { Category } from '../pages/Category/Category'
-import { Checkout } from '../pages/Checkout/Checkout'
-import { NotFound } from '../pages/NotFound/NotFound'
-import { Home } from '../pages/Home/Home'
-import { Item } from '../pages/Item/Item'
-import { Layout } from '../pages/Layout/Layout'
-import { Error } from '../pages/Error/Error'
+import { Category } from '../pages/Category'
+import { Checkout } from '../pages/Checkout'
+import { NotFound } from '../pages/NotFound'
+import { Home } from '../pages/Home'
+import { Item } from '../pages/Item'
+import { Layout } from '../pages/Layout'
+import { Error } from '../pages/Error'
 
 const router = createHashRouter(
   createRoutesFromElements(

@@ -1,14 +1,14 @@
 import { useParams } from 'react-router-dom'
-import { useGetCategory } from '../../hooks/useGetCategory'
+import { useGetCategory } from '../hooks/useGetCategory'
 
 import {
   CategoriesSection,
   ItemCategory,
   MainDescriptionSection,
-} from '../../stories/Molecules'
-import LoadStateWrapper from '../../components/LoadStateWrapper'
+} from '../stories/Molecules'
+import LoadStateWrapper from '../components/LoadStateWrapper'
 import axios from 'axios'
-import { Error } from '../Error/Error'
+import { Error } from './Error'
 
 function Category() {
   const { category } = useParams()

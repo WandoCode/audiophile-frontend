@@ -1,9 +1,9 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.svg'
 import { SocialLink } from '../../stories/Atoms'
 import { FooterNav } from '../../stories/Molecules'
-import { Context } from '../../components/ContextProvider'
+import { Context } from '../ContextProvider'
 import { DataLayout } from '../../types'
 
 function Footer() {
