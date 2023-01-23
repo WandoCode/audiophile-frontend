@@ -9,7 +9,6 @@ import { NotFound } from '../pages/NotFound'
 import { Home } from '../pages/Home'
 import { Item } from '../pages/Item'
 import { Layout } from '../pages/Layout'
-import { Error } from '../pages/Error'
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -20,8 +19,8 @@ const router = createHashRouter(
       <Route path="checkout" element={<Checkout />} />
       <Route path="*" element={<NotFound />} />
     </Route>
-  ),
-  { basename: '/audiophile-frontend' }
+  )
+  // { basename: '/audiophile-frontend' }
 )
 
 // FIXME: Pour acceder normalement aux pages de l'app (dev ou "buildé") => <DOMAIN>/audiophile-frontend/#/audiophile-frontend/
