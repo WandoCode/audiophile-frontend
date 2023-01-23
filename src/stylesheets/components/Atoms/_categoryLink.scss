@@ -46,17 +46,17 @@
   .animate-on-hover {
     .category-link__img {
       transition: translate 0.2s;
-      animation: degrow 0.2s forwards;
+      animation: degrow 0.3s forwards;
     }
 
     &:hover {
       @include on-hover {
         & h3 {
-          translate: 0 -20px;
+          translate: 0 -10px;
         }
 
         .category-link__img {
-          translate: -50% -20px;
+          translate: -50% -10px;
           animation: grow 0.2s forwards;
           animation-delay: 0.05s;
         }
@@ -85,13 +85,13 @@
     scale: 100%;
   }
   to {
-    scale: 108%;
+    scale: 109%;
   }
 }
 
 @keyframes degrow {
   from {
-    scale: 108%;
+    scale: 109%;
   }
   to {
     scale: 100%;

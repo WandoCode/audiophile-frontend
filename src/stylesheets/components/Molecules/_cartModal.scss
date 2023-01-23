@@ -6,7 +6,8 @@
   inset: $header-height-sm 0 0 0;
 
   background-color: rgba(0, 0, 0, 0.4);
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .header--on-scroll & {
     inset: $header-height-on-scroll-sm 0 0 0;
@@ -23,6 +24,8 @@
 
     border-radius: 8px;
     background-color: #fff;
+
+    animation: slide-in 0.5s;
 
     @include breakpoint(medium) {
       margin-inline: auto 0;
@@ -46,5 +49,26 @@
   &__total {
     display: flex;
     justify-content: space-between;
+  }
+}
+
+@include breakpoint-down(large) {
+  :root {
+    --translate-distance: 100%;
+  }
+}
+
+@include breakpoint(large) {
+  :root {
+    --translate-distance: 200%;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    translate: var(--translate-distance);
+  }
+  to {
+    translate: 0;
   }
 }

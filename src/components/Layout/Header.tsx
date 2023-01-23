@@ -101,6 +101,7 @@ function Header({ loading }: Props) {
             type="cart"
             className="cart"
             aria-haspopup="true"
+            isOpen={modalIsOpen}
           />
         </div>
       </div>
