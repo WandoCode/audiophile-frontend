@@ -1,4 +1,5 @@
 import {
+  createBrowserRouter,
   createHashRouter,
   createRoutesFromElements,
   Route,
@@ -10,7 +11,8 @@ import { Home } from '../pages/Home'
 import { Item } from '../pages/Item'
 import { Layout } from '../pages/Layout'
 
-const router = createHashRouter(
+// createHashRouter
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route index element={<Home />} />
