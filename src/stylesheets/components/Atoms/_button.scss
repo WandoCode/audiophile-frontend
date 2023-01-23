@@ -24,29 +24,10 @@
   &--primary {
     background-color: var(--clr-primary-400);
 
-    &:before {
-      position: absolute;
-      content: '';
-
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      translate: -50% 0;
-
-      width: 0;
-
-      background-color: var(--clr-primary-300);
-      opacity: 0;
-
-      transition: $transition-time;
-    }
-
-    @include on-hover {
-      &:hover:before {
-        opacity: 1;
-        width: 100%;
-      }
-    }
+    @include btn-background-annimation(
+      var(--clr-primary-300),
+      $transition-time
+    );
   }
 
   &--secondary {
@@ -56,58 +37,19 @@
 
     transition: $transition-time;
 
-    &:before {
-      position: absolute;
-      content: '';
-
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      translate: -50% 0;
-
-      width: 0;
-
-      background-color: var(--clr-neutral-700);
-      opacity: 0;
-
-      transition: $transition-time;
-    }
-
-    @include on-hover {
-      &:hover:before {
-        opacity: 1;
-        width: 100%;
-      }
-    }
+    @include btn-background-annimation(
+      var(--clr-neutral-700),
+      $transition-time
+    );
 
     &--dark {
       background-color: var(--clr-neutral-700);
 
-      &:before {
-        position: absolute;
-        content: '';
-
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        translate: -50% 0;
-
-        width: 0;
-
-        background-color: hsl(0, 0, 30%);
-        opacity: 0;
-
-        transition: $transition-time;
-      }
+      @include btn-background-annimation(hsl(0, 0, 30%), $transition-time);
 
       @include on-hover {
         &:hover {
           border-color: hsl(0, 0, 30%);
-        }
-
-        &:hover:before {
-          opacity: 1;
-          width: 100%;
         }
       }
     }

@@ -54,3 +54,29 @@
     @content;
   }
 }
+
+@mixin btn-background-annimation($color, $transition-time) {
+  &:before {
+    position: absolute;
+    content: '';
+
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 0;
+
+    width: 0;
+
+    background-color: $color;
+    opacity: 0;
+
+    transition: $transition-time;
+  }
+
+  @include on-hover {
+    &:hover:before {
+      opacity: 1;
+      width: 100%;
+    }
+  }
+}
