@@ -1,16 +1,44 @@
 import { Button, ImageSet } from '../../stories/Atoms'
 import { useNavigate } from 'react-router-dom'
 import { DataHomepage } from '../../types'
+import { useRef, useEffect, useState } from 'react'
+import Observer from '../Observer'
+import { getConditionalClassName } from '../../utility/string'
 
 interface Props {
   data: DataHomepage | undefined
 }
 
-function Product1({ data }: Props) {
+const Product1 = ({ data }: Props) => {
+  const articleRef = useRef(null)
   const navigate = useNavigate()
+  const [showTitle, setShowTitle] = useState(false)
+  const [showText, setShowText] = useState(false)
+
+  let titleClassConditions = [
+    { isFilled: showTitle, addedClass: 'text-apparition' },
+    { isFilled: !showTitle, addedClass: 'text-apparition-setup' },
+  ]
+
+  let textClassConditions = [
+    { isFilled: showText, addedClass: 'text-apparition' },
+    { isFilled: !showText, addedClass: 'text-apparition-setup' },
+  ]
+
+  const titleClass = getConditionalClassName('h2', titleClassConditions)
+
+  const textClass = getConditionalClassName(
+    'product1__description white',
+    textClassConditions
+  )
+
+  const btnClass = getConditionalClassName(
+    'btn--secondary--dark',
+    textClassConditions
+  )
 
   return (
-    <article className="product1 ">
+    <article ref={articleRef} className="product1">
       <ImageSet
         className="product1"
         altTxt={data?.product1.name}
@@ -18,18 +46,28 @@ function Product1({ data }: Props) {
         lazy={true}
       />
       <div className="product1__text">
-        <h2 className="h2">{data?.product1.name}</h2>
-        <p className="product1__description white">
-          {data?.product1.description}
-        </p>
-        <Button
-          className="btn--secondary--dark"
-          level="secondary"
-          text="See product"
-          onClickHandler={() => {
-            navigate(`/item/${data?.product1.slug}`)
-          }}
-        />
+        <Observer
+          parentRef={articleRef}
+          onCallBack={setShowTitle}
+          threshold={0.5}
+        >
+          <h2 className={titleClass}>{data?.product1.name}</h2>
+        </Observer>
+        <Observer
+          parentRef={articleRef}
+          onCallBack={setShowText}
+          threshold={0.75}
+        >
+          <p className={textClass}>{data?.product1.description}</p>
+          <Button
+            className={btnClass}
+            level="secondary"
+            text="See product"
+            onClickHandler={() => {
+              navigate(`/item/${data?.product1.slug}`)
+            }}
+          />
+        </Observer>
       </div>
     </article>
   )
