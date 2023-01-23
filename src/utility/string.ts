@@ -12,13 +12,10 @@ export const getConditionalClassName = (
   baseClass: string,
   conditions: Condition[]
 ) => {
-  let base = baseClass
+  let base = baseClass + ' '
   conditions.forEach((condition) => {
-    base += ' '
-    if (condition.isFilled) base += condition.addedClass
+    if (condition.isFilled) base += condition.addedClass + ' '
   })
 
-  base.trimEnd()
-
-  return base
+  return base.trim()
 }
