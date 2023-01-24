@@ -15,13 +15,16 @@ function dataCategory(raw: any[]) {
         slug: itemRaw.attributes?.slug,
         images: {
           mobile: img.format(
-            itemRaw.attributes.categoryImage[0].mobile.data.attributes.url
+            itemRaw.attributes.categoryImage[0].mobile.data.attributes.formats
+              .small.url
           ),
           tablet: img.format(
-            itemRaw.attributes.categoryImage[0].tablet.data.attributes.url
+            itemRaw.attributes.categoryImage[0].tablet.data.attributes.formats
+              .large.url
           ),
           desktop: img.format(
-            itemRaw.attributes.categoryImage[0].desktop.data.attributes.url
+            itemRaw.attributes.categoryImage[0].desktop.data.attributes.formats
+              .small.url
           ),
         },
       }

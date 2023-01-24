@@ -43,6 +43,10 @@
 
     & > .header__logo {
       justify-self: center;
+
+      & img {
+        width: 143px;
+      }
     }
 
     & > *:last-child {

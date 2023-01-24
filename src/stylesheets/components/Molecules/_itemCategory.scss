@@ -10,7 +10,19 @@
   }
 
   &__img {
+    min-height: rem(250);
+    min-width: rem(210);
+
     max-height: rem(560);
+
+    @include breakpoint(medium) {
+      min-height: rem(215);
+      min-width: rem(410);
+    }
+    @include breakpoint(large) {
+      min-height: rem(480);
+      min-width: rem(460);
+    }
   }
 
   &__text {
