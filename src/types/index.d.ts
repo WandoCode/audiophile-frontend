@@ -111,10 +111,8 @@ export interface Condition {
 type RemoveItemFct = ({ slug }: RemoveItem) => void
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 
-export interface ContextType {
+export interface CartType {
   SHIPPING: number
-  layout: DataLayout | undefined
-  setLayout: React.Dispatch<React.SetStateAction<DataLayout | undefined>>
   cart: CartItem[]
   addItem: AddItemFct
   removeItem: RemoveItemFct
@@ -122,4 +120,9 @@ export interface ContextType {
   getCartTotal: () => number
   cleanCart: () => void
   getCartGrandTotal: () => number
+}
+
+export interface LayoutContextType {
+  layout: DataLayout | undefined
+  setLayout: React.Dispatch<React.SetStateAction<DataLayout | undefined>>
 }

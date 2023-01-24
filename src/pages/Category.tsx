@@ -3,7 +3,7 @@ import {
   ItemCategory,
   MainDescriptionSection,
 } from '../stories/Molecules'
-import LoadStateWrapper from '../components/LoadStateWrapper'
+import LoadStateWrapper from '../components/utils/LoadStateWrapper'
 import { useGetCategory } from '../hooks/useGetCategory'
 import { useParams } from 'react-router-dom'
 import { Error } from './Error'

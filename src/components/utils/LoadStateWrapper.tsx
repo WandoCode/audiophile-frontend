@@ -1,4 +1,4 @@
-import loaderIcon from '../assets/loadingIcon.png'
+import loaderIcon from '../../assets/loadingIcon.png'
 
 interface Props {
   children: React.ReactNode

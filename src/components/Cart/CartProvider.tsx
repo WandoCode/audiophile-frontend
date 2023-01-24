@@ -1,17 +1,28 @@
-import { AddItem, CartItem, RemoveItem, DataLayout } from '../types'
+import { AddItem, CartItem, CartType, RemoveItem } from '../../types'
 import { createContext, useState, useEffect } from 'react'
-import cartStore from '../store/cartStore'
+import cartStore from '../../store/cartStore'
 
 interface Props {
   children: React.ReactNode
 }
 
-export const Context = createContext({})
+const defaultValue: CartType = {
+  SHIPPING: 50,
+  cart: [],
+  addItem: () => {},
+  removeItem: () => {},
+  emptyCart: () => {},
+  getCartTotal: () => 0,
+  cleanCart: () => {},
+  getCartGrandTotal: () => 50,
+}
 
-function ContextProvider({ children }: Props) {
-  const SHIPPING = 50
+export const CartContext = createContext(defaultValue)
+
+function CartProvider({ children }: Props) {
   const cartStoreManager = cartStore()
-  const [layout, setLayout] = useState<DataLayout>()
+
+  const SHIPPING = 50
   const [cart, setCart] = useState<CartItem[]>([])
 
   useEffect(() => {
@@ -72,11 +83,9 @@ function ContextProvider({ children }: Props) {
   }
 
   return (
-    <Context.Provider
+    <CartContext.Provider
       value={{
         SHIPPING,
-        layout,
-        setLayout,
         cart,
         addItem,
         removeItem,
@@ -87,8 +96,8 @@ function ContextProvider({ children }: Props) {
       }}
     >
       {children}
-    </Context.Provider>
+    </CartContext.Provider>
   )
 }
 
-export default ContextProvider
+export default CartProvider

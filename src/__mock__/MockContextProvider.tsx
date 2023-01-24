@@ -1,4 +1,4 @@
-import { Context } from '../components/ContextProvider'
+import { Context } from '../components/Cart/CartProvider'
 import { cartItemA, cartItemB } from './data/CartItem'
 import { layoutDatas } from './data/Layout'
 import { CartItem } from '../types'

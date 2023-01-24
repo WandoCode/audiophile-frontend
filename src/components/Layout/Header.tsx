@@ -1,9 +1,9 @@
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { getConditionalClassName } from '../../utility/string'
 import { CartModal, MainNav } from '../../stories/Molecules'
-import { Context } from '../../components/ContextProvider'
+import { CartContext } from '../Cart/CartProvider'
 import { useContext, useState, useEffect } from 'react'
-import { Condition, ContextType } from '../../types'
+import { Condition } from '../../types'
 import { ImgButton } from '../../stories/Atoms'
 import logo from '../../assets/logo.svg'
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 function Header({ loading }: Props) {
-  let { cart, cleanCart } = useContext(Context) as ContextType
+  let { cart, cleanCart } = useContext(CartContext)
 
   const navigate = useNavigate()
   const location = useLocation()

@@ -1,14 +1,13 @@
-import { Context } from '../../../components/ContextProvider'
-import { ContextType } from '../../../types'
 import { CategoryLink } from '../../Atoms'
 import { useContext } from 'react'
+import { LayoutContext } from '../../../components/Layout/LayoutProvider'
 
 interface Props {
   className?: string
 }
 
 function CategoriesSection({ className }: Props) {
-  const { layout } = useContext(Context) as ContextType
+  const { layout } = useContext(LayoutContext)
 
   return (
     <section className={`categories ${className}`}>

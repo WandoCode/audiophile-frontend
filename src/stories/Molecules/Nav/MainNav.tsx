@@ -1,7 +1,6 @@
-import { Context } from '../../../components/ContextProvider'
 import { ImgButton, LinkNav } from '../../Atoms'
-import { ContextType } from '../../../types'
 import { useContext } from 'react'
+import { LayoutContext } from '../../../components/Layout/LayoutProvider'
 
 interface Props {
   menuIsOpen: boolean
@@ -9,7 +8,7 @@ interface Props {
 }
 
 function MainNav({ menuIsOpen, onToogleMenu }: Props) {
-  const { layout } = useContext(Context) as ContextType
+  const { layout } = useContext(LayoutContext)
 
   const navClass = () => {
     let base = 'main-nav '

@@ -1,5 +1,5 @@
 import { CategoriesSection, MainDescriptionSection } from '../stories/Molecules'
-import LoadStateWrapper from '../components/LoadStateWrapper'
+import LoadStateWrapper from '../components/utils/LoadStateWrapper'
 import { useGetHomepage } from '../hooks/useGetHomepage'
 import { Product1 } from '../components/Home/Product1'
 import { Product2 } from '../components/Home/Product2'

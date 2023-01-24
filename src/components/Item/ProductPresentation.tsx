@@ -1,6 +1,6 @@
 import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
-import { Context } from '../../components/ContextProvider'
-import { ContextType, DataItem } from '../../types'
+import { CartContext } from '../Cart/CartProvider'
+import { DataItem } from '../../types'
 import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'
 
@@ -10,7 +10,7 @@ interface Props {
 }
 
 function ProductPresentation({ dataItem, slug }: Props) {
-  const { addItem } = useContext(Context) as ContextType
+  const { addItem } = useContext(CartContext)
 
   const [itemQuantity, setItemQuantity] = useState(1)
   const [showConfirmation, setShowConfirmation] = useState(false)

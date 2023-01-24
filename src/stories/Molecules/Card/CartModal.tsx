@@ -1,8 +1,7 @@
-import { Context } from '../../../components/ContextProvider'
+import { CartContext } from '../../../components/Cart/CartProvider'
 import { useContext, useMemo, useEffect, useRef } from 'react'
 import { Button, ItemCart } from '../../Atoms'
 import { formatPrice } from '../../../utility'
-import { ContextType } from '../../../types'
 
 interface Props {
   handleCheckout: (e: React.MouseEvent) => void
@@ -11,7 +10,7 @@ interface Props {
 
 function CartModal({ handleCheckout, closeModal }: Props) {
   const formRef = useRef<HTMLFormElement>(null)
-  const { cart, getCartTotal, emptyCart } = useContext(Context) as ContextType
+  const { cart, getCartTotal, emptyCart } = useContext(CartContext)
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden'

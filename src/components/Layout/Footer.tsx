@@ -1,13 +1,12 @@
 import { FooterNav } from '../../stories/Molecules'
 import { SocialLink } from '../../stories/Atoms'
-import { Context } from '../ContextProvider'
-import { ContextType } from '../../types'
 import logo from '../../assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
+import { LayoutContext } from './LayoutProvider'
 
 function Footer() {
-  const { layout } = useContext(Context) as ContextType
+  const { layout } = useContext(LayoutContext)
 
   return (
     <footer className="footer">

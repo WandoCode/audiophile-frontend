@@ -7,7 +7,7 @@ import {
 import { ProductPresentation } from '../components/Item/ProductPresentation'
 import { ProductFeatures } from '../components/Item/ProductFeatures'
 import { ProductIncludes } from '../components/Item/ProductIncludes'
-import LoadStateWrapper from '../components/LoadStateWrapper'
+import LoadStateWrapper from '../components/utils/LoadStateWrapper'
 import useGetItem from '../hooks/useGetItem'
 import { useParams } from 'react-router-dom'
 import { ImageSet } from '../stories/Atoms'

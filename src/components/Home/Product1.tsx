@@ -3,7 +3,7 @@ import { Button, ImageSet } from '../../stories/Atoms'
 import { useNavigate } from 'react-router-dom'
 import { DataHomepage } from '../../types'
 import { useRef, useState } from 'react'
-import Observer from '../Observer'
+import Observer from '../utils/Observer'
 
 interface Props {
   data: DataHomepage | undefined

@@ -1,17 +1,16 @@
-import LoadStateWrapper from '../components/LoadStateWrapper'
-import { Context } from '../components/ContextProvider'
+import LoadStateWrapper from '../components/utils/LoadStateWrapper'
+import { LayoutContext } from '../components/Layout/LayoutProvider'
 import { useGetLayout } from '../hooks/useGetLayout'
 import { ScrollRestoration } from 'react-router-dom'
 import { Footer } from '../components/Layout/Footer'
 import { Header } from '../components/Layout/Header'
 import { useContext, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import { ContextType } from '../types'
 import { Error } from './Error'
 import axios from 'axios'
 
 function Layout() {
-  const { setLayout } = useContext(Context) as ContextType
+  const { setLayout } = useContext(LayoutContext)
 
   const { data, isLoading, isError, error } = useGetLayout()
 
