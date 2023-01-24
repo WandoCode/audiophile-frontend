@@ -5,6 +5,7 @@ interface Props {
   name: string
   value: string
   currValue: string
+  tabIndex?: number
   onChangeHandler: React.ChangeEventHandler<HTMLInputElement>
   error?: boolean
 }
@@ -14,6 +15,7 @@ function RadioInput({
   name,
   value,
   currValue,
+  tabIndex,
   onChangeHandler,
   error = false,
 }: Props) {
@@ -34,6 +36,7 @@ function RadioInput({
         className="radio__input visually-hidden"
         checked={value === currValue}
         onChange={onChangeHandler}
+        tabIndex={tabIndex}
       />
       <span className="radio__check"></span>
       {label}

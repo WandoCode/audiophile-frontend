@@ -1,5 +1,5 @@
 import { Context } from '../../../components/ContextProvider'
-import { useContext, useMemo, useEffect } from 'react'
+import { useContext, useMemo, useEffect, useRef } from 'react'
 import { Button, ItemCart } from '../../Atoms'
 import { formatPrice } from '../../../utility'
 import { ContextType } from '../../../types'
@@ -10,6 +10,7 @@ interface Props {
 }
 
 function CartModal({ handleCheckout, closeModal }: Props) {
+  const formRef = useRef<HTMLFormElement>(null)
   const { cart, getCartTotal, emptyCart } = useContext(Context) as ContextType
 
   useEffect(() => {
@@ -26,6 +27,14 @@ function CartModal({ handleCheckout, closeModal }: Props) {
 
   const keyHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeModal()
+    if (e.key === 'Tab') handleLastTab()
+  }
+
+  const handleLastTab = () => {
+    const activeElement = document.activeElement
+    if (activeElement && activeElement.id === 'btn-checkout') {
+      if (formRef.current) formRef.current.focus()
+    }
   }
 
   const itemListDOM = useMemo(
@@ -52,7 +61,13 @@ function CartModal({ handleCheckout, closeModal }: Props) {
   }
 
   return (
-    <form className="cart-modal" role="dialog" aria-labelledby="cart-title">
+    <form
+      ref={formRef}
+      className="cart-modal"
+      role="dialog"
+      aria-labelledby="cart-title"
+      tabIndex={0}
+    >
       <div className="container">
         <div className="cart-modal__container">
           <div className="cart-modal__header">
@@ -60,6 +75,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
               Cart ({cart.length})
             </h2>
             <Button
+              id="btn-remove"
               level="quaternary"
               onClickHandler={handleRemoveAll}
               text="remove all"
@@ -73,6 +89,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
             </div>
           </div>
           <Button
+            id="btn-checkout"
             text="Checkout"
             level="primary"
             className="cart-modal__checkout"

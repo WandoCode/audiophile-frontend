@@ -13,6 +13,10 @@
   border: 1px solid var(--clr-neutral-300);
   cursor: pointer;
 
+  &:focus-within {
+    border-color: var(--clr-primary-400);
+  }
+
   @include on-hover {
     &:hover {
       border-color: var(--clr-primary-400);
