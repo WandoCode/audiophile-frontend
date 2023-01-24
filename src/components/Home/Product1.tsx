@@ -50,7 +50,7 @@ const Product1 = ({ data }: Props) => {
         <Observer
           parentRef={articleRef}
           onCallBack={setShowTitle}
-          threshold={0.35}
+          threshold={0.3}
           margin="-35% 0% -30% 0%"
         >
           <h2 className={titleClass}>{data?.product1.name}</h2>
