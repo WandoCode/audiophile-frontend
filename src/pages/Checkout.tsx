@@ -1,11 +1,10 @@
-import { Button, Input, RadioInput } from '../stories/Atoms'
-import { useState } from 'react'
-import CashImg from '../assets/icon-cash-on-delivery.svg'
-import { InnerNav } from '../stories/Molecules'
-
-import { Summary } from '../components/Checkout/Summary'
 import { CompletionModal } from '../stories/Molecules/Card/CompletionModal'
+import { Button, Input, RadioInput } from '../stories/Atoms'
+import CashImg from '../assets/icon-cash-on-delivery.svg'
+import { Summary } from '../components/Checkout/Summary'
+import { InnerNav } from '../stories/Molecules'
 import { CheckoutInput } from '../utility'
+import { useState } from 'react'
 
 interface FormDatas {
   [key: string]: CheckoutInput

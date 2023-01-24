@@ -1,11 +1,11 @@
-import { useEffect, useContext, useState, useMemo } from 'react'
 import confirmationIcon from '../../../assets/icon-order-confirmation.svg'
-import { Button } from '../../Atoms'
-import { Context } from '../../../components/ContextProvider'
 import { ItemSummary } from '../../Atoms/CardElement/ItemSummary'
+import { useEffect, useContext, useState, useMemo } from 'react'
+import { Context } from '../../../components/ContextProvider'
+import { CartItem, ContextType } from '../../../types'
 import { formatPrice } from '../../../utility'
 import { useNavigate } from 'react-router-dom'
-import { CartItem } from '../../../types'
+import { Button } from '../../Atoms'
 
 function CompletionModal() {
   const navigate = useNavigate()
@@ -13,12 +13,9 @@ function CompletionModal() {
   const [cartCopy, setCartCopy] = useState<CartItem[]>()
   const [totalPriceCopy, setTotalPriceCopy] = useState<number>(0)
 
-  const { cart, getCartTotal, emptyCart, SHIPPING } = useContext(Context) as {
-    cart: CartItem[]
-    getCartTotal: () => number
-    emptyCart: () => void
-    SHIPPING: number
-  }
+  const { cart, getCartTotal, emptyCart, SHIPPING } = useContext(
+    Context
+  ) as ContextType
 
   const handleBackHome = () => {
     navigate('/')

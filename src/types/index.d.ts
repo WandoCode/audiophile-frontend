@@ -107,3 +107,19 @@ export interface Condition {
   isFilled: boolean
   addedClass: string
 }
+
+type RemoveItemFct = ({ slug }: RemoveItem) => void
+type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
+
+export interface ContextType {
+  SHIPPING: number
+  layout: DataLayout | undefined
+  setLayout: React.Dispatch<React.SetStateAction<DataLayout | undefined>>
+  cart: CartItem[]
+  addItem: AddItemFct
+  removeItem: RemoveItemFct
+  emptyCart: () => void
+  getCartTotal: () => number
+  cleanCart: () => void
+  getCartGrandTotal: () => number
+}

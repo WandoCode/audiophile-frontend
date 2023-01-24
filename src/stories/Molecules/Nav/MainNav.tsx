@@ -1,7 +1,7 @@
-import { ImgButton, LinkNav } from '../../Atoms'
-import { useContext } from 'react'
 import { Context } from '../../../components/ContextProvider'
-import { DataLayout } from '../../../types'
+import { ImgButton, LinkNav } from '../../Atoms'
+import { ContextType } from '../../../types'
+import { useContext } from 'react'
 
 interface Props {
   menuIsOpen: boolean
@@ -9,7 +9,7 @@ interface Props {
 }
 
 function MainNav({ menuIsOpen, onToogleMenu }: Props) {
-  const { layout } = useContext(Context) as { layout: DataLayout | undefined }
+  const { layout } = useContext(Context) as ContextType
 
   const navClass = () => {
     let base = 'main-nav '

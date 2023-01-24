@@ -19,8 +19,6 @@ function Observer({
       rootMargin: margin ?? '0px',
     }
 
-    console.log(options)
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {

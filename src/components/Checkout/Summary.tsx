@@ -1,18 +1,13 @@
-import { useContext } from 'react'
-import { Context } from '../ContextProvider'
 import { ItemSummary } from '../../stories/Atoms/CardElement/ItemSummary'
-import { CartItem } from '../../types'
 import { formatPrice, getVAT } from '../../utility'
+import { Context } from '../ContextProvider'
+import { ContextType } from '../../types'
+import { useContext } from 'react'
 
 function Summary() {
   const { cart, getCartTotal, getCartGrandTotal, SHIPPING } = useContext(
     Context
-  ) as {
-    SHIPPING: number
-    cart: CartItem[]
-    getCartTotal: () => number
-    getCartGrandTotal: () => number
-  }
+  ) as ContextType
 
   const total = getCartTotal()
 

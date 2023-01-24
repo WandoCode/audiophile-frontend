@@ -1,10 +1,8 @@
 import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
-import { useState, useContext } from 'react'
 import { Context } from '../../components/ContextProvider'
+import { ContextType, DataItem } from '../../types'
 import { formatPrice } from '../../utility/string'
-import { AddItem, DataItem } from '../../types'
-
-type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
+import { useState, useContext } from 'react'
 
 interface Props {
   dataItem: DataItem | undefined
@@ -12,13 +10,11 @@ interface Props {
 }
 
 function ProductPresentation({ dataItem, slug }: Props) {
+  const { addItem } = useContext(Context) as ContextType
+
   const [itemQuantity, setItemQuantity] = useState(1)
   const [showConfirmation, setShowConfirmation] = useState(false)
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>()
-
-  const { addItem } = useContext(Context) as {
-    addItem: AddItemFct
-  }
 
   const handleAddItem = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>

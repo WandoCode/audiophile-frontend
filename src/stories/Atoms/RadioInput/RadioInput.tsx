@@ -1,5 +1,5 @@
-import { Condition } from '../../../types'
 import { getConditionalClassName } from '../../../utility/string'
+import { Condition } from '../../../types'
 interface Props {
   label: string
   name: string

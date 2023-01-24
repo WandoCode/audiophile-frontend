@@ -6,8 +6,8 @@ describe('Buttons', () => {
   test('Should display the given text', () => {
     const text = 'test text'
     render(<Button text={text} level="primary" onClickHandler={(e) => {}} />)
-    const title = screen.getByText(text)
-    expect(title).not.toBeNull()
+    const btn = screen.getByRole('button', { name: text })
+    expect(btn).not.toBeNull()
   })
 
   test('Should use the type "primary" to build the className of the button', () => {

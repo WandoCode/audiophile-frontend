@@ -1,8 +1,6 @@
+import { AddItem, CartItem, RemoveItem, DataLayout } from '../types'
 import { createContext, useState, useEffect } from 'react'
-
 import cartStore from '../store/cartStore'
-import { AddItem, CartItem, DataHomepage, RemoveItem } from '../types'
-import { DataLayout } from '../types/index'
 
 interface Props {
   children: React.ReactNode
@@ -14,7 +12,6 @@ function ContextProvider({ children }: Props) {
   const SHIPPING = 50
   const cartStoreManager = cartStore()
   const [layout, setLayout] = useState<DataLayout>()
-  const [homepage, setHomepage] = useState<DataHomepage>()
   const [cart, setCart] = useState<CartItem[]>([])
 
   useEffect(() => {
@@ -78,8 +75,6 @@ function ContextProvider({ children }: Props) {
     <Context.Provider
       value={{
         SHIPPING,
-        homepage,
-        setHomepage,
         layout,
         setLayout,
         cart,

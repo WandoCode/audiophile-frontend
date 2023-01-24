@@ -8,9 +8,7 @@ function App() {
   return (
     <div className="App">
       <QueryClientProvider client={queryClient}>
-        {/* <LoadStateWrapper loading={loading}> */}
         <RouterProvider router={router} />
-        {/* </LoadStateWrapper> */}
       </QueryClientProvider>
     </div>
   )

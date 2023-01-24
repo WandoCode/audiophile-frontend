@@ -1,6 +1,6 @@
+import { DataItemCategory } from '../../../types'
 import { Button, ImageSet } from '../../Atoms'
 import { useNavigate } from 'react-router-dom'
-import { DataItemCategory } from '../../../types'
 
 interface Props {
   className: string

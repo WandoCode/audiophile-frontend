@@ -1,17 +1,11 @@
 import { Context } from '../../../components/ContextProvider'
-import { NumberInput } from '..'
-import { useContext } from 'react'
+import { NumberInput } from '../NumberInput/NumberInput'
+import { CartItem, ContextType } from '../../../types'
 import { formatPrice } from '../../../utility'
-import { AddItem, CartItem, RemoveItem } from '../../../types'
-
-type RemoveItemFct = ({ slug }: RemoveItem) => void
-type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
+import { useContext } from 'react'
 
 function ItemCart({ name, quantity, slug, price, url }: CartItem) {
-  const { removeItem, addItem } = useContext(Context) as {
-    removeItem: RemoveItemFct
-    addItem: AddItemFct
-  }
+  const { removeItem, addItem } = useContext(Context) as ContextType
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault()

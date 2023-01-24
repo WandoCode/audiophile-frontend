@@ -1,8 +1,8 @@
-import { createContext, useState } from 'react'
 import { Context } from '../components/ContextProvider'
-import { CartItem } from '../types'
 import { cartItemA, cartItemB } from './data/CartItem'
 import { layoutDatas } from './data/Layout'
+import { CartItem } from '../types'
+import { useState } from 'react'
 
 interface Props {
   children: React.ReactNode

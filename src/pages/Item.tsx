@@ -1,18 +1,18 @@
-import { useParams } from 'react-router-dom'
-import useGetItem from '../hooks/useGetItem'
-import { ImageSet } from '../stories/Atoms'
-import { ProductFeatures } from '../components/Item/ProductFeatures'
 import {
   CategoriesSection,
   InnerNav,
   ItemShortCard,
   MainDescriptionSection,
 } from '../stories/Molecules'
-import LoadStateWrapper from '../components/LoadStateWrapper'
-import axios from 'axios'
-import { Error } from './Error'
 import { ProductPresentation } from '../components/Item/ProductPresentation'
+import { ProductFeatures } from '../components/Item/ProductFeatures'
 import { ProductIncludes } from '../components/Item/ProductIncludes'
+import LoadStateWrapper from '../components/LoadStateWrapper'
+import useGetItem from '../hooks/useGetItem'
+import { useParams } from 'react-router-dom'
+import { ImageSet } from '../stories/Atoms'
+import { Error } from './Error'
+import axios from 'axios'
 
 function Item() {
   const { slug } = useParams()

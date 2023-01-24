@@ -1,5 +1,5 @@
-import { DataLayout } from '../../types'
 import { formatImgUrl } from '../../utility'
+import { DataLayout } from '../../types'
 
 function dataLayout(raw: any) {
   const img = formatImgUrl()

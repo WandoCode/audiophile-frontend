@@ -1,13 +1,13 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import logo from '../../assets/logo.svg'
-import { SocialLink } from '../../stories/Atoms'
 import { FooterNav } from '../../stories/Molecules'
+import { SocialLink } from '../../stories/Atoms'
 import { Context } from '../ContextProvider'
-import { DataLayout } from '../../types'
+import { ContextType } from '../../types'
+import logo from '../../assets/logo.svg'
+import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 
 function Footer() {
-  const { layout } = useContext(Context) as { layout: DataLayout | undefined }
+  const { layout } = useContext(Context) as ContextType
 
   return (
     <footer className="footer">

@@ -1,5 +1,5 @@
-import { DataItem } from '../../types'
 import { formatImgUrl } from '../../utility'
+import { DataItem } from '../../types'
 
 function dataItem(raw: any) {
   const getCleanDatas = (): DataItem => {

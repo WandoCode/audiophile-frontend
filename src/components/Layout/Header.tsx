@@ -1,22 +1,18 @@
-import { useContext, useState, useEffect } from 'react'
-import { Context } from '../../components/ContextProvider'
-import { ImgButton } from '../../stories/Atoms'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
-import { CartModal, MainNav } from '../../stories/Molecules'
-import logo from '../../assets/logo.svg'
-import { CartItem, Condition } from '../../types'
 import { getConditionalClassName } from '../../utility/string'
+import { CartModal, MainNav } from '../../stories/Molecules'
+import { Context } from '../../components/ContextProvider'
+import { useContext, useState, useEffect } from 'react'
+import { Condition, ContextType } from '../../types'
+import { ImgButton } from '../../stories/Atoms'
+import logo from '../../assets/logo.svg'
 
 interface Props {
   loading: boolean
 }
 
 function Header({ loading }: Props) {
-  let { cart, cleanCart } = useContext(Context) as {
-    cart: CartItem[]
-    cleanCart: () => void
-    loading: boolean
-  }
+  let { cart, cleanCart } = useContext(Context) as ContextType
 
   const navigate = useNavigate()
   const location = useLocation()

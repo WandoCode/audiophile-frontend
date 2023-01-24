@@ -1,18 +1,18 @@
+import { getConditionalClassName } from '../../utility/string'
 import { Button, ImageSet } from '../../stories/Atoms'
+import { DataHomepage, Condition } from '../../types'
 import { useNavigate } from 'react-router-dom'
-import { DataHomepage } from '../../types'
 import { useRef, useState } from 'react'
 import Observer from '../Observer'
-import { getConditionalClassName } from '../../utility/string'
-import { Condition } from '../../types/index'
 
 interface Props {
   data: DataHomepage | undefined
 }
 
 function Product3({ data }: Props) {
-  const articleRef = useRef(null)
   const navigate = useNavigate()
+  const articleRef = useRef(null)
+
   const [showText, setShowText] = useState(false)
 
   const textClassConditions: Condition[] = [

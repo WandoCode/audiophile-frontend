@@ -1,11 +1,11 @@
+import { Context } from '../../../components/ContextProvider'
+import { ContextType } from '../../../types'
+import { useContext, useMemo } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { ImageSet } from '../../Atoms'
-import { useContext, useMemo } from 'react'
-import { Context } from '../../../components/ContextProvider'
-import { DataLayout } from '../../../types/index'
 
 function MainDescriptionSection() {
-  const { layout } = useContext(Context) as { layout: DataLayout | undefined }
+  const { layout } = useContext(Context) as ContextType
 
   const richTextTitle = useMemo(() => {
     return (
