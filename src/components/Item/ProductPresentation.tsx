@@ -3,6 +3,7 @@ import { CartContext } from '../Cart/CartProvider'
 import { DataItem } from '../../types'
 import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'
+import useToasts from '../../hooks/useToasts'
 
 interface Props {
   dataItem: DataItem | undefined
@@ -12,9 +13,9 @@ interface Props {
 function ProductPresentation({ dataItem, slug }: Props) {
   const { addItem } = useContext(CartContext)
 
+  const { pushToast } = useToasts()
+
   const [itemQuantity, setItemQuantity] = useState(1)
-  const [showConfirmation, setShowConfirmation] = useState(false)
-  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>()
 
   const handleAddItem = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -48,15 +49,16 @@ function ProductPresentation({ dataItem, slug }: Props) {
   }
 
   const triggerVisualConfirmation = () => {
-    if (timeoutId) {
-      clearTimeout(timeoutId)
-      setTimeoutId(undefined)
-    }
+    if (!dataItem) return
 
-    setShowConfirmation(true)
-
-    const timeoutRef = setTimeout(() => setShowConfirmation(false), 2000)
-    setTimeoutId(timeoutRef)
+    pushToast({
+      title: `Item added`,
+      text: `${dataItem.shortName}  x${itemQuantity}`,
+      duration: 200,
+      type: 'confirmation',
+      url: dataItem.cartImage,
+      altTxt: `Thumbnail of ${dataItem.shortName}`,
+    })
   }
 
   return (
@@ -93,11 +95,6 @@ function ProductPresentation({ dataItem, slug }: Props) {
             level="primary"
             onClickHandler={handleClick}
           />
-          {showConfirmation && (
-            <div className="product-presentation__confirmation">
-              Successfully added!
-            </div>
-          )}
         </form>
       </div>
     </article>

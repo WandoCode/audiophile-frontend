@@ -16,6 +16,7 @@ import axios from 'axios'
 
 function Item() {
   const { slug } = useParams()
+
   const { data, isLoading, error, isError } = useGetItem({ slug })
 
   const galleryImagesDOM = () => {

@@ -53,17 +53,6 @@
     display: flex;
     gap: rem(16);
   }
-
-  &__confirmation {
-    position: absolute;
-    bottom: 0;
-    translate: 0 150%;
-    scale: 100%;
-
-    color: #3e8c5d;
-    font-weight: bold;
-    animation: degrow 1s;
-  }
 }
 
 @keyframes degrow {

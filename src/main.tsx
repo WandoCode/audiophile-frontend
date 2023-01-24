@@ -4,12 +4,15 @@ import App from './App'
 import CartProvider from './components/Cart/CartProvider'
 import LayoutProvider from './components/Layout/LayoutProvider'
 import './stylesheets/main.scss'
+import ToastProvider from './components/Toast/ToastProvider'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <LayoutProvider>
       <CartProvider>
-        <App />
+        <ToastProvider>
+          <App />
+        </ToastProvider>
       </CartProvider>
     </LayoutProvider>
   </React.StrictMode>

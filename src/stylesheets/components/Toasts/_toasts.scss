@@ -1,0 +1,11 @@
+@use '../../abstracts/' as *;
+
+.toasts {
+  position: fixed;
+  top: $header-height-lg;
+  right: 0;
+  z-index: 4;
+  padding: rem(15);
+  display: grid;
+  gap: rem(10);
+}
