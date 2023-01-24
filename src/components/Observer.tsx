@@ -2,14 +2,24 @@ import { useEffect } from 'react'
 interface Props extends React.PropsWithChildren {
   parentRef: React.MutableRefObject<null>
   onCallBack: React.Dispatch<React.SetStateAction<boolean>>
-  threshold: number
+  threshold?: number
+  margin?: string
 }
 
-function Observer({ parentRef, onCallBack, threshold, children }: Props) {
+function Observer({
+  parentRef,
+  onCallBack,
+  threshold,
+  margin,
+  children,
+}: Props) {
   useEffect(() => {
     let options = {
-      threshold,
+      threshold: threshold ?? 0,
+      rootMargin: margin ?? '0px',
     }
+
+    console.log(options)
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {

@@ -49,14 +49,16 @@ const Product1 = ({ data }: Props) => {
         <Observer
           parentRef={articleRef}
           onCallBack={setShowTitle}
-          threshold={0.5}
+          threshold={0.35}
+          margin="-35% 0% -30% 0%"
         >
           <h2 className={titleClass}>{data?.product1.name}</h2>
         </Observer>
         <Observer
           parentRef={articleRef}
           onCallBack={setShowText}
-          threshold={0.75}
+          threshold={0.3}
+          margin="-10% 0% -40% 0%"
         >
           <p className={textClass}>{data?.product1.description}</p>
           <Button
