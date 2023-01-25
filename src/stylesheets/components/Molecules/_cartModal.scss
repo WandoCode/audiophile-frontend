@@ -27,6 +27,10 @@
 
     animation: slide-in 0.5s;
 
+    @include breakpoint-down(small) {
+      padding: rem(16) rem(14) rem(16) rem(14);
+    }
+
     @include breakpoint(medium) {
       margin-inline: auto 0;
     }

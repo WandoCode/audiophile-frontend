@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import { useCallback, useContext, useState, useMemo } from 'react'
 import Toast, { ToastType } from './Toast'
 import { ToastContext } from './ToastProvider'
@@ -23,7 +24,7 @@ function Toasts() {
     setToasts((t) => t.filter((toast) => toast.id !== toastId))
   }
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLLIElement>) => {
     const toastIdStr = e.currentTarget.getAttribute('data-id')
     if (toastIdStr) {
       const toastId = parseInt(toastIdStr, 10)
@@ -35,15 +36,24 @@ function Toasts() {
 
   const toastsDOM = useMemo(() => {
     return toasts.map((toast) => (
-      <div className="toast-wrapper" onClick={handleClick} data-id={toast.id}>
+      <motion.li
+        className="toast-wrapper"
+        onClick={handleClick}
+        data-id={toast.id}
+        key={toast.id}
+        initial={{ x: '100%' }}
+        exit={{ x: '110%' }}
+        animate={{ x: 0 }}
+        transition={{ x: { duration: 0.75 } }}
+      >
         <Toast {...toast} />
-      </div>
+      </motion.li>
     ))
   }, [toasts])
 
   return (
     <ul className="toasts">
-      <TransitionGroup component={'ul'}>{toastsDOM}</TransitionGroup>
+      <AnimatePresence>{toastsDOM}</AnimatePresence>
     </ul>
   )
 }

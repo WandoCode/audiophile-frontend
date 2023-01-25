@@ -54,7 +54,7 @@ function ProductPresentation({ dataItem, slug }: Props) {
     pushToast({
       title: `Item added`,
       text: `${dataItem.shortName}  x${itemQuantity}`,
-      duration: 200,
+      duration: 2,
       type: 'confirmation',
       url: dataItem.cartImage,
       altTxt: `Thumbnail of ${dataItem.shortName}`,
