@@ -1,6 +1,5 @@
-import { Context } from '../components/Cart/CartProvider'
+import { CartContext } from '../components/Cart/CartProvider'
 import { cartItemA, cartItemB } from './data/CartItem'
-import { layoutDatas } from './data/Layout'
 import { CartItem } from '../types'
 import { useState } from 'react'
 
@@ -12,11 +11,10 @@ interface Props {
 
 const initialCart: CartItem[] = [cartItemA, cartItemB]
 
-function MockContextProvider({ children, mockedCart, mockedCartTotal }: Props) {
+function MockCartProvider({ children, mockedCart, mockedCartTotal }: Props) {
   const [cart, setCart] = useState<CartItem[]>(mockedCart || initialCart)
 
   const SHIPPING = 50
-  const layout = layoutDatas
   const getCartTotal = () => {
     return mockedCartTotal || 12599
   }
@@ -26,27 +24,21 @@ function MockContextProvider({ children, mockedCart, mockedCartTotal }: Props) {
   }
 
   return (
-    <Context.Provider
+    <CartContext.Provider
       value={{
         SHIPPING,
-        layout,
-        // setLayout,
-        // homepage,
-        // setHomepage,
-        // loading,
-        // setLoading,
         cart,
-        // addItem,
-        // removeItem,
+        addItem: () => {},
+        removeItem: () => {},
         emptyCart,
         getCartTotal,
-        // cleanCart,
-        // getCartGrandTotal,
+        getCartGrandTotal: () => 50,
+        cleanCart: () => {},
       }}
     >
       {children}
-    </Context.Provider>
+    </CartContext.Provider>
   )
 }
 
-export default MockContextProvider
+export default MockCartProvider

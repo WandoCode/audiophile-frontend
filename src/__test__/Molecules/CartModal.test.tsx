@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { CartModal } from '../../stories/Molecules'
-import MockContextProvider from '../../__mock__/MockContextProvider'
+import MockCartProvider from '../../__mock__/MockCartProvider'
 
 describe('Given I use the "CartModal" component', () => {
   let handleCheckout = vi.fn()
@@ -11,7 +11,7 @@ describe('Given I use the "CartModal" component', () => {
     beforeEach(() => {
       render(
         <CartModal closeModal={closeModal} handleCheckout={handleCheckout} />,
-        { wrapper: MockContextProvider }
+        { wrapper: MockCartProvider }
       )
     })
 
@@ -43,9 +43,9 @@ describe('Given I use the "CartModal" component', () => {
   describe('When there is no item in the cart', () => {
     beforeEach(() => {
       render(
-        <MockContextProvider mockedCart={[]}>
+        <MockCartProvider mockedCart={[]}>
           <CartModal closeModal={closeModal} handleCheckout={handleCheckout} />
-        </MockContextProvider>
+        </MockCartProvider>
       )
     })
 
