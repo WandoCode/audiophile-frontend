@@ -1,29 +1,43 @@
 # Audiophile
 
-This repo contains the code for the frontend of the [audiophile website](https://wandocode.github.io/audiophile-frontend/#/audiophile-frontend/).
+This repo contains the code for the frontend of the [audiophile website](https://audiophile-frontend-eta.vercel.app/).
 The goal of this website is mainly to show off some of my web development skills.
 
 ## Backend
 
 The backend for this project can be found on this repo: [audiophile-backend](https://github.com/WandoCode/audiophile-backend).
 
-It's based on CMS Strapi that I set up: [see readme](https://github.com/WandoCode/audiophile-backend).
+It's based on **CMS Strapi** that I set up: [see readme](https://github.com/WandoCode/audiophile-backend).
 
 ## Hightlighted skills in this project
 
+- React with React context and react-query
 - Typescript
-- React with React context
 - Storybook for the main reused components (not deployed)
 - SCSS (BEM)
-- Custom Form validation with RegEx
+- Custom Form validation with _RegEx_
 
-NB: The 'nextjs' branch contains the functional NextJS version of the website that I used to discover the NextJS framework in details. It's not deployed.
+NB: The 'nextjs' branch contains a functional NextJS version of the website that I used to discover the _NextJS_ framework in details. It's not deployed.
 
 ## Main features
 
 ### Responsive
 
-The website works on desktop, tablet and mobile (last version of Chromimum or Firefox).
+**Fully responsive**: the website works on desktop, tablet and mobile (last version of Chromimum or Firefox).
+
+### Accessibility
+
+All the website is accessible with **keyboard only**.
+I used arias attributes to improve **navigation for screen readers**.
+
+### Unit tests
+
+I wrote unit tests for the all components with **Vitest** and **testing-library**.
+
+### Custom 'toast' message (in-page notification)
+
+When adding item to the cart, a toast message will appear (no library).
+I used the 'framer-motion' library to animate it.
 
 ### Datas persistence
 
@@ -32,6 +46,8 @@ The user can save items into a cart. I used localStorage as an easy way to keep 
 ### Design
 
 The idea and design of this project comes from [Frontend Mentor](https://www.frontendmentor.io/profile/Wandole).
+
+I added a few animation (button hover, toast message, text apparition in homepage, etc.)
 
 # How to install
 
@@ -44,14 +60,20 @@ The idea and design of this project comes from [Frontend Mentor](https://www.fro
 NB: don't forget [the backend](https://github.com/WandoCode/audiophile-backend)
 
 - Run `npm install`
-- Change the backend url in ./src/hooks/config.json
+- Change the backend url in 'config.json'
 - Launch the development environement with `npm run dev`
 
 # Dependencies
 
-The main dependencies are _React_ and _Storybook_.
+The core dependencies are _React_(v.18) with:
 
-_ReactMarkdown_ has been used aswell, _React-router-DOM_, and _axios_.
+- _react-router-dom_(v6)
+- _react-query_(v3)
+- _axios_
+
+_react-markdown_ was used for a few paragraph, and _framer-motion_ animate toast messages.
+
+The dev dependencies are mainly _storybook_ and testing libraries as _vitest_, _jsdom_ and _testing-library_.
 
 # Scripts
 
@@ -78,6 +100,13 @@ Build the storybook.
 ## `deploy`
 
 Deploy the app on github page with the help of gh-page
+
+# Improvement
+
+- Reconfigure the custom CMS api endpoints to simplify the datas received in the client.
+- Add test for pages components.
+- Add integration/end-to-end tests ('happy path')
+- Website was first deploy on github-page. I'm currently testing Vercel: remove gh-page if satisfied with Vercel.
 
 # Licence
 
