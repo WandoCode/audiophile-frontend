@@ -81,6 +81,10 @@ The dev dependencies are mainly _storybook_ and testing libraries as _vitest_, _
 
 Launch the app in the environement for development with Vite.
 
+## `test`
+
+Launch tests with Vitest.
+
 ## `build`
 
 Build the app with Vite
