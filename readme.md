@@ -17,7 +17,7 @@ It's based on **CMS Strapi** that I set up: [see readme](https://github.com/Wand
 - SCSS (BEM)
 - Custom Form validation with _RegEx_
 
-NB: The 'nextjs' branch contains a functional NextJS version of the website that I used to discover the _NextJS_ framework in details. It's not deployed.
+NB: The 'nextjs' branch contains a functional NextJS version of the website that I used to discover the _NextJS_ framework in details. It's not deployed even if, for a real world project, **SSR would be better** than CSR for SEO.
 
 ## Main features
 
@@ -103,6 +103,7 @@ Deploy the app on github page with the help of gh-page
 
 # Improvement
 
+- Use SSR for SEO
 - Reconfigure the custom CMS api endpoints to simplify the datas received in the client.
 - Add test for pages components.
 - Add integration/end-to-end tests ('happy path')
