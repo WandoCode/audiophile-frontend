@@ -7,6 +7,8 @@
   width: 100%;
   min-height: rem(220);
 
+  isolation: isolate;
+
   @include breakpoint(large) {
     min-height: rem(285);
   }

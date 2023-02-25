@@ -15,6 +15,8 @@
 
   background-color: var(--clr-primary-400);
 
+  isolation: isolate;
+
   @include breakpoint(medium) {
     gap: rem(64);
 

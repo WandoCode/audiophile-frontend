@@ -17,6 +17,9 @@
   border: none;
   cursor: pointer;
 
+  background-color: transparent;
+
+  isolation: isolate;
   &:disabled {
     background-color: var(--clr-primary-300);
   }

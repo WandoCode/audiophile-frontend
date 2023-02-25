@@ -15,11 +15,13 @@ function CartModal({ handleCheckout, closeModal }: Props) {
   useEffect(() => {
     document.body.style.overflowY = 'hidden'
     document.body.addEventListener('keydown', keyHandler)
+    document.body.addEventListener('click', handleClick)
     document.querySelector('main')?.setAttribute('aria-hidden', 'true')
 
     return () => {
       document.body.style.overflowY = 'auto'
       document.body.removeEventListener('keydown', keyHandler)
+      document.body.removeEventListener('click', handleClick)
       document.querySelector('main')?.removeAttribute('aria-hidden')
     }
   }, [])
@@ -27,6 +29,12 @@ function CartModal({ handleCheckout, closeModal }: Props) {
   const keyHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeModal()
     if (e.key === 'Tab') handleLastTab()
+  }
+
+  const handleClick = (e: MouseEvent) => {
+    const element = e.target as HTMLElement
+
+    if (element.classList.contains('cart-modal')) closeModal()
   }
 
   const handleLastTab = () => {

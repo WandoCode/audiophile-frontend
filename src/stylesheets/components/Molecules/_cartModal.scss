@@ -1,16 +1,17 @@
 @use '../../abstracts/' as *;
 
 .cart-modal {
-  z-index: 2;
+  z-index: 1;
   position: fixed;
-  inset: $header-height-sm 0 0 0;
+  inset: 0;
 
   background-color: rgba(0, 0, 0, 0.4);
   overflow-y: auto;
   overflow-x: hidden;
 
+  padding-top: $header-height-sm;
   .header--on-scroll & {
-    inset: $header-height-on-scroll-sm 0 0 0;
+    padding-top: $header-height-on-scroll-sm;
   }
 
   &__container {
