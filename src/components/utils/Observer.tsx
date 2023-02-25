@@ -9,14 +9,14 @@ interface Props extends React.PropsWithChildren {
 function Observer({
   parentRef,
   onCallBack,
-  threshold,
-  margin,
+  threshold = 0,
+  margin = '0px',
   children,
 }: Props) {
   useEffect(() => {
     let options = {
-      threshold: threshold ?? 0,
-      rootMargin: margin ?? '0px',
+      threshold: threshold,
+      rootMargin: margin,
     }
 
     const observer = new IntersectionObserver((entries) => {
@@ -42,3 +42,4 @@ function Observer({
 }
 
 export default Observer
+// TODO: transformer en custom hooks pour retirer children. Retourner un etat 'isIntersecting'

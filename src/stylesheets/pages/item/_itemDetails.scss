@@ -14,4 +14,22 @@
     grid-template-rows: auto auto;
     gap: $flow-lg-200;
   }
+
+  & img {
+    min-height: rem(440);
+    min-width: auto;
+    object-fit: cover;
+
+    @include breakpoint-down(small) {
+      min-height: rem(300);
+    }
+
+    @include breakpoint(medium) {
+      min-height: unset;
+    }
+
+    @include breakpoint(large) {
+      min-height: rem(500);
+    }
+  }
 }

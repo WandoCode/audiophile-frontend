@@ -10,18 +10,20 @@
   }
 
   &__img {
-    min-height: rem(250);
-    min-width: rem(210);
+    min-height: rem(350);
+    min-width: auto;
+    object-fit: cover;
 
-    max-height: rem(560);
+    @include breakpoint-down(small) {
+      min-height: rem(300);
+    }
 
     @include breakpoint(medium) {
-      min-height: rem(215);
-      min-width: rem(410);
+      min-height: rem(443);
     }
+
     @include breakpoint(large) {
-      min-height: rem(480);
-      min-width: rem(460);
+      min-height: rem(500);
     }
   }
 
