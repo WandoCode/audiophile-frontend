@@ -1,5 +1,4 @@
 import {
-  createBrowserRouter,
   createHashRouter,
   createRoutesFromElements,
   Route,
@@ -14,7 +13,7 @@ import { Confirmation } from '../pages/Confirmation'
 import NoAccessWithCartEmpty from './utils/NoAccessWithCartEmpty'
 import Echec from '../pages/Echec'
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route index element={<Home />} />
