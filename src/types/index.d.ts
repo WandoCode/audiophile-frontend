@@ -111,6 +111,11 @@ export interface Condition {
 type RemoveItemFct = ({ slug }: RemoveItem) => void
 type AddItemFct = ({ slug, name, url, price, addedQty }: AddItem) => void
 
+export interface StripeObject {
+  slug: string
+  amount: number
+}
+
 export interface CartType {
   SHIPPING: number
   cart: CartItem[]
@@ -120,6 +125,7 @@ export interface CartType {
   getCartTotal: () => number
   cleanCart: () => void
   getCartGrandTotal: () => number
+  stripeDatas: StripeObject[]
 }
 
 export interface LayoutContextType {

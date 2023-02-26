@@ -14,7 +14,8 @@ const defaultValue: CartType = {
   emptyCart: () => {},
   getCartTotal: () => 0,
   cleanCart: () => {},
-  getCartGrandTotal: () => 50,
+  getCartGrandTotal: () => 0,
+  stripeDatas: [],
 }
 
 export const CartContext = createContext(defaultValue)
@@ -82,6 +83,13 @@ function CartProvider({ children }: Props) {
     return cart.length !== 0 ? getCartTotal() + SHIPPING : 0
   }
 
+  const getStripeDatas = () => {
+    return cart.map((item) => ({
+      slug: item.slug,
+      amount: item.quantity,
+    }))
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -93,6 +101,7 @@ function CartProvider({ children }: Props) {
         getCartTotal,
         cleanCart,
         getCartGrandTotal,
+        stripeDatas: getStripeDatas(),
       }}
     >
       {children}

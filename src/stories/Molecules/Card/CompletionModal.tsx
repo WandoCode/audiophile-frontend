@@ -9,6 +9,7 @@ import { Button } from '../../Atoms'
 
 function CompletionModal() {
   const navigate = useNavigate()
+
   const [showAllItems, setShowAllItems] = useState(false)
   const [cartCopy, setCartCopy] = useState<CartItem[]>()
   const [totalPriceCopy, setTotalPriceCopy] = useState<number>(0)
@@ -20,17 +21,21 @@ function CompletionModal() {
   }
 
   useEffect(() => {
-    setCartCopy([...cart])
-    emptyCart()
-    setTotalPriceCopy(getCartTotal())
     document.body.style.overflowY = 'hidden'
     document.querySelector('main')?.setAttribute('aria-hidden', 'true')
 
     return () => {
+      // emptyCart()
+      // TODO: remettre emptyCart
       document.body.style.overflowY = 'auto'
       document.querySelector('main')?.removeAttribute('aria-hidden')
     }
   }, [])
+
+  useEffect(() => {
+    setCartCopy([...cart])
+    setTotalPriceCopy(getCartTotal())
+  }, [cart])
 
   const toggleShowItem = () => {
     setShowAllItems(!showAllItems)
@@ -49,7 +54,7 @@ function CompletionModal() {
           />
         )
       })
-  }, [cart])
+  }, [cartCopy])
 
   return (
     <div
@@ -58,6 +63,7 @@ function CompletionModal() {
       aria-labelledby="title-completion"
     >
       <div className="completion-modal__container container">
+        (
         <img src={confirmationIcon} alt="Icon of confirmation" />
         <h1
           className="h1 h1--medium-responsive text-black"
@@ -94,7 +100,6 @@ function CompletionModal() {
             </p>
           </div>
         </div>
-
         <Button
           level="primary"
           text="Back To Home"

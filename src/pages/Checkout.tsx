@@ -4,7 +4,12 @@ import CashImg from '../assets/icon-cash-on-delivery.svg'
 import { Summary } from '../components/Checkout/Summary'
 import { InnerNav } from '../stories/Molecules'
 import { CheckoutInput } from '../utility'
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { loadStripe } from '@stripe/stripe-js'
+import useFetchStripeClientSecret from '../hooks/useFetchStripeClientSecret'
+import { CartContext } from '../components/Cart/CartProvider'
+import StripeModal from '../components/Checkout/StripeModal'
+import { Elements } from '@stripe/react-stripe-js'
 
 interface FormDatas {
   [key: string]: CheckoutInput
@@ -14,8 +19,17 @@ interface FormErrors {
   [key: string]: string[]
 }
 
+const stripeTestPublicAPIKey =
+  'pk_test_51MR1KKHI7ZOl0D3xcq6fZaLMm92katixDpzulTNYQvisPu9QyYn4CREKpOmFiel708hKN1rvfXvJ9PFnAlaTADuS003sXPlFRd'
+
+const stripePromise = loadStripe(stripeTestPublicAPIKey)
+
 function Checkout() {
-  const [showModal, setShowModal] = useState(false)
+  const { stripeDatas } = useContext(CartContext)
+
+  const stripClientSecret = useFetchStripeClientSecret(stripeDatas)
+
+  const [showModal, setShowModal] = useState(true)
   const [formDatas, setFormDatas] = useState<FormDatas>({
     name: new CheckoutInput('text'),
     email: new CheckoutInput('email'),
@@ -56,9 +70,12 @@ function Checkout() {
 
     const formIsValid = validateForm()
 
-    // TODO: Send datas somewhere if it's valid
+    if (formIsValid) {
+      // TODO: Start Stripe
 
-    setShowModal(formIsValid)
+      // TODO: Show modal after stripe is successfull
+      setShowModal(formIsValid)
+    }
   }
 
   const validateField = (fieldName: string, input: CheckoutInput) => {
@@ -120,7 +137,16 @@ function Checkout() {
   return (
     <div className="checkout container">
       <InnerNav />
-      {showModal && <CompletionModal />}
+
+      {showModal && stripClientSecret && (
+        <Elements
+          stripe={stripePromise}
+          options={{ clientSecret: stripClientSecret }}
+        >
+          <StripeModal />
+        </Elements>
+      )}
+
       <form className="form-checkout">
         <div className="form-checkout__container">
           <h1 className="h1 h1--small text-black">Checkout</h1>

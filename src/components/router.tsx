@@ -9,6 +9,7 @@ import { NotFound } from '../pages/NotFound'
 import { Home } from '../pages/Home'
 import { Item } from '../pages/Item'
 import { Layout } from '../pages/Layout'
+import { CompletionModal } from '../stories/Molecules'
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createHashRouter(
       <Route path="category/:category" element={<Category />} />
       <Route path="item/:slug" element={<Item />} />
       <Route path="checkout" element={<Checkout />} />
+      <Route path="confirmation" element={<CompletionModal />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
