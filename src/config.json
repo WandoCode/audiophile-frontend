@@ -1,0 +1,15 @@
+{
+  "strapi": {
+    "production": "https://audiophile-backend-production.up.railway.app",
+    "development": "http://localhost:1337"
+  },
+  "stripe": {
+    "production": "???",
+    "development": "http://localhost:3000"
+  },
+  "self": {
+    "production": "https://audiophile-frontend-eta.vercel.app",
+    "development": "http://127.0.0.1:5173"
+  },
+  "stripeTestPublicAPIKey": "pk_test_51MR1KKHI7ZOl0D3xcq6fZaLMm92katixDpzulTNYQvisPu9QyYn4CREKpOmFiel708hKN1rvfXvJ9PFnAlaTADuS003sXPlFRd"
+}
