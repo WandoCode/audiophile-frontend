@@ -29,7 +29,6 @@ function StripeModal() {
 
   useEffect(() => {
     if (!paymentIntent) return
-    console.log(`${paymentIntent?.status}`)
 
     if (paymentIntent?.status === 'succeeded') navigate('/confirmation')
     else navigate('/echec')

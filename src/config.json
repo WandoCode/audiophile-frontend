@@ -4,7 +4,7 @@
     "development": "http://localhost:1337"
   },
   "stripe": {
-    "production": "???",
+    "production": "https://audiophile-backend-stripe.ew.r.appspot.com",
     "development": "http://localhost:3000"
   },
   "self": {
