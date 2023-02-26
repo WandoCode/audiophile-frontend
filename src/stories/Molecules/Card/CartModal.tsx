@@ -25,7 +25,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
       document.querySelector('main')?.removeAttribute('aria-hidden')
     }
   }, [])
-
+  // TODO: utiliser Modal pour le Cart?
   const keyHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeModal()
     if (e.key === 'Tab') handleLastTab()
