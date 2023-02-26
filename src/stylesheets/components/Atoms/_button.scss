@@ -22,6 +22,7 @@
   isolation: isolate;
   &:disabled {
     background-color: var(--clr-primary-300);
+    cursor: pointer;
   }
 
   &--primary {

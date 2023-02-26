@@ -45,7 +45,7 @@ function StripeModal() {
         //`Elements` instance that was used to create the Payment Element
         elements,
         confirmParams: {
-          return_url: baseURLSelf + '/checkout',
+          return_url: baseURLSelf + '/#/checkout',
         },
       })
     } catch (err) {

@@ -11,6 +11,7 @@ import StripeModal from '../components/Checkout/StripeModal'
 import { Elements } from '@stripe/react-stripe-js'
 import Modal from '../components/utils/Modal'
 import config from '../config.json'
+import { useNavigate } from 'react-router-dom'
 
 interface FormDatas {
   [key: string]: CheckoutInput
@@ -23,6 +24,7 @@ interface FormErrors {
 const stripePromise = loadStripe(config.stripeTestPublicAPIKey)
 
 function Checkout() {
+  const navigate = useNavigate()
   const { stripeDatas } = useContext(CartContext)
 
   const stripeClientSecret = useFetchStripeClientSecret(stripeDatas)
@@ -36,9 +38,7 @@ function Checkout() {
     zip: new CheckoutInput('number'),
     city: new CheckoutInput('text'),
     country: new CheckoutInput('text'),
-    payment: new CheckoutInput('choice', ['e-money', 'cash']),
-    eMoneyId: new CheckoutInput('text'),
-    eMoneyPin: new CheckoutInput('text'),
+    payment: new CheckoutInput('choice', ['cash', 'stripe']),
   })
 
   const [formErrors, setFormErrors] = useState<FormErrors>({
@@ -50,15 +50,13 @@ function Checkout() {
     country: [],
     city: [],
     payment: [],
-    eMoneyId: [],
-    eMoneyPin: [],
   })
 
   const inputHandler = (fieldName: string, value: string) => {
     updateFormDatas(fieldName, value)
 
     const input = formDatas[fieldName]
-    let validationErrors = validateField(fieldName, input)
+    let validationErrors = validateField(input)
 
     removeErrorOnValidInput(validationErrors, fieldName)
   }
@@ -69,24 +67,18 @@ function Checkout() {
     const formIsValid = validateForm()
 
     if (formIsValid) {
-      // TODO: Start Stripe
+      console.log(formIsValid)
 
-      // TODO: Show modal after stripe is successfull
-      setShowModal(formIsValid)
+      if (formDatas.payment.value === 'stripe') setShowModal(formIsValid)
+      if (formDatas.payment.value === 'cash') navigate('/confirmation')
     }
   }
 
-  const validateField = (fieldName: string, input: CheckoutInput) => {
+  const validateField = (input: CheckoutInput) => {
     let validationErrors: string[] = []
 
-    // Don't validate 'eMoneyPin' and 'eMoneyId' if the choosen payment is not 'e-money'
-    if (
-      formDatas.payment.value !== 'e-money' &&
-      (fieldName === 'eMoneyPin' || fieldName === 'eMoneyId')
-    )
-      return []
-
     validationErrors = input.getValidationErrors()
+    console.log(validationErrors)
 
     return validationErrors
   }
@@ -116,7 +108,7 @@ function Checkout() {
     for (const fieldName in formDatas) {
       const element = formDatas[fieldName]
 
-      let validationErrors = validateField(fieldName, element)
+      let validationErrors = validateField(element)
 
       if (validationErrors.length !== 0) {
         formIsValid = false
@@ -136,9 +128,6 @@ function Checkout() {
     setShowModal(false)
   }
 
-  useEffect(() => {
-    console.log(stripeClientSecret)
-  }, [stripeClientSecret])
   return (
     <>
       {showModal && stripeClientSecret && (
@@ -262,8 +251,8 @@ function Checkout() {
                 <div className="form-checkout__radio-controller">
                   <p className="form-checkout__radio-title">Payment Method</p>
                   <RadioInput
-                    value="e-money"
-                    label="e-Money"
+                    value="stripe"
+                    label="Card/Bancontact"
                     name="payment"
                     currValue={formDatas.payment.value}
                     error={formErrors.payment.length !== 0}
@@ -271,6 +260,7 @@ function Checkout() {
                       inputHandler('payment', e.target.value)
                     }
                   />
+
                   <RadioInput
                     value="cash"
                     label="Cash on Delivery"
@@ -282,6 +272,16 @@ function Checkout() {
                     }
                   />
                 </div>
+                {formDatas.payment.value === 'stripe' && (
+                  <div className="form-checkout__payment-details">
+                    <img src={CashImg} alt="" />
+                    <p className="form-checkout__text">
+                      The 'Card/Bancontact' offer a large choice of payment
+                      facilities: Bancontact, Visa, MasterCard, etc. The payment
+                      will be processed by Stripe.
+                    </p>
+                  </div>
+                )}
                 {formDatas.payment.value === 'cash' && (
                   <div className="form-checkout__payment-details">
                     <img src={CashImg} alt="" />
@@ -292,38 +292,6 @@ function Checkout() {
                       not be cancelled.
                     </p>
                   </div>
-                )}
-
-                {formDatas.payment.value === 'e-money' && (
-                  <>
-                    <Input
-                      label="e-Money Number"
-                      name="eMoneyId"
-                      type="number"
-                      id="eMoneyId"
-                      currValue={formDatas.eMoneyId.value}
-                      placeholder="123456789"
-                      errorText={formErrors.eMoneyId[0]}
-                      error={formErrors.eMoneyId.length !== 0}
-                      onChangeHandler={(e) =>
-                        inputHandler('eMoneyId', e.target.value)
-                      }
-                    />
-
-                    <Input
-                      label="e-Money PIN"
-                      name="eMoneyPin"
-                      type="number"
-                      id="eMoneyPin"
-                      currValue={formDatas.eMoneyPin.value}
-                      placeholder="1234"
-                      errorText={formErrors.eMoneyPin[0]}
-                      error={formErrors.eMoneyPin.length !== 0}
-                      onChangeHandler={(e) =>
-                        inputHandler('eMoneyPin', e.target.value)
-                      }
-                    />
-                  </>
                 )}
               </div>
             </fieldset>
@@ -337,7 +305,7 @@ function Checkout() {
               <Summary />
               <Button
                 text={
-                  formDatas.payment.value === 'e-money'
+                  formDatas.payment.value !== 'cash'
                     ? 'Continue & Pay'
                     : 'Continue'
                 }
