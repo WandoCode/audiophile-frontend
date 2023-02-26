@@ -1,11 +1,12 @@
-import urls from '../store/config.json'
-
+import config from '../config.json'
 const env = process.env.NODE_ENV || 'development'
-const baseURL = env !== 'development' ? urls.production : urls.dev
+
+const baseURLStrapi =
+  env !== 'development' ? config.strapi.production : config.strapi.development
 
 export const formatImgUrl = () => {
   const format = (rawUrl: string) => {
-    if (env === 'development') return baseURL + rawUrl
+    if (env === 'development') return baseURLStrapi + rawUrl
     else return rawUrl
   }
 

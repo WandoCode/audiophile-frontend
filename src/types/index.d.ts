@@ -126,6 +126,7 @@ export interface CartType {
   cleanCart: () => void
   getCartGrandTotal: () => number
   stripeDatas: StripeObject[]
+  cartIsUpToDate: boolean
 }
 
 export interface LayoutContextType {

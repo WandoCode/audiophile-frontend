@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import MockCartProvider from '../../__mock__/MockCartProvider'
-import { CompletionModal } from '../../stories/Molecules'
+import { Confirmation } from '../../pages/Confirmation'
 
 const mockedUsedNavigate = vi.fn()
 
@@ -13,7 +13,7 @@ vi.mock('react-router-dom', () => ({
 describe('Given I use the "CompletionModal" component', () => {
   describe('When the cart have 2 items', () => {
     beforeEach(() => {
-      render(<CompletionModal />, { wrapper: MockCartProvider })
+      render(<Confirmation />, { wrapper: MockCartProvider })
     })
 
     test('It should display one item from the cart', () => {

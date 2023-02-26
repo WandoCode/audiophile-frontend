@@ -16,6 +16,7 @@ const defaultValue: CartType = {
   cleanCart: () => {},
   getCartGrandTotal: () => 0,
   stripeDatas: [],
+  cartIsUpToDate: false,
 }
 
 export const CartContext = createContext(defaultValue)
@@ -25,10 +26,13 @@ function CartProvider({ children }: Props) {
 
   const SHIPPING = 50
   const [cart, setCart] = useState<CartItem[]>([])
+  const [cartIsUpToDate, setCartIsUpToDate] = useState<boolean>(false)
 
   useEffect(() => {
     const stringCart = cartStoreManager.load()
     if (stringCart) setCart(JSON.parse(stringCart))
+
+    setCartIsUpToDate(true)
   }, [])
 
   useEffect(() => {
@@ -102,6 +106,7 @@ function CartProvider({ children }: Props) {
         cleanCart,
         getCartGrandTotal,
         stripeDatas: getStripeDatas(),
+        cartIsUpToDate,
       }}
     >
       {children}

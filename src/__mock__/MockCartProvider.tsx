@@ -34,6 +34,8 @@ function MockCartProvider({ children, mockedCart, mockedCartTotal }: Props) {
         getCartTotal,
         getCartGrandTotal: () => 50,
         cleanCart: () => {},
+        cartIsUpToDate: false,
+        stripeDatas: [],
       }}
     >
       {children}
