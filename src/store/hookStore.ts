@@ -47,7 +47,7 @@ function hookStore() {
   }
 
   const fetchClientSecret = async (stripeDatas: StripeObject[]) => {
-    const rep = await axios.post(baseURLStripe + ' /init_payment', {
+    const rep = await axios.post(baseURLStripe + '/init_payment', {
       stripeDatas,
     })
 
