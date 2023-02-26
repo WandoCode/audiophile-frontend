@@ -8,9 +8,9 @@ function useFetchStripeClientSecret(stripeDatas: StripeObject[]) {
 
   const getClientSecret = async (stripeDatas: StripeObject[]) => {
     try {
-      const rep = await hooks.fetchClientSecret(stripeDatas)
+      const client_secret = await hooks.fetchClientSecret(stripeDatas)
 
-      setClientSecret(rep.data.client_secret)
+      setClientSecret(client_secret)
     } catch (err) {
       console.warn(err)
       console.warn('Error with stripe')

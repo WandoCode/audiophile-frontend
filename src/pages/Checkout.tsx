@@ -3,7 +3,7 @@ import CashImg from '../assets/icon-cash-on-delivery.svg'
 import { Summary } from '../components/Checkout/Summary'
 import { InnerNav } from '../stories/Molecules'
 import { CheckoutInput } from '../utility'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { loadStripe } from '@stripe/stripe-js'
 import useFetchStripeClientSecret from '../hooks/useFetchStripeClientSecret'
 import { CartContext } from '../components/Cart/CartProvider'
@@ -25,7 +25,7 @@ const stripePromise = loadStripe(config.stripeTestPublicAPIKey)
 function Checkout() {
   const { stripeDatas } = useContext(CartContext)
 
-  const stripClientSecret = useFetchStripeClientSecret(stripeDatas)
+  const stripeClientSecret = useFetchStripeClientSecret(stripeDatas)
 
   const [showModal, setShowModal] = useState(false)
   const [formDatas, setFormDatas] = useState<FormDatas>({
@@ -136,12 +136,15 @@ function Checkout() {
     setShowModal(false)
   }
 
+  useEffect(() => {
+    console.log(stripeClientSecret)
+  }, [stripeClientSecret])
   return (
     <>
-      {showModal && stripClientSecret && (
+      {showModal && stripeClientSecret && (
         <Elements
           stripe={stripePromise}
-          options={{ clientSecret: stripClientSecret }}
+          options={{ clientSecret: stripeClientSecret }}
         >
           <Modal description={'Modal of paiement'} closeModal={closeModal}>
             <StripeModal />
