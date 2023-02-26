@@ -1,12 +1,17 @@
 import axios from 'axios'
-import urls from './config.json'
+import { StripeObject } from '../types'
+import config from '../config.json'
 
 const env = process.env.NODE_ENV || 'development'
-const baseURL = env !== 'development' ? urls.production : urls.dev
+const baseURLStrapi =
+  env !== 'development' ? config.strapi.production : config.strapi.development
+
+const baseURLStripe =
+  env !== 'development' ? config.stripe.production : config.stripe.development
 
 function hookStore() {
   const fetchLayout = async () => {
-    const url = baseURL + '/api/layout-data?populate=*'
+    const url = baseURLStrapi + '/api/layout-data?populate=*'
 
     let rep = await axios.get(url)
 
@@ -15,7 +20,7 @@ function hookStore() {
   }
 
   const fetchItem = async (slug: string) => {
-    const url = baseURL + `/api/products/product/${slug}`
+    const url = baseURLStrapi + `/api/products/product/${slug}`
     let rep = await axios.get(url)
 
     handleErrorStatus(rep.status)
@@ -24,7 +29,7 @@ function hookStore() {
   }
 
   const fetchHomepage = async () => {
-    const url = baseURL + '/api/home'
+    const url = baseURLStrapi + '/api/home'
     let rep = await axios.get(url)
 
     handleErrorStatus(rep.status)
@@ -33,7 +38,7 @@ function hookStore() {
   }
 
   const fetchCategory = async (category: string) => {
-    const url = baseURL + `/api/category/${category}`
+    const url = baseURLStrapi + `/api/category/${category}`
     let rep = await axios.get(url)
 
     handleErrorStatus(rep.status)
@@ -41,12 +46,28 @@ function hookStore() {
     return rep
   }
 
+  const getClientSecret = async (stripeDatas: StripeObject[]) => {
+    const rep = await axios.post(baseURLStripe + ' /init_payment', {
+      stripeDatas,
+    })
+
+    handleErrorStatus(rep.status)
+
+    return rep.data.client_secret
+  }
+
   const handleErrorStatus = (status: number) => {
     if (status !== 200)
       throw new Error(`Server responded with status ${status}`)
   }
 
-  return { fetchLayout, fetchItem, fetchHomepage, fetchCategory }
+  return {
+    fetchLayout,
+    fetchItem,
+    fetchHomepage,
+    fetchCategory,
+    getClientSecret,
+  }
 }
 
 export default hookStore

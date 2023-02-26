@@ -1,6 +1,5 @@
 export { CategoriesSection } from './Section/CategoriesSection'
 export { MainDescriptionSection } from './Section/MainDescriptionSection'
-export { CompletionModal } from './Card/CompletionModal'
 export { ItemCategory } from './Card/ItemCategory'
 export { ItemShortCard } from './Card/ItemShortCard'
 export { InnerNav } from './Nav/InnerNav'

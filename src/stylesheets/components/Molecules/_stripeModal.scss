@@ -1,0 +1,10 @@
+@use '../../abstracts/' as *;
+
+.stripe-modal {
+  display: grid;
+  justify-items: center;
+  align-items: end;
+  gap: rem(25);
+
+  min-height: 24.6em;
+}

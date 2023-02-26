@@ -1,29 +1,10 @@
 @use '../../abstracts/' as *;
 
-.completion-modal {
-  z-index: 1;
-  position: fixed;
-  inset: 0;
-
-  display: grid;
-  align-items: flex-start;
-
+.confirmation {
   padding-top: $header-height-sm;
-  padding-bottom: $margin-sm;
 
-  overflow: auto;
-
-  background-color: rgba(0, 0, 0, 0.4);
-  text-align: left;
-
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     padding-top: $header-height-lg;
-    padding-bottom: $margin-md;
-  }
-
-  @include breakpoint(medium) {
-    padding-top: $header-height-lg;
-    padding-bottom: $margin-lg;
   }
 
   &__container {
@@ -31,10 +12,11 @@
     gap: rem(24);
 
     padding: rem(32);
-    margin-top: $header-height-sm;
-
+    margin-top: 5rem;
     border-radius: 8px;
     background-color: var(--clr-neutral-100);
+
+    text-align: left;
 
     @include breakpoint(medium) {
       gap: rem(33);
@@ -44,7 +26,6 @@
       padding: rem(48);
     }
   }
-
   &__container h1 {
     margin-bottom: rem(-8);
   }
