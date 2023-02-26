@@ -27,7 +27,7 @@ function Checkout() {
 
   const stripClientSecret = useFetchStripeClientSecret(stripeDatas)
 
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [formDatas, setFormDatas] = useState<FormDatas>({
     name: new CheckoutInput('text'),
     email: new CheckoutInput('email'),
