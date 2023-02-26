@@ -7,10 +7,9 @@ function useFetchStripeClientSecret(stripeDatas: StripeObject[]) {
 
   const getClientSecret = async (stripeDatas: StripeObject[]) => {
     try {
-      const rep = await axios.post('http://localhost:3000/make_payment', {
+      const rep = await axios.post('http://localhost:3000/init_payment', {
         stripeDatas,
       })
-      console.log(rep.data)
 
       setClientSecret(rep.data.client_secret)
     } catch (err) {
