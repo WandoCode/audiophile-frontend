@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { StripeObject } from '../types/index'
+import hookStore from '../store/hookStore'
 
 function useFetchStripeClientSecret(stripeDatas: StripeObject[]) {
+  const hooks = hookStore()
   const [clientSecret, setClientSecret] = useState<string>()
 
   const getClientSecret = async (stripeDatas: StripeObject[]) => {
     try {
-      const rep = await axios.post('http://localhost:3000/init_payment', {
-        stripeDatas,
-      })
+      const rep = await hooks.fetchClientSecret(stripeDatas)
 
       setClientSecret(rep.data.client_secret)
     } catch (err) {
@@ -17,7 +16,6 @@ function useFetchStripeClientSecret(stripeDatas: StripeObject[]) {
       console.warn('Error with stripe')
     }
   }
-  //TODO: mettre dans le store
 
   useEffect(() => {
     if (stripeDatas.length >= 1) getClientSecret(stripeDatas)
