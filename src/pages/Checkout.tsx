@@ -19,10 +19,6 @@ function Checkout() {
 
   const [showModal, setShowModal] = useState(false)
 
-  const closeModal = () => {
-    setShowModal(false)
-  }
-
   return (
     <>
       <div className="checkout container">
