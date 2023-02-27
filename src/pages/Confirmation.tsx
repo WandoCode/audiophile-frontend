@@ -91,5 +91,5 @@ function Confirmation() {
   )
 }
 
-export { Confirmation }
+export default Confirmation
 // TODO: faire une page si une erreur arrive pendant le paiment?

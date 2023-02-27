@@ -20,7 +20,7 @@ function Category() {
         className={`${i % 2 === 0 ? '' : 'invert'}`}
         data={itemData}
         key={i}
-        lazyLoad={i > 1}
+        lazyLoad={i > 0}
       />
     )
   })
@@ -31,10 +31,10 @@ function Category() {
   } else {
     return (
       <div className="category">
-        <div className="category__title">
-          <h1 className="h1 h1--medium">{category}</h1>
-        </div>
         <LoadStateWrapper loading={isLoading}>
+          <div className="category__title">
+            <h1 className="h1 h1--medium">{category}</h1>
+          </div>
           <div className="container">
             <section className="category__items">{itemsDOM}</section>
             <CategoriesSection />
@@ -46,4 +46,4 @@ function Category() {
   }
 }
 
-export { Category }
+export default Category

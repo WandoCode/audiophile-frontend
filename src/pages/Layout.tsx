@@ -1,4 +1,3 @@
-import LoadStateWrapper from '../components/utils/LoadStateWrapper'
 import { LayoutContext } from '../components/Layout/LayoutProvider'
 import { useGetLayout } from '../hooks/useGetLayout'
 import { ScrollRestoration } from 'react-router-dom'
@@ -19,19 +18,17 @@ function Layout() {
   }, [data])
 
   if (isError) {
-    const message = axios.isAxiosError(error) ? error.message : 'Uknown error'
+    const message = axios.isAxiosError(error) ? error.message : 'Unknown error'
     return <Error message={message} />
   } else {
     return (
       <div className="layout">
         <ScrollRestoration />
-        <LoadStateWrapper loading={isLoading}>
-          <Header loading={isLoading} />
-          <main className="main">
-            <Outlet />
-          </main>
-          <Footer />
-        </LoadStateWrapper>
+        <Header loading={isLoading} />
+        <main className="main">
+          <Outlet />
+        </main>
+        <Footer />
       </div>
     )
   }

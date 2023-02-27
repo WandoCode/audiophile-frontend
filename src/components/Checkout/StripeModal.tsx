@@ -18,7 +18,7 @@ function StripeModal() {
   const [showLoader, setShowLoader] = useState(true)
 
   useEffect(() => {
-    if (!preLoading) setTimeout(() => setShowLoader(false), 750)
+    if (!preLoading) setTimeout(() => setShowLoader(false), 500)
   }, [preLoading])
 
   const handleReady = () => {

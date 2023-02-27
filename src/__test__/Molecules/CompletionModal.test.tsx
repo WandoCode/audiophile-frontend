@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import MockCartProvider from '../../__mock__/MockCartProvider'
-import { Confirmation } from '../../pages/Confirmation'
+import Confirmation from '../../pages/Confirmation'
 
 const mockedUsedNavigate = vi.fn()
 

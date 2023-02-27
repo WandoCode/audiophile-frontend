@@ -19,7 +19,7 @@ function LoadStateWrapper({ children, loading }: Props) {
     if (!loading)
       setTimeout(() => {
         setShowLoader(false)
-      }, 750)
+      }, 500)
   }, [loading])
 
   return (
