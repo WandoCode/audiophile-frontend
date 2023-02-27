@@ -8,6 +8,7 @@ interface Props {
   onClickHandler: React.MouseEventHandler<HTMLButtonElement>
   className?: string
   isOpen?: boolean
+  [x: string]: any
 }
 
 function ImgButton({
@@ -29,7 +30,7 @@ function ImgButton({
       data-open={isOpen}
       {...props}
     >
-      {type === 'cart' && <img src={cart} alt="Cart" />}
+      {type === 'cart' && <img src={cart} alt="Cart" id="cart-btn" />}
       {type === 'burger' && <img src={burger} alt="Burger Menu" />}
       {type === 'close' && <img src={close} alt="Close Menu Icon" />}
     </button>

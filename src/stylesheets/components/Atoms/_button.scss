@@ -18,9 +18,9 @@
   cursor: pointer;
 
   background-color: transparent;
-  text-decoration: none;
 
   isolation: isolate;
+
   &:disabled {
     background-color: var(--clr-neutral-300);
     cursor: auto;
@@ -32,6 +32,7 @@
 
   &--primary {
     background-color: var(--clr-primary-400);
+    text-decoration: none;
 
     @include btn-background-animation(var(--clr-primary-300), $transition-time);
   }

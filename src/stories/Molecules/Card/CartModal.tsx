@@ -26,6 +26,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
     }
   }, [])
   // TODO: utiliser Modal pour le Cart?
+
   const keyHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeModal()
     if (e.key === 'Tab') handleLastTab()
@@ -35,6 +36,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
     const element = e.target as HTMLElement
 
     if (element.classList.contains('cart-modal')) closeModal()
+    if (element.classList.contains('container')) closeModal()
   }
 
   const handleLastTab = () => {
@@ -75,7 +77,7 @@ function CartModal({ handleCheckout, closeModal }: Props) {
       aria-labelledby="cart-title"
       tabIndex={0}
     >
-      <div className="container">
+      <div className="container cart-modal__wrap">
         <div className="cart-modal__container">
           <div className="cart-modal__header">
             <h2 className="h2 h2--extra-small text-black" id="cart-title">

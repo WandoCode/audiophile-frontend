@@ -10,11 +10,23 @@
   overflow-x: hidden;
 
   padding-top: $header-height-sm;
+
   .header--on-scroll & {
     padding-top: $header-height-on-scroll-sm;
   }
 
+  &__wrap {
+    display: flex;
+    justify-content: center;
+
+    @include breakpoint(medium) {
+      justify-content: flex-end;
+    }
+  }
+
   &__container {
+    flex: 1;
+
     display: grid;
     gap: rem(32);
 
@@ -33,11 +45,10 @@
     }
 
     @include breakpoint(medium) {
-      margin-inline: auto 0;
+      margin-top: $margin-md;
     }
 
     @include breakpoint(large) {
-      margin-top: rem(32);
     }
   }
 
