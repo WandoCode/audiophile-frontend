@@ -1,11 +1,10 @@
 import { PropsWithChildren, useEffect, useState } from 'react'
-import { useStripe, useElements } from '@stripe/react-stripe-js'
+import { useStripe } from '@stripe/react-stripe-js'
 import { useNavigate } from 'react-router-dom'
 import { PaymentIntent } from '@stripe/stripe-js'
 
 function StripeStateManager({ children }: PropsWithChildren) {
   const stripe = useStripe()
-  const elements = useElements()
   const navigate = useNavigate()
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>()
 

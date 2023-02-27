@@ -133,3 +133,10 @@ export interface LayoutContextType {
   layout: DataLayout | undefined
   setLayout: React.Dispatch<React.SetStateAction<DataLayout | undefined>>
 }
+
+export interface FormDatas {
+  [key: string]: CheckoutInput
+}
+export interface FormErrors {
+  [key: string]: string[]
+}
