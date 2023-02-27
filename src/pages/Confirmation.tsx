@@ -4,22 +4,14 @@ import { useEffect, useContext, useState, useMemo } from 'react'
 import { CartContext } from '../components/Cart/CartProvider'
 import { CartItem } from '../types'
 import { formatPrice } from '../utility'
-import { useNavigate } from 'react-router-dom'
-import { Button } from '../stories/Atoms'
 
 function Confirmation() {
-  const navigate = useNavigate()
-
   const [showAllItems, setShowAllItems] = useState(false)
   const [cartCopy, setCartCopy] = useState<CartItem[]>()
   const [totalPriceCopy, setTotalPriceCopy] = useState<number>(0)
 
   const { cart, getCartTotal, emptyCart, SHIPPING, cartIsUpToDate } =
     useContext(CartContext)
-
-  const handleBackHome = () => {
-    navigate('/')
-  }
 
   useEffect(() => {
     if (!cartIsUpToDate) return
@@ -91,11 +83,9 @@ function Confirmation() {
             </p>
           </div>
         </div>
-        <Button
-          level="primary"
-          text="Back To Home"
-          onClickHandler={handleBackHome}
-        />
+        <a href={window.location.origin} className="btn btn--primary">
+          <div className="btn__content">Home</div>
+        </a>
       </div>
     </div>
   )

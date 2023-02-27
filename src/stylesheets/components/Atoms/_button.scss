@@ -18,20 +18,22 @@
   cursor: pointer;
 
   background-color: transparent;
+  text-decoration: none;
 
   isolation: isolate;
   &:disabled {
-    background-color: var(--clr-primary-300);
-    cursor: pointer;
+    background-color: var(--clr-neutral-300);
+    cursor: auto;
+
+    &:hover::before {
+      opacity: 0;
+    }
   }
 
   &--primary {
     background-color: var(--clr-primary-400);
 
-    @include btn-background-annimation(
-      var(--clr-primary-300),
-      $transition-time
-    );
+    @include btn-background-animation(var(--clr-primary-300), $transition-time);
   }
 
   &--secondary {
@@ -41,15 +43,12 @@
 
     transition: $transition-time;
 
-    @include btn-background-annimation(
-      var(--clr-neutral-700),
-      $transition-time
-    );
+    @include btn-background-animation(var(--clr-neutral-700), $transition-time);
 
     &--dark {
       background-color: var(--clr-neutral-700);
 
-      @include btn-background-annimation(hsl(0, 0, 30%), $transition-time);
+      @include btn-background-animation(hsl(0, 0, 30%), $transition-time);
 
       @include on-hover {
         &:hover {

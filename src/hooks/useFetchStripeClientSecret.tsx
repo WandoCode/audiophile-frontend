@@ -13,7 +13,6 @@ function useFetchStripeClientSecret(stripeDatas: StripeObject[]) {
       setClientSecret(client_secret)
     } catch (err) {
       console.warn(err)
-      console.warn('Error with stripe')
     }
   }
 

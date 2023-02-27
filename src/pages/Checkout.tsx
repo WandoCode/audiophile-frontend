@@ -52,6 +52,10 @@ function Checkout() {
     payment: [],
   })
 
+  useEffect(() => {
+    console.log(stripeClientSecret)
+  }, [stripeClientSecret])
+
   const inputHandler = (fieldName: string, value: string) => {
     updateFormDatas(fieldName, value)
 

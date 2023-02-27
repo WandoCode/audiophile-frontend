@@ -55,7 +55,7 @@
   }
 }
 
-@mixin btn-background-annimation($color, $transition-time) {
+@mixin btn-background-animation($color, $transition-time) {
   &:before {
     position: absolute;
     content: '';
@@ -76,7 +76,7 @@
   @include on-hover {
     &:hover:before {
       opacity: 1;
-      width: 100%;
+      width: calc(100% + 1px);
     }
   }
 }
