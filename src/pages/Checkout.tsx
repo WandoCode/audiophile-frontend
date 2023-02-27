@@ -37,7 +37,10 @@ function Checkout() {
         >
           <StripeStateManager>
             {showModal && (
-              <Modal description={'Modal of paiement'} closeModal={closeModal}>
+              <Modal
+                description={'Modal of paiement'}
+                closeModal={() => setShowModal(false)}
+              >
                 <StripeModal />
               </Modal>
             )}

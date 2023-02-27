@@ -1,6 +1,6 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { Button, SVGLoader } from '../../stories/Atoms'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import config from '../../config.json'
 
@@ -15,6 +15,11 @@ function StripeModal() {
 
   const [stripeProcessing, setStripeProcessing] = useState(false)
   const [preLoading, setPreLoading] = useState(true)
+  const [showLoader, setShowLoader] = useState(true)
+
+  useEffect(() => {
+    if (!preLoading) setTimeout(() => setShowLoader(false), 750)
+  }, [preLoading])
 
   const handleReady = () => {
     setPreLoading(false)
@@ -43,7 +48,7 @@ function StripeModal() {
 
   return (
     <div className="stripe-modal">
-      {preLoading && <SVGLoader />}
+      {showLoader && <SVGLoader />}
       <PaymentElement onReady={handleReady} />
       <Button
         level="primary"
