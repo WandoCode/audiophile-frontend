@@ -280,9 +280,9 @@ function Checkout() {
                   <div className="form-checkout__payment-details">
                     <img src={CashImg} alt="" />
                     <p className="form-checkout__text">
-                      The 'Card/Bancontact' offer a large choice of payment
-                      facilities: Bancontact, Visa, MasterCard, etc. The payment
-                      will be processed by Stripe.
+                      The 'Card/Bancontact' option offer a large choice of
+                      payment facilities: Bancontact, Visa, MasterCard, etc. The
+                      payment will be processed by Stripe.
                     </p>
                   </div>
                 )}

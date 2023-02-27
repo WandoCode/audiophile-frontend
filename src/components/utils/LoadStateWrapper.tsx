@@ -1,5 +1,5 @@
-import loaderIcon from '../../assets/loadingIcon.png'
 import { SVGLoader } from '../../stories/Atoms'
+import { useEffect, useState } from 'react'
 
 interface Props {
   children: React.ReactNode
@@ -7,11 +7,20 @@ interface Props {
 }
 
 function LoadStateWrapper({ children, loading }: Props) {
+  const [showLoader, setShowLoader] = useState(true)
+
   const loaderClass = () => {
     let base = 'load-screen '
-    if (!loading) base += 'load-screen--inactive'
+    if (!showLoader) base += 'load-screen--inactive'
     return base
   }
+
+  useEffect(() => {
+    if (!loading)
+      setTimeout(() => {
+        setShowLoader(false)
+      }, 750)
+  }, [loading])
 
   return (
     <>
