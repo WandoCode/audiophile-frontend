@@ -1,5 +1,5 @@
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
-import { Button } from '../../stories/Atoms'
+import { Button, SVGLoader } from '../../stories/Atoms'
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import config from '../../config.json'
@@ -15,7 +15,12 @@ function StripeModal() {
   const navigate = useNavigate()
 
   const [stripeProcessing, setStripeProcessing] = useState(false)
+  const [preLoading, setPreLoading] = useState(true)
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>()
+
+  const handleReady = () => {
+    setPreLoading(false)
+  }
 
   useEffect(() => {
     const clientSecret = new URLSearchParams(window.location.search).get(
@@ -42,7 +47,6 @@ function StripeModal() {
     setStripeProcessing(true)
     try {
       await stripe.confirmPayment({
-        //`Elements` instance that was used to create the Payment Element
         elements,
         confirmParams: {
           return_url: baseURLSelf + '/#/checkout',
@@ -66,7 +70,8 @@ function StripeModal() {
 
   return (
     <div className="stripe-modal">
-      <PaymentElement />
+      {preLoading && <SVGLoader />}
+      <PaymentElement onReady={handleReady} />
       <Button
         level="primary"
         text={stripeProcessing ? 'Wait...' : 'Pay'}

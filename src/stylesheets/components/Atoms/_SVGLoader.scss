@@ -1,0 +1,28 @@
+.loader {
+  position: absolute;
+  inset: -2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-neutral-100);
+  z-index: 2;
+
+  & > svg {
+    max-width: 50%;
+
+    stroke-dasharray: 200 370 200 10000;
+    stroke-dashoffset: 0;
+
+    animation: spin-loader 2s linear infinite;
+  }
+}
+
+@keyframes spin-loader {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 570;
+  }
+}
