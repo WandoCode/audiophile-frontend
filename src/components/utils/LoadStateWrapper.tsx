@@ -1,4 +1,5 @@
 import loaderIcon from '../../assets/loadingIcon.png'
+import { SVGLoader } from '../../stories/Atoms'
 
 interface Props {
   children: React.ReactNode
@@ -15,8 +16,8 @@ function LoadStateWrapper({ children, loading }: Props) {
   return (
     <>
       <div className={loaderClass()}>
-        <div className="loader-icon">
-          <img src={loaderIcon} alt="Loading icon" />
+        <div className="loader-screen__icon">
+          <SVGLoader />
         </div>
       </div>
       {children}
