@@ -22,22 +22,22 @@ function StripeModal() {
     setPreLoading(false)
   }
 
-  useEffect(() => {
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret'
-    )
+  // useEffect(() => {
+  //   const clientSecret = new URLSearchParams(window.location.search).get(
+  //     'payment_intent_client_secret'
+  //   )
 
-    if (clientSecret) {
-      getPaymentIntent(clientSecret)
-    }
-  }, [stripe])
+  //   if (clientSecret) {
+  //     getPaymentIntent(clientSecret)
+  //   }
+  // }, [stripe])
 
-  useEffect(() => {
-    if (!paymentIntent) return
+  // useEffect(() => {
+  //   if (!paymentIntent) return
 
-    if (paymentIntent?.status === 'succeeded') navigate('/confirmation')
-    else navigate('/echec')
-  }, [paymentIntent])
+  //   if (paymentIntent?.status === 'succeeded') navigate('/confirmation')
+  //   else navigate('/echec')
+  // }, [paymentIntent])
 
   const submitPayment = async () => {
     if (!stripe || !elements) {
@@ -59,14 +59,14 @@ function StripeModal() {
     setStripeProcessing(false)
   }
 
-  const getPaymentIntent = async (clientSecret: string) => {
-    if (!stripe) {
-      return
-    }
-    const paymentIntentRes = await stripe.retrievePaymentIntent(clientSecret)
+  // const getPaymentIntent = async (clientSecret: string) => {
+  //   if (!stripe) {
+  //     return
+  //   }
+  //   const paymentIntentRes = await stripe.retrievePaymentIntent(clientSecret)
 
-    setPaymentIntent(paymentIntentRes.paymentIntent)
-  }
+  //   setPaymentIntent(paymentIntentRes.paymentIntent)
+  // }
 
   return (
     <div className="stripe-modal">

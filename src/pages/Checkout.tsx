@@ -12,6 +12,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import Modal from '../components/utils/Modal'
 import config from '../config.json'
 import { useNavigate } from 'react-router-dom'
+import StripeStateManager from '../components/Checkout/StripeStateManager'
 
 interface FormDatas {
   [key: string]: CheckoutInput
@@ -29,7 +30,7 @@ function Checkout() {
 
   const stripeClientSecret = useFetchStripeClientSecret(stripeDatas)
 
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
   const [formDatas, setFormDatas] = useState<FormDatas>({
     name: new CheckoutInput('text'),
     email: new CheckoutInput('email'),
@@ -71,10 +72,8 @@ function Checkout() {
     const formIsValid = validateForm()
 
     if (formIsValid) {
-      console.log(formIsValid)
-
       if (formDatas.payment.value === 'stripe') setShowModal(formIsValid)
-      if (formDatas.payment.value === 'cash') navigate('/confirmation')
+      else if (formDatas.payment.value === 'cash') navigate('/confirmation')
     }
   }
 
@@ -82,7 +81,6 @@ function Checkout() {
     let validationErrors: string[] = []
 
     validationErrors = input.getValidationErrors()
-    console.log(validationErrors)
 
     return validationErrors
   }
@@ -134,14 +132,18 @@ function Checkout() {
 
   return (
     <>
-      {showModal && stripeClientSecret && (
+      {stripeClientSecret && (
         <Elements
           stripe={stripePromise}
           options={{ clientSecret: stripeClientSecret }}
         >
-          <Modal description={'Modal of paiement'} closeModal={closeModal}>
-            <StripeModal />
-          </Modal>
+          <StripeStateManager>
+            {showModal && stripeClientSecret && (
+              <Modal description={'Modal of paiement'} closeModal={closeModal}>
+                <StripeModal />
+              </Modal>
+            )}
+          </StripeStateManager>
         </Elements>
       )}
 
