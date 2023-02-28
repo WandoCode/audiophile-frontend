@@ -4,10 +4,19 @@ import { useEffect, useState } from 'react'
 interface Props {
   children: React.ReactNode
   loading: boolean
+  defaultLoading?: boolean
+  minimalTime?: number
 }
 
-function LoadStateWrapper({ children, loading }: Props) {
-  const [showLoader, setShowLoader] = useState(true)
+function LoadStateWrapper({
+  children,
+  loading,
+  defaultLoading = true,
+  minimalTime = 500,
+}: Props) {
+  const [showLoader, setShowLoader] = useState(defaultLoading)
+  const [timeOutId, setTimeOutId] = useState<NodeJS.Timeout>()
+  const [hasLoadedOnce, setHasLoadedOnce] = useState(defaultLoading)
 
   const loaderClass = () => {
     let base = 'load-screen '
@@ -16,10 +25,21 @@ function LoadStateWrapper({ children, loading }: Props) {
   }
 
   useEffect(() => {
-    if (!loading)
-      setTimeout(() => {
+    if (timeOutId) {
+      clearTimeout(timeOutId)
+      setTimeOutId(undefined)
+    }
+
+    if (loading && !hasLoadedOnce) {
+      setShowLoader(true)
+      setHasLoadedOnce(true)
+    } else {
+      const timeOutRef = setTimeout(() => {
         setShowLoader(false)
-      }, 500)
+        console.log('done')
+      }, minimalTime)
+      setTimeOutId(timeOutRef)
+    }
   }, [loading])
 
   return (

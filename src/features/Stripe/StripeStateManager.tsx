@@ -2,10 +2,13 @@ import { PropsWithChildren, useEffect, useState } from 'react'
 import { useStripe } from '@stripe/react-stripe-js'
 import { useNavigate } from 'react-router-dom'
 import { PaymentIntent } from '@stripe/stripe-js'
+import LoadStateWrapper from '../../components/utils/LoadStateWrapper'
 
 function StripeStateManager({ children }: PropsWithChildren) {
   const stripe = useStripe()
   const navigate = useNavigate()
+
+  const [showLoader, setShowLoader] = useState(false)
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent>()
 
   useEffect(() => {
@@ -14,6 +17,7 @@ function StripeStateManager({ children }: PropsWithChildren) {
     )
 
     if (clientSecret) {
+      setShowLoader(true)
       getPaymentIntent(clientSecret)
     }
   }, [stripe])
@@ -34,7 +38,17 @@ function StripeStateManager({ children }: PropsWithChildren) {
     setPaymentIntent(paymentIntentRes.paymentIntent)
   }
 
-  return <>{children}</>
+  return (
+    <>
+      <LoadStateWrapper
+        loading={showLoader}
+        defaultLoading={false}
+        minimalTime={10000}
+      >
+        {children}
+      </LoadStateWrapper>
+    </>
+  )
 }
 
 export default StripeStateManager
