@@ -47,15 +47,18 @@ function StripeModal() {
   }
 
   return (
-    <div className="stripe-modal">
-      {showLoader && <SVGLoader />}
-      <PaymentElement onReady={handleReady} />
-      <Button
-        level="primary"
-        text={stripeProcessing ? 'Wait...' : 'Pay'}
-        onClickHandler={submitPayment}
-        disabled={stripeProcessing}
-      />
+    <div className="stripe-modal" id="out-modal">
+      <div className="stripe-modal__container">
+        {showLoader && <SVGLoader />}
+        <PaymentElement onReady={handleReady} />
+        <Button
+          level="primary"
+          text={stripeProcessing ? 'Wait...' : 'Pay'}
+          onClickHandler={submitPayment}
+          disabled={stripeProcessing}
+          id="last-focus"
+        />
+      </div>
     </div>
   )
 }

@@ -1,38 +1,26 @@
 @use '../../abstracts/' as *;
 
 .cart-modal {
-  z-index: 1;
-  position: fixed;
-  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
 
-  background-color: rgba(0, 0, 0, 0.4);
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
 
-  padding-top: $header-height-sm;
+  margin-top: 16px;
 
   .header--on-scroll & {
     padding-top: $header-height-on-scroll-sm;
   }
 
-  &__wrap {
-    display: flex;
-    justify-content: center;
-
-    @include breakpoint(medium) {
-      justify-content: flex-end;
-    }
-  }
-
   &__container {
     flex: 1;
-
     display: grid;
     gap: rem(32);
 
     max-width: rem(380);
 
-    margin-top: $margin-sm;
     padding: rem(32) rem(28) rem(32) rem(28);
 
     border-radius: 8px;
@@ -42,10 +30,6 @@
 
     @include breakpoint-down(small) {
       padding: rem(16) rem(14) rem(16) rem(14);
-    }
-
-    @include breakpoint(medium) {
-      margin-top: $margin-md;
     }
 
     @include breakpoint(large) {

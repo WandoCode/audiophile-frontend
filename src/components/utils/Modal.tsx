@@ -21,7 +21,6 @@ function Modal({ description, closeModal, children }: Props) {
       document.querySelector('main')?.removeAttribute('aria-hidden')
     }
   }, [])
-  // TODO: externaliser la modale (a la facon de Toast) => Sinon pas de sens de mettre 'main' en aria-hidden
 
   const keyHandler = (e: KeyboardEvent) => {
     if (e.key === 'Escape') closeModal()
@@ -31,13 +30,19 @@ function Modal({ description, closeModal, children }: Props) {
   const handleClick = (e: MouseEvent) => {
     const element = e.target as HTMLElement
 
-    if (element.classList.contains('modal')) closeModal()
+    if (
+      element.classList.contains('modal') ||
+      element.classList.contains('modal__container') ||
+      element.id === 'out-modal'
+    )
+      closeModal()
   }
 
   const handleLastTab = () => {
-    // TODO: à corriger => l'id est seulement valable si c'est la modal cart
     const activeElement = document.activeElement
-    if (activeElement && activeElement.id === 'btn-checkout') {
+    if (activeElement && activeElement.id === 'last-focus') {
+      console.log(1)
+
       if (modaleRef.current) modaleRef.current.focus()
     }
   }
@@ -48,8 +53,9 @@ function Modal({ description, closeModal, children }: Props) {
       className="modal"
       role="dialog"
       aria-label={description}
+      tabIndex={0}
     >
-      <div className="modal__container">{children}</div>
+      <div className="container modal__container">{children}</div>
     </div>
   )
 }

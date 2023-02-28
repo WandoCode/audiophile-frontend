@@ -1,13 +1,32 @@
 @use '../../abstracts/' as *;
 
 .stripe-modal {
-  position: relative;
-  display: grid;
-  justify-items: center;
-  align-items: end;
-  gap: rem(25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  min-height: 25em;
+  width: 100%;
 
-  isolation: isolate;
+  &__container {
+    position: relative;
+
+    display: grid;
+    justify-items: center;
+    align-items: end;
+    gap: rem(25);
+
+    min-height: 31em;
+
+    padding: rem(32) rem(24);
+
+    border-radius: 8px;
+
+    background-color: var(--clr-neutral-100);
+
+    overflow: hidden;
+
+    @include breakpoint(medium) {
+      padding: rem(48) rem(32);
+    }
+  }
 }

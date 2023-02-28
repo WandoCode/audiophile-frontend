@@ -6,6 +6,7 @@ import { useContext, useState, useEffect } from 'react'
 import { Condition } from '../../types'
 import { ImgButton } from '../../stories/Atoms'
 import logo from '../../assets/logo.svg'
+import Modal from '../utils/Modal'
 
 interface Props {
   loading: boolean
@@ -105,7 +106,9 @@ function Header({ loading }: Props) {
         </div>
       </div>
       {modalIsOpen && (
-        <CartModal handleCheckout={handleCheckout} closeModal={onCloseModal} />
+        <Modal description="Shopping cart" closeModal={onCloseModal}>
+          <CartModal handleCheckout={handleCheckout} />
+        </Modal>
       )}
     </header>
   )
