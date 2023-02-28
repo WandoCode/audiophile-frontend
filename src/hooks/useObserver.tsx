@@ -1,18 +1,14 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+
 interface Props extends React.PropsWithChildren {
   parentRef: React.MutableRefObject<null>
-  onCallBack: React.Dispatch<React.SetStateAction<boolean>>
   threshold?: number
   margin?: string
 }
 
-function Observer({
-  parentRef,
-  onCallBack,
-  threshold = 0,
-  margin = '0px',
-  children,
-}: Props) {
+function useObserver({ parentRef, threshold = 0, margin = '0px' }: Props) {
+  const [isIntersectingParent, setIsIntersectingParent] = useState(false)
+
   useEffect(() => {
     let options = {
       threshold: threshold,
@@ -22,9 +18,9 @@ function Observer({
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          onCallBack(true)
+          setIsIntersectingParent(true)
         } else {
-          onCallBack(false)
+          setIsIntersectingParent(false)
         }
       })
     }, options)
@@ -38,8 +34,8 @@ function Observer({
     }
   }, [])
 
-  return <>{children}</>
+  return isIntersectingParent
 }
 
-export default Observer
+export default useObserver
 // TODO: transformer en custom hooks pour retirer children. Retourner un etat 'isIntersecting'

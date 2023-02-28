@@ -9,10 +9,9 @@ describe('Given I use the "CartModal" component', () => {
 
   describe('When the cart have 2 items', () => {
     beforeEach(() => {
-      render(
-        <CartModal closeModal={closeModal} handleCheckout={handleCheckout} />,
-        { wrapper: MockCartProvider }
-      )
+      render(<CartModal handleCheckout={handleCheckout} />, {
+        wrapper: MockCartProvider,
+      })
     })
 
     test('It should display a title containing the number (2) of item currently in the cart', () => {
@@ -44,7 +43,7 @@ describe('Given I use the "CartModal" component', () => {
     beforeEach(() => {
       render(
         <MockCartProvider mockedCart={[]}>
-          <CartModal closeModal={closeModal} handleCheckout={handleCheckout} />
+          <CartModal handleCheckout={handleCheckout} />
         </MockCartProvider>
       )
     })
@@ -58,3 +57,5 @@ describe('Given I use the "CartModal" component', () => {
     })
   })
 })
+
+// TODO: revoir test pour cartmodal (partie 'Modal' changée depuis)

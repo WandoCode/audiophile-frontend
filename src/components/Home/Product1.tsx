@@ -2,8 +2,8 @@ import { getConditionalClassName } from '../../utility/string'
 import { Button, ImageSet } from '../../stories/Atoms'
 import { useNavigate } from 'react-router-dom'
 import { DataHomepage } from '../../types'
-import { useRef, useState } from 'react'
-import Observer from '../utils/Observer'
+import { useRef } from 'react'
+import useObserver from '../../hooks/useObserver'
 
 interface Props {
   data: DataHomepage | undefined
@@ -13,8 +13,17 @@ const Product1 = ({ data }: Props) => {
   const articleRef = useRef(null)
   const navigate = useNavigate()
 
-  const [showTitle, setShowTitle] = useState(false)
-  const [showText, setShowText] = useState(false)
+  const showTitle = useObserver({
+    parentRef: articleRef,
+    threshold: 0.3,
+    margin: '-35% 0% -30% 0%',
+  })
+
+  const showText = useObserver({
+    parentRef: articleRef,
+    threshold: 0.3,
+    margin: '-10% 0% -40% 0%',
+  })
 
   let titleClassConditions = [
     { isFilled: showTitle, addedClass: 'text-apparition' },
@@ -47,30 +56,16 @@ const Product1 = ({ data }: Props) => {
         lazy={true}
       />
       <div className="product1__text">
-        <Observer
-          parentRef={articleRef}
-          onCallBack={setShowTitle}
-          threshold={0.3}
-          margin="-35% 0% -30% 0%"
-        >
-          <h2 className={titleClass}>{data?.product1.name}</h2>
-        </Observer>
-        <Observer
-          parentRef={articleRef}
-          onCallBack={setShowText}
-          threshold={0.3}
-          margin="-10% 0% -40% 0%"
-        >
-          <p className={textClass}>{data?.product1.description}</p>
-          <Button
-            className={btnClass}
-            level="secondary"
-            text="See product"
-            onClickHandler={() => {
-              navigate(`/item/${data?.product1.slug}`)
-            }}
-          />
-        </Observer>
+        <h2 className={titleClass}>{data?.product1.name}</h2>
+        <p className={textClass}>{data?.product1.description}</p>
+        <Button
+          className={btnClass}
+          level="secondary"
+          text="See product"
+          onClickHandler={() => {
+            navigate(`/item/${data?.product1.slug}`)
+          }}
+        />
       </div>
     </article>
   )
