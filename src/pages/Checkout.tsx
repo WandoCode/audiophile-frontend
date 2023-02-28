@@ -17,7 +17,7 @@ function Checkout() {
 
   const stripeClientSecret = useFetchStripeClientSecret(stripeDatas)
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
   return (
     <>

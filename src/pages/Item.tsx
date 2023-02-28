@@ -7,17 +7,23 @@ import {
 import { ProductPresentation } from '../components/Item/ProductPresentation'
 import { ProductFeatures } from '../components/Item/ProductFeatures'
 import { ProductIncludes } from '../components/Item/ProductIncludes'
-import LoadStateWrapper from '../components/utils/LoadStateWrapper'
 import useGetItem from '../hooks/useGetItem'
 import { useParams } from 'react-router-dom'
 import { ImageSet } from '../stories/Atoms'
 import { Error } from './Error'
 import axios from 'axios'
+import { useEffect } from 'react'
+import useSetLoader from '../features/Loader/useSetLoader'
 
 function Item() {
   const { slug } = useParams()
+  const setLoader = useSetLoader()
 
   const { data, isLoading, error, isError } = useGetItem({ slug })
+
+  useEffect(() => {
+    setLoader(isLoading)
+  }, [isLoading])
 
   const galleryImagesDOM = () => {
     if (!data) return []
@@ -51,25 +57,23 @@ function Item() {
   } else {
     return (
       <div className="item container">
-        <LoadStateWrapper loading={isLoading}>
-          <InnerNav />
-          <section className="item-details">
-            <ProductPresentation dataItem={data} slug={slug} />
-            <ProductFeatures features={data?.features ?? ''} />
-            <ProductIncludes dataItem={data} />
-          </section>
-          <section className="gallery">
-            <h2 className="visually-hidden">Gallery</h2>
-            <div className="gallery__images">{galleryImagesDOM()}</div>
-          </section>
+        <InnerNav />
+        <section className="item-details">
+          <ProductPresentation dataItem={data} slug={slug} />
+          <ProductFeatures features={data?.features ?? ''} />
+          <ProductIncludes dataItem={data} />
+        </section>
+        <section className="gallery">
+          <h2 className="visually-hidden">Gallery</h2>
+          <div className="gallery__images">{galleryImagesDOM()}</div>
+        </section>
 
-          <section className="you-may-like">
-            <h2 className="h2 h2--small text-black">You may also like</h2>
-            <div className="you-may-like__items">{shortCardsDOM()}</div>
-          </section>
-          <CategoriesSection />
-          <MainDescriptionSection />
-        </LoadStateWrapper>
+        <section className="you-may-like">
+          <h2 className="h2 h2--small text-black">You may also like</h2>
+          <div className="you-may-like__items">{shortCardsDOM()}</div>
+        </section>
+        <CategoriesSection />
+        <MainDescriptionSection />
       </div>
     )
   }

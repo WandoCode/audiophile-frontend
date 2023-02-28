@@ -1,15 +1,9 @@
-import { SVGLoader } from '../../stories/Atoms'
+import useSetLoader from '../../features/Loader/useSetLoader'
 
 function FallBackLoader() {
-  return (
-    <>
-      <div className="load-screen">
-        <div className="loader-screen__icon">
-          <SVGLoader />
-        </div>
-      </div>
-    </>
-  )
+  const setLoader = useSetLoader()
+  setLoader(true)
+  return <></>
 }
 
 export default FallBackLoader

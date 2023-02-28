@@ -55,3 +55,4 @@ function LoadStateWrapper({
 }
 
 export default LoadStateWrapper
+// Mettre l'état loading commun à toute l'application via un context
