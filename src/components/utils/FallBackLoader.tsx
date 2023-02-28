@@ -1,8 +1,13 @@
 import useSetLoader from '../../features/Loader/useSetLoader'
+import { useEffect } from 'react'
 
 function FallBackLoader() {
   const setLoader = useSetLoader()
-  setLoader(true)
+
+  useEffect(() => {
+    setLoader(true)
+  }, [])
+
   return <></>
 }
 

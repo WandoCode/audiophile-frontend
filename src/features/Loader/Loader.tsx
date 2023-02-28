@@ -7,7 +7,6 @@ function Loader() {
   const [loading, setLoading] = useState<boolean>(false)
   const [showLoader, setShowLoader] = useState(false)
   const [timeOutId, setTimeOutId] = useState<NodeJS.Timeout>()
-  // const [hasLoadedOnce, setHasLoadedOnce] = useState(false)
 
   setLoaderRef.current = useCallback(
     (isLoading: boolean) => {
