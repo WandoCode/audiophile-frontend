@@ -4,11 +4,11 @@ import Modal from '../components/utils/Modal'
 import { loadStripe } from '@stripe/stripe-js'
 import { InnerNav } from '../stories/Molecules'
 import { Elements } from '@stripe/react-stripe-js'
-import StripeModal from '../components/Checkout/StripeModal'
-import { CartContext } from '../components/Cart/CartProvider'
-import StripeStateManager from '../components/Checkout/StripeStateManager'
+import StripeModal from '../features/Stripe/StripeModal'
+import { CartContext } from '../features/Cart/CartProvider'
 import useFetchStripeClientSecret from '../hooks/useFetchStripeClientSecret'
 import CheckoutForm from '../components/Checkout/CheckoutForm'
+import StripeStateManager from '../features/Stripe/StripeStateManager'
 
 const stripePromise = loadStripe(config.stripeTestPublicAPIKey)
 

@@ -1,11 +1,10 @@
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { CartModal } from '../../stories/Molecules'
 import MockCartProvider from '../../__mock__/MockCartProvider'
+import { CartModal } from '../../features/Cart/CartModal'
 
 describe('Given I use the "CartModal" component', () => {
   let handleCheckout = vi.fn()
-  let closeModal = vi.fn()
 
   describe('When the cart have 2 items', () => {
     beforeEach(() => {

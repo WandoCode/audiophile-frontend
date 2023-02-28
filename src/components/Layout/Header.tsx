@@ -1,12 +1,13 @@
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { getConditionalClassName } from '../../utility/string'
-import { CartModal, MainNav } from '../../stories/Molecules'
-import { CartContext } from '../Cart/CartProvider'
+import { MainNav } from '../../stories/Molecules'
+import { CartContext } from '../../features/Cart/CartProvider'
 import { useContext, useState, useEffect } from 'react'
 import { Condition } from '../../types'
 import { ImgButton } from '../../stories/Atoms'
 import logo from '../../assets/logo.svg'
 import Modal from '../utils/Modal'
+import { CartModal } from '../../features/Cart/CartModal'
 
 interface Props {
   loading: boolean

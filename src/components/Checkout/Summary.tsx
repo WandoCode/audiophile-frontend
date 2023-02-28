@@ -1,6 +1,6 @@
 import { ItemSummary } from '../../stories/Atoms/CardElement/ItemSummary'
 import { formatPrice, getVAT } from '../../utility'
-import { CartContext } from '../Cart/CartProvider'
+import { CartContext } from '../../features/Cart/CartProvider'
 import { useContext } from 'react'
 
 function Summary() {

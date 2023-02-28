@@ -1,4 +1,4 @@
-import { CartContext } from '../../../components/Cart/CartProvider'
+import { CartContext } from '../../../features/Cart/CartProvider'
 import { NumberInput } from '../NumberInput/NumberInput'
 import { CartItem } from '../../../types'
 import { formatPrice } from '../../../utility'

@@ -1,7 +1,7 @@
 import { useContext, useMemo } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { ImageSet } from '../../Atoms'
-import { LayoutContext } from '../../../components/Layout/LayoutProvider'
+import { LayoutContext } from '../../../features/Layout/LayoutProvider'
 
 function MainDescriptionSection() {
   const { layout } = useContext(LayoutContext)

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import { ToastType } from '../components/Toast/Toast'
-import { ToastContext } from '../components/Toast/ToastProvider'
+import { ToastType } from '../features/Toast/Toast'
+import { ToastContext } from '../features/Toast/ToastProvider'
 
 function useToasts() {
   const { pushToastRef } = useContext(ToastContext)

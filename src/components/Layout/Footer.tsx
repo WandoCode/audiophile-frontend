@@ -3,7 +3,7 @@ import { SocialLink } from '../../stories/Atoms'
 import logo from '../../assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
-import { LayoutContext } from './LayoutProvider'
+import { LayoutContext } from '../../features/Layout/LayoutProvider'
 
 function Footer() {
   const { layout } = useContext(LayoutContext)

@@ -1,6 +1,6 @@
 import { ImgButton, LinkNav } from '../../Atoms'
 import { useContext } from 'react'
-import { LayoutContext } from '../../../components/Layout/LayoutProvider'
+import { LayoutContext } from '../../../features/Layout/LayoutProvider'
 
 interface Props {
   menuIsOpen: boolean

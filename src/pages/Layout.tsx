@@ -1,4 +1,4 @@
-import { LayoutContext } from '../components/Layout/LayoutProvider'
+import { LayoutContext } from '../features/Layout/LayoutProvider'
 import { useGetLayout } from '../hooks/useGetLayout'
 import { ScrollRestoration } from 'react-router-dom'
 import { Footer } from '../components/Layout/Footer'

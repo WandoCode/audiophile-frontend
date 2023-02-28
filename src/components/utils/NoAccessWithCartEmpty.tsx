@@ -1,5 +1,5 @@
 import { PropsWithChildren, useContext, useEffect } from 'react'
-import { CartContext } from '../Cart/CartProvider'
+import { CartContext } from '../../features/Cart/CartProvider'
 import { useNavigate } from 'react-router-dom'
 
 function NoAccessWithCartEmpty({ children }: PropsWithChildren) {

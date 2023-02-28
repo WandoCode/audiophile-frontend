@@ -1,7 +1,7 @@
 import confirmationIcon from '../assets/icon-order-confirmation.svg'
 import { ItemSummary } from '../stories/Atoms/CardElement/ItemSummary'
 import { useEffect, useContext, useState, useMemo } from 'react'
-import { CartContext } from '../components/Cart/CartProvider'
+import { CartContext } from '../features/Cart/CartProvider'
 import { CartItem } from '../types'
 import { formatPrice } from '../utility'
 

@@ -1,4 +1,4 @@
-import { CartContext } from '../components/Cart/CartProvider'
+import { CartContext } from '../features/Cart/CartProvider'
 import { cartItemA, cartItemB } from './data/CartItem'
 import { CartItem } from '../types'
 import { useState } from 'react'

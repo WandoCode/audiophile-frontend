@@ -1,5 +1,5 @@
 import { Button, ImageSet, NumberInput } from '../../stories/Atoms'
-import { CartContext } from '../Cart/CartProvider'
+import { CartContext } from '../../features/Cart/CartProvider'
 import { DataItem } from '../../types'
 import { formatPrice } from '../../utility/string'
 import { useState, useContext } from 'react'

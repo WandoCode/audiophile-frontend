@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { LayoutContext } from '../components/Layout/LayoutProvider'
+import { LayoutContext } from '../features/Layout/LayoutProvider'
 import { layoutDatas } from './data/Layout'
 
 function MockLayoutProvider({ children }: PropsWithChildren) {
