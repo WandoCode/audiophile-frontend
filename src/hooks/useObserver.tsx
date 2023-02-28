@@ -38,4 +38,3 @@ function useObserver({ parentRef, threshold = 0, margin = '0px' }: Props) {
 }
 
 export default useObserver
-// TODO: transformer en custom hooks pour retirer children. Retourner un etat 'isIntersecting'

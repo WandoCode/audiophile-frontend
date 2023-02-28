@@ -31,14 +31,14 @@ function Confirmation() {
 
   const allItemsDOM = useMemo(() => {
     if (cartCopy)
-      return cartCopy.map((item, i) => {
+      return cartCopy.map((item) => {
         return (
           <ItemSummary
             name={item.name}
             price={item.price}
             url={item.url}
             quantity={item.quantity}
-            key={i}
+            key={item.slug}
           />
         )
       })
@@ -92,4 +92,3 @@ function Confirmation() {
 }
 
 export default Confirmation
-// TODO: faire une page si une erreur arrive pendant le paiment?

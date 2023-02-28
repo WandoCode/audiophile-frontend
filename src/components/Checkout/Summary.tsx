@@ -12,10 +12,10 @@ function Summary() {
   const grandTotal = getCartGrandTotal()
 
   const summaryItemsDOM = () => {
-    return cart.map((item, i) => {
+    return cart.map((item) => {
       return (
         <ItemSummary
-          key={i}
+          key={item.slug}
           name={item.name}
           price={item.price}
           url={item.url}

@@ -28,7 +28,7 @@ function Item() {
         <ImageSet
           className="gallery"
           data={imgData}
-          key={i}
+          key={`itemImg${i}`}
           lazy={true}
           altTxt={`gallery image ${i}`}
         />

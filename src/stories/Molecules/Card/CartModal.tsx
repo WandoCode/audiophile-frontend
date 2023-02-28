@@ -13,10 +13,10 @@ function CartModal({ handleCheckout }: Props) {
 
   const itemListDOM = useMemo(
     () =>
-      cart.map((item, i) => {
+      cart.map((item) => {
         return (
           <ItemCart
-            key={i}
+            key={item.slug}
             slug={item.slug}
             name={item.name}
             quantity={item.quantity}

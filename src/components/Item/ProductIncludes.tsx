@@ -6,9 +6,9 @@ interface Props {
 
 function ProductIncludes({ dataItem }: Props) {
   const includedDOM = () => {
-    return dataItem?.includes.map((part, index) => {
+    return dataItem?.includes.map((part) => {
       return (
-        <li key={index}>
+        <li key={part.item}>
           <strong>{part.quantity}x</strong>
           {part.item}
         </li>

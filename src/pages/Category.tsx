@@ -19,7 +19,7 @@ function Category() {
       <ItemCategory
         className={`${i % 2 === 0 ? '' : 'invert'}`}
         data={itemData}
-        key={i}
+        key={itemData.slug}
         lazyLoad={i > 0}
       />
     )
