@@ -16,13 +16,19 @@ function Loader() {
   )
 
   useEffect(() => {
-    if (loading) setShowLoader(true)
+    clearTimeout(timeOutId)
+
+    let timerRef
+    if (loading) {
+      timerRef = setTimeout(() => setShowLoader(false), 5000)
+      setShowLoader(true)
+    }
 
     if (!loading) {
-      clearTimeout(timeOutId)
-      const timerRef = setTimeout(() => setShowLoader(false), 750)
-      setTimeOutId(timerRef)
+      timerRef = setTimeout(() => setShowLoader(false), 750)
     }
+
+    setTimeOutId(timerRef)
   }, [loading])
 
   const loaderClass = () => {
