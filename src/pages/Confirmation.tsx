@@ -4,14 +4,21 @@ import { useEffect, useContext, useState, useMemo } from 'react'
 import { CartContext } from '../features/Cart/CartProvider'
 import { CartItem } from '../types'
 import { formatPrice } from '../utility'
+import useSetLoader from '../features/Loader/useSetLoader'
 
 function Confirmation() {
+  const setLoader = useSetLoader()
+
   const [showAllItems, setShowAllItems] = useState(false)
   const [cartCopy, setCartCopy] = useState<CartItem[]>()
   const [totalPriceCopy, setTotalPriceCopy] = useState<number>(0)
 
   const { cart, getCartTotal, emptyCart, SHIPPING, cartIsUpToDate } =
     useContext(CartContext)
+
+  useEffect(() => {
+    setLoader(false)
+  }, [])
 
   useEffect(() => {
     if (!cartIsUpToDate) return
