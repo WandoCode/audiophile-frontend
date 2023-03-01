@@ -41,8 +41,6 @@ function Modal({ description, closeModal, children }: Props) {
   const handleLastTab = () => {
     const activeElement = document.activeElement
     if (activeElement && activeElement.id === 'last-focus') {
-      console.log(1)
-
       if (modaleRef.current) modaleRef.current.focus()
     }
   }

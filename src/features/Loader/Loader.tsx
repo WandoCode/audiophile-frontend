@@ -22,7 +22,7 @@ function Loader() {
 
     if (!loading) {
       clearTimeout(timeOutId)
-      const timerRef = setTimeout(() => setShowLoader(false), 750)
+      const timerRef = setTimeout(() => setShowLoader(false), 500)
       setTimeOutId(timerRef)
     }
   }, [loading])

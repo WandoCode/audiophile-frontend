@@ -26,7 +26,7 @@ function NumberInput({
     <div className={mainClass()}>
       <button
         className="number-input__btn"
-        aria-label="Decrease by 1"
+        aria-label="Remove 1"
         onClick={onRemove}
       >
         -
@@ -42,11 +42,7 @@ function NumberInput({
         className="number-input__input"
         readOnly={true}
       />
-      <button
-        className="number-input__btn"
-        onClick={onAdd}
-        aria-label="Increase by 1"
-      >
+      <button className="number-input__btn" onClick={onAdd} aria-label="Add 1">
         +
       </button>
     </div>

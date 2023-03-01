@@ -35,14 +35,7 @@ function CartModal({ handleCheckout }: Props) {
   }
 
   return (
-    <form
-      ref={formRef}
-      className="cart-modal"
-      role="dialog"
-      aria-labelledby="cart-title"
-      tabIndex={0}
-      id="out-modal"
-    >
+    <form ref={formRef} className="cart-modal" id="out-modal">
       <div className="cart-modal__container">
         <div className="cart-modal__header">
           <h2 className="h2 h2--extra-small text-black" id="cart-title">

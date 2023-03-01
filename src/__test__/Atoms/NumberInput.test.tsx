@@ -31,16 +31,14 @@ describe('Given I use the "NumberInput" component', () => {
     })
 
     test('It should  display a button to increase number by 1', () => {
-      const btn: HTMLInputElement | null =
-        screen.queryByLabelText('Decrease by 1')
+      const btn: HTMLInputElement | null = screen.queryByLabelText('Remove 1')
 
       expect(btn).not.toBeNull()
       expect(btn?.tagName).toBe('BUTTON')
     })
 
     test('It should  display a button to decrease number by 1', () => {
-      const btn: HTMLInputElement | null =
-        screen.queryByLabelText('Increase by 1')
+      const btn: HTMLInputElement | null = screen.queryByLabelText('Add 1')
 
       expect(btn).not.toBeNull()
       expect(btn?.tagName).toBe('BUTTON')
@@ -53,7 +51,7 @@ describe('Given I use the "NumberInput" component', () => {
     })
     describe('When I click on the "+" button', () => {
       test('It should call the "onAdd" prop function', () => {
-        const btn: HTMLInputElement = screen.getByLabelText('Increase by 1')
+        const btn: HTMLInputElement = screen.getByLabelText('Add 1')
 
         fireEvent.click(btn)
         expect(mockedOnAdd).toHaveBeenCalledOnce()
@@ -62,7 +60,7 @@ describe('Given I use the "NumberInput" component', () => {
 
     describe('When I click on the "-" button', () => {
       test('It should call the "onRemove" prop function', () => {
-        const btn: HTMLInputElement = screen.getByLabelText('Decrease by 1')
+        const btn: HTMLInputElement = screen.getByLabelText('Remove 1')
 
         fireEvent.click(btn)
         expect(mockedOnRemove).toHaveBeenCalledOnce()
