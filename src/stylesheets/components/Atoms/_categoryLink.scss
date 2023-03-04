@@ -79,6 +79,10 @@
     @include breakpoint(large) {
       height: 100%;
     }
+
+    &--loading {
+      display: none;
+    }
   }
 }
 

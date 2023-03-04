@@ -10,6 +10,7 @@ interface Props {
 function CategoryLink({ category, image }: Props) {
   const navigate = useNavigate()
   const [linkHasBeenHovered, setLinkHasBeenHovered] = useState(false)
+  const [imagIsLoaded, setImagIsLoaded] = useState(false)
 
   const handleHover = () => {
     setLinkHasBeenHovered(true)
@@ -21,6 +22,12 @@ function CategoryLink({ category, image }: Props) {
       : 'category-link__container'
   }
 
+  const imgClass = () => {
+    return imagIsLoaded
+      ? 'category-link__img'
+      : 'category-link__img category-link__img--loading'
+  }
+
   return (
     <article className="category-link">
       <label
@@ -29,7 +36,12 @@ function CategoryLink({ category, image }: Props) {
         onMouseOver={handleHover}
         data-testid="category-link-test-id"
       >
-        <img src={image} alt={category} className="category-link__img" />
+        <img
+          src={image}
+          alt={category}
+          className={imgClass()}
+          onLoad={() => setImagIsLoaded(true)}
+        />
         <h3 className="h3">{category}</h3>
         <Button
           id={category}
