@@ -59,6 +59,7 @@ function Item() {
       <div className="item container">
         <InnerNav />
         <section className="item-details">
+          <h2 className="visually-hidden">Item details</h2>
           <ProductPresentation dataItem={data} slug={slug} />
           <ProductFeatures features={data?.features ?? ''} />
           <ProductIncludes dataItem={data} />

@@ -9,11 +9,11 @@ function InnerNav() {
   }
 
   return (
-    <section className="inner-nav">
+    <div className="inner-nav">
       <div className="inner-nav__link">
         <InnerLink text="go back" clickHandler={handleGoBack} />
       </div>
-    </section>
+    </div>
   )
 }
 

@@ -27,6 +27,7 @@ function Home() {
         <div className="container">
           <CategoriesSection />
           <section className="home__products">
+            <h2 className="visually-hidden">Highlighted products</h2>
             <Product1 data={data} />
             <Product2 data={data} />
             <Product3 data={data} />

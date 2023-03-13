@@ -12,8 +12,8 @@ function CheckoutInputs({ formDatas, onHandleInput, formErrors }: Props) {
   return (
     <>
       <fieldset className="form-checkout__subsection">
-        <h2 className="visually-hidden">Checkout form</h2>
         <legend className="form-checkout__subtitle">BILLINGS DETAILS</legend>
+        <h2 className="visually-hidden">Checkout form</h2>
         <div className="form-checkout__controller form-checkout__controller--billing">
           <Input
             label="Name"

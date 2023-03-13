@@ -91,7 +91,7 @@ function Header({ loading }: Props) {
           {cart.length > 0 && (
             <div
               className="header__nbr-items"
-              aria-label="Number of items in cart"
+              aria-description="Number of items in cart"
             >
               {cart.length}
             </div>
