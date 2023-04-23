@@ -17,7 +17,7 @@ It's based on **CMS Strapi** that I set up: [see readme](https://github.com/Wand
 - SCSS (BEM)
 - Custom Form validation with _RegEx_
 
-NB: The 'nextjs' branch contains a functional NextJS version of the website that I used to discover the _NextJS_ framework in details. It's not deployed even if, for a real world project, **SSR would be better** than CSR for SEO.
+NB: The 'nextjs' branch contains a functional NextJS version of the website that I used to discover the _NextJS_ framework in details. It's not deployed even if, for a real world project, **SSR would be better** than CSR for SEO. A SSR version will be released later.
 
 ## Main features
 
@@ -95,7 +95,7 @@ Host the built version of the app with Vite.
 
 ## `storybook`
 
-Laucnch the the storybook in adevelopment environement.
+Launch the the storybook in a development environement.
 
 ## `build-storybook`
 
@@ -105,13 +105,12 @@ Build the storybook.
 
 Deploy the app on github page with the help of gh-page
 
-# Improvement
+# To be developed
 
-- Use SSR for SEO
+- Use SSR for SEO, with Next
 - Reconfigure the custom CMS api endpoints to simplify the datas received in the client.
 - Add test for pages components.
 - Add integration/end-to-end tests ('happy path')
-- Website was first deploy on github-page. I'm currently testing Vercel: remove gh-page if satisfied with Vercel.
 
 # Licence
 
