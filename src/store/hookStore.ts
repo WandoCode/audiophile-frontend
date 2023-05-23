@@ -3,6 +3,8 @@ import { StripeObject } from '../types'
 import config from '../config.json'
 
 const env = process.env.NODE_ENV || 'development'
+console.log(env)
+
 const baseURLStrapi =
   env !== 'development' ? config.strapi.production : config.strapi.development
 

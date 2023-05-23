@@ -6,7 +6,9 @@ const baseURLStrapi =
 
 export const formatImgUrl = () => {
   const format = (rawUrl: string) => {
-    if (env === 'development') return baseURLStrapi + rawUrl
+    // if (env === 'development') return baseURLStrapi + rawUrl
+    // TODO: retirer la ligne suivante et remettre la précédente pour reconfigurer la route test
+    if (env) return rawUrl
     else return rawUrl
   }
 
