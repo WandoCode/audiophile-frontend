@@ -5,10 +5,10 @@
   "type": "module",
   "homepage": "https://wandocode.github.io/audiophile-frontend/",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "next dev",
+    "build": "next build",
     "test": "vitest",
-    "preview": "vite preview",
+    "start": "next start",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -17,6 +17,7 @@
     "@stripe/stripe-js": "^1.47.0",
     "axios": "^1.2.1",
     "framer-motion": "^8.5.2",
+    "next": "^13.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.4",

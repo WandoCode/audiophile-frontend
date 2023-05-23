@@ -1,0 +1,108 @@
+@use '../../abstracts/' as *;
+
+.product1 {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(32);
+
+  padding-block: rem(55);
+
+  overflow: hidden;
+  border-radius: rem(8);
+
+  background-color: var(--clr-primary-400);
+
+  isolation: isolate;
+
+  @include breakpoint(medium) {
+    gap: rem(64);
+
+    padding-block: rem(52) rem(64);
+  }
+
+  @include breakpoint(large) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15%;
+
+    padding-block: rem(31);
+    padding-inline: rem(95);
+  }
+
+  &__img {
+    max-width: rem(173);
+
+    @include breakpoint(medium) {
+      max-width: rem(200);
+    }
+
+    @include breakpoint(large) {
+      max-width: rem(400);
+
+      translate: 0 10%;
+    }
+  }
+
+  &__text {
+    & .h2 {
+      width: min-content;
+    }
+
+    z-index: 1;
+
+    display: grid;
+    gap: rem(24);
+    justify-items: center;
+
+    max-width: calc(min(100%, rem(280)) - $margin-sm);
+
+    @include breakpoint(medium) {
+      gap: rem(15);
+
+      max-width: calc(min(100%, rem(390)) - $margin-md);
+    }
+
+    @include breakpoint(large) {
+      gap: rem(20);
+      justify-items: start;
+
+      line-height: rem(25);
+
+      max-width: unset;
+    }
+  }
+
+  &__description {
+    @include breakpoint(medium) {
+      margin-bottom: rem(20);
+    }
+  }
+
+  &__img-container {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      content: url('/assets/pattern-circles.svg');
+      inset: 0;
+      scale: 0.8;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @include breakpoint(large) {
+        scale: 1;
+      }
+
+      @include breakpoint(large) {
+        align-items: flex-start;
+
+        translate: 0 -20%;
+      }
+    }
+  }
+}
