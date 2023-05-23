@@ -9,6 +9,7 @@ import Modal from '../utils/Modal'
 import { CartModal } from '../../features/Cart/CartModal'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 interface Props {
   loading: boolean
@@ -83,7 +84,7 @@ function Header({ loading }: Props) {
         />
 
         <Link href="/" className="header__logo">
-          <img src={logo} alt="Logo Audiophile" />
+          <Image src={logo} alt="Logo Audiophile" />
         </Link>
 
         <MainNav onToogleMenu={toggleMenu} menuIsOpen={menuIsOpen} />

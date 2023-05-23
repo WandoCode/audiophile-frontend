@@ -2,6 +2,7 @@ import React from 'react'
 import cart from '../../../assets/icon-cart.svg'
 import close from '../../../assets/icon-close.svg'
 import burger from '../../../assets/icon-hamburger.svg'
+import Image from 'next/image'
 
 interface Props {
   type: 'cart' | 'burger' | 'close'
@@ -30,9 +31,9 @@ function ImgButton({
       data-open={isOpen}
       {...props}
     >
-      {type === 'cart' && <img src={cart} alt="Cart" id="cart-btn" />}
-      {type === 'burger' && <img src={burger} alt="Burger Menu" />}
-      {type === 'close' && <img src={close} alt="Close Menu Icon" />}
+      {type === 'cart' && <Image src={cart} alt="Cart" id="cart-btn" />}
+      {type === 'burger' && <Image src={burger} alt="Burger Menu" />}
+      {type === 'close' && <Image src={close} alt="Close Menu Icon" />}
     </button>
   )
 }

@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { formatPrice } from '../../../utility/string'
 
 interface Props {
@@ -11,7 +12,7 @@ function ItemSummary({ name, price, url, quantity }: Props) {
   return (
     <li className="item-summary">
       <div className="item-summary__image-container">
-        <img
+        <Image
           src={url}
           alt={`${name} mignature`}
           className="item-summary__img"

@@ -1,6 +1,7 @@
 import { Input, RadioInput } from '../../stories/Atoms'
 import CashImg from '../../assets/icon-cash-on-delivery.svg'
 import { FormErrors, FormDatas } from '../../types/index'
+import Image from 'next/image'
 
 interface Props {
   formDatas: FormDatas
@@ -126,7 +127,7 @@ function CheckoutInputs({ formDatas, onHandleInput, formErrors }: Props) {
           </div>
           {formDatas.payment.value === 'stripe' && (
             <div className="form-checkout__payment-details">
-              <img src={CashImg} alt="" />
+              <Image src={CashImg} alt="" />
               <p className="form-checkout__text">
                 The 'Card/Bancontact' option offer a large choice of payment
                 facilities: Bancontact, Visa, MasterCard, etc. The payment will
@@ -136,7 +137,7 @@ function CheckoutInputs({ formDatas, onHandleInput, formErrors }: Props) {
           )}
           {formDatas.payment.value === 'cash' && (
             <div className="form-checkout__payment-details">
-              <img src={CashImg} alt="" />
+              <Image src={CashImg} alt="" />
               <p className="form-checkout__text">
                 The ‘Cash on Delivery’ option enables you to pay in cash when
                 our delivery courier arrives at your residence. Just make sure

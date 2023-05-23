@@ -4,6 +4,7 @@ import logo from '../../assets/logo.svg'
 import { useContext } from 'react'
 import { LayoutContext } from '../../features/Layout/LayoutProvider'
 import Link from 'next/link'
+import Image from 'next/image'
 
 function Footer() {
   const { layout } = useContext(LayoutContext)
@@ -14,7 +15,7 @@ function Footer() {
         <div className="footer__decorative-bar" aria-hidden="true"></div>
         <nav className="footer__nav">
           <Link href="/">
-            <img src={logo} alt="Logo Audiophile" />
+            <Image src={logo} alt="Logo Audiophile" />
           </Link>
           <FooterNav />
         </nav>

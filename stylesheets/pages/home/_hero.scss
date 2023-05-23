@@ -19,20 +19,20 @@
 
     z-index: -1;
 
-    background-image: url('/src/assets/home/image-hero-sm.jpg');
+    background-image: url('../../../assets/home/image-hero-sm.jpg');
     background-color: var(--clr-neutral-650);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 
     @include breakpoint(medium) {
-      background-image: url('/src/assets/home/image-hero-md.jpg');
+      background-image: url('../../../assets/home/image-hero-md.jpg');
     }
 
     @include breakpoint(large) {
       padding-top: $header-height-lg;
 
-      background-image: url('/src/assets/home/image-hero-lg.jpg');
+      background-image: url('../../../assets/home/image-hero-lg.jpg');
     }
   }
 

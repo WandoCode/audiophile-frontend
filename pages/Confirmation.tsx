@@ -5,6 +5,7 @@ import { CartContext } from '../features/Cart/CartProvider'
 import { CartItem } from '../types'
 import { formatPrice } from '../utility'
 import useSetLoader from '../features/Loader/useSetLoader'
+import Image from 'next/image'
 
 function Confirmation() {
   const setLoader = useSetLoader()
@@ -54,7 +55,7 @@ function Confirmation() {
   return (
     <div className="confirmation">
       <div className="confirmation__container container">
-        <img src={confirmationIcon} alt="Icon of confirmation" />
+        <Image src={confirmationIcon} alt="Icon of confirmation" />
         <h1
           className="h1 h1--medium-responsive text-black"
           id="title-completion"

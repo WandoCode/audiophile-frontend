@@ -3,6 +3,7 @@ import { NumberInput } from '../NumberInput/NumberInput'
 import { CartItem } from '../../../types'
 import { formatPrice } from '../../../utility'
 import { useContext } from 'react'
+import Image from 'next/image'
 
 function ItemCart({ name, quantity, slug, price, url }: CartItem) {
   const { removeItem, addItem } = useContext(CartContext)
@@ -20,7 +21,7 @@ function ItemCart({ name, quantity, slug, price, url }: CartItem) {
   return (
     <li className="item-cart">
       <div className="item-cart__image-container">
-        <img src={url} alt={`${name} mignature`} className="item-cart__img" />
+        <Image src={url} alt={`${name} mignature`} className="item-cart__img" />
       </div>
       <div className="item-cart__text">
         <h2 className="h3 text-black">{name}</h2>
