@@ -54,4 +54,3 @@ function Layout({ children }: PropsWithChildren) {
 }
 
 export { Layout }
-// TODO: trouver comment remplacer ScrollRestoration avec NextJS (utile encore?)

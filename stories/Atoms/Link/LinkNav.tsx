@@ -8,8 +8,9 @@ interface Props {
 
 function LinkNav({ path, text }: Props) {
   const router = useRouter()
+
   const linkClass = () => {
-    if (router.pathname === path) return 'nav-link nav-link--active'
+    if (router.asPath === path) return 'nav-link nav-link--active'
     else return 'nav-link'
   }
 
