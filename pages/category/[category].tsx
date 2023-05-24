@@ -8,10 +8,17 @@ import axios from 'axios'
 import useSetLoader from '../../features/Loader/useSetLoader'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { QueryClient, dehydrate, useQuery } from 'react-query'
+import { DehydratedState, QueryClient, dehydrate, useQuery } from 'react-query'
 import hookStore from '../../store/hookStore'
 import dataCategory from '../../hooks/helpers/dataCategory'
 import { Layout } from '../Layout'
+import { GetStaticPaths, GetStaticProps } from 'next'
+
+interface PropsStatic {
+  params: {
+    category: string
+  }
+}
 
 const getCategoryDatas = async (category: string) => {
   const rep = await hookStore().fetchCategory(category || '')
@@ -38,7 +45,7 @@ const getCategoriesNames = async (): Promise<string[]> => {
   return categoriesNames
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const categories = await getCategoriesNames()
 
   const paths = categories.map((category) => ({
@@ -47,15 +54,18 @@ export const getStaticPaths = async () => {
     },
   }))
 
-  return { paths, fallback: 'blocking' }
+  return { paths, fallback: false }
 }
 
-// TODO: trouver le type (replace "any")
-export async function getStaticProps({ params }: any) {
+export const getStaticProps: GetStaticProps<{
+  dehydratedState: DehydratedState
+}> = async ({ params }) => {
+  const category = params?.category as string
+
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(['category', params.category], () =>
-    getCategoryDatas(params.category)
+  await queryClient.prefetchQuery(['category', category], () =>
+    getCategoryDatas(category)
   )
 
   return {
@@ -69,11 +79,14 @@ function Category() {
   const router = useRouter()
   const setLoader = useSetLoader()
 
-  // TODO: mettre une condition pour que router.query.category soit une string, sinon renvoyer vers page d'erreur
-  const category = router.query.category as string
+  const category = router.query.category
+
+  if (typeof category !== 'string' && category! instanceof String)
+    return router.push('error')
+
   const { data, isLoading, isError, error } = useQuery(
     ['category', router.query.category],
-    () => getCategoryDatas(category)
+    () => getCategoryDatas(category as string)
   )
 
   useEffect(() => {
