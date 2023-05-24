@@ -23,30 +23,34 @@ const getCategoryDatas = async (category: string) => {
   return structuredItemsArray
 }
 
+const getCategoriesNames = async (): Promise<string[]> => {
+  const rep = await hookStore().fetchCategoriesNames()
+  const raw = rep.data
+
+  const { id, ...categories } = raw
+
+  let categoriesNames = []
+  for (const key in categories) {
+    const categoryName = categories[key]
+    categoriesNames.push(categoryName)
+  }
+
+  return categoriesNames
+}
+
 export const getStaticPaths = async () => {
-  // Todo: faire un appel à la DB pour connaitre les catégories à intégrer ici et ne pas avoir à les écrire en "dur"
-  const paths = [
-    {
-      params: {
-        category: 'headphones',
-      },
+  const categories = await getCategoriesNames()
+
+  const paths = categories.map((category) => ({
+    params: {
+      category,
     },
-    {
-      params: {
-        category: 'speakers',
-      },
-    },
-    {
-      params: {
-        category: 'earphones',
-      },
-    },
-  ]
+  }))
 
   return { paths, fallback: 'blocking' }
 }
 
-// TODO: trouver le type
+// TODO: trouver le type (replace "any")
 export async function getStaticProps({ params }: any) {
   const queryClient = new QueryClient()
 

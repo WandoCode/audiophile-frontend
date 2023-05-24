@@ -48,6 +48,15 @@ function hookStore() {
     return rep
   }
 
+  const fetchCategoriesNames = async () => {
+    const url = baseURLStrapi + `/api/categories`
+    let rep = await axios.get(url)
+
+    handleErrorStatus(rep.status)
+
+    return rep
+  }
+
   const fetchClientSecret = async (stripeDatas: StripeObject[]) => {
     const rep = await axios.post(baseURLStripe + '/init_payment', {
       stripeDatas,
@@ -68,6 +77,7 @@ function hookStore() {
     fetchItem,
     fetchHomepage,
     fetchCategory,
+    fetchCategoriesNames,
     fetchClientSecret,
   }
 }
