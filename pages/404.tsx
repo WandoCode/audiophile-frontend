@@ -1,13 +1,18 @@
+import Link from 'next/link'
 import { Layout } from './Layout'
 
-const Page404 = () => {
+function NotFound() {
   return (
     <Layout>
-      <h1 className="not-found container">
-        Error: the page you're looking for doesn't exist!
-      </h1>
+      <div className="not-found container ">
+        <h1 className="h1 text-black">Error</h1>
+        <p>
+          The page you're looking for doesn't exist, go back to{' '}
+          <Link href="/">hompage</Link>
+        </p>
+      </div>
     </Layout>
   )
 }
 
-export default Page404
+export default NotFound

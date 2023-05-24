@@ -140,3 +140,8 @@ export interface FormDatas {
 export interface FormErrors {
   [key: string]: string[]
 }
+
+export interface ProductSlug {
+  id: number
+  slug: string
+}

@@ -3,7 +3,7 @@ import {
   ItemCategory,
   MainDescriptionSection,
 } from '../../stories/Molecules'
-import { Error } from '../Error'
+import Error from '../Error'
 import axios from 'axios'
 import useSetLoader from '../../features/Loader/useSetLoader'
 import { useEffect } from 'react'
@@ -82,7 +82,7 @@ function Category() {
   const category = router.query.category
 
   if (typeof category !== 'string' && category! instanceof String)
-    return router.push('error')
+    return router.push('404')
 
   const { data, isLoading, isError, error } = useQuery(
     ['category', router.query.category],

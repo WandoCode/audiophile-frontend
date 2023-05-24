@@ -6,6 +6,7 @@ import { CartItem } from '../types'
 import { formatPrice } from '../utility'
 import useSetLoader from '../features/Loader/useSetLoader'
 import Image from 'next/image'
+import { Layout } from './Layout'
 
 function Confirmation() {
   const setLoader = useSetLoader()
@@ -53,49 +54,51 @@ function Confirmation() {
   }, [cartCopy])
 
   return (
-    <div className="confirmation">
-      <div className="confirmation__container container">
-        <Image src={confirmationIcon} alt="Icon of confirmation" />
-        <h1
-          className="h1 h1--medium-responsive text-black"
-          id="title-completion"
-        >
-          Thank you <br />
-          for your order
-        </h1>
-        <p>You will receive an email confirmation shortly.</p>
-        <div className="confirmation__body">
-          <ul className="confirmation__items">
-            {cartCopy?.length !== 0 && allItemsDOM?.at(0)}
+    <Layout>
+      <div className="confirmation">
+        <div className="confirmation__container container">
+          <Image src={confirmationIcon} alt="Icon of confirmation" />
+          <h1
+            className="h1 h1--medium-responsive text-black"
+            id="title-completion"
+          >
+            Thank you <br />
+            for your order
+          </h1>
+          <p>You will receive an email confirmation shortly.</p>
+          <div className="confirmation__body">
+            <ul className="confirmation__items">
+              {cartCopy?.length !== 0 && allItemsDOM?.at(0)}
 
-            {showAllItems === true && <>{allItemsDOM?.slice(1)}</>}
+              {showAllItems === true && <>{allItemsDOM?.slice(1)}</>}
 
-            {cartCopy && cartCopy.length > 1 && (
-              <div className="confirmation__other-items">
-                <button
-                  className="confirmation__other-items-button"
-                  onClick={toggleShowItem}
-                >
-                  {showAllItems
-                    ? 'view less'
-                    : `and ${cartCopy.length - 1} other item(s)`}
-                </button>
-              </div>
-            )}
-          </ul>
+              {cartCopy && cartCopy.length > 1 && (
+                <div className="confirmation__other-items">
+                  <button
+                    className="confirmation__other-items-button"
+                    onClick={toggleShowItem}
+                  >
+                    {showAllItems
+                      ? 'view less'
+                      : `and ${cartCopy.length - 1} other item(s)`}
+                  </button>
+                </div>
+              )}
+            </ul>
 
-          <div className="confirmation__total">
-            <p className="confirmation__heading">Grand Total</p>
-            <p className="confirmation__price white">
-              $ {formatPrice(totalPriceCopy + SHIPPING)}
-            </p>
+            <div className="confirmation__total">
+              <p className="confirmation__heading">Grand Total</p>
+              <p className="confirmation__price white">
+                $ {formatPrice(totalPriceCopy + SHIPPING)}
+              </p>
+            </div>
           </div>
+          <a href={window.location.origin} className="btn btn--primary">
+            <div className="btn__content">Home</div>
+          </a>
         </div>
-        <a href={window.location.origin} className="btn btn--primary">
-          <div className="btn__content">Home</div>
-        </a>
       </div>
-    </div>
+    </Layout>
   )
 }
 

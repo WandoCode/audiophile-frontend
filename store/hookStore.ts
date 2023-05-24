@@ -29,6 +29,15 @@ function hookStore() {
     return rep
   }
 
+  const fetchProductsSlug = async () => {
+    const url = baseURLStrapi + `/api/products/slugs`
+    let rep = await axios.get(url)
+
+    handleErrorStatus(rep.status)
+
+    return rep
+  }
+
   const fetchHomepage = async () => {
     const url = baseURLStrapi + '/api/home'
     let rep = await axios.get(url)
@@ -74,6 +83,7 @@ function hookStore() {
   return {
     fetchLayout,
     fetchItem,
+    fetchProductsSlug,
     fetchHomepage,
     fetchCategory,
     fetchCategoriesNames,
