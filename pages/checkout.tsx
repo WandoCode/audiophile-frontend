@@ -9,7 +9,7 @@ import { CartContext } from '../features/Cart/CartProvider'
 import useFetchStripeClientSecret from '../hooks/useFetchStripeClientSecret'
 import CheckoutForm from '../components/Checkout/CheckoutForm'
 import StripeStateManager from '../features/Stripe/StripeStateManager'
-import { Layout } from './Layout'
+import { Layout } from '../components/Layout/Layout'
 
 const stripePromise = loadStripe(config.stripeTestPublicAPIKey)
 

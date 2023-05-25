@@ -1,12 +1,12 @@
-import { LayoutContext } from '../features/Layout/LayoutProvider'
-import { Footer } from '../components/Layout/Footer'
-import { Header } from '../components/Layout/Header'
+import { LayoutContext } from '../../features/Layout/LayoutProvider'
+import { Footer } from './Footer'
+import { Header } from './Header'
 import { PropsWithChildren, useContext, useEffect } from 'react'
-import Error from './error'
+import Error from '../../pages/error'
 import axios from 'axios'
 import { QueryClient, dehydrate, useQuery } from 'react-query'
-import hookStore from '../store/hookStore'
-import dataLayout from '../hooks/helpers/dataLayout'
+import hookStore from '../../store/hookStore'
+import dataLayout from '../../hooks/helpers/dataLayout'
 
 const getLayoutDatas = async () => {
   const rep = await hookStore().fetchLayout()

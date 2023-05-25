@@ -18,7 +18,7 @@ import hookStore from '../../store/hookStore'
 import dataItem from '../../hooks/helpers/dataItem'
 import { ProductSlug } from '../../types'
 import { useRouter } from 'next/router'
-import { Layout } from '../Layout'
+import { Layout } from '../../components/Layout/Layout'
 
 const getItem = async (slug: string) => {
   const rep = await hookStore().fetchItem(slug || '')

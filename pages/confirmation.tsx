@@ -6,7 +6,8 @@ import { CartItem } from '../types'
 import { formatPrice } from '../utility'
 import useSetLoader from '../features/Loader/useSetLoader'
 import Image from 'next/image'
-import { Layout } from './Layout'
+import { Layout } from '../components/Layout/Layout'
+import Link from 'next/link'
 
 function Confirmation() {
   const setLoader = useSetLoader()
@@ -93,9 +94,9 @@ function Confirmation() {
               </p>
             </div>
           </div>
-          <a href={window.location.origin} className="btn btn--primary">
+          <Link href="/" className="btn btn--primary">
             <div className="btn__content">Home</div>
-          </a>
+          </Link>
         </div>
       </div>
     </Layout>

@@ -1,4 +1,4 @@
-import { Layout } from './Layout'
+import { Layout } from '../components/Layout/Layout'
 
 interface Props {
   message: string

@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { DehydratedState, QueryClient, dehydrate, useQuery } from 'react-query'
 import hookStore from '../../store/hookStore'
 import dataCategory from '../../hooks/helpers/dataCategory'
-import { Layout } from '../Layout'
+import { Layout } from '../../components/Layout/Layout'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 interface PropsStatic {
