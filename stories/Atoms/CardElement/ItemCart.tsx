@@ -21,7 +21,13 @@ function ItemCart({ name, quantity, slug, price, url }: CartItem) {
   return (
     <li className="item-cart">
       <div className="item-cart__image-container">
-        <Image src={url} alt={`${name} mignature`} className="item-cart__img" />
+        <Image
+          src={url}
+          height={64}
+          width={64}
+          alt={`${name} mignature`}
+          className="item-cart__img"
+        />
       </div>
       <div className="item-cart__text">
         <h2 className="h3 text-black">{name}</h2>

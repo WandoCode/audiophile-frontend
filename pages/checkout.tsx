@@ -1,5 +1,5 @@
 import config from '../config.json'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import Modal from '../components/utils/Modal'
 import { loadStripe } from '@stripe/stripe-js'
 import { InnerNav } from '../stories/Molecules'
@@ -9,6 +9,7 @@ import { CartContext } from '../features/Cart/CartProvider'
 import useFetchStripeClientSecret from '../hooks/useFetchStripeClientSecret'
 import CheckoutForm from '../components/Checkout/CheckoutForm'
 import StripeStateManager from '../features/Stripe/StripeStateManager'
+import { Layout } from './Layout'
 
 const stripePromise = loadStripe(config.stripeTestPublicAPIKey)
 
@@ -19,8 +20,11 @@ function Checkout() {
 
   const [showModal, setShowModal] = useState(false)
 
+  useEffect(() => {
+    console.log(stripeClientSecret)
+  }, [stripeClientSecret])
   return (
-    <>
+    <Layout>
       <div className="checkout container">
         <InnerNav />
         <CheckoutForm onShowModal={() => setShowModal(true)} />
@@ -43,7 +47,7 @@ function Checkout() {
           </StripeStateManager>
         </Elements>
       )}
-    </>
+    </Layout>
   )
 }
 

@@ -3,7 +3,7 @@ import {
   ItemCategory,
   MainDescriptionSection,
 } from '../../stories/Molecules'
-import Error from '../Error'
+import Error from '../error'
 import axios from 'axios'
 import useSetLoader from '../../features/Loader/useSetLoader'
 import { useEffect } from 'react'

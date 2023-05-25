@@ -7,7 +7,7 @@ import { FormDatas, FormErrors } from '../../types/index'
 import { useRouter } from 'next/router'
 
 interface Props {
-  onShowModal: (x: boolean) => void
+  onShowModal: () => void
 }
 
 function CheckoutForm({ onShowModal }: Props) {
@@ -49,8 +49,9 @@ function CheckoutForm({ onShowModal }: Props) {
 
     const formIsValid = validateForm()
 
-    if (formIsValid) {
-      if (formDatas.payment.value === 'stripe') onShowModal(formIsValid)
+    // TODO: bypass pour tester, remettre 'formIsValid' comme condition
+    if (true) {
+      if (formDatas.payment.value === 'stripe') onShowModal()
       else if (formDatas.payment.value === 'cash') router.push('/confirmation')
     }
   }

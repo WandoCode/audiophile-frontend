@@ -15,6 +15,8 @@ function ItemSummary({ name, price, url, quantity }: Props) {
         <Image
           src={url}
           alt={`${name} mignature`}
+          height={64}
+          width={64}
           className="item-summary__img"
         />
       </div>

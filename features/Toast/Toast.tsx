@@ -14,7 +14,7 @@ function Toast({ title, text, type, url, altTxt }: ToastType) {
 
   return (
     <div className={toastClass}>
-      <Image src={url} alt={altTxt} />
+      <Image src={url} alt={altTxt} width={80} height={80} />
       <div className="toast__content">
         <h2 className="h2 h2--toast text-black">{title}</h2>
         <p>{text}</p>
