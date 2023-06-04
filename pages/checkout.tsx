@@ -20,9 +20,6 @@ function Checkout() {
 
   const [showModal, setShowModal] = useState(false)
 
-  useEffect(() => {
-    console.log(stripeClientSecret)
-  }, [stripeClientSecret])
   return (
     <Layout>
       <div className="checkout container">
