@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { CheckoutInput } from '../../utility'
 import CheckoutInputs from './CheckoutInputs'
 import { Summary } from './Summary'
 import { Button } from '../../stories/Atoms'
 import { FormDatas, FormErrors } from '../../types/index'
 import { useRouter } from 'next/router'
+import { CartContext } from '../../features/Cart/CartProvider'
 
 interface Props {
   onShowModal: () => void
@@ -12,6 +13,7 @@ interface Props {
 
 function CheckoutForm({ onShowModal }: Props) {
   const router = useRouter()
+  const { cart } = useContext(CartContext)
 
   const [formDatas, setFormDatas] = useState<FormDatas>({
     name: new CheckoutInput('text'),
@@ -125,6 +127,7 @@ function CheckoutForm({ onShowModal }: Props) {
             }
             level="primary"
             onClickHandler={handleSubmit}
+            disabled={cart.length === 0}
           />
         </fieldset>
       </div>

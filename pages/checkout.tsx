@@ -1,5 +1,5 @@
 import config from '../config.json'
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import Modal from '../components/utils/Modal'
 import { loadStripe } from '@stripe/stripe-js'
 import { InnerNav } from '../stories/Molecules'
@@ -72,3 +72,4 @@ export default Checkout
         }
       />
 */
+// TODO: mettre un favicon

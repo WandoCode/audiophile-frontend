@@ -3,36 +3,14 @@ import { Product1 } from '../components/Home/Product1'
 import { Product2 } from '../components/Home/Product2'
 import { Product3 } from '../components/Home/Product3'
 import { Hero } from '../components/Home/Hero'
-import Error from './error'
-import axios from 'axios'
 import { useEffect } from 'react'
 import useSetLoader from '../features/Loader/useSetLoader'
 import { Layout } from '../components/Layout/Layout'
 import { QueryClient, dehydrate, useQuery } from 'react-query'
 import hookStore from '../store/hookStore'
 import dataHomepage from '../hooks/helpers/dataHomepage'
-
-const getLayoutDatas = async () => {
-  const rep = await hookStore().fetchHomepage()
-
-  const raw = rep.data.data.attributes
-
-  const structuredDatas = dataHomepage(raw).getCleanDatas()
-
-  return structuredDatas
-}
-
-export async function getStaticProps() {
-  const queryClient = new QueryClient()
-
-  await queryClient.prefetchQuery('Homepage', getLayoutDatas)
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient),
-    },
-  }
-}
+import Error from './error'
+import axios from 'axios'
 
 function Home() {
   const { data, isLoading, isError, error } = useQuery(
@@ -70,3 +48,25 @@ function Home() {
 }
 
 export default Home
+
+const getLayoutDatas = async () => {
+  const rep = await hookStore().fetchHomepage()
+
+  const raw = rep.data.data.attributes
+
+  const structuredDatas = dataHomepage(raw).getCleanDatas()
+
+  return structuredDatas
+}
+
+export async function getStaticProps() {
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery('Homepage', getLayoutDatas)
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
