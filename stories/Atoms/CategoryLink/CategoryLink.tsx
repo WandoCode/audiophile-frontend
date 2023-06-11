@@ -5,14 +5,13 @@ import Image from 'next/image'
 
 interface Props {
   category?: string
-  image?: string
+  image: string
 }
 
-function CategoryLink({ category, image = '' }: Props) {
+function CategoryLink({ category, image }: Props) {
   const router = useRouter()
 
   const [linkHasBeenHovered, setLinkHasBeenHovered] = useState(false)
-  const [imagIsLoaded, setImagIsLoaded] = useState(false)
 
   const handleHover = () => {
     setLinkHasBeenHovered(true)
@@ -22,12 +21,6 @@ function CategoryLink({ category, image = '' }: Props) {
     return linkHasBeenHovered
       ? 'category-link__container animate-on-hover'
       : 'category-link__container'
-  }
-
-  const imgClass = () => {
-    return imagIsLoaded
-      ? 'category-link__img'
-      : 'category-link__img category-link__img--loading'
   }
 
   return (
@@ -41,8 +34,7 @@ function CategoryLink({ category, image = '' }: Props) {
         <Image
           src={image}
           alt={category ?? ''}
-          className={imgClass()}
-          onLoad={() => setImagIsLoaded(true)}
+          className="category-link__img"
           height={205}
           width={230}
         />

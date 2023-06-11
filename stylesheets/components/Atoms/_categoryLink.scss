@@ -5,6 +5,7 @@
   align-items: flex-end;
 
   width: 100%;
+
   min-height: rem(220);
 
   isolation: isolate;
@@ -43,6 +44,10 @@
 
       transition: translate 0.2s;
     }
+  }
+
+  &__img {
+    width: auto;
   }
 
   .animate-on-hover {
