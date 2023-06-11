@@ -5,7 +5,7 @@ function InnerNav() {
   const router = useRouter()
 
   const handleGoBack = () => {
-    router.push('/')
+    router.back()
   }
 
   return (
@@ -18,4 +18,3 @@ function InnerNav() {
 }
 
 export { InnerNav }
-// TODO: voir comment revenir à la derniere page consultée (probablement avec l'historique du router)
