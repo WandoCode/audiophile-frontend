@@ -1,7 +1,7 @@
 const cartItemA = {
   slug: 'one',
   name: 'Name One',
-  url: 'url.One',
+  url: '/urlOne',
   price: 1023,
   quantity: 1,
 }
@@ -9,7 +9,7 @@ const cartItemA = {
 const cartItemB = {
   slug: 'two',
   name: 'Name Two',
-  url: 'url.Two',
+  url: '/urlTwo',
   price: 999,
   quantity: 5,
 }

@@ -3,11 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import { ItemShortCard } from '../../stories/Molecules'
 import { linkedItemA } from '../../__mock__/data/LinkedItem'
 
-const mockedUsedNavigate = vi.fn()
+const useMokedRouter = vi.fn()
 
-vi.mock('react-router-dom', () => ({
-  ...(vi.importActual('react-router-dom') as any),
-  useNavigate: () => mockedUsedNavigate,
+vi.mock('next/router', () => ({
+  ...(vi.importActual('next/router') as any),
+  useRouter: () => useMokedRouter,
 }))
 
 describe('Given I use the "ItemCategory" component', () => {
@@ -27,10 +27,8 @@ describe('Given I use the "ItemCategory" component', () => {
 
       fireEvent.click(redirectBtn)
 
-      expect(mockedUsedNavigate).toHaveBeenCalledOnce()
-      expect(mockedUsedNavigate.mock.calls[0][0]).toBe(
-        `/item/${linkedItemA.slug}`
-      )
+      expect(useMokedRouter).toHaveBeenCalledOnce()
+      expect(useMokedRouter.mock.calls[0][0]).toBe(`/item/${linkedItemA.slug}`)
     })
   })
 })

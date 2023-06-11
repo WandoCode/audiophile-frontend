@@ -6,7 +6,7 @@ describe('Given I use the ItemCart component', () => {
   const name = 'test title'
   const quantity = 2
   const slug = 'azerty'
-  const url = 'www.testurl.com'
+  const urlPath = 'testPath'
   const price = 1200
 
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe('Given I use the ItemCart component', () => {
         name={name}
         slug={slug}
         quantity={quantity}
-        url={url}
+        url={`/${urlPath}`}
         price={price}
       />
     )
@@ -32,7 +32,7 @@ describe('Given I use the ItemCart component', () => {
 
     const imgSrc = image?.src
 
-    expect(imgSrc).toBe('http://localhost:3000/' + url)
+    expect(imgSrc).toEqual(expect.stringMatching(urlPath))
   })
 
   test('then it should display the price formated', () => {

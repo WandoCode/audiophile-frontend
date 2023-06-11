@@ -2,26 +2,26 @@ import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { CategoryLink } from '../../stories/Atoms'
 
-const mockedUsedNavigate = vi.fn()
+const useMokedRouter = vi.fn()
 
-vi.mock('react-router-dom', () => ({
-  ...(vi.importActual('react-router-dom') as any),
-  useNavigate: () => mockedUsedNavigate,
+vi.mock('next/router', () => ({
+  ...(vi.importActual('next/router') as any),
+  useRouter: () => useMokedRouter,
 }))
 
 describe('Given I use the CategoryLink component', () => {
-  const image = 'www.testurl.com'
+  const imagePath = 'testURL'
   const category = 'headphones'
 
   beforeEach(() => {
-    render(<CategoryLink image={image} category={category} />)
+    render(<CategoryLink image={`/${imagePath}`} category={category} />)
   })
 
-  test('Then the "image" prop should be used as src of the image didplayed', () => {
+  test('Then the "Path" prop should be used as src of the Path displayed', () => {
     const img: HTMLImageElement = screen.getByAltText(category)
     const imgSrc = img.src
 
-    expect(imgSrc).toBe('http://localhost:3000/' + image)
+    expect(imgSrc).toEqual(expect.stringContaining(imagePath))
   })
 
   describe('When user hover the component', () => {
