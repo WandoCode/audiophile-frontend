@@ -136,4 +136,3 @@ function CheckoutForm({ onShowModal }: Props) {
 }
 
 export default CheckoutForm
-// TODO: Modifier le CORS du backend de stripe pour accepter notre localhost pour tester

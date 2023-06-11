@@ -49,27 +49,5 @@ function Checkout() {
 }
 
 export default Checkout
-// TODO: faire en sorte de ne pas arriver sur la page checkout si le cart est vide; Idem avec page confirmation
-/* 
-<Route
-        path="checkout"
-        element={
-          <NoAccessWithCartEmpty>
-            <Suspense fallback={<FallBackLoader />}>
-              <Checkout />
-            </Suspense>
-          </NoAccessWithCartEmpty>
-        }
-      />
-      <Route
-        path="confirmation"
-        element={
-          <NoAccessWithCartEmpty>
-            <Suspense fallback={<FallBackLoader />}>
-              <Confirmation />
-            </Suspense>
-          </NoAccessWithCartEmpty>
-        }
-      />
-*/
+
 // TODO: mettre un favicon
