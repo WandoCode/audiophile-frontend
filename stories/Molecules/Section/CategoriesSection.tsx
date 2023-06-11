@@ -1,7 +1,7 @@
 import { CategoryLink } from '../../Atoms'
 import { useContext } from 'react'
 import { LayoutContext } from '../../../features/Layout/LayoutProvider'
-import ImgPlaceholder from '/assets/image-placeholder.png'
+import ImgPlaceholder from '../../../public/assets/image-placeholder.png'
 
 interface Props {
   className?: string

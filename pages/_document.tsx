@@ -8,11 +8,6 @@ function Document() {
           name="description"
           content="Audiophile siteweb to discover and buy hight quality audio gears"
         />
-        <link
-          rel="shortcut icon"
-          href="./src/assets/favicon.png"
-          type="image/x-icon"
-        />
       </Head>
       <body>
         <Main />

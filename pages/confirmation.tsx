@@ -1,4 +1,4 @@
-import confirmationIcon from '../assets/icon-order-confirmation.svg'
+import confirmationIcon from '../public/assets/icon-order-confirmation.svg'
 import { ItemSummary } from '../stories/Atoms/CardElement/ItemSummary'
 import { useEffect, useContext, useState, useMemo } from 'react'
 import { CartContext } from '../features/Cart/CartProvider'

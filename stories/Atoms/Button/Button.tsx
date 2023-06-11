@@ -1,5 +1,5 @@
 import React from 'react'
-import arrow from '/assets/icon-arrow-right.svg'
+import arrow from '../../../public/assets/icon-arrow-right.svg'
 import Image from 'next/image'
 
 interface Props {

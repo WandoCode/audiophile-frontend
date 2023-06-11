@@ -1,6 +1,6 @@
-import twitterIcon from '../../../assets/icon-twitter.svg'
-import facebookIcon from '../../../assets/icon-facebook.svg'
-import instagramIcon from '../../../assets/icon-instagram.svg'
+import twitterIcon from '../../../public/assets/icon-twitter.svg'
+import facebookIcon from '../../../public/assets/icon-facebook.svg'
+import instagramIcon from '../../../public/assets/icon-instagram.svg'
 import Link from 'next/link'
 import Image from 'next/image'
 

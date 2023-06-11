@@ -1,7 +1,7 @@
 import React from 'react'
-import cart from '../../../assets/icon-cart.svg'
-import close from '../../../assets/icon-close.svg'
-import burger from '../../../assets/icon-hamburger.svg'
+import cart from '../../../public/assets/icon-cart.svg'
+import close from '../../../public/assets/icon-close.svg'
+import burger from '../../../public/assets/icon-hamburger.svg'
 import Image from 'next/image'
 
 interface Props {

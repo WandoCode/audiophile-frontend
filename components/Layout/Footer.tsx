@@ -1,6 +1,6 @@
 import { FooterNav } from '../../stories/Molecules'
 import { SocialLink } from '../../stories/Atoms'
-import logo from '../../assets/logo.svg'
+import logo from '../../public/assets/logo.svg'
 import { useContext } from 'react'
 import { LayoutContext } from '../../features/Layout/LayoutProvider'
 import Link from 'next/link'

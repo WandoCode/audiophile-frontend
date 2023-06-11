@@ -1,5 +1,5 @@
 import { Input, RadioInput } from '../../stories/Atoms'
-import CashImg from '../../assets/icon-cash-on-delivery.svg'
+import CashImg from '../../public/assets/icon-cash-on-delivery.svg'
 import { FormErrors, FormDatas } from '../../types/index'
 import Image from 'next/image'
 
