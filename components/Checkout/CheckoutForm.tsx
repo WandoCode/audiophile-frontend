@@ -49,8 +49,7 @@ function CheckoutForm({ onShowModal }: Props) {
 
     const formIsValid = validateForm()
 
-    // TODO: bypass pour tester, remettre 'formIsValid' comme condition
-    if (true) {
+    if (formIsValid) {
       if (formDatas.payment.value === 'stripe') onShowModal()
       else if (formDatas.payment.value === 'cash') router.push('/confirmation')
     }

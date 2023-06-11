@@ -2,27 +2,6 @@ import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import { MainNav } from '../../stories/Molecules'
 
-const mockedUsedNavigate = vi.fn()
-const mockedUseLocation = vi.fn()
-const MockedNavLink = vi.fn()
-
-const useMokedRouter = vi.fn()
-
-vi.mock('next/router', () => ({
-  ...(vi.importActual('next/router') as any),
-  useRouter: () => useMokedRouter,
-}))
-
-// vi.mock('react-router-dom', async () => {
-//   const actual: any = vi.importActual('react-router-dom')
-//   return {
-//     ...actual,
-//     useNavigate: () => mockedUsedNavigate,
-//     useLocation: () => mockedUseLocation,
-//     NavLink: () => MockedNavLink,
-//   }
-// })
-
 describe('Given I use the "MainNav" component', () => {
   let mockOnToogleMenu = vi.fn()
 
