@@ -30,6 +30,24 @@ function Hero({ data }: Props) {
           />
         </div>
       </div>
+      {data && (
+        <picture>
+          <source
+            media="(min-width:950px)"
+            srcSet="/assets/home/image-hero-lg.jpg"
+          />
+          <source
+            media="(min-width:500px)"
+            srcSet="/assets/home/image-hero-md.jpg"
+          />
+          <img
+            className={`hero__img`}
+            src="/assets/home/image-hero-sm.jpg"
+            alt="XX99 MARK II HEADPHONES"
+            loading={'eager'}
+          />
+        </picture>
+      )}
     </section>
   )
 }

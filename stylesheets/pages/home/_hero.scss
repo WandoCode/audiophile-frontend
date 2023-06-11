@@ -12,6 +12,22 @@
     min-height: rem(730);
   }
 
+  &__img {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    right: 50%;
+    translate: 50% 0;
+
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: center;
+
+    z-index: -1;
+  }
+
   &::before {
     position: absolute;
     content: '';
@@ -19,20 +35,10 @@
 
     z-index: -1;
 
-    background-image: url('/assets/home/image-hero-sm.jpg');
     background-color: var(--clr-neutral-650);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    @include breakpoint(medium) {
-      background-image: url('/assets/home/image-hero-md.jpg');
-    }
 
     @include breakpoint(large) {
       padding-top: $header-height-lg;
-
-      background-image: url('/assets/home/image-hero-lg.jpg');
     }
   }
 
