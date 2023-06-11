@@ -1,5 +1,5 @@
 import React from 'react'
-import arrow from '../../../assets/icon-arrow-right.svg'
+import arrow from '/assets/icon-arrow-right.svg'
 import Image from 'next/image'
 
 interface Props {
@@ -34,7 +34,10 @@ function Button({
       {...props}
     >
       <span className="btn__content">
-        {text} {level === 'tertiary' && <Image src={arrow} alt="" />}
+        {text}{' '}
+        {level === 'tertiary' && (
+          <Image src={arrow} alt="" width={8} height={12} />
+        )}
       </span>
     </button>
   )

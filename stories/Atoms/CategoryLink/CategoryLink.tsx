@@ -1,13 +1,14 @@
 import { Button } from '../Button/Button'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 interface Props {
   category?: string
   image?: string
 }
 
-function CategoryLink({ category, image }: Props) {
+function CategoryLink({ category, image = '' }: Props) {
   const router = useRouter()
 
   const [linkHasBeenHovered, setLinkHasBeenHovered] = useState(false)
@@ -37,11 +38,13 @@ function CategoryLink({ category, image }: Props) {
         onMouseOver={handleHover}
         data-testid="category-link-test-id"
       >
-        <img
+        <Image
           src={image}
-          alt={category}
+          alt={category ?? ''}
           className={imgClass()}
           onLoad={() => setImagIsLoaded(true)}
+          height={205}
+          width={230}
         />
         <h3 className="h3">{category}</h3>
         <Button
