@@ -21,7 +21,7 @@ function MainDescriptionSection() {
     <section className="main-description">
       <ImageSet
         data={layout?.mainDescription.images}
-        className="mainDescription"
+        className="main-description"
         altTxt="Chill guy listening music with headphones. Black and white colors."
         lazy={true}
       />

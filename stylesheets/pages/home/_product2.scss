@@ -18,6 +18,8 @@
   }
 
   &__img {
+    height: auto;
+
     @include breakpoint(medium) {
       min-height: 100%;
       min-width: 100%;

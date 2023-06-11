@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 interface Props {
   data: { tablet: any; desktop: any; mobile: any } | undefined
   className: string

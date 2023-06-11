@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "test": "vitest",
     "start": "next start",
     "storybook": "storybook dev -p 6006",

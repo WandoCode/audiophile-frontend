@@ -34,6 +34,7 @@
 
   &__img {
     max-width: rem(173);
+    height: auto;
 
     @include breakpoint(medium) {
       max-width: rem(200);

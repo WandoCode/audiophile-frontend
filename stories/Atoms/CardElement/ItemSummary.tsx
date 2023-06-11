@@ -18,6 +18,8 @@ function ItemSummary({ name, price, url, quantity }: Props) {
           height={64}
           width={64}
           className="item-summary__img"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8WQ8AAlcBas53/MIAAAAASUVORK5CYII="
         />
       </div>
       <div className="item-summary__text">

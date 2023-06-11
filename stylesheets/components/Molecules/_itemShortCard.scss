@@ -6,6 +6,9 @@
   align-content: space-between;
   gap: rem(32);
 
+  &__img {
+    height: auto;
+  }
   &__content {
     display: grid;
     justify-items: center;

@@ -15,6 +15,10 @@
     gap: rem(30);
   }
 
+  &__img {
+    height: auto;
+  }
+
   &__text {
     display: grid;
     gap: rem(35);
