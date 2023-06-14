@@ -11,13 +11,15 @@ It's based on **CMS Strapi** that I set up: [see readme](https://github.com/Wand
 
 ## Hightlighted skills in this project
 
+- NextJS
 - React with React context and react-query
 - Typescript
+- Payment with Stripe is working
 - Storybook for the main reused components (not deployed)
 - SCSS (BEM)
 - Custom Form validation with _RegEx_
 
-NB: The 'nextjs' branch contains a functional NextJS version of the website that I used to discover the _NextJS_ framework in details. It's not deployed even if, for a real world project, **SSR would be better** than CSR for SEO. A SSR version will be released later.
+NB: The current version in production is the 'nextjs-complet' branch. The main branch of the project contains the code for the 1st version of this website (with ReactJS).
 
 ## Main features
 
@@ -33,6 +35,10 @@ I used arias attributes to improve **navigation for screen readers**.
 ### Unit tests
 
 I wrote unit tests for the all components with **Vitest** and **testing-library**.
+
+### Payment with Stripe
+
+Online payment is configured and working (test mode). It use a custom API endpoint I created to handle the payment.
 
 ### Custom 'toast' message (in-page notification)
 
@@ -59,14 +65,16 @@ I added a few animation (button hover, toast message, text apparition in homepag
 
 NB: don't forget [the backend](https://github.com/WandoCode/audiophile-backend)
 
+- Choose the 'nextjs-complet' branch
 - Run `npm install`
 - Change the backend url in 'config.json'
 - Launch the development environement with `npm run dev`
 
 # Dependencies
 
-The core dependencies are _React_(v.18) with:
+The core dependencies are _NextJs_ (v13) with:
 
+- _React_(v18)
 - _react-router-dom_(v6)
 - _react-query_(v3)
 - _axios_
@@ -101,13 +109,9 @@ Launch the the storybook in a development environement.
 
 Build the storybook.
 
-## `deploy`
+# To be improved
 
-Deploy the app on github page with the help of gh-page
-
-# To be developed
-
-- Use SSR for SEO, with Next
+- SEO
 - Reconfigure the custom CMS api endpoints to simplify the datas received in the client.
 - Add test for pages components.
 - Add integration/end-to-end tests ('happy path')
